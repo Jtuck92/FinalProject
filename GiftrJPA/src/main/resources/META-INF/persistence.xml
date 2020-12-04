@@ -12,6 +12,10 @@
 		<class>com.skilldistillery.todoapp.entities.EventPost</class>
 		<class>com.skilldistillery.todoapp.entities.Gift</class>
 		<class>com.skilldistillery.todoapp.entities.Event</class>
+		<class>com.skilldistillery.todoapp.entities.EventComment</class>
+		<class>com.skilldistillery.todoapp.entities.Address</class>
+		<class>com.skilldistillery.todoapp.entities.PrivateComment</class>
+		<class>com.skilldistillery.todoapp.entities.EventType</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url"
