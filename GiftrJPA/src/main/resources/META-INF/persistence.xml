@@ -9,7 +9,10 @@
     </provider>
     
 		<class>com.skilldistillery.todoapp.entities.User</class>
-		
+		<class>com.skilldistillery.todoapp.entities.EventPost</class>
+		<class>com.skilldistillery.todoapp.entities.Gift</class>
+		<class>com.skilldistillery.todoapp.entities.Event</class>
+
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/giftrdb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Mountain" />
