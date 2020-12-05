@@ -51,6 +51,7 @@ class EventPostTest {
 	@Test
 	void test_eventPost_user_relationship_mapping() {
 		assertNotNull(ePost);
+		assertEquals(1, ePost.getId());
 	}
 
 }

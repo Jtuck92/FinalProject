@@ -43,8 +43,7 @@ public class EventPost {
 	@JoinColumn(name="event_id")
 	private Integer eventId;
 	
-	@OneToMany
-	@JoinColumn(name="user_id")
+	@OneToMany(mappedBy="posts")
 	private User user;
 
 	public int getId() {
