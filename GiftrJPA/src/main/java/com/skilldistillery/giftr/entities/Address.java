@@ -31,17 +31,6 @@ public class Address {
 	@OneToMany(mappedBy="address")
 	private List<Payment> payments;
 
-	
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-
 
 	public List<User> getUsers() {
 		return users;
@@ -76,12 +65,12 @@ public class Address {
 		this.id = id;
 	}
 
-	public String getStreet1() {
+	public String getStreet() {
 		return street;
 	}
 
-	public void setStreet1(String street1) {
-		this.street = street1;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
 	public String getStreet2() {
@@ -148,7 +137,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "AddressTest [id=" + id + ", street1=" + street + ", street2=" + street2 + ", country=" + country
+		return "AddressTest [id=" + id + ", street=" + street + ", street2=" + street2 + ", country=" + country
 				+ ", zip=" + zip + ", stateProvince=" + stateProvince + ", enabled=" + enabled + "]";
 	}
 	
