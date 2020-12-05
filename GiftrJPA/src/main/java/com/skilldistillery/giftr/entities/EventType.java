@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="event_type")
 public class EventType {
@@ -29,6 +31,7 @@ public class EventType {
 	@Column(name="image_url")
 	private String imageUrl;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "event_has_event_type", joinColumns = @JoinColumn(name = "event_type_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
 	private List<Event> events;

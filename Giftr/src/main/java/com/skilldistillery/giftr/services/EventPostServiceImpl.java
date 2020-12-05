@@ -1,6 +1,7 @@
 package com.skilldistillery.giftr.services;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -23,15 +24,14 @@ public class EventPostServiceImpl implements EventPostService {
 	@Override
 	public Set<EventPost> index(String username) {
 		User user = uRepo.findByUsername(username);
-		System.err.println(user);
-						Set<EventPost> activeEventPosts = new HashSet<EventPost>();
-				for (EventPost eP : user.getEventPosts()) {
-					if(eP.isEnabled()) {
-						activeEventPosts.add(eP);
-					}
-					
-					return activeEventPosts;
-				}
+		if(user != null) {
+			Set<EventPost> activeEventPosts = new HashSet<EventPost>();
+			List<EventPost> all = ePRepo.findAll();
+			for (EventPost eventPost : all) {
+				activeEventPosts.add(eventPost);
+				return activeEventPosts;
+			}	
+			}
 		return null;
 	}
 

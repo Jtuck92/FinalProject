@@ -53,9 +53,11 @@ public class User {
 
 	private String gender;
 	
+	@JsonIgnore
 	@OneToMany (mappedBy = "user")
 	private List<EventPost> eventPosts;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy="users")
 	private List<Event> events;
 	
@@ -63,27 +65,35 @@ public class User {
 	@OneToMany(mappedBy="eventManager")
 	private List<Event> managerEvents;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="gifter")
 	private List<Gift> sentGifts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="receiver")
 	private List<Gift> recievedGifts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="privateEventManager")
 	private List<PrivateEvent> managerPrvEvents;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<PrivatePost> prvEventPosts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<PrivateComment> prvEventComments;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy="privateGroupUsers")
 	private List<PrivateEvent> prvEvents;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Payment> payments;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<EventComment> eventComments;
 	

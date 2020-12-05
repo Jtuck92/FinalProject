@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Event {
 	
@@ -75,6 +77,7 @@ public class Event {
 	@ManyToMany(mappedBy=("events"))
 	private List<EventType> eventTypes;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="event")
 	private List<Gift> gifts;
 	
