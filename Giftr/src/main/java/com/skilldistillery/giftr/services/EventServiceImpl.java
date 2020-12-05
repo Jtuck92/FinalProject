@@ -5,12 +5,13 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.giftr.entities.Event;
 import com.skilldistillery.giftr.entities.User;
 import com.skilldistillery.giftr.repositories.EventRepository;
 import com.skilldistillery.giftr.repositories.UserRepository;
-
+@Service
 public class EventServiceImpl implements EventService {
 	
 	@Autowired
