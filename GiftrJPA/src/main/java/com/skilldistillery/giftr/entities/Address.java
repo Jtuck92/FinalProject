@@ -20,7 +20,7 @@ public class Address {
 	@Column(name = "state_province")
 	private String stateProvince;
 	
-	private int enabled;
+	private Boolean enabled;
 
 	public Address() {
 		super();
@@ -79,11 +79,11 @@ public class Address {
 		this.stateProvince = stateProvince;
 	}
 
-	public int getEnabled() {
+	public Boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(int enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
