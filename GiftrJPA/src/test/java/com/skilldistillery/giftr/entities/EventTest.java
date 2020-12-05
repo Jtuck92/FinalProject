@@ -89,6 +89,14 @@ public class EventTest {
 		assertEquals("11", event.getUser().getUsername());
 	}
 	
+	@Test
+	@DisplayName("test Event to EventTypes")
+	void test6() {
+		assertNotNull(event);
+		assertNotNull(event.getEventTypes());
+		assertTrue(event.getEventTypes().size() > 0);
+		assertEquals("New Type", event.getEventTypes().get(0).getName());
+	}
 	
 	
 	

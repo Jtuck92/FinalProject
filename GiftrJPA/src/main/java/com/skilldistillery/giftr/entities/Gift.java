@@ -31,7 +31,7 @@ public class Gift {
 
 	@ManyToOne
 	@JoinColumn(name = "receiver_id")
-	private User reciever;
+	private User receiver;
 
 	private int rating;
 	private String name;
@@ -105,11 +105,11 @@ public class Gift {
 	}
 
 	public User getReciever() {
-		return reciever;
+		return receiver;
 	}
 
 	public void setReciever(User reciever) {
-		this.reciever = reciever;
+		this.receiver = reciever;
 	}
 
 	public int getRating() {
@@ -161,8 +161,8 @@ public class Gift {
 	@Override
 	public String toString() {
 		return "Gift [id=" + id + ", price=" + price + ", weight=" + weight + ", description=" + description
-				+ ", enabled=" + enabled + ", eventId=" + event + ", gifterId=" + gifter + ", recieverId="
-				+ reciever + ", rating=" + rating + ", name=" + name + ", imageUrl=" + imageUrl + "]";
+				+ ", enabled=" + enabled + ", eventId=" + event + ", gifterId=" + gifter + ", receiverId="
+				+ receiver + ", rating=" + rating + ", name=" + name + ", imageUrl=" + imageUrl + "]";
 	}
 
 }

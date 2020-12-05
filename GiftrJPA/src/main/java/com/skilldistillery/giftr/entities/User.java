@@ -60,36 +60,40 @@ public class User {
 	@OneToMany(mappedBy="eventManager")
 	private List<Event> managerEvents;
 	
-	public List<EventPost> getEventPosts() {
-		return eventPosts;
+	@OneToMany(mappedBy="gifter")
+	private List<Gift> sentGifts;
+	
+	@OneToMany(mappedBy="receiver")
+	private List<Gift> recievedGifts;
+	
+	@OneToMany(mappedBy="privateEventManager")
+	private List<PrivateEvent> managerPrvEvents;
+	
+	@OneToMany(mappedBy="user")
+	private List<PrivatePost> prvEventPosts;
+	
+	@OneToMany(mappedBy="user")
+	private List<PrivateComment> prvEventComments;
+	
+	@ManyToMany(mappedBy="privateGroupUsers")
+	private List<PrivateEvent> prvEvents;
+	
+	@OneToMany(mappedBy="user")
+	private List<Payment> payments;
+	
+	@OneToMany(mappedBy="user")
+	private List<EventComment> eventComments;
+	
+	
+	
+	
+
+	public List<Payment> getPayments() {
+		return payments;
 	}
 
-	public void setEventPosts(List<EventPost> eventPosts) {
-		this.eventPosts = eventPosts;
-	}
-
-	public List<Event> getEvents() {
-		return events;
-	}
-
-	public void setEvents(List<Event> events) {
-		this.events = events;
-	}
-
-	public List<Event> getManagerEvents() {
-		return managerEvents;
-	}
-
-	public void setManagerEvents(List<Event> managerEvents) {
-		this.managerEvents = managerEvents;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
 	}
 
 	@ManyToOne
@@ -118,6 +122,95 @@ public class User {
 	}
 
 	// Getters AND Setters =============================
+	
+	
+	public List<Gift> getSentGifts() {
+		return sentGifts;
+	}
+	
+	public List<EventComment> getEventComments() {
+		return eventComments;
+	}
+
+	public void setEventComments(List<EventComment> eventComments) {
+		this.eventComments = eventComments;
+	}
+
+	public List<PrivateEvent> getManagerPrvEvents() {
+		return managerPrvEvents;
+	}
+
+	public void setManagerPrvEvents(List<PrivateEvent> managerPrvEvents) {
+		this.managerPrvEvents = managerPrvEvents;
+	}
+
+	public List<PrivatePost> getPrvEventPosts() {
+		return prvEventPosts;
+	}
+
+	public void setPrvEventPosts(List<PrivatePost> prvEventPosts) {
+		this.prvEventPosts = prvEventPosts;
+	}
+
+	public List<PrivateComment> getPrvEventComments() {
+		return prvEventComments;
+	}
+
+	public void setPrvEventComments(List<PrivateComment> prvEventComments) {
+		this.prvEventComments = prvEventComments;
+	}
+
+	public List<PrivateEvent> getPrvEvents() {
+		return prvEvents;
+	}
+
+	public void setPrvEvents(List<PrivateEvent> prvEvents) {
+		this.prvEvents = prvEvents;
+	}
+
+	public void setSentGifts(List<Gift> sentGifts) {
+		this.sentGifts = sentGifts;
+	}
+	
+	public List<Gift> getRecievedGifts() {
+		return recievedGifts;
+	}
+	
+	public void setRecievedGifts(List<Gift> recievedGifts) {
+		this.recievedGifts = recievedGifts;
+	}
+	
+	public List<EventPost> getEventPosts() {
+		return eventPosts;
+	}
+	
+	public void setEventPosts(List<EventPost> eventPosts) {
+		this.eventPosts = eventPosts;
+	}
+	
+	public List<Event> getEvents() {
+		return events;
+	}
+	
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+	
+	public List<Event> getManagerEvents() {
+		return managerEvents;
+	}
+	
+	public void setManagerEvents(List<Event> managerEvents) {
+		this.managerEvents = managerEvents;
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+	
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	public int getId() {
 		return id;
 	}

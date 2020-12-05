@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class EventCommentTest {
@@ -44,6 +45,21 @@ class EventCommentTest {
 	void test() {
 		assertNotNull(eComm);
 		assertEquals("THIS WAS SUPER FUN", eComm.getComment());
+	}
+	@Test
+	@DisplayName("Test EventComment to Event Post")
+	void test1() {
+		assertNotNull(eComm);
+		assertNotNull(eComm.getPost());
+		assertEquals("New Event Description", eComm.getPost().getDescription());
+		assertEquals("5", eComm.getPost().getRating());
+	}
+	@Test
+	@DisplayName("Test EventComment to User")
+	void test2() {
+		assertNotNull(eComm);
+		assertNotNull(eComm.getUser());
+		assertEquals("22", eComm.getUser().getUsername());
 	}
 
 }

@@ -47,5 +47,29 @@ class PrivateEventTest {
 		assertNotNull(privateEvent);
 		assertEquals("Private Event Name", privateEvent.getName());
 	}
+	@Test
+	@DisplayName("test private event to Private Post")
+	void test1() {
+		assertNotNull(privateEvent);
+		assertNotNull(privateEvent.getPosts());
+		assertTrue(privateEvent.getPosts().size()>0);
+		assertEquals("Private Giftr Description", privateEvent.getPosts().get(0).getDescription());
+	}
+	@Test
+	@DisplayName("test private event to UserList")
+	void test2() {
+		assertNotNull(privateEvent);
+		assertNotNull(privateEvent.getPrivateGroupUsers());
+		assertTrue(privateEvent.getPrivateGroupUsers().size()>0);
+		assertEquals("11", privateEvent.getPrivateGroupUsers().get(0).getUsername());
+	}
+	
+	@Test
+	@DisplayName("test private event to UserList")
+	void test3() {
+		assertNotNull(privateEvent);
+		assertNotNull(privateEvent.getPrivateEventManager());
+		assertEquals("11", privateEvent.getPrivateEventManager().getUsername());
+	}
 	
 }

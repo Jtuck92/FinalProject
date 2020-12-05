@@ -11,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class GiftTest {
@@ -50,6 +51,22 @@ public class GiftTest {
 	void test2() {
 		assertNotNull(gift);
 		assertEquals(1, gift.getEvent().getId());
+		
+	}
+	@Test
+	@DisplayName("Test Gift to Gifter")
+	void test3() {
+		assertNotNull(gift);
+		assertNotNull(gift.getGifter());
+		assertEquals("11", gift.getGifter().getUsername());
+		
+	}
+	@Test
+	@DisplayName("Test Gift to Receiver")
+	void test4() {
+		assertNotNull(gift);
+		assertNotNull(gift.getReciever());
+		assertEquals("22", gift.getReciever().getUsername());
 		
 	}
 }

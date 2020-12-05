@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -33,7 +35,15 @@ public class PrivateComment {
 	private LocalDateTime lastUpdate;
 	
 	private boolean enabled;
-
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="post_id")
+	private PrivatePost post;
+	
 	// CONSTRUCTORS ======================================
 	public PrivateComment() {
 		super();
@@ -56,6 +66,22 @@ public class PrivateComment {
 
 	public void setId(int id) {
 		this.id = id;
+	}	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public PrivatePost getPost() {
+		return post;
+	}
+
+	public void setPost(PrivatePost post) {
+		this.post = post;
 	}
 
 	public String getComment() {

@@ -1,6 +1,7 @@
 package com.skilldistillery.giftr.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class PaymentTest {
@@ -45,6 +47,23 @@ class PaymentTest {
 		assertNotNull(payment);
 		assertEquals("1111", payment.getCardNumber());
 		assertEquals(11.11, payment.getAmount());
+	}
+	@Test
+	@DisplayName("Test Payment to Address")
+	void test1() {
+		assertNotNull(payment);
+		assertNotNull(payment.getAddress());
+		assertEquals("11111", payment.getAddress().getZip());
+		assertEquals("Street Name 1", payment.getAddress().getStreet());
+		
+	}
+	@Test
+	@DisplayName("Test Payment to User")
+	void test2() {
+		assertNotNull(payment);
+		assertNotNull(payment.getUser());
+		assertEquals("11", payment.getUser().getUsername());
+		
 	}
 
 }

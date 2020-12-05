@@ -10,6 +10,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class EventPostTest {
@@ -49,9 +50,28 @@ class EventPostTest {
 	}
 	
 	@Test
+	@DisplayName("Test EventPost to User")
 	void test_eventPost_user_relationship_mapping() {
 		assertNotNull(ePost);
 		assertEquals(1, ePost.getId());
 	}
+	@Test
+	@DisplayName("Test EventPost to Event")
+	void test3() {
+		assertNotNull(ePost);
+		assertNotNull(ePost.getEvent());
+		assertEquals("Giftr Event Name", ePost.getEvent().getName());
+	}
+	@Test
+	@DisplayName("Test EventPost to EventComment")
+	void test2() {
+		assertNotNull(ePost);
+		assertNotNull(ePost.getComments());
+		assertTrue(ePost.getComments().size()>0);
+		assertEquals("THIS WAS SUPER FUN", ePost.getComments().get(0).getComment());
+	}
 
+	
+	
+	
 }

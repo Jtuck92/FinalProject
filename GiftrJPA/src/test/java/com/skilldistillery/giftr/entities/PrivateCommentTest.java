@@ -43,10 +43,22 @@ class PrivateCommentTest {
 	}
 
 	@Test
-	@DisplayName("test User entity")
+	@DisplayName("test Private Comment entity")
 	void test() {
 		assertNotNull(privateComment);
 		assertEquals("Private Giftr Comment", privateComment.getComment());
+	}
+	@Test
+	@DisplayName("test Entity to User")
+	void test1() {
+		assertNotNull(privateComment);
+		assertEquals("22", privateComment.getUser().getUsername());
+	}
+	@Test
+	@DisplayName("test Entity to Private Post")
+	void test2() {
+		assertNotNull(privateComment);
+		assertEquals("Private Giftr Description", privateComment.getPost().getDescription());
 	}
 	
 }

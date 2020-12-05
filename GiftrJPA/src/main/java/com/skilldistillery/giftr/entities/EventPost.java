@@ -44,6 +44,14 @@ public class EventPost {
 	@JoinColumn(name="event_id")
 	private Event event;
 	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@OneToMany(mappedBy="post")
+	private List<EventComment> comments;
+
+	
 	public Event getEvent() {
 		return event;
 	}
@@ -60,12 +68,6 @@ public class EventPost {
 		this.comments = comments;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
-	
-	@OneToMany(mappedBy="post")
-	private List<EventComment> comments;
 
 	public int getId() {
 		return id;

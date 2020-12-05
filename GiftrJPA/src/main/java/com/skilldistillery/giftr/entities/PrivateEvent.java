@@ -1,12 +1,18 @@
 package com.skilldistillery.giftr.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,6 +45,18 @@ public class PrivateEvent {
 		private String imageUrl;
 		
 		private String description;
+		
+		@ManyToOne
+		@JoinColumn(name="manager_id")
+		private User privateEventManager;
+		
+		@OneToMany(mappedBy="prvEvent")
+		private List<PrivatePost> posts;	
+		
+		@ManyToMany
+		@JoinTable(name = "user_has_group", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+		private List<User> privateGroupUsers;
+		
 
 		// CONSTRUCTORS ======================================
 		public PrivateEvent() {
@@ -58,8 +76,34 @@ public class PrivateEvent {
 		}
 
 		// Getters AND Setters =============================
+		
+		
 		public int getId() {
 			return id;
+		}
+
+		public User getPrivateEventManager() {
+			return privateEventManager;
+		}
+
+		public void setPrivateEventManager(User privateEventManager) {
+			this.privateEventManager = privateEventManager;
+		}
+
+		public List<PrivatePost> getPosts() {
+			return posts;
+		}
+
+		public void setPosts(List<PrivatePost> posts) {
+			this.posts = posts;
+		}
+
+		public List<User> getPrivateGroupUsers() {
+			return privateGroupUsers;
+		}
+
+		public void setPrivateGroupUsers(List<User> privateGroupUsers) {
+			this.privateGroupUsers = privateGroupUsers;
 		}
 
 		public void setId(int id) {

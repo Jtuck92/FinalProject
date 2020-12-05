@@ -2,6 +2,7 @@ package com.skilldistillery.giftr.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Entity
@@ -47,5 +49,30 @@ public class PrivatePostTest {
 		assertNotNull(privatePost);
 		assertEquals("Private Giftr Description", privatePost.getDescription());
 
+	}
+	@Test
+	@DisplayName("Test Private Post to User")
+	void test1() {
+		assertNotNull(privatePost);
+		assertNotNull(privatePost.getUser());
+		assertEquals("11", privatePost.getUser().getUsername());
+		
+	}
+	@Test
+	@DisplayName("Test Private Post to Private Event")
+	void test3() {
+		assertNotNull(privatePost);
+		assertNotNull(privatePost.getPrvEvent());
+		assertEquals("Private Event Name", privatePost.getPrvEvent().getName());
+		
+	}
+	@Test
+	@DisplayName("Test Private Post to PrivateComment")
+	void test2() {
+		assertNotNull(privatePost);
+		assertNotNull(privatePost.getPrvComments());
+		assertTrue(privatePost.getPrvComments().size()>0);
+		assertEquals("Private Giftr Comment", privatePost.getPrvComments().get(0).getComment());
+		
 	}
 }
