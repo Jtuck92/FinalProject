@@ -49,7 +49,7 @@ public class GiftTest {
 	@Test
 	void test2() {
 		assertNotNull(gift);
-		assertEquals(1, gift.getEvent());
+		assertEquals(1, gift.getEvent().getId());
 		
 	}
 }

@@ -1,10 +1,13 @@
 package com.skilldistillery.giftr.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Address {
@@ -21,6 +24,40 @@ public class Address {
 	private String stateProvince;
 	
 	private Boolean enabled;
+	
+	@OneToMany(mappedBy="address")
+	private List<User> users;
+	
+	@OneToMany(mappedBy="address")
+	private List<Payment> payments;
+
+	
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public List<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
+	}
 
 	public Address() {
 		super();

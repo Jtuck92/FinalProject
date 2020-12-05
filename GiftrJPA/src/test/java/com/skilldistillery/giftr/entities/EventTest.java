@@ -73,6 +73,22 @@ public class EventTest {
 		assertTrue(event.getPosts().size() > 0);
 		assertEquals("New Event Description", event.getPosts().get(0).getDescription());
 	}
+	@Test
+	@DisplayName("test Event to UserList")
+	void test4() {
+		assertNotNull(event);
+		assertNotNull(event.getUsers());
+		assertTrue(event.getUsers().size() > 0);
+		assertEquals("11", event.getUsers().get(0).getUsername());
+	}
+	@Test
+	@DisplayName("test Event to User entity")
+	void test5() {
+		assertNotNull(event);
+		assertNotNull(event.getUser());
+		assertEquals("11", event.getUser().getUsername());
+	}
+	
 	
 	
 	

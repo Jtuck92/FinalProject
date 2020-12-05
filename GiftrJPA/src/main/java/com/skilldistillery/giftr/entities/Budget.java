@@ -1,10 +1,13 @@
 package com.skilldistillery.giftr.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Budget {
@@ -19,6 +22,18 @@ public class Budget {
 	private Integer highPrice;
 	
 	private Boolean enabled = true;
+	
+	@OneToMany(mappedBy="budget")
+	private List<Event> events;
+
+	
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
 
 	public Budget() {
 		super();

@@ -54,8 +54,16 @@ public class Event {
 	
 	@ManyToOne
 	@JoinColumn(name="creator_id")
-	private User user;
+	private User eventManager;
 	
+	public User getEventManager() {
+		return eventManager;
+	}
+
+	public void setEventManager(User eventManager) {
+		this.eventManager = eventManager;
+	}
+
 	@Column(name = "created_date")
 	@CreationTimestamp
 	private LocalDateTime createdDate;
@@ -204,11 +212,11 @@ public class Event {
 	}
 
 	public User getUser() {
-		return user;
+		return eventManager;
 	}
 
 	public void setUser(User user) {
-		this.user = user;
+		this.eventManager = user;
 	}
 
 	public LocalDateTime getCreatedDate() {

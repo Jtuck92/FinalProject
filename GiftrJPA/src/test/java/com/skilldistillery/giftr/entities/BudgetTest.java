@@ -2,6 +2,7 @@ package com.skilldistillery.giftr.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BudgetTest {
@@ -41,9 +43,19 @@ public class BudgetTest {
 	}
 
 	@Test
+	@DisplayName("Test Budget Entity")
 	void test() {
 		assertNotNull(budget);
 		assertEquals(5, budget.getLowPrice());
 
+	}
+	@Test
+	@DisplayName("Test Budget to Event Entity")
+	void test1() {
+		assertNotNull(budget);
+		assertNotNull(budget.getEvents());
+		assertTrue(budget.getEvents().size()>0);
+		assertEquals("Giftr Event Name", budget.getEvents().get(0).getName());
+		
 	}
 }

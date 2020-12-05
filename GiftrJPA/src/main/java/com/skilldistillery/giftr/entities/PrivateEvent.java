@@ -35,6 +35,7 @@ public class PrivateEvent {
 
 		private boolean enabled;
 
+		@Column(name="image_url")
 		private String imageUrl;
 		
 		private String description;

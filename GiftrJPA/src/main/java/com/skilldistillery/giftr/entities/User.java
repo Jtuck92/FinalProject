@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -51,6 +53,48 @@ public class User {
 	
 	@OneToMany (mappedBy = "user")
 	private List<EventPost> eventPosts;
+	
+	@ManyToMany(mappedBy="users")
+	private List<Event> events;
+	
+	@OneToMany(mappedBy="eventManager")
+	private List<Event> managerEvents;
+	
+	public List<EventPost> getEventPosts() {
+		return eventPosts;
+	}
+
+	public void setEventPosts(List<EventPost> eventPosts) {
+		this.eventPosts = eventPosts;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	public List<Event> getManagerEvents() {
+		return managerEvents;
+	}
+
+	public void setManagerEvents(List<Event> managerEvents) {
+		this.managerEvents = managerEvents;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="address_id")
+	private Address address;
 	
 	// CONSTRUCTORS ======================================
 	public User() {

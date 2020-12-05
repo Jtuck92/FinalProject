@@ -1,6 +1,7 @@
 package com.skilldistillery.giftr.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,11 +42,30 @@ public class EventPost {
 	
 	@ManyToOne
 	@JoinColumn(name="event_id")
-	private Integer eventId;
+	private Event event;
 	
+	public Event getEvent() {
+		return event;
+	}
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
+	public List<EventComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<EventComment> comments) {
+		this.comments = comments;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	@OneToMany(mappedBy="post")
+	private List<EventComment> comments;
 
 	public int getId() {
 		return id;
@@ -111,13 +131,7 @@ public class EventPost {
 		this.subject = subject;
 	}
 
-	public Integer getEventId() {
-		return eventId;
-	}
 
-	public void setEventId(Integer eventId) {
-		this.eventId = eventId;
-	}
 
 	public User getUser() {
 		return user;
@@ -159,7 +173,7 @@ public class EventPost {
 		builder.append("EventPost [id=").append(id).append(", description=").append(description).append(", imageUrl=")
 				.append(imageUrl).append(", createdDate=").append(createdDate).append(", lastUpdate=")
 				.append(lastUpdate).append(", enabled=").append(enabled).append(", rating=").append(rating)
-				.append(", subject=").append(subject).append(", eventId=").append(eventId).append(", user=")
+				.append(", subject=").append(subject).append(", user=")
 				.append(user).append("]");
 		return builder.toString();
 	}
