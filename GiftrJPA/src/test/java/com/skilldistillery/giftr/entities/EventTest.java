@@ -2,6 +2,7 @@ package com.skilldistillery.giftr.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -56,4 +57,23 @@ public class EventTest {
 		assertNotNull(event.getBudget());
 		assertEquals(5, event.getBudget().getLowPrice());
 	}
+	@Test
+	@DisplayName("test Event to Gift entity")
+	void test2() {
+		assertNotNull(event);
+		assertNotNull(event.getGifts());
+		assertTrue(event.getGifts().size() > 0);
+		assertEquals(12.5, event.getGifts().get(0).getPrice());
+	}
+	@Test
+	@DisplayName("test Event to EventPost entity")
+	void test3() {
+		assertNotNull(event);
+		assertNotNull(event.getPosts());
+		assertTrue(event.getPosts().size() > 0);
+		assertEquals("New Event Description", event.getPosts().get(0).getDescription());
+	}
+	
+	
+	
 }

@@ -67,31 +67,31 @@ public class Event {
 	@ManyToMany(mappedBy=("events"))
 	private List<EventType> eventTypes;
 	
-//	@OneToMany(mappedBy="event")
-//	private List<Gift> gifts;
+	@OneToMany(mappedBy="event")
+	private List<Gift> gifts;
 	
 	@ManyToMany
 	@JoinTable(name = "user_has_event", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
-//	
-//	@OneToMany(mappedBy="event")
-//	private List<EventPost> posts;
+	
+	@OneToMany(mappedBy="event")
+	private List<EventPost> posts;
 
-//	public List<EventPost> getPosts() {
-//		return posts;
-//	}
-//
-//	public void setPosts(List<EventPost> posts) {
-//		this.posts = posts;
-//	}
-//
-//	public List<Gift> getGifts() {
-//		return gifts;
-//	}
-//
-//	public void setGifts(List<Gift> gifts) {
-//		this.gifts = gifts;
-//	}
+	public List<EventPost> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<EventPost> posts) {
+		this.posts = posts;
+	}
+
+	public List<Gift> getGifts() {
+		return gifts;
+	}
+
+	public void setGifts(List<Gift> gifts) {
+		this.gifts = gifts;
+	}
 
 	public List<User> getUsers() {
 		return users;
