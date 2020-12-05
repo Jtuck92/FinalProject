@@ -1,5 +1,6 @@
 package com.skilldistillery.giftr.services;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -20,12 +21,14 @@ public class PrivateEventServiceImpl implements PrivateEventService {
 	@Autowired
 	private PrivateEventRepository privateEventRepo;
 
+	private String name = "11";
+
 	@Override
-	public Set<PrivateEvent> index(String name) {
+	public List<PrivateEvent> index(String name) {
 		if (privateEventRepo.findByName(name) == null) {
 			return null;
 		}
-		return privateEventRepo.findByName(name);
+		return privateEventRepo.findAll();
 	}
 
 	@Override
