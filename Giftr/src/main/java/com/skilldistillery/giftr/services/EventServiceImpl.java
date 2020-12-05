@@ -68,17 +68,17 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public boolean destroy(String name, int eid) {
-		boolean deleted = false;
+	public boolean disable(String name, int eid) {
+		boolean disabled = false;
 		Optional<Event> event = eventRepo.findById(eid);
 		Event e = null;
 		if(event.isPresent()) {
 			e = event.get();
 			e.setEnabled(false);
 			eventRepo.saveAndFlush(e);
-			deleted = true;
+			disabled = true;
 		}
-		return deleted;
+		return disabled;
 	}
 
 }

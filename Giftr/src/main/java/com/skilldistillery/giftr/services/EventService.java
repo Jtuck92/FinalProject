@@ -14,6 +14,6 @@ public interface EventService {
 
 	Event update(String name, int tid, Event event);
 
-	boolean destroy(String name, int eid);
+	boolean disable(String name, int eid);
 
 }

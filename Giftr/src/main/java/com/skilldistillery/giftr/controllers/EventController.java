@@ -47,7 +47,7 @@ public class EventController {
 		return event;
 	}
 
-	@PostMapping(path = "todos")
+	@PostMapping(path = "events")
 	public Event create(HttpServletRequest req, HttpServletResponse res, Principal principal, @RequestBody Event event) {
 		 event = eventSvc.create(principal.getName(), event);
 		if (event == null) {
@@ -62,7 +62,7 @@ public class EventController {
 		return event;
 	}
 
-	@PutMapping(path = "todos/{tid}")
+	@PutMapping(path = "events/{eid}")
 	public Event update(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int eid, @RequestBody Event event) {
 
 		try {
@@ -78,10 +78,10 @@ public class EventController {
 		return event;
 	}
 
-	@DeleteMapping("todos/{tid}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int eid) {
-		boolean deleted = eventSvc.destroy(principal.getName(), eid);
-			if(deleted) {
+	@DeleteMapping("events/{eid}")
+	public void disable(HttpServletRequest req, HttpServletResponse res, Principal principal, @PathVariable int eid) {
+		boolean disabled = eventSvc.disable(principal.getName(), eid);
+			if(disabled) {
 				res.setStatus(204);
 			} else {
 				res.setStatus(404);
