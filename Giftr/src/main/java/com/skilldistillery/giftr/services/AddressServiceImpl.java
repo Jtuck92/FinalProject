@@ -23,12 +23,14 @@ public class AddressServiceImpl implements AddressService {
 	// TODO
 	@Override
 	public Set<Address> index(String username) {
-		if (addressRepo.findByUser_Username(username) == null) {
+		if (userRepo.findByUsername(username) == null) {
 			return null;
 		}
-		return addressRepo.findByUser_Username(username);
+		return  (Set<Address>) addressRepo.findAll();
 	}
 
+	
+	
 	@Override
 	public Address show(String username, int aid) {
 		Optional<Address> addressOpt = addressRepo.findById(aid);

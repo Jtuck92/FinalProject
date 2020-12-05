@@ -2,7 +2,6 @@ package com.skilldistillery.giftr.services;
 
 import java.util.Set;
 
-import com.skilldistillery.giftr.entities.Event;
 import com.skilldistillery.giftr.entities.EventComment;
 
 public interface EventCommentService {
