@@ -30,8 +30,8 @@ public class EventTypeServiceImpl implements EventTypeService {
 			List<EventType> all = eTRepo.findAll();
 			for (EventType eventType : all) {
 				activeEventTypes.add(eventType);
-				return activeEventTypes;
 			}	
+			return activeEventTypes;
 			}
 		return null;
 	}

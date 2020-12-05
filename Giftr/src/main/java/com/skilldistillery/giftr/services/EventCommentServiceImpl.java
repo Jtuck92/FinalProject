@@ -25,12 +25,12 @@ public class EventCommentServiceImpl implements EventCommentService {
 	public Set<EventComment> index(String username) {
 		User user = uRepo.findByUsername(username);
 		if(user != null) {
-			Set<EventComment> activeEventComments = new HashSet<EventComment>();
+			Set<EventComment> allEventComments = new HashSet<EventComment>();
 			List<EventComment> all = eCRepo.findAll();
 			for (EventComment eventComment : all) {
-				activeEventComments.add(eventComment);
-				return activeEventComments;
+				allEventComments.add(eventComment);
 			}	
+			return allEventComments;
 			}
 		return null;
 	}

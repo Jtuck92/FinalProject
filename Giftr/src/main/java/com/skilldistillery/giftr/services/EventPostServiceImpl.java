@@ -29,8 +29,8 @@ public class EventPostServiceImpl implements EventPostService {
 			List<EventPost> all = ePRepo.findAll();
 			for (EventPost eventPost : all) {
 				activeEventPosts.add(eventPost);
-				return activeEventPosts;
 			}	
+			return activeEventPosts;
 			}
 		return null;
 	}
