@@ -2,6 +2,7 @@ package com.skilldistillery.giftr.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,10 +43,19 @@ public class EventTypeTest {
 	}
 
 	@Test
-	@DisplayName("test User entity")
+	@DisplayName("test Event Type entity")
 	void test() {
 		assertNotNull(type);
-		assertEquals("New Type ", type.getName());
+		assertEquals("New Type", type.getName());
+	}
+	
+	@Test
+	@DisplayName("test Event connect to Event type entity")
+	void test1() {
+		assertNotNull(type);
+		assertNotNull(type.getEvents());
+		assertTrue(type.getEvents().size() > 0);
+		assertEquals("Giftr Event Name", type.getEvents().get(0).getName());
 	}
 	
 }

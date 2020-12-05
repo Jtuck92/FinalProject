@@ -2,6 +2,7 @@ package com.skilldistillery.giftr.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -59,6 +63,55 @@ public class Event {
 	@Column(name = "last_update")
 	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
+	
+	@ManyToMany(mappedBy=("events"))
+	private List<EventType> eventTypes;
+	
+//	@OneToMany(mappedBy="event")
+//	private List<Gift> gifts;
+	
+	@ManyToMany
+	@JoinTable(name = "user_has_event", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> users;
+//	
+//	@OneToMany(mappedBy="event")
+//	private List<EventPost> posts;
+
+//	public List<EventPost> getPosts() {
+//		return posts;
+//	}
+//
+//	public void setPosts(List<EventPost> posts) {
+//		this.posts = posts;
+//	}
+//
+//	public List<Gift> getGifts() {
+//		return gifts;
+//	}
+//
+//	public void setGifts(List<Gift> gifts) {
+//		this.gifts = gifts;
+//	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public Event() {
+		super();
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public List<EventType> getEventTypes() {
+		return eventTypes;
+	}
+
+	public void setEventTypes(List<EventType> eventTypes) {
+		this.eventTypes = eventTypes;
+	}
 
 	public Event(LocalDateTime lastUpdate) {
 		super();

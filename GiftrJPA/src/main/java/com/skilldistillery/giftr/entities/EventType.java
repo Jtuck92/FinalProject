@@ -1,10 +1,15 @@
 package com.skilldistillery.giftr.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +28,18 @@ public class EventType {
 	
 	@Column(name="image_url")
 	private String imageUrl;
+	
+	@ManyToMany
+	@JoinTable(name = "event_has_event_type", joinColumns = @JoinColumn(name = "event_type_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+	private List<Event> events;
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
 
 	public int getId() {
 		return id;
