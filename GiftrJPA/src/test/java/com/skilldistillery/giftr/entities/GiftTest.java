@@ -46,4 +46,10 @@ public class GiftTest {
 		assertEquals(12.5, gift.getPrice());
 
 	}
+	@Test
+	void test2() {
+		assertNotNull(gift);
+		assertEquals(1, gift.getEvent());
+		
+	}
 }

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Gift {
@@ -19,14 +21,17 @@ public class Gift {
 	private String description;
 	private Boolean enabled;
 
-	@Column(name = "event_id")
-	private int eventId;
+	@ManyToOne
+	@JoinColumn(name = "event_id")
+	private Event event;
 
-	@Column(name = "gifter_id")
-	private int gifterId;
+	@ManyToOne
+	@JoinColumn(name = "gifter_id")
+	private User gifter;
 
-	@Column(name = "receiver_id")
-	private int recieverId;
+	@ManyToOne
+	@JoinColumn(name = "receiver_id")
+	private User reciever;
 
 	private int rating;
 	private String name;
@@ -83,28 +88,28 @@ public class Gift {
 		this.enabled = enabled;
 	}
 
-	public int getEventId() {
-		return eventId;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
-	public int getGifterId() {
-		return gifterId;
+	public User getGifter() {
+		return gifter;
 	}
 
-	public void setGifterId(int gifterId) {
-		this.gifterId = gifterId;
+	public void setGifter(User gifter) {
+		this.gifter = gifter;
 	}
 
-	public int getRecieverId() {
-		return recieverId;
+	public User getReciever() {
+		return reciever;
 	}
 
-	public void setRecieverId(int recieverId) {
-		this.recieverId = recieverId;
+	public void setReciever(User reciever) {
+		this.reciever = reciever;
 	}
 
 	public int getRating() {
@@ -156,8 +161,8 @@ public class Gift {
 	@Override
 	public String toString() {
 		return "Gift [id=" + id + ", price=" + price + ", weight=" + weight + ", description=" + description
-				+ ", enabled=" + enabled + ", eventId=" + eventId + ", gifterId=" + gifterId + ", recieverId="
-				+ recieverId + ", rating=" + rating + ", name=" + name + ", imageUrl=" + imageUrl + "]";
+				+ ", enabled=" + enabled + ", eventId=" + event + ", gifterId=" + gifter + ", recieverId="
+				+ reciever + ", rating=" + rating + ", name=" + name + ", imageUrl=" + imageUrl + "]";
 	}
 
 }
