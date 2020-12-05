@@ -23,7 +23,7 @@ public class Address {
 	@Column(name = "state_province")
 	private String stateProvince;
 	
-	private Boolean enabled;
+	private Boolean enabled = true;
 	
 	@OneToMany(mappedBy="address")
 	private List<User> users;

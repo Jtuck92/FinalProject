@@ -39,7 +39,7 @@ public class PrivateEvent {
 		@Column(name = "last_update")
 		private LocalDateTime lastUpdate;
 
-		private boolean enabled;
+		private boolean enabled = true;
 
 		@Column(name="image_url")
 		private String imageUrl;

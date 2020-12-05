@@ -36,7 +36,7 @@ public class PrivatePost {
 	@UpdateTimestamp
 	private LocalDateTime lastUpdate;
 
-	private Boolean enabled;
+	private Boolean enabled = true;
 	private String rating;
 	private String subject;
 	

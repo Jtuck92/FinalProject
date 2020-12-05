@@ -30,7 +30,7 @@ public class User {
 
 	private String password;
 
-	private boolean enabled;
+	private boolean enabled = true;
 
 	@Column(name = "first_name")
 	private String firstName;

@@ -22,7 +22,7 @@ public class EventType {
 	
 	private String name;
 	
-	private Boolean enabled;
+	private Boolean enabled = true;
 	
 	private String description;
 	

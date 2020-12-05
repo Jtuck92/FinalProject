@@ -34,7 +34,7 @@ public class EventPost {
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
-	private boolean enabled;
+	private boolean enabled = true;
 	
 	private String rating;
 	

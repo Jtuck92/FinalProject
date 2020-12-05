@@ -34,7 +34,7 @@ public class PrivateComment {
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
 	
-	private boolean enabled;
+	private boolean enabled = true;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")

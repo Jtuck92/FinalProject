@@ -35,7 +35,7 @@ public class Payment {
 	@Column(name = "last_update")
 	private LocalDateTime lastUpdate;
 	
-	private Boolean enabled;
+	private Boolean enabled = true;
 	
 	@ManyToOne
 	@JoinColumn(name="address_id")

@@ -19,7 +19,7 @@ public class Gift {
 	@Column(name = "weight_kg")
 	private Double weight;
 	private String description;
-	private Boolean enabled;
+	private Boolean enabled = true;
 
 	@ManyToOne
 	@JoinColumn(name = "event_id")
