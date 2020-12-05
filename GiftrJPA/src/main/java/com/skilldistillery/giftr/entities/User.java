@@ -53,6 +53,10 @@ public class User {
 
 	private String gender;
 	
+	@ManyToOne
+	@JoinColumn(name="address_id")
+	private Address address;
+	
 	@JsonIgnore
 	@OneToMany (mappedBy = "user")
 	private List<EventPost> eventPosts;
@@ -109,9 +113,6 @@ public class User {
 		this.payments = payments;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="address_id")
-	private Address address;
 	
 	// CONSTRUCTORS ======================================
 	public User() {

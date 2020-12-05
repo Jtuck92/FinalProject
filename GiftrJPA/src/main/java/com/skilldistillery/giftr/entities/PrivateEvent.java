@@ -18,6 +18,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "private_event")
 public class PrivateEvent {
@@ -50,9 +53,11 @@ public class PrivateEvent {
 		@JoinColumn(name="manager_id")
 		private User privateEventManager;
 		
+		@JsonIgnore
 		@OneToMany(mappedBy="prvEvent")
 		private List<PrivatePost> posts;	
 		
+		@JsonIgnore
 		@ManyToMany
 		@JoinTable(name = "user_has_group", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 		private List<User> privateGroupUsers;

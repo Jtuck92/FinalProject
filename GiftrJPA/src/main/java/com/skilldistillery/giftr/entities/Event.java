@@ -85,6 +85,7 @@ public class Event {
 	@JoinTable(name = "user_has_event", joinColumns = @JoinColumn(name = "event_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="event")
 	private List<EventPost> posts;
 
