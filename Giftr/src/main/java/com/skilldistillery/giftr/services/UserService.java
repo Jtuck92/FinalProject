@@ -6,14 +6,14 @@ import com.skilldistillery.giftr.entities.User;
 
 public interface UserService {
 
-	public List<User> index();
+	public List<User> index(String username);
 	
-	public User findById(Integer userId);
+	public User findById(String username, Integer userId);
 	
-	public User createUser(User user);
+	public User createUser(String username, User user);
 	
-	public User updateUser(Integer userId, User user);
+	public User updateUser(String username, Integer userId, User user);
 	
-	public boolean destroy(Integer userId);
+	public boolean destroy(String username, Integer userId);
 	
 }

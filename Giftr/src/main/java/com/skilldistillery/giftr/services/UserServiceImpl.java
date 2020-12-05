@@ -16,12 +16,12 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepo;
 
 	@Override
-	public List<User> index() {
+	public List<User> index(String username) {
 		return userRepo.findAll();
 	}
 
 	@Override
-	public User findById(Integer userId) {
+	public User findById(String username, Integer userId) {
 		Optional<User> userOpt = userRepo.findById(userId);
 		User user = null;
 		if(userOpt.isPresent()) {
@@ -31,13 +31,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User createUser(User user) {
+	public User createUser(String username, User user) {
 		userRepo.saveAndFlush(user);
 		return user;
 	}
 
 	@Override
-	public User updateUser(Integer userId, User user) {
+	public User updateUser(String username, Integer userId, User user) {
 		Optional<User> userOpt = userRepo.findById(userId);
 		User updatedUser = null;
 		if (userOpt.isPresent()) {
@@ -64,14 +64,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean destroy(Integer userId) {
+	public boolean destroy(String username, Integer userId) {
 		boolean deleted = false;
-		Optional<User> userOpt = userRepo.findById(userId);
-		if (userOpt.isPresent()) {
-			userRepo.delete(userOpt.get());
-			deleted = true;
-		}
-		return deleted;
+	Optional<User> userToDelete = userRepo.findById(userId);
+	User user = null;
+	if(userToDelete.isPresent()) {
+		user = userToDelete.get();
+		user.setEnabled(false);
+		userRepo.saveAndFlush(user);
+		deleted = true;
 	}
-
+	return deleted;
+	}
 }
