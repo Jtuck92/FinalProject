@@ -29,25 +29,7 @@ public class EventPostController {
 	
 	private String username = "11";
 	
-	  @GetMapping("eventPosts")
-	  public Set<EventPost> index(){
-	    return eventPostSvc.index(username);
-	  }
-	  
-	  @GetMapping("eventPosts/{id}")
-	  public EventPost show(@PathVariable int id, HttpServletResponse response){
-		
-		try {
-			EventPost eventPost = eventPostSvc.show(username ,id);
-			response.setStatus(200);
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.setStatus(404);
-		}
-			  
-		  
-		return eventPostSvc.show(username,id);
-		  }
+//	******************* SECURITY API REST POINTS *******************************
 //	  @GetMapping("eventPosts/{id}")
 //	  public EventPost show(@PathVariable int id, HttpServletResponse response, Principal p){
 //		  
@@ -64,48 +46,116 @@ public class EventPostController {
 //	  }
 	  
 	  
-		@PostMapping("eventPosts")
-		public EventPost addEventPost(@RequestBody EventPost userParam, HttpServletRequest request, HttpServletResponse response){
-			
-			try {
-				userParam = eventPostSvc.create(username, userParam);
-				response.setStatus(201);
-				response.setHeader("Location", "api/eventPosts/" + userParam.getId());
-			} catch (Exception e) {
-				response.setStatus(400);
-			}
-		  return userParam;
-		}
+//		@PostMapping("eventPosts")
+//		public EventPost addEventPost(@RequestBody EventPost userParam, HttpServletRequest request, HttpServletResponse response, Principal p){
+//			
+//			try {
+//				userParam = eventPostSvc.create(p.getName(), userParam);
+//				response.setStatus(201);
+//				response.setHeader("Location", "api/eventPosts/" + userParam.getId());
+//			} catch (Exception e) {
+//				response.setStatus(400);
+//			}
+//			return userParam;
+//		}
 	
-		@PutMapping("eventPosts/{id}")
-		public EventPost updateEventPost(@PathVariable int id, @RequestBody EventPost userParam, HttpServletRequest request, HttpServletResponse response){
-			System.err.println(userParam);
-			
-			
-			try {
-				userParam = eventPostSvc.update(username, id, userParam);
-				response.setStatus(201);
-				response.setHeader("Location", "api/eventPosts/" + userParam.getId());
-			} catch (Exception e) {
-				response.setStatus(400);
-			}
-			System.err.println(userParam);
-			return userParam;
+		
+		
+		
+//		
+//		@PutMapping("eventPosts/{id}")
+//		public EventPost updateEventPost(@PathVariable int id, @RequestBody EventPost userParam, HttpServletRequest request, HttpServletResponse response, Principal p){
+//			System.err.println(userParam);
+//			
+//			
+//			try {
+//				userParam = eventPostSvc.update(p.getName(), id, userParam);
+//				response.setStatus(201);
+//				response.setHeader("Location", "api/eventPosts/" + userParam.getId());
+//			} catch (Exception e) {
+//				response.setStatus(400);
+//			}
+//			System.err.println(userParam);
+//			return userParam;
+//		}		
+		
+		
+		
+//		@DeleteMapping("eventPosts/{id}")
+//		public void deleteEventPost(@PathVariable int id, HttpServletRequest request, HttpServletResponse response, Principal p) {
+//			try {
+//				boolean delete = eventPostSvc.destroy(p.getName(), id);
+//				if(delete) {
+//					response.setStatus(204);}
+//				else {
+//					response.setStatus(404);
+//				}
+//				response.setHeader("Location", "api/eventPosts/");
+//			} catch (Exception e) {
+//				response.setStatus(400);
+//			}
+//			
+//		}
+	
+	@GetMapping("eventPosts")
+	public Set<EventPost> index(){
+		return eventPostSvc.index(username);
+	}
+	
+	@GetMapping("eventPosts/{id}")
+	public EventPost show(@PathVariable int id, HttpServletResponse response){
+		
+		try {
+			EventPost eventPost = eventPostSvc.show(username ,id);
+			response.setStatus(200);
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.setStatus(404);
 		}
-		@DeleteMapping("eventPosts/{id}")
-		public void deleteEventPost(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
-			try {
-				boolean delete = eventPostSvc.destroy(username, id);
-				if(delete) {
+		
+		
+		return eventPostSvc.show(username,id);
+	}
+	@PostMapping("eventPosts")
+	public EventPost addEventPost(@RequestBody EventPost userParam, HttpServletRequest request, HttpServletResponse response){
+		
+		try {
+			userParam = eventPostSvc.create(username, userParam);
+			response.setStatus(201);
+			response.setHeader("Location", "api/eventPosts/" + userParam.getId());
+		} catch (Exception e) {
+			response.setStatus(400);
+		}
+		return userParam;
+	}
+	@PutMapping("eventPosts/{id}")
+	public EventPost updateEventPost(@PathVariable int id, @RequestBody EventPost userParam, HttpServletRequest request, HttpServletResponse response){
+		System.err.println(userParam);
+		
+		
+		try {
+			userParam = eventPostSvc.update(username, id, userParam);
+			response.setStatus(201);
+			response.setHeader("Location", "api/eventPosts/" + userParam.getId());
+		} catch (Exception e) {
+			response.setStatus(400);
+		}
+		System.err.println(userParam);
+		return userParam;
+	}
+	@DeleteMapping("eventPosts/{id}")
+	public void deleteEventPost(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		try {
+			boolean delete = eventPostSvc.destroy(username, id);
+			if(delete) {
 				response.setStatus(204);}
-				else {
-				  response.setStatus(404);
-				}
-				response.setHeader("Location", "api/eventPosts/");
-			} catch (Exception e) {
-				response.setStatus(400);
+			else {
+				response.setStatus(404);
 			}
-			
+			response.setHeader("Location", "api/eventPosts/");
+		} catch (Exception e) {
+			response.setStatus(400);
 		}
-	
+		
+	}
 }

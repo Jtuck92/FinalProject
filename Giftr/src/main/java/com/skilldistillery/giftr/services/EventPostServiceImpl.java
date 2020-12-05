@@ -37,14 +37,17 @@ public class EventPostServiceImpl implements EventPostService {
 
 	@Override
 	public EventPost show(String username, int id) {
+		User user = uRepo.findByUsername(username);
+		if(user != null) {
+			
 		Optional<EventPost> ePOpt = ePRepo.findById(id);
 		EventPost ep = null;
 		if(ePOpt.isPresent()) {
 			ep = ePOpt.get();
 			if(ep.isEnabled()) {
-			User user = uRepo.findByUsername(username);
 			if (user.getEventPosts().contains(ep)) {
 					return ep;					
+			}
 				}
 			}			
 		}
