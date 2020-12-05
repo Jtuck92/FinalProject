@@ -47,5 +47,10 @@ class EventPostTest {
 		assertEquals("New Event Description", ePost.getDescription());
 		assertEquals("5", ePost.getRating());
 	}
+	
+	@Test
+	void test_eventPost_user_relationship_mapping() {
+		assertNotNull(ePost);
+	}
 
 }

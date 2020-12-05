@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,6 +38,14 @@ public class EventPost {
 	private String rating;
 	
 	private String subject;
+	
+	@ManyToOne
+	@JoinColumn(name="event_id")
+	private Integer eventId;
+	
+	@OneToMany
+	@JoinColumn(name="user_id")
+	private User user;
 
 	public int getId() {
 		return id;
@@ -100,6 +111,22 @@ public class EventPost {
 		this.subject = subject;
 	}
 
+	public Integer getEventId() {
+		return eventId;
+	}
+
+	public void setEventId(Integer eventId) {
+		this.eventId = eventId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public EventPost() {
 		super();
 	}
@@ -132,7 +159,8 @@ public class EventPost {
 		builder.append("EventPost [id=").append(id).append(", description=").append(description).append(", imageUrl=")
 				.append(imageUrl).append(", createdDate=").append(createdDate).append(", lastUpdate=")
 				.append(lastUpdate).append(", enabled=").append(enabled).append(", rating=").append(rating)
-				.append(", subject=").append(subject).append("]");
+				.append(", subject=").append(subject).append(", eventId=").append(eventId).append(", user=")
+				.append(user).append("]");
 		return builder.toString();
 	}
 	
