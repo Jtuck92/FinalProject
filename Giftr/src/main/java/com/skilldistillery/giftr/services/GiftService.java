@@ -6,13 +6,13 @@ import com.skilldistillery.giftr.entities.Gift;
 
 public interface GiftService {
 
-	public List<Gift> index();
+	public List<Gift> index(String name);
 	
-	public Gift findById(Integer giftId);
+	public Gift findById(String name, Integer giftId);
 	
-	public Gift createGift(Gift gift);
+	public Gift createGift(String name, Gift gift);
 	
-	public Gift updateGift(Integer giftId, Gift gift);
+	public Gift updateGift(String name, Integer giftId, Gift gift);
 	
-	public boolean destory(Integer giftId);
+	public boolean destroy(String name, Integer giftId);
 }

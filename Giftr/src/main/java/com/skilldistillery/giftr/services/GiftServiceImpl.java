@@ -14,12 +14,12 @@ public class GiftServiceImpl implements GiftService {
 	private GiftRepository gRepo;
 
 	@Override
-	public List<Gift> index() {
+	public List<Gift> index(String name) {
 		return gRepo.findAll();
 	}
 
 	@Override
-	public Gift findById(Integer giftId) {
+	public Gift findById(String name, Integer giftId) {
 		Optional<Gift> giftOpt = gRepo.findById(giftId);
 		Gift gift = null;
 		if(giftOpt.isPresent()) {
@@ -29,13 +29,13 @@ public class GiftServiceImpl implements GiftService {
 	}
 
 	@Override
-	public Gift createGift(Gift gift) {
+	public Gift createGift(String name, Gift gift) {
 		gRepo.saveAndFlush(gift);
 		return gift;
 	}
 
 	@Override
-	public Gift updateGift(Integer giftId, Gift gift) {
+	public Gift updateGift(String name, Integer giftId, Gift gift) {
 		Optional<Gift> giftOpt = gRepo.findById(giftId);
 		Gift updatedGift = null;
 		if(giftOpt.isPresent()) {
@@ -65,7 +65,7 @@ public class GiftServiceImpl implements GiftService {
 	}
 
 	@Override
-	public boolean destory(Integer giftId) {
+	public boolean destroy(String name, Integer giftId) {
 		boolean deleted = false;
 		Optional<Gift> giftOpt = gRepo.findById(giftId);
 		Gift gift = null;
