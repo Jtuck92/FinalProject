@@ -13,24 +13,24 @@ public class Gift {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Double price;
-	
+
 	@Column(name = "weight_kg")
 	private Double weight;
 	private String description;
-	private int enabled;
-	
+	private Boolean enabled;
+
 	@Column(name = "event_id")
 	private int eventId;
-	
+
 	@Column(name = "gifter_id")
-	private int gifterId; 
-	
+	private int gifterId;
+
 	@Column(name = "receiver_id")
 	private int recieverId;
-	
+
 	private int rating;
 	private String name;
-	
+
 	@Column(name = "image_url")
 	private String imageUrl;
 
@@ -75,11 +75,11 @@ public class Gift {
 		this.description = description;
 	}
 
-	public int getEnabled() {
+	public Boolean getEnabled() {
 		return enabled;
 	}
 
-	public void setEnabled(int enabled) {
+	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
 
@@ -159,6 +159,5 @@ public class Gift {
 				+ ", enabled=" + enabled + ", eventId=" + eventId + ", gifterId=" + gifterId + ", recieverId="
 				+ recieverId + ", rating=" + rating + ", name=" + name + ", imageUrl=" + imageUrl + "]";
 	}
-	
-	
+
 }
