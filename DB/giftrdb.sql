@@ -255,9 +255,9 @@ DROP TABLE IF EXISTS `payment` ;
 
 CREATE TABLE IF NOT EXISTS `payment` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `card_number` INT NULL,
+  `card_number` VARCHAR(20) NULL,
   `amount` DOUBLE NULL,
-  `exp` INT NULL,
+  `exp` DATE NULL,
   `created_date` DATETIME NULL,
   `last_update` DATETIME NULL,
   `address_id` INT NOT NULL,
@@ -509,7 +509,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `event_type` (`id`, `name`, `enabled`, `description`, `image_url`) VALUES (1, 'New Type ', 1, 'New Event Type', NULL);
+INSERT INTO `event_type` (`id`, `name`, `enabled`, `description`, `image_url`) VALUES (1, 'New Type', 1, 'New Event Type', NULL);
 
 COMMIT;
 
@@ -519,8 +519,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `payment` (`id`, `card_number`, `amount`, `exp`, `created_date`, `last_update`, `address_id`, `user_id`, `enabled`) VALUES (1, 1111, 11.11, 111, NULL, NULL, 1, 1, 1);
-INSERT INTO `payment` (`id`, `card_number`, `amount`, `exp`, `created_date`, `last_update`, `address_id`, `user_id`, `enabled`) VALUES (2, 2222, 22.22, 222, NULL, NULL, 2, 2, 1);
+INSERT INTO `payment` (`id`, `card_number`, `amount`, `exp`, `created_date`, `last_update`, `address_id`, `user_id`, `enabled`) VALUES (1, '1111', 11.11, NULL, NULL, NULL, 1, 1, 1);
+INSERT INTO `payment` (`id`, `card_number`, `amount`, `exp`, `created_date`, `last_update`, `address_id`, `user_id`, `enabled`) VALUES (2, '2222', 22.22, NULL, NULL, NULL, 2, 2, 1);
 
 COMMIT;
 
