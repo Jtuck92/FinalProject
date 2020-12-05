@@ -32,7 +32,7 @@ public class EventComment {
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
-	private boolean enabled;
+	private boolean enabled = true;
 	
 	@ManyToOne
 	@JoinColumn(name="event_post_id")
