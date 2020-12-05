@@ -31,11 +31,11 @@ public class EventController {
 
 	@GetMapping("events")
 	public Set<Event> index(HttpServletResponse res, Principal principal) {
-		Set<Event> todosForUser = eventSvc.index(principal.getName());
-		if (todosForUser == null) {
+		Set<Event> eventsForUser = eventSvc.index(principal.getName());
+		if (eventsForUser == null) {
 			res.setStatus(404);
 		}
-		return todosForUser;
+		return eventsForUser;
 	}
 
 	@GetMapping("events/{eid}")
