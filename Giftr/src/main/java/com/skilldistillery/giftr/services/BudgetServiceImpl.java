@@ -19,7 +19,7 @@ public class BudgetServiceImpl implements BudgetService {
 
 	@Autowired
 	private BudgetRepository budgetRepo;
-	
+
 	@Autowired
 	private UserRepository userRepo;
 
@@ -47,12 +47,7 @@ public class BudgetServiceImpl implements BudgetService {
 			if (budgetOpt.isPresent()) {
 				budget = budgetOpt.get();
 				if (budget.getEnabled() == true) {
-					for (Event e : user.getEvents()) {
-						if (e.getEventTypes().contains(budget)) {
-							return budget;
-						}
-
-					}
+					return budget;
 				}
 			}
 		}
@@ -90,8 +85,8 @@ public class BudgetServiceImpl implements BudgetService {
 					}
 					budgetRepo.saveAndFlush(managedBudget);
 					userRepo.saveAndFlush(user);
+					return managedBudget;
 				}
-
 			}
 		}
 		return null;
@@ -100,14 +95,15 @@ public class BudgetServiceImpl implements BudgetService {
 	@Override
 	public boolean disable(String username, int id) {
 		boolean disabled = false;
-		Optional<Budget> budgets = budgetRepo.findById(id);
+		Optional<Budget> budgetOpt = budgetRepo.findById(id);
 		User user = userRepo.findByUsername(username);
 		Budget disabledBudget = null;
 
 		if (user != null) {
-			if (budgets.isPresent()) {
-				disabledBudget = budgets.get();
-				disabledBudget.setEnabled(disabled);
+			if (budgetOpt.isPresent()) {
+				disabledBudget = budgetOpt.get();
+				disabledBudget.setEnabled(false);
+				budgetRepo.saveAndFlush(disabledBudget);
 				userRepo.save(user);
 				disabled = true;
 				return disabled;
