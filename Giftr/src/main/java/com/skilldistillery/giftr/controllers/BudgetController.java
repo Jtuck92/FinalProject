@@ -1,5 +1,6 @@
 package com.skilldistillery.giftr.controllers;
 
+import java.security.Principal;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,68 @@ public class BudgetController {
 	private BudgetService budgetSvc;
 
 	private String username = "11";
+// **************** SECURITY API ENDPOINTS *********************
+//	@GetMapping("budgets")
+//	public Set<Budget> index(Principal p) {
+//		return budgetSvc.index(p.getName());
+//	}
+	
+//	@GetMapping("budgets/{bid}")
+//	public Budget show(HttpServletResponse res, @PathVariable int bid, Principal p) {
+//		
+//		try {
+//			Budget budget = budgetSvc.show(p.getName(), bid);
+//			res.setStatus(200);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			res.setStatus(404);
+//		}
+//		
+//		return budgetSvc.show(p.getName(), bid);
+//	}
+	
+//	@PostMapping("budgets")
+//	public Budget create(@RequestBody Budget budget, HttpServletRequest req, HttpServletResponse res, Principal p) {
+//		
+//		try {
+//			budget = budgetSvc.create(p.getName(), budget);
+//			res.setStatus(201);
+//			res.setHeader("Location", "api/budgets/" + budget.getId());
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//		}
+//		return budget;
+//	}
+//	
+//	@PutMapping("budgets/{bid}")
+//	public Budget update(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid, @RequestBody Budget budget, Principal p) {
+//		System.err.println(budget);
+//		try {
+//			budget = budgetSvc.update(p.getName(), bid, budget);
+//			res.setStatus(201);
+//			res.setHeader("Location", "api/budgets/" + budget.getId());
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//		}
+//		System.err.println(budget);
+//		return budget;
+//	}
+	
+//	@DeleteMapping("budgets/{bid}")
+//	public void disable(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid, Principal p) {
+//		try {
+//			boolean disabled = budgetSvc.disable(p.getName(), bid);
+//			if (disabled) {
+//				res.setStatus(204);
+//			} else {
+//				res.setStatus(404);
+//			}
+//			res.setHeader("Location", "api/budgets/");
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//		}
+//	}
+//	****************** TEST API ENPOINTS **********************************
 
 	@GetMapping("budgets")
 	public Set<Budget> index() {
