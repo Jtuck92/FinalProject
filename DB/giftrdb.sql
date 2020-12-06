@@ -38,7 +38,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(1000) NOT NULL,
   `password` VARCHAR(400) NOT NULL,
@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address_id` INT NOT NULL,
   `birth_date` DATE NULL,
   `gender` VARCHAR(45) NULL,
+  `role` INT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   INDEX `fk_user_address_idx` (`address_id` ASC),
@@ -438,8 +439,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`) VALUES (1, '11', '11@giftr.com', '11', 1, '11', '11', NULL, NULL, 1, NULL, 'm');
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`) VALUES (2, '22', '22@giftr.com', '22', 1, '22', '22', NULL, NULL, 2, NULL, 'f');
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (1, '11', '11@giftr.com', '11', 1, '11', '11', NULL, NULL, 1, NULL, 'm', 1);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, '22', '22@giftr.com', '22', 1, '22', '22', NULL, NULL, 2, NULL, 'f', 2);
 
 COMMIT;
 
