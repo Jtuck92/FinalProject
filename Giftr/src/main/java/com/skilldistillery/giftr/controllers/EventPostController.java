@@ -30,6 +30,14 @@ public class EventPostController {
 	private String username = "11";
 	
 //	******************* SECURITY API REST POINTS *******************************
+//	
+//	
+//	
+//	@GetMapping("eventPosts")
+//	public Set<EventPost> index(Principal p){
+//		return eventPostSvc.index(p.getName());
+//	}
+//	
 //	  @GetMapping("eventPosts/{id}")
 //	  public EventPost show(@PathVariable int id, HttpServletResponse response, Principal p){
 //		  
