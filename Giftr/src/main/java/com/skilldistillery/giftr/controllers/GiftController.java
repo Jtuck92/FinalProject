@@ -1,11 +1,11 @@
 package com.skilldistillery.giftr.controllers;
 
-import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.giftr.entities.Gift;
-import com.skilldistillery.giftr.entities.User;
 import com.skilldistillery.giftr.services.GiftService;
 
 @CrossOrigin({ "*", "http://localhost:4210" })
@@ -25,6 +24,7 @@ import com.skilldistillery.giftr.services.GiftService;
 @RestController
 public class GiftController {
 
+	@Autowired
 	private GiftService gSvc;
 	
 	private String username = "11";

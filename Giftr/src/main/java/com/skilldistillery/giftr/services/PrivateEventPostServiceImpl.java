@@ -42,8 +42,7 @@ public class PrivateEventPostServiceImpl implements PrivateEventPostService {
 		Optional<PrivatePost> privatePostOpt = ppRepo.findById(ppid);
 		PrivatePost privatePost = null;
 		if (privatePostOpt.isPresent()) {
-			privatePost = privatePostOpt.get();
-			//PrivatePost class has get enabled vs is enabled. Check back on this. 
+			privatePost = privatePostOpt.get(); 
 			if (privatePost.getEnabled() != null) {
 				User user = userRepo.findByUsername(username);
 				if (user.getPrvEventPosts().contains(privatePost)) {
