@@ -27,6 +27,8 @@ public class EventController {
 
 	@Autowired
 	private EventService eventSvc;
+	
+	private String username = "11";
 
 
 	@GetMapping("events")
