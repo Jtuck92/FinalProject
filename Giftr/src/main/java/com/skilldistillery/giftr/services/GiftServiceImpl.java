@@ -4,17 +4,19 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.giftr.entities.Gift;
 import com.skilldistillery.giftr.repositories.GiftRepository;
 
+@Service
 public class GiftServiceImpl implements GiftService {
 	
 	@Autowired
 	private GiftRepository gRepo;
 
 	@Override
-	public List<Gift> index(String name) {
+	public List<Gift> index() {
 		return gRepo.findAll();
 	}
 

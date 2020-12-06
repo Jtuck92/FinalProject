@@ -24,32 +24,104 @@ import com.skilldistillery.giftr.services.GiftService;
 @RequestMapping("api")
 @RestController
 public class GiftController {
-	
+
 	private GiftService gSvc;
 	
+	private String username = "11";
+
+//	************ SECURITY API REST POINTS ************************
+	
+//	@GetMapping("gifts")
+//	public List<Gift> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+//		List<Gift> gifts = gSvc.index(principal.getName());
+//		if (gifts == null) {
+//			res.setStatus(404);
+//		}
+//		return gifts;
+//	}
+//
+//	@GetMapping("gifts/{giftId}")
+//	public Gift findById(@PathVariable Integer giftId, HttpServletRequest req, HttpServletResponse res,
+//			Principal principal) {
+//		Gift gift = gSvc.findById(principal.getName(), giftId);
+//		if (gift == null) {
+//			res.setStatus(404);
+//		}
+//		return gift;
+//	}
+//
+//	@PostMapping("gifts")
+//	public Gift create(@RequestBody Gift gift, HttpServletRequest req, HttpServletResponse res, Principal principal) {
+//		gift = gSvc.createGift(principal.getName(), gift);
+//		try {
+//			if (gift == null) {
+//				res.setStatus(404);
+//			} else {
+//				res.setStatus(201);
+//				StringBuffer url = req.getRequestURL();
+//				url.append("/").append(gift.getId());
+//				res.setHeader("Location", url.toString());
+//			}
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			e.printStackTrace();
+//			gift = null;
+//		}
+//		return gift;
+//	}
+//
+//	@PutMapping("gifts/{giftId}")
+//	public Gift update(@PathVariable Integer giftId, @RequestBody Gift gift, HttpServletRequest req,
+//			HttpServletResponse res, Principal principal) {
+//		try {
+//			gift = gSvc.updateGift(principal.getName(), giftId, gift);
+//			if (gift == null) {
+//				res.setStatus(404);
+//			}
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			gift = null;
+//		}
+//		return gift;
+//	}
+//
+//	@DeleteMapping("gifts/{giftId}")
+//	public void destroy(HttpServletRequest req, HttpServletResponse res, Principal principal,
+//			@PathVariable Integer giftId) {
+//		try {
+//			boolean deleted = gSvc.destroy(principal.getName(), giftId);
+//			if (deleted) {
+//				res.setStatus(204);
+//			} else {
+//				res.setStatus(404);
+//			}
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			e.printStackTrace();
+//		}
+//	}
+	
+//	************ TEST API REST POINTS ************************
+//	
 	@GetMapping("gifts")
-	public List<Gift> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
-		List<Gift> gifts = gSvc.index(principal.getName());
-		if(gifts == null) {
-			res.setStatus(404);
-		}
-		return gifts;
+	public List<Gift> index(HttpServletRequest req, HttpServletResponse res) {
+		return gSvc.index();
 	}
 	
 	@GetMapping("gifts/{giftId}")
-	public Gift findById(@PathVariable Integer giftId, HttpServletRequest req, HttpServletResponse res, Principal principal) {
-		Gift gift = gSvc.findById(principal.getName(), giftId);
+	public Gift findById(@PathVariable Integer giftId, HttpServletRequest req, HttpServletResponse res) {
+		Gift gift = gSvc.findById(username, giftId);
 		if (gift == null) {
 			res.setStatus(404);
 		}
 		return gift;
 	}
-	
+
 	@PostMapping("gifts")
-	public Gift create(@RequestBody Gift gift, HttpServletRequest req, HttpServletResponse res, Principal principal) {
-		gift = gSvc.createGift(principal.getName(), gift);
+	public Gift create(@RequestBody Gift gift, HttpServletRequest req, HttpServletResponse res) {
+		gift = gSvc.createGift(username, gift);
 		try {
-			if(gift == null) {
+			if (gift == null) {
 				res.setStatus(404);
 			} else {
 				res.setStatus(201);
@@ -64,12 +136,13 @@ public class GiftController {
 		}
 		return gift;
 	}
-	
+
 	@PutMapping("gifts/{giftId}")
-	public Gift update(@PathVariable Integer giftId, @RequestBody Gift gift, HttpServletRequest req, HttpServletResponse res, Principal principal) {
+	public Gift update(@PathVariable Integer giftId, @RequestBody Gift gift, HttpServletRequest req,
+			HttpServletResponse res) {
 		try {
-			gift = gSvc.updateGift(principal.getName(), giftId, gift);
-			if(gift == null) {
+			gift = gSvc.updateGift(username, giftId, gift);
+			if (gift == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
@@ -78,15 +151,15 @@ public class GiftController {
 		}
 		return gift;
 	}
-	
+
 	@DeleteMapping("gifts/{giftId}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res,Principal principal, @PathVariable Integer giftId) {
+	public void destroy(HttpServletRequest req, HttpServletResponse res,
+			@PathVariable Integer giftId) {
 		try {
-			boolean deleted = gSvc.destroy(principal.getName(), giftId);
-			if(deleted) {
+			boolean deleted = gSvc.destroy(username, giftId);
+			if (deleted) {
 				res.setStatus(204);
-			}
-			else {
+			} else {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
@@ -94,5 +167,5 @@ public class GiftController {
 			e.printStackTrace();
 		}
 	}
-
+	
 }
