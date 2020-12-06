@@ -79,10 +79,10 @@ public class EventTypeServiceImpl implements EventTypeService {
 			if(ePOpt.isPresent()) {
 				eType = ePOpt.get();
 				if(eType.getEnabled() == true) {
-					if(eType.getName() != null) {eType.setName(eventType.getName());}
-					if(eType.getDescription() != null) {eType.setDescription(eventType.getDescription());}
-					if(eType.getImageUrl() != null) {eType.setImageUrl(eventType.getImageUrl());}
-					if(eType.getEvents() != null) {eType.setEvents(eventType.getEvents());}
+					if(eventType.getName() != null) {eType.setName(eventType.getName());}
+					if(eventType.getDescription() != null) {eType.setDescription(eventType.getDescription());}
+					if(eventType.getImageUrl() != null) {eType.setImageUrl(eventType.getImageUrl());}
+					if(eventType.getEvents() != null) {eType.setEvents(eventType.getEvents());}
 					eTRepo.saveAndFlush(eType);
 					uRepo.saveAndFlush(user);
 					return eType;
