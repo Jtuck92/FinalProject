@@ -33,7 +33,7 @@ public class Gift {
 	@JoinColumn(name = "receiver_id")
 	private User receiver;
 
-	private int rating;
+	private Integer rating;
 	private String name;
 
 	@Column(name = "image_url")
@@ -112,11 +112,11 @@ public class Gift {
 		this.receiver = reciever;
 	}
 
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 
