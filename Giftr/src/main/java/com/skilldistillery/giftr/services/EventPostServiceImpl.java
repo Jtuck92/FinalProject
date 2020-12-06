@@ -84,6 +84,7 @@ public class EventPostServiceImpl implements EventPostService {
 					if(ep.getComments() != null) {ep.setComments(eventPost.getComments());}
 					ePRepo.saveAndFlush(ep);
 					uRepo.saveAndFlush(user);
+					return ep;
 					}
 				}
 			}

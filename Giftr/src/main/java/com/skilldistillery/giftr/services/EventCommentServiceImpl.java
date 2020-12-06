@@ -75,13 +75,14 @@ public class EventCommentServiceImpl implements EventCommentService {
 			EventComment eComm = null;
 			if(ePOpt.isPresent()) {
 				eComm = ePOpt.get();
-				System.err.println(eComm);
 				if(eComm.isEnabled()) {
 					if(eComm.getComment() != null) {eComm.setComment(eventComment.getComment());}
 					if(eComm.getPost() != null) {eComm.setPost(eventComment.getPost());}
 					if(eComm.getUser() != null) {eComm.setUser(eventComment.getUser());}
 					eCRepo.saveAndFlush(eComm);
 					uRepo.saveAndFlush(user);
+					System.err.println(eComm);
+					return eComm;
 					}
 			
 				}

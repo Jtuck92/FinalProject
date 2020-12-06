@@ -75,16 +75,17 @@ public class EventTypeServiceImpl implements EventTypeService {
 		User user = uRepo.findByUsername(username);
 		if (user != null) {
 			Optional<EventType> ePOpt = eTRepo.findById(id);
-			EventType eComm = null;
+			EventType eType = null;
 			if(ePOpt.isPresent()) {
-				eComm = ePOpt.get();
-				if(eComm.getEnabled() == true) {
-					if(eComm.getName() != null) {eComm.setName(eventType.getName());}
-					if(eComm.getDescription() != null) {eComm.setDescription(eventType.getDescription());}
-					if(eComm.getImageUrl() != null) {eComm.setImageUrl(eventType.getImageUrl());}
-					if(eComm.getEvents() != null) {eComm.setEvents(eventType.getEvents());}
-					eTRepo.saveAndFlush(eComm);
+				eType = ePOpt.get();
+				if(eType.getEnabled() == true) {
+					if(eType.getName() != null) {eType.setName(eventType.getName());}
+					if(eType.getDescription() != null) {eType.setDescription(eventType.getDescription());}
+					if(eType.getImageUrl() != null) {eType.setImageUrl(eventType.getImageUrl());}
+					if(eType.getEvents() != null) {eType.setEvents(eventType.getEvents());}
+					eTRepo.saveAndFlush(eType);
 					uRepo.saveAndFlush(user);
+					return eType;
 					}
 			
 				}

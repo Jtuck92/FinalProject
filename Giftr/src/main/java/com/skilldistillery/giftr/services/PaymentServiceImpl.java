@@ -70,17 +70,18 @@ public class PaymentServiceImpl implements PaymentService {
 		User user = uRepo.findByUsername(username);
 		if (user != null) {
 			Optional<Payment> ePOpt = pRepo.findById(id);
-			Payment upadtePayment = null;
+			Payment updatePayment = null;
 			if(ePOpt.isPresent()) {
-				upadtePayment = ePOpt.get();
-				if(upadtePayment.getEnabled() == true) {
-					if(upadtePayment.getCardNumber() != null) {upadtePayment.setCardNumber(payment.getCardNumber());}
-					if(upadtePayment.getAmount() != null) {upadtePayment.setAmount(payment.getAmount());}
-					if(upadtePayment.getExp() != null) {upadtePayment.setExp(payment.getExp());}
-					if(upadtePayment.getAddress() != null) {upadtePayment.setAddress(payment.getAddress());}
-					if(upadtePayment.getUser() != null) {upadtePayment.setUser(payment.getUser());}
-					pRepo.saveAndFlush(upadtePayment);
+				updatePayment = ePOpt.get();
+				if(updatePayment.getEnabled() == true) {
+					if(updatePayment.getCardNumber() != null) {updatePayment.setCardNumber(payment.getCardNumber());}
+					if(updatePayment.getAmount() != null) {updatePayment.setAmount(payment.getAmount());}
+					if(updatePayment.getExp() != null) {updatePayment.setExp(payment.getExp());}
+					if(updatePayment.getAddress() != null) {updatePayment.setAddress(payment.getAddress());}
+					if(updatePayment.getUser() != null) {updatePayment.setUser(payment.getUser());}
+					pRepo.saveAndFlush(updatePayment);
 					uRepo.saveAndFlush(user);
+					return updatePayment;
 					}
 			
 				}
