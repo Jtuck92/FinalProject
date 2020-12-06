@@ -134,7 +134,6 @@ public class EventCommentController {
 		
 		@PutMapping("eventComments/{id}")
 		public EventComment updateEventComment(@PathVariable int id, @RequestBody EventComment userParam, HttpServletRequest request, HttpServletResponse response){
-			System.err.println(userParam);
 			
 			
 			try {
@@ -143,9 +142,7 @@ public class EventCommentController {
 				response.setHeader("Location", "api/eventComments/" + userParam.getId());
 			} catch (Exception e) {
 				response.setStatus(400);
-				System.err.println(userParam);
 			}
-			System.err.println(userParam);
 			return userParam;
 		}
 		@DeleteMapping("eventComments/{id}")

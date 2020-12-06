@@ -138,7 +138,6 @@ public class EventPostController {
 	}
 	@PutMapping("eventPosts/{id}")
 	public EventPost updateEventPost(@PathVariable int id, @RequestBody EventPost userParam, HttpServletRequest request, HttpServletResponse response){
-		System.err.println(userParam);
 		
 		
 		try {
@@ -148,7 +147,6 @@ public class EventPostController {
 		} catch (Exception e) {
 			response.setStatus(400);
 		}
-		System.err.println(userParam);
 		return userParam;
 	}
 	@DeleteMapping("eventPosts/{id}")
