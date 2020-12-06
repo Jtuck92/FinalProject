@@ -1,12 +1,12 @@
 package com.skilldistillery.giftr.services;
 
-import java.util.Set;
+import java.util.List;
 
 import com.skilldistillery.giftr.entities.Event;
 
 public interface EventService {
 
-	Set<Event> index(String name);
+	List<Event> index(String name);
 
 	Event show(String name, int eid);
 

@@ -11,20 +11,21 @@ import com.skilldistillery.giftr.entities.Event;
 import com.skilldistillery.giftr.entities.User;
 import com.skilldistillery.giftr.repositories.EventRepository;
 import com.skilldistillery.giftr.repositories.UserRepository;
+
 @Service
 public class EventServiceImpl implements EventService {
-	
+
 	@Autowired
 	private EventRepository eventRepo;
 	@Autowired
 	private UserRepository uRepo;
 
 	@Override
-	public Set<Event> index(String name) {
-		if (eventRepo.findByName(name) == null) {
+	public List<Event> index(String name) {
+		if (eventRepo.findAll() == null) {
 			return null;
 		}
-		return eventRepo.findByName(name);
+		return eventRepo.findAll();
 	}
 
 	@Override
@@ -38,25 +39,25 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public Event create(String name, Event event) {
-		User loggedInUser = uRepo.findByUsername(name);
-		if(loggedInUser != null) {
-		List<Event> userEvents = loggedInUser.getEvents();
-		eventRepo.saveAndFlush(event);
-		userEvents.add(event);
-		uRepo.saveAndFlush(loggedInUser);
-		return event;
-		
+	public Event create(String username, Event event) {
+		User user = uRepo.findByUsername(username);
+		if (user != null) {
+			event.setEventManager(user);
+			eventRepo.saveAndFlush(event);
+			user.getEvents().add(event);
+			uRepo.saveAndFlush(user);
+			return event;
+
 		}
 		return null;
 	}
 
 	@Override
-	public Event update(String name, int eid, Event event) {
+	public Event update(String username, int eid, Event event) {
 		Optional<Event> managedEvent = eventRepo.findById(eid);
 		Event e = null;
-		if(managedEvent.isPresent()) {
-			e = managedEvent.get();		
+		if (managedEvent.isPresent()) {
+			e = managedEvent.get();
 			e.setName(event.getName());
 			e.setDescription(event.getDescription());
 			e.setStartDate(event.getStartDate());
@@ -68,11 +69,11 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
-	public boolean disable(String name, int eid) {
+	public boolean disable(String username, int eid) {
 		boolean disabled = false;
 		Optional<Event> event = eventRepo.findById(eid);
 		Event e = null;
-		if(event.isPresent()) {
+		if (event.isPresent()) {
 			e = event.get();
 			e.setEnabled(false);
 			eventRepo.saveAndFlush(e);
