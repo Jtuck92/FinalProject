@@ -1,7 +1,6 @@
 package com.skilldistillery.giftr.controllers;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.giftr.entities.EventPost;
 import com.skilldistillery.giftr.entities.PrivateComment;
-import com.skilldistillery.giftr.services.EventPostService;
 import com.skilldistillery.giftr.services.PrivateCommentService;
 
 @CrossOrigin({ "*", "http://localhost:4210" })
@@ -34,6 +31,83 @@ public class PrivateEventCommentController {
 
 	private String username = "22";
 
+	
+//	******************* SECURITY API REST POINTS *******************************
+//	@GetMapping("privateComments")
+//	public Set<PrivateComment> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+//		 Set<PrivateComment> pComments = pCommentSrv.index(principal.getName());
+//		if (pComments == null) {
+//			res.setStatus(404);
+//		}
+//		return pComments;
+//	}
+//	
+//	  @GetMapping("privateComments/{id}")
+//	  public PrivateComment show(@PathVariable int id, HttpServletResponse res, Principal p){
+//		  
+//		  try {
+//			  PrivateComment privateComment = pCommentSrv.show(p.getName() ,id);
+//			  res.setStatus(200);
+//		  } catch (Exception e) {
+//			  e.printStackTrace();
+//			  res.setStatus(404);
+//		  }
+//		  return pCommentSrv.show(p.getName(),id);
+//	  }
+//	  
+//	  
+//		@PostMapping("privateComments")
+//		public PrivateComment newPrivateComment(@RequestBody PrivateComment privateComment, HttpServletRequest req, HttpServletResponse res, Principal p){
+//			
+//			try {
+//				privateComment = pCommentSrv.create(p.getName(), privateComment);
+//				res.setStatus(201);
+//				res.setHeader("Location", "api/privateComments/" + privateComment.getId());
+//			} catch (Exception e) {
+//				res.setStatus(400);
+//			}
+//			return privateComment;
+//		}
+//	
+//		
+//		
+//		
+//		
+//		@PutMapping("privateComments/{id}")
+//		public PrivateComment updatePEventComment(@PathVariable int id, @RequestBody PrivateComment privateComment, HttpServletRequest request, HttpServletResponse response, Principal p){
+//			System.err.println(privateComment);
+//			
+//			
+//			try {
+//				privateComment = pCommentSrv.update(p.getName(), id, privateComment);
+//				response.setStatus(201);
+//				response.setHeader("Location", "api/privateComments/" + privateComment.getId());
+//			} catch (Exception e) {
+//				response.setStatus(400);
+//			}
+//			System.err.println(privateComment);
+//			return privateComment;
+//		}		
+//		
+//		
+//		
+//		@DeleteMapping("privateComments/{id}")
+//		public void deletePEventComment(@PathVariable int id, HttpServletRequest req, HttpServletResponse res, Principal p) {
+//			try {
+//				boolean delete = pCommentSrv.destroy(p.getName(), id);
+//				if(delete) {
+//					res.setStatus(204);}
+//				else {
+//					res.setStatus(404);
+//				}
+//				res.setHeader("Location", "api/privateComments/");
+//			} catch (Exception e) {
+//				res.setStatus(400);
+//			}
+//			
+//		}
+	
+	
 	@GetMapping("privateComments")
 	public Set<PrivateComment> index() {
 		return pCommentSrv.index(username);
