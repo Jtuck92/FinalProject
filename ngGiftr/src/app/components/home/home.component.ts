@@ -1,6 +1,9 @@
+import { PrivateEvent } from './../../models/private-event';
 import { Event } from './../../models/event';
 import { EventService } from './../../service/event.service';
 import { Component, OnInit } from '@angular/core';
+import { error } from 'protractor';
+import { PrivateEventService } from 'src/app/service/private-event.service';
 
 @Component({
   selector: 'app-home',
@@ -9,19 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private eventSvc: EventService) { }
-events: Event[] = [];
+  constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService) { }
+events: Event[];
+pEvents: PrivateEvent[];
   ngOnInit(): void {
     this.loadEvents();
   }
   loadEvents(): void {
-    this.eventSvc.index().subscribe(
+    this.pEventSrv.index().subscribe(
       (data) => {
-        this.events = data;
+        this.pEvents = data;
         console.log(this.events);
       },
       (err) => {
         console.error('WorkoutComponent.LoadWorkout(); retrive failed');
+
       }
     );
   }
