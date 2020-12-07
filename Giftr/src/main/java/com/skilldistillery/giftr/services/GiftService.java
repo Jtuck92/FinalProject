@@ -1,12 +1,13 @@
 package com.skilldistillery.giftr.services;
 
 import java.util.List;
+import java.util.Set;
 
 import com.skilldistillery.giftr.entities.Gift;
 
 public interface GiftService {
 
-	public List<Gift> index();
+	public Set<Gift> index(String string);
 	
 	public Gift findById(String name, Integer giftId);
 	

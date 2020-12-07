@@ -30,92 +30,30 @@ public class BudgetController {
 
 	private String username = "11";
 // **************** SECURITY API ENDPOINTS *********************
-//	@GetMapping("budgets")
-//	public Set<Budget> index(Principal p) {
-//		return budgetSvc.index(p.getName());
-//	}
-	
-//	@GetMapping("budgets/{bid}")
-//	public Budget show(HttpServletResponse res, @PathVariable int bid, Principal p) {
-//		
-//		try {
-//			Budget budget = budgetSvc.show(p.getName(), bid);
-//			res.setStatus(200);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			res.setStatus(404);
-//		}
-//		
-//		return budgetSvc.show(p.getName(), bid);
-//	}
-	
-//	@PostMapping("budgets")
-//	public Budget create(@RequestBody Budget budget, HttpServletRequest req, HttpServletResponse res, Principal p) {
-//		
-//		try {
-//			budget = budgetSvc.create(p.getName(), budget);
-//			res.setStatus(201);
-//			res.setHeader("Location", "api/budgets/" + budget.getId());
-//		} catch (Exception e) {
-//			res.setStatus(400);
-//		}
-//		return budget;
-//	}
-//	
-//	@PutMapping("budgets/{bid}")
-//	public Budget update(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid, @RequestBody Budget budget, Principal p) {
-//		System.err.println(budget);
-//		try {
-//			budget = budgetSvc.update(p.getName(), bid, budget);
-//			res.setStatus(201);
-//			res.setHeader("Location", "api/budgets/" + budget.getId());
-//		} catch (Exception e) {
-//			res.setStatus(400);
-//		}
-//		System.err.println(budget);
-//		return budget;
-//	}
-	
-//	@DeleteMapping("budgets/{bid}")
-//	public void disable(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid, Principal p) {
-//		try {
-//			boolean disabled = budgetSvc.disable(p.getName(), bid);
-//			if (disabled) {
-//				res.setStatus(204);
-//			} else {
-//				res.setStatus(404);
-//			}
-//			res.setHeader("Location", "api/budgets/");
-//		} catch (Exception e) {
-//			res.setStatus(400);
-//		}
-//	}
-//	****************** TEST API ENPOINTS **********************************
-
 	@GetMapping("budgets")
-	public Set<Budget> index() {
-		return budgetSvc.index(username);
+	public Set<Budget> index(Principal p) {
+		return budgetSvc.index(p.getName());
 	}
-
+	
 	@GetMapping("budgets/{bid}")
-	public Budget show(HttpServletResponse res, @PathVariable int bid) {
-
+	public Budget show(HttpServletResponse res, @PathVariable int bid, Principal p) {
+		
 		try {
-			Budget budget = budgetSvc.show(username, bid);
+			Budget budget = budgetSvc.show(p.getName(), bid);
 			res.setStatus(200);
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(404);
 		}
-
-		return budgetSvc.show(username, bid);
+		
+		return budgetSvc.show(p.getName(), bid);
 	}
-
+	
 	@PostMapping("budgets")
-	public Budget create(@RequestBody Budget budget, HttpServletRequest req, HttpServletResponse res) {
-
+	public Budget create(@RequestBody Budget budget, HttpServletRequest req, HttpServletResponse res, Principal p) {
+		
 		try {
-			budget = budgetSvc.create(username, budget);
+			budget = budgetSvc.create(p.getName(), budget);
 			res.setStatus(201);
 			res.setHeader("Location", "api/budgets/" + budget.getId());
 		} catch (Exception e) {
@@ -123,13 +61,12 @@ public class BudgetController {
 		}
 		return budget;
 	}
-
+	
 	@PutMapping("budgets/{bid}")
-	public Budget update(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid,
-			@RequestBody Budget budget) {
+	public Budget update(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid, @RequestBody Budget budget, Principal p) {
 		System.err.println(budget);
 		try {
-			budget = budgetSvc.update(username, bid, budget);
+			budget = budgetSvc.update(p.getName(), bid, budget);
 			res.setStatus(201);
 			res.setHeader("Location", "api/budgets/" + budget.getId());
 		} catch (Exception e) {
@@ -138,11 +75,11 @@ public class BudgetController {
 		System.err.println(budget);
 		return budget;
 	}
-
+	
 	@DeleteMapping("budgets/{bid}")
-	public void disable(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid) {
+	public void disable(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid, Principal p) {
 		try {
-			boolean disabled = budgetSvc.disable(username, bid);
+			boolean disabled = budgetSvc.disable(p.getName(), bid);
 			if (disabled) {
 				res.setStatus(204);
 			} else {
@@ -153,4 +90,67 @@ public class BudgetController {
 			res.setStatus(400);
 		}
 	}
+//	****************** TEST API ENPOINTS **********************************
+
+//	@GetMapping("budgets")
+//	public Set<Budget> index() {
+//		return budgetSvc.index(username);
+//	}
+//
+//	@GetMapping("budgets/{bid}")
+//	public Budget show(HttpServletResponse res, @PathVariable int bid) {
+//
+//		try {
+//			Budget budget = budgetSvc.show(username, bid);
+//			res.setStatus(200);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			res.setStatus(404);
+//		}
+//
+//		return budgetSvc.show(username, bid);
+//	}
+//
+//	@PostMapping("budgets")
+//	public Budget create(@RequestBody Budget budget, HttpServletRequest req, HttpServletResponse res) {
+//
+//		try {
+//			budget = budgetSvc.create(username, budget);
+//			res.setStatus(201);
+//			res.setHeader("Location", "api/budgets/" + budget.getId());
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//		}
+//		return budget;
+//	}
+//
+//	@PutMapping("budgets/{bid}")
+//	public Budget update(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid,
+//			@RequestBody Budget budget) {
+//		System.err.println(budget);
+//		try {
+//			budget = budgetSvc.update(username, bid, budget);
+//			res.setStatus(201);
+//			res.setHeader("Location", "api/budgets/" + budget.getId());
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//		}
+//		System.err.println(budget);
+//		return budget;
+//	}
+//
+//	@DeleteMapping("budgets/{bid}")
+//	public void disable(HttpServletRequest req, HttpServletResponse res, @PathVariable int bid) {
+//		try {
+//			boolean disabled = budgetSvc.disable(username, bid);
+//			if (disabled) {
+//				res.setStatus(204);
+//			} else {
+//				res.setStatus(404);
+//			}
+//			res.setHeader("Location", "api/budgets/");
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//		}
+//	}
 }

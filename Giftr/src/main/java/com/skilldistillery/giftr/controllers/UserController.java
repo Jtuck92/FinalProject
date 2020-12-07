@@ -32,94 +32,27 @@ public class UserController {
 
 // ********** SECURITY API REST POINTS *****************
 	
-//	@GetMapping("users")
-//	public List<User> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
-//		List<User> users = uSvc.index(principal.getName());
-//		if(users == null) {
-//			res.setStatus(404);
-//		}
-//		return users;
-//	}
-//	
-//	@GetMapping("users/{userId}")
-//	public User findById(@PathVariable Integer userId, HttpServletRequest req, HttpServletResponse res, Principal principal) {
-//		User user = uSvc.findById(principal.getName(), userId);
-//		if (user == null) {
-//			res.setStatus(404);
-//		}
-//		return user;
-//	}
-//	
-//	@PostMapping("users")
-//	public User create(@RequestBody User user, HttpServletRequest req, HttpServletResponse res, Principal principal) {
-//		user = uSvc.createUser(principal.getName(), user);
-//		try {
-//			if(user == null) {
-//				res.setStatus(404);
-//			} else {
-//				res.setStatus(201);
-//				StringBuffer url = req.getRequestURL();
-//				url.append("/").append(user.getId());
-//				res.setHeader("Location", url.toString());
-//			}
-//		} catch (Exception e) {
-//			res.setStatus(400);
-//			e.printStackTrace();
-//			user = null;
-//		}
-//		return user;
-//	}
-//	
-//	@PutMapping("users/{userId}")
-//	public User update(@PathVariable Integer userId, @RequestBody User user, HttpServletRequest req, HttpServletResponse res, Principal principal) {
-//		try {
-//			user = uSvc.updateUser(principal.getName(), userId, user);
-//			if(user == null) {
-//				res.setStatus(404);
-//			}
-//		} catch (Exception e) {
-//			res.setStatus(400);
-//			user = null;
-//		}
-//		return user;
-//	}
-//	
-//	@DeleteMapping("users/{userId}")
-//	public void destroy(HttpServletRequest req, HttpServletResponse res,Principal principal, @PathVariable Integer userId) {
-//		try {
-//			boolean deleted = uSvc.destroy(principal.getName(), userId);
-//			if(deleted) {
-//				res.setStatus(204);
-//			}
-//			else {
-//				res.setStatus(404);
-//			}
-//		} catch (Exception e) {
-//			res.setStatus(400);
-//			e.printStackTrace();
-//		}
-//	}
-	
-	
-//	************ TEST API REST POINTS ************************
-	
 	@GetMapping("users")
-	public List<User> index() {
-		return uSvc.index(username);
+	public List<User> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+		List<User> users = uSvc.index(principal.getName());
+		if(users == null) {
+			res.setStatus(404);
+		}
+		return users;
 	}
 	
 	@GetMapping("users/{userId}")
-	public User findById(@PathVariable Integer userId, HttpServletRequest req, HttpServletResponse res) {
-		User user = uSvc.findById(username, userId);
+	public User findById(@PathVariable Integer userId, HttpServletRequest req, HttpServletResponse res, Principal principal) {
+		User user = uSvc.findById(principal.getName(), userId);
 		if (user == null) {
 			res.setStatus(404);
 		}
-		return uSvc.findById(username, userId);
+		return user;
 	}
 	
 	@PostMapping("users")
-	public User create(@RequestBody User user, HttpServletRequest req, HttpServletResponse res) {
-		user = uSvc.createUser(username, user);
+	public User create(@RequestBody User user, HttpServletRequest req, HttpServletResponse res, Principal principal) {
+		user = uSvc.createUser(principal.getName(), user);
 		try {
 			if(user == null) {
 				res.setStatus(404);
@@ -138,9 +71,9 @@ public class UserController {
 	}
 	
 	@PutMapping("users/{userId}")
-	public User update(@PathVariable Integer userId, @RequestBody User user, HttpServletRequest req, HttpServletResponse res) {
+	public User update(@PathVariable Integer userId, @RequestBody User user, HttpServletRequest req, HttpServletResponse res, Principal principal) {
 		try {
-			user = uSvc.updateUser(username, userId, user);
+			user = uSvc.updateUser(principal.getName(), userId, user);
 			if(user == null) {
 				res.setStatus(404);
 			}
@@ -152,9 +85,9 @@ public class UserController {
 	}
 	
 	@DeleteMapping("users/{userId}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId) {
+	public void destroy(HttpServletRequest req, HttpServletResponse res,Principal principal, @PathVariable Integer userId) {
 		try {
-			boolean deleted = uSvc.destroy(username, userId);
+			boolean deleted = uSvc.destroy(principal.getName(), userId);
 			if(deleted) {
 				res.setStatus(204);
 			}
@@ -166,5 +99,72 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
+	
+	
+//	************ TEST API REST POINTS ************************
+	
+//	@GetMapping("users")
+//	public List<User> index() {
+//		return uSvc.index(username);
+//	}
+//	
+//	@GetMapping("users/{userId}")
+//	public User findById(@PathVariable Integer userId, HttpServletRequest req, HttpServletResponse res) {
+//		User user = uSvc.findById(username, userId);
+//		if (user == null) {
+//			res.setStatus(404);
+//		}
+//		return uSvc.findById(username, userId);
+//	}
+//	
+//	@PostMapping("users")
+//	public User create(@RequestBody User user, HttpServletRequest req, HttpServletResponse res) {
+//		user = uSvc.createUser(username, user);
+//		try {
+//			if(user == null) {
+//				res.setStatus(404);
+//			} else {
+//				res.setStatus(201);
+//				StringBuffer url = req.getRequestURL();
+//				url.append("/").append(user.getId());
+//				res.setHeader("Location", url.toString());
+//			}
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			e.printStackTrace();
+//			user = null;
+//		}
+//		return user;
+//	}
+//	
+//	@PutMapping("users/{userId}")
+//	public User update(@PathVariable Integer userId, @RequestBody User user, HttpServletRequest req, HttpServletResponse res) {
+//		try {
+//			user = uSvc.updateUser(username, userId, user);
+//			if(user == null) {
+//				res.setStatus(404);
+//			}
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			user = null;
+//		}
+//		return user;
+//	}
+//	
+//	@DeleteMapping("users/{userId}")
+//	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer userId) {
+//		try {
+//			boolean deleted = uSvc.destroy(username, userId);
+//			if(deleted) {
+//				res.setStatus(204);
+//			}
+//			else {
+//				res.setStatus(404);
+//			}
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//			e.printStackTrace();
+//		}
+//	}
 	
 }

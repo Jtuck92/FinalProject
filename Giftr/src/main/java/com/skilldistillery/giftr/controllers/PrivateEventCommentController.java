@@ -33,146 +33,146 @@ public class PrivateEventCommentController {
 
 	
 //	******************* SECURITY API REST POINTS *******************************
+	@GetMapping("privateComments")
+	public Set<PrivateComment> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+		 Set<PrivateComment> pComments = pCommentSrv.index(principal.getName());
+		if (pComments == null) {
+			res.setStatus(404);
+		}
+		return pComments;
+	}
+	
+	  @GetMapping("privateComments/{id}")
+	  public PrivateComment show(@PathVariable int id, HttpServletResponse res, Principal p){
+		  
+		  try {
+			  PrivateComment privateComment = pCommentSrv.show(p.getName() ,id);
+			  res.setStatus(200);
+		  } catch (Exception e) {
+			  e.printStackTrace();
+			  res.setStatus(404);
+		  }
+		  return pCommentSrv.show(p.getName(),id);
+	  }
+	  
+	  
+		@PostMapping("privateComments")
+		public PrivateComment newPrivateComment(@RequestBody PrivateComment privateComment, HttpServletRequest req, HttpServletResponse res, Principal p){
+			
+			try {
+				privateComment = pCommentSrv.create(p.getName(), privateComment);
+				res.setStatus(201);
+				res.setHeader("Location", "api/privateComments/" + privateComment.getId());
+			} catch (Exception e) {
+				res.setStatus(400);
+			}
+			return privateComment;
+		}
+	
+		
+		
+		
+		
+		@PutMapping("privateComments/{id}")
+		public PrivateComment updatePEventComment(@PathVariable int id, @RequestBody PrivateComment privateComment, HttpServletRequest request, HttpServletResponse response, Principal p){
+			System.err.println(privateComment);
+			
+			
+			try {
+				privateComment = pCommentSrv.update(p.getName(), id, privateComment);
+				response.setStatus(201);
+				response.setHeader("Location", "api/privateComments/" + privateComment.getId());
+			} catch (Exception e) {
+				response.setStatus(400);
+			}
+			System.err.println(privateComment);
+			return privateComment;
+		}		
+		
+		
+		
+		@DeleteMapping("privateComments/{id}")
+		public void deletePEventComment(@PathVariable int id, HttpServletRequest req, HttpServletResponse res, Principal p) {
+			try {
+				boolean delete = pCommentSrv.destroy(p.getName(), id);
+				if(delete) {
+					res.setStatus(204);}
+				else {
+					res.setStatus(404);
+				}
+				res.setHeader("Location", "api/privateComments/");
+			} catch (Exception e) {
+				res.setStatus(400);
+			}
+			
+		}
+	
+	
 //	@GetMapping("privateComments")
-//	public Set<PrivateComment> index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
-//		 Set<PrivateComment> pComments = pCommentSrv.index(principal.getName());
-//		if (pComments == null) {
-//			res.setStatus(404);
+//	public Set<PrivateComment> index() {
+//		return pCommentSrv.index(username);
+//	}
+//
+//	@GetMapping("privateComments/{id}")
+//	public PrivateComment show(@PathVariable int id, HttpServletResponse response) {
+//
+//		try {
+//			PrivateComment pComment = pCommentSrv.show(username, id);
+//			response.setStatus(200);
+//			if(pComment == null ) {
+//				response.setStatus(404);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			response.setStatus(404);
 //		}
-//		return pComments;
+//		return pCommentSrv.show(username, id);
+//	}
+//
+//	@PostMapping("privateComments")
+//	public PrivateComment create(@RequestBody PrivateComment pComment, HttpServletRequest req,
+//			HttpServletResponse res) {
+//		pComment = pCommentSrv.create(username, pComment);
+//		if (pComment == null) {
+//			res.setStatus(404);
+//		} else {
+//			res.setStatus(201);
+//			StringBuffer url = req.getRequestURL();
+//			url.append("/").append(pComment.getId());
+//			req.setAttribute("Location", url.toString());
+//		}
+//		return pCommentSrv.create(username, pComment);
+////			return pCommentSrv.create(principal.getName(), pComment);
+//	}
+//
+//	@PutMapping("privateComments/{id}")
+//	public PrivateComment update(@PathVariable int id, @RequestBody PrivateComment pComment, HttpServletRequest req,
+//			HttpServletResponse res) {
+//		try {
+//			pComment = pCommentSrv.update(username, id, pComment);
+//			if (pComment == null) {
+//				res.setStatus(404);
+//				pComment = null;
+//			}
+//			res.setStatus(201);
+//			res.setHeader("Location", "api/eventPosts/" + pComment.getId());
+//		} catch (Exception e) {
+//			res.setStatus(400);
+//		}
+//		System.err.println(pComment);
+//		return pComment;
 //	}
 //	
-//	  @GetMapping("privateComments/{id}")
-//	  public PrivateComment show(@PathVariable int id, HttpServletResponse res, Principal p){
-//		  
-//		  try {
-//			  PrivateComment privateComment = pCommentSrv.show(p.getName() ,id);
-//			  res.setStatus(200);
-//		  } catch (Exception e) {
-//			  e.printStackTrace();
-//			  res.setStatus(404);
-//		  }
-//		  return pCommentSrv.show(p.getName(),id);
-//	  }
-//	  
-//	  
-//		@PostMapping("privateComments")
-//		public PrivateComment newPrivateComment(@RequestBody PrivateComment privateComment, HttpServletRequest req, HttpServletResponse res, Principal p){
-//			
-//			try {
-//				privateComment = pCommentSrv.create(p.getName(), privateComment);
-//				res.setStatus(201);
-//				res.setHeader("Location", "api/privateComments/" + privateComment.getId());
-//			} catch (Exception e) {
-//				res.setStatus(400);
+//	@DeleteMapping("privateComments/{id}")
+//	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) {
+//		try {
+//			if (pCommentSrv.destroy(username, id)) {
+//				res.setStatus(204);
+//			} else {
+//				res.setStatus(404);
 //			}
-//			return privateComment;
+//		} catch (Exception e) {
+//			res.setStatus(400);
 //		}
-//	
-//		
-//		
-//		
-//		
-//		@PutMapping("privateComments/{id}")
-//		public PrivateComment updatePEventComment(@PathVariable int id, @RequestBody PrivateComment privateComment, HttpServletRequest request, HttpServletResponse response, Principal p){
-//			System.err.println(privateComment);
-//			
-//			
-//			try {
-//				privateComment = pCommentSrv.update(p.getName(), id, privateComment);
-//				response.setStatus(201);
-//				response.setHeader("Location", "api/privateComments/" + privateComment.getId());
-//			} catch (Exception e) {
-//				response.setStatus(400);
-//			}
-//			System.err.println(privateComment);
-//			return privateComment;
-//		}		
-//		
-//		
-//		
-//		@DeleteMapping("privateComments/{id}")
-//		public void deletePEventComment(@PathVariable int id, HttpServletRequest req, HttpServletResponse res, Principal p) {
-//			try {
-//				boolean delete = pCommentSrv.destroy(p.getName(), id);
-//				if(delete) {
-//					res.setStatus(204);}
-//				else {
-//					res.setStatus(404);
-//				}
-//				res.setHeader("Location", "api/privateComments/");
-//			} catch (Exception e) {
-//				res.setStatus(400);
-//			}
-//			
-//		}
-	
-	
-	@GetMapping("privateComments")
-	public Set<PrivateComment> index() {
-		return pCommentSrv.index(username);
-	}
-
-	@GetMapping("privateComments/{id}")
-	public PrivateComment show(@PathVariable int id, HttpServletResponse response) {
-
-		try {
-			PrivateComment pComment = pCommentSrv.show(username, id);
-			response.setStatus(200);
-			if(pComment == null ) {
-				response.setStatus(404);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			response.setStatus(404);
-		}
-		return pCommentSrv.show(username, id);
-	}
-
-	@PostMapping("privateComments")
-	public PrivateComment create(@RequestBody PrivateComment pComment, HttpServletRequest req,
-			HttpServletResponse res) {
-		pComment = pCommentSrv.create(username, pComment);
-		if (pComment == null) {
-			res.setStatus(404);
-		} else {
-			res.setStatus(201);
-			StringBuffer url = req.getRequestURL();
-			url.append("/").append(pComment.getId());
-			req.setAttribute("Location", url.toString());
-		}
-		return pCommentSrv.create(username, pComment);
-//			return pCommentSrv.create(principal.getName(), pComment);
-	}
-
-	@PutMapping("privateComments/{id}")
-	public PrivateComment update(@PathVariable int id, @RequestBody PrivateComment pComment, HttpServletRequest req,
-			HttpServletResponse res) {
-		try {
-			pComment = pCommentSrv.update(username, id, pComment);
-			if (pComment == null) {
-				res.setStatus(404);
-				pComment = null;
-			}
-			res.setStatus(201);
-			res.setHeader("Location", "api/eventPosts/" + pComment.getId());
-		} catch (Exception e) {
-			res.setStatus(400);
-		}
-		System.err.println(pComment);
-		return pComment;
-	}
-	
-	@DeleteMapping("privateComments/{id}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int id) {
-		try {
-			if (pCommentSrv.destroy(username, id)) {
-				res.setStatus(204);
-			} else {
-				res.setStatus(404);
-			}
-		} catch (Exception e) {
-			res.setStatus(400);
-		}
-	}
+//	}
 }
