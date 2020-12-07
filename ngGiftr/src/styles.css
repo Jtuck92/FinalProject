@@ -5,11 +5,16 @@
 body{
   background-color: rgb(22,172,202);
 }
-#homeHeader{
+#homeHeader, #homeEvents, #homeDescription{
   text-align: center;
 }
+#homeEvents{
+  list-style: none;
+}
 
-
+#homeHeader{
+  background-color: rgb(255,240,126);
+}
 #header2{
   color: rgb(198,198,198);
   text-shadow: 1px 1px 2px black;

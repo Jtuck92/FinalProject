@@ -15,15 +15,15 @@ export class HomeComponent implements OnInit {
 
   constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService) { }
 events: Event[];
-pEvents: PrivateEvent[];
+
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
     this.loadEvents();
   }
   loadEvents(): void {
-    this.pEventSrv.index().subscribe(
+    this.eventSvc.index().subscribe(
       (data) => {
-        this.pEvents = data;
+        this.events = data;
         console.log(this.events);
       },
       (err) => {
