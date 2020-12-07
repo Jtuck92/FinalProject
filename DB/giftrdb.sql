@@ -439,8 +439,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (1, '11', '11@giftr.com', '11', 1, '11', '11', NULL, NULL, 1, NULL, 'm', 1);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, '22', '22@giftr.com', '22', 1, '22', '22', NULL, NULL, 2, NULL, 'f', 2);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (1, '11', '11@giftr.com', '$2a$10$N8jBGxjk4M3fghOgXo2Us.wRZSRStbDtQXtBlqloiG70Kz3gUN1Ke', 1, '11', '11', NULL, NULL, 1, NULL, 'm', NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, '22', '22@giftr.com', '$2a$10$ADCtBZImdUBJMrkIfUIq0.bNfXVqi4Hvu7M0tXyODBc8ueeNZBif6', 1, '22', '22', NULL, NULL, 2, NULL, 'f', NULL);
 
 COMMIT;
 
