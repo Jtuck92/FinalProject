@@ -8,17 +8,22 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { PastEventsComponent } from './components/past-events/past-events.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'gallery', component: HomeComponent }, //TODO GALLERY COMPONENT
+  { path: 'gallery', component: GalleryComponent }, //TODO GALLERY COMPONENT
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'search', component: SearchResultsComponent },
+  { path: 'search/:param', component: SearchResultsComponent },
   { path: 'profile', component: UserComponent },
-  { path: 'pastEvents', component: HomeComponent }, //TODO PAST EVENT COMPONENT
+  { path: 'faq', component: FaqComponent },
+  { path: 'pastEvents', component: PastEventsComponent }, //TODO PAST EVENT COMPONENT
   {path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', component: NotFoundComponent }
 ];

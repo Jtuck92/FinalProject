@@ -29,6 +29,9 @@ import { PaymentService } from './service/payment.service';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './components/footer/footer.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { PastEventsComponent } from './components/past-events/past-events.component';
+import { FaqComponent } from './components/faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { FooterComponent } from './components/footer/footer.component';
     LogoutComponent,
     NotFoundComponent,
     SearchResultsComponent,
-    FooterComponent
+    FooterComponent,
+    GalleryComponent,
+    PastEventsComponent,
+    FaqComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [

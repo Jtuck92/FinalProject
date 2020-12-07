@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
   isCollapsed = true;
   loggedIn = false;
+  search = "";
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,6 +22,9 @@ export class NavBarComponent implements OnInit {
    }
 
    searchResult(){
-  this.router.navigateByUrl("search")
+     localStorage.removeItem('search');
+     localStorage.setItem('search' , this.search);
+     this.router.navigateByUrl("/search/" + this.search);
+
    }
 }
