@@ -28,6 +28,7 @@ import { AddressService } from './service/address.service';
 import { PaymentService } from './service/payment.service';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     LogoutComponent,
     NotFoundComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    FooterComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [

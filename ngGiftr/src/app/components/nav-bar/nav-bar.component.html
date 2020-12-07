@@ -6,30 +6,54 @@
   <a *ngIf="checkUserLoggedIn() == true" class="navbar-brand" href="/profile"><img src="/assets/Screen Shot 2020-12-06 at 11.45.20 AM.png/" alt="Giftr Logo Navigate to Home" height="35px" width="70px"></a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngbCollapse]='isCollapsed'>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="/pastEvents">Past Events <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/gallery">Pictures</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn" type="submit" (click)="searchResult()">Search</button>
-    </form>
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li *ngIf="checkUserLoggedIn() == false"  class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
-      </li>
-      <li *ngIf="checkUserLoggedIn() == false" class="nav-item">
-        <a class="nav-link" href="/register">Sign Up</a>
-      </li>
-    <li *ngIf="checkUserLoggedIn() == true">
-      <app-logout></app-logout>
-    </li>
-    </ul>
-  </div>
+      <ul *ngIf="isCollapsed" class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="/pastEvents">Past Events <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gallery">Pictures</a>
+        </li>
+      </ul>
+      <form *ngIf="isCollapsed" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn" type="submit" (click)="searchResult()">Search</button>
+      </form>
+      <ul *ngIf="isCollapsed" class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li *ngIf="checkUserLoggedIn() == false"  class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li *ngIf="checkUserLoggedIn() == false" class="nav-item">
+          <a class="nav-link" href="/register">Sign Up</a>
+        </li>
+        <li *ngIf="checkUserLoggedIn() == true">
+          <app-logout></app-logout>
+        </li>
+        <!-- *********** BreaK collapsed menu *******  -->
+      </ul>
+      <ul *ngIf="!isCollapsed" class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="/pastEvents">Past Events <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/gallery">Pictures</a>
+        </li>
+      </ul>
+      <ul *ngIf="!isCollapsed" class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li *ngIf="checkUserLoggedIn() == false"  class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li *ngIf="checkUserLoggedIn() == false" class="nav-item">
+          <a class="nav-link" href="/register">Sign Up</a>
+        </li>
+        <li *ngIf="checkUserLoggedIn() == true">
+          <app-logout></app-logout>
+        </li>
+        <form *ngIf="!isCollapsed" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn" type="submit" (click)="searchResult()">Search</button>
+        </form>
+      </ul>
+    </div>
 </nav>
 </div>
 
