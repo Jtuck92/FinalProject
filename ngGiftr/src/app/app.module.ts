@@ -1,3 +1,13 @@
+import { UserService } from './service/user.service';
+import { PrivatePostService } from './service/private-post.service';
+import { PrivateEventService } from './service/private-event.service';
+import { PrivateCommentService } from './service/private-comment.service';
+import { GiftService } from './service/gift.service';
+import { EventService } from './service/event.service';
+import { EventPostService } from './service/event-post.service';
+import { EventCommentService } from './service/event-comment.service';
+import { BudgetService } from './service/budget.service';
+import { Budget } from './models/budget';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -13,6 +23,10 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AddressService } from './service/address.service';
+import { PaymentService } from './service/payment.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,13 +40,22 @@ import { SearchResultsComponent } from './components/search-results/search-resul
     LoginComponent,
     LogoutComponent,
     NotFoundComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [
+    AddressService,
+    BudgetService,
+    EventCommentService,
+    EventPostService,
+    EventService,
+    GiftService,
+    PaymentService,
+    PrivateCommentService,
+    PrivateEventService,
+    PrivatePostService,
+    UserService,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
