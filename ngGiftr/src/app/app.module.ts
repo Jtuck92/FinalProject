@@ -27,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddressService } from './service/address.service';
 import { PaymentService } from './service/payment.service';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { FormsModule } from '@angular/forms';
     NotFoundComponent,
     SearchResultsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
     AddressService,
     BudgetService,
