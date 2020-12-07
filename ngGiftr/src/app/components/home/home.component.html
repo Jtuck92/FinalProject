@@ -1,1 +1,22 @@
 <p>home works!</p>
+<table class="center">
+  <thead>
+    <tr>
+      <td id="header">ID.</td>
+      <td id="header2">Workout Name</td>
+      <td id="header3">Date</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="homeRow"
+    *ngFor="let event of events "
+  >
+      <td id="homeList" style="text-align: center">{{ event.id }}.</td>
+
+      <td id="homeList" style="text-align: center">{{ event.name }}</td>
+
+      <td id="homeList" style="text-align: center">{{ event.description }}</td>
+    </tr>
+  </tbody>
+</table>
+<p>Number of workouts: {{ events.length }}</p>
