@@ -13,7 +13,7 @@ import { pid } from 'process';
 
 export class PrivateEventService {
   constructor(private http: HttpClient, private authService: AuthService) {}
-  private url = environment.baseUrl + 'api/todos';
+  private url = environment.baseUrl + 'api/privateEvents';
   privateEvents: PrivateEvent[] = [];
 
   index(): Observable<PrivateEvent[]> {
