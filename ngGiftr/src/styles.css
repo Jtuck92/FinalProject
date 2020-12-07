@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background-color: rgb(22,172,202);
+  font-size: 30px;
+  font-family: fantasy;
+}
+
+td {
+  color: rgb(255,240,126);
+  text-shadow: 1px 1px 2px black;
+
+}
+p {
+  color: rgb(53,203,233);
+  text-shadow: 1px 1px 2px black;}
+#header{
+  color: rgb(0,0,0);
+}
+#header2{
+  color: rgb(198,198,198);
+  text-shadow: 1px 1px 2px black;
+}
