@@ -1,3 +1,13 @@
 nav{
   background-color: rgb(53, 203, 233);
+  height: 40px;
+}
+div{
+  margin: 10px;
+}
+.btn{
+  border-color: #fff07e;
+}
+.btn:hover{
+  background-color: #fff07e;
 }
