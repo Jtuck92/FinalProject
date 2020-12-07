@@ -1,4 +1,9 @@
-<p>home works!</p>
+<H3 id="homeHeader">About</H3>
+<!-- TODO  -->
+<div ng-container id="homeHeader">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo ipsam ex aliquid natus ipsum, fugit culpa soluta minus perferendis quis vel doloremque sed, alias non omnis vitae id hic harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit delectus, aspernatur nihil quo dicta totam atque enim ipsum natus nostrum consequatur quia. Tenetur sit beatae veniam sint quod quia labore!</div>
+<H3 id="homeHeader">Current Events</H3>
+
+
 <table class="center">
   <thead>
     <tr>
@@ -7,16 +12,11 @@
       <td id="header3">Date</td>
     </tr>
   </thead>
+
   <tbody>
-    <tr id="homeRow"
-    *ngFor="let event of events "
-  >
-      <td id="homeList" style="text-align: center">{{ event.id }}.</td>
-
-      <td id="homeList" style="text-align: center">{{ event.name }}</td>
-
-      <td id="homeList" style="text-align: center">{{ event.description }}</td>
-    </tr>
-  </tbody>
+<tr  *ngFor=" let pEvents of pEvents ">
+ <td> Description: {{pEvents.description}}
+    </td>
+</tr>
+</tbody>
 </table>
-<p>Number of workouts: {{ events.length }}</p>
