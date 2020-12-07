@@ -82,6 +82,7 @@ export class AuthService {
 
 
   getCredentials() {
-    return localStorage.getItem('credentials');
+    return "MTE6MTE=";
+    // return localStorage.getItem('credentials');
   }
 }
