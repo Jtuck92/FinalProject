@@ -1,1 +1,28 @@
+#homeHeader, #homeEvents, #homeDescription{
+  text-align: center;
+}
+#homeEvents{
+  list-style: none;
 
+}
+
+.card-text:hover{
+color: blue;
+text-decoration: underline;
+}
+#homeHeader{
+  background-color: rgb(255,240,126);
+}
+#eventCard{
+  width: 300px;
+  margin-top: 100px;
+  height: 200px;
+}
+	ul#horizontal-list li {
+    display: inline-block;
+
+
+  }
+  ul#horizontal-list li:not(:last-child) {
+    margin-right: 40px;
+  }

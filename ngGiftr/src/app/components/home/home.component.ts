@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService) { }
 events: Event[];
+selected: Event = null;
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);

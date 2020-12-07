@@ -1,39 +1,24 @@
-<H3 id="homeHeader">About</H3>
+<div *ngIf="!selected">
+
+<h3 id="homeHeader">About</h3>
 <!-- TODO  -->
 <div ng-container id="homeDescription">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo ipsam ex aliquid natus ipsum, fugit culpa soluta minus perferendis quis vel doloremque sed, alias non omnis vitae id hic harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit delectus, aspernatur nihil quo dicta totam atque enim ipsum natus nostrum consequatur quia. Tenetur sit beatae veniam sint quod quia labore!</div>
 <br />
 <br />
-<H3 id="homeHeader">Current Events</H3>
+<h3 id="homeHeader">Current Events</h3>
 
-
-<!-- <table class="center">
-  <thead>
-    <tr>
-      <td id="header">ID.</td>
-      <td id="header2">Workout Name</td>
-      <td id="header3">Date</td>
-    </tr>
-  </thead>
-
-  <tbody>
-<tr  *ngFor=" let event of events ">
- <td> Description: {{event.description}}
-    </td>
-</tr>
-</tbody>
-</table> -->
-<div id="homeEvents">
+<div  id="homeEvents">
   <ul  id="horizontal-list">
 
 
-      <li  (click)="selected = event" *ngFor=" let event of events ">
+      <li   *ngFor=" let event of events ">
         <div id="eventCard">
         <div class="card h-100" style="width: auto;">
           <h5  id="homeHeader" class="card-header"><i class="far fa-clipboard"></i> {{event.name}}</h5>
           <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
         <div  class="card-body">
             <div class="text-div">
-              <div class="card-text">Description: {{event.description}}</div>
+              <div (click)="selected = event" class="card-text">Description: {{event.description}}</div>
             </div>
           </div>
 
@@ -41,16 +26,10 @@
             <input
 
             class="btn btn-outline-primary"
-            (click)="selected = null"
+            (click)="selected = event"
             type="submit"
             value="Sign Up"
           />
-            <!-- <a href="http://3.128.124.196:8080/GoatEvents/" data-toggle="tooltip" title="EC2 Deployment" data-placement="bottom">
-              <i class="fab fa-aws"></i>
-            </a> -->
-            <!-- <a href="https://github.com/coaa0801-creator/MidtermProject" data-toggle="tooltip" title="Code on GitHub" data-placement="bottom">
-              <i class="fab fa-github"></i>
-            </a> -->
         </div>
         </div>
       </div>
@@ -58,5 +37,11 @@
 
   </ul>
 </div>
+</div>
 
 
+<div *ngIf="selected" id="homeEvents">
+  <h3> {{ selected.name }}</h3>
+
+  <p>{{selected.description}}</p>
+</div>

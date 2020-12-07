@@ -1,0 +1,9 @@
+
+ul#horizontal-list li {
+  display: inline-block;
+
+
+}
+ul#horizontal-list li:not(:last-child) {
+  margin-right: 40px;
+}
