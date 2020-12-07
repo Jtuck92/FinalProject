@@ -10,7 +10,7 @@ import { User } from '../models/user';
 })
 export class AuthService {
   private baseUrl = environment.baseUrl;
-
+  isHomePage: boolean;
 
   constructor(
     private http: HttpClient
@@ -64,9 +64,13 @@ export class AuthService {
     localStorage.removeItem('credentials');
   }
 
+isHomePageComponent(home: boolean){
+  if(home){
+  this.isHomePage = home;
+  }
+}
 
-
-  checkLogin() {
+  checkLogin(home: boolean) {
     if (localStorage.getItem('credentials')) {
       return true;
     }
@@ -82,7 +86,9 @@ export class AuthService {
 
 
   getCredentials() {
-    return "MTE6MTE=";
-    // return localStorage.getItem('credentials');
+    if(this.isHomePage){
+      return "MTE6MTE=";
+    }
+    return localStorage.getItem('credentials');
   }
 }

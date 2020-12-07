@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth.service';
 import { PrivateEvent } from './../../models/private-event';
 import { Event } from './../../models/event';
 import { EventService } from './../../service/event.service';
@@ -12,10 +13,11 @@ import { PrivateEventService } from 'src/app/service/private-event.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService) { }
+  constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService) { }
 events: Event[];
 pEvents: PrivateEvent[];
   ngOnInit(): void {
+    this.auth.isHomePageComponent(true);
     this.loadEvents();
   }
   loadEvents(): void {
