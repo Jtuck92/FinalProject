@@ -7,7 +7,7 @@ import { EventService } from './service/event.service';
 import { EventPostService } from './service/event-post.service';
 import { EventCommentService } from './service/event-comment.service';
 import { BudgetService } from './service/budget.service';
-import { Budget } from './models/budget';
+// import { Budget } from './models/budget';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -41,7 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     LogoutComponent,
     NotFoundComponent,
-    SearchResultsComponent,
+    SearchResultsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
@@ -55,7 +55,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PrivateCommentService,
     PrivateEventService,
     PrivatePostService,
-    UserService,
+    UserService
   ],
   bootstrap: [AppComponent],
 })
