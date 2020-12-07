@@ -1,0 +1,38 @@
+.footer-copyright {
+  color: rgb(53, 203, 233);
+  text-align: right;
+  right: 10px;
+}
+
+.list-unstyled li {
+  display: inline;
+}
+
+.list-unstyled ul {
+  margin-top: 50%;
+  top: 50%;
+  left: 50%;
+}
+
+.row {
+ height: 30px;
+}
+
+.footerDisc {
+  text-align: center;
+  top: 10px;
+}
+
+.footerLinks {
+  text-align: center;
+  top: 10px;
+}
+
+.page-footer {
+  border-top: 1px solid rgb(53, 203, 233);
+}
+
+#footerDiv{
+  margin: 10px;
+}
+

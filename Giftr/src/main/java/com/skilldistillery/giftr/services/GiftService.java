@@ -7,7 +7,7 @@ import com.skilldistillery.giftr.entities.Gift;
 
 public interface GiftService {
 
-	public Set<Gift> index(String string);
+	public List<Gift> index(String string);
 	
 	public Gift findById(String name, Integer giftId);
 	

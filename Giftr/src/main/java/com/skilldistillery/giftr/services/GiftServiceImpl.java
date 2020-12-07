@@ -16,7 +16,7 @@ public class GiftServiceImpl implements GiftService {
 	private GiftRepository gRepo;
 
 	@Override
-	public List<Gift> index() {
+	public List<Gift> index(String username) {
 		return gRepo.findAll();
 	}
 

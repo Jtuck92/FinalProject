@@ -35,7 +35,7 @@ public class GiftController {
 //	************ SECURITY API REST POINTS ************************
 
 	@GetMapping("gifts")
-	public Set<Gift> index(Principal p) {
+	public List<Gift> index(Principal p) {
 		return gSvc.index(p.getName());
 	}
 

@@ -70,7 +70,7 @@ isHomePageComponent(home: boolean){
   }
 }
 
-  checkLogin(home: boolean) {
+  checkLogin() {
     if (localStorage.getItem('credentials')) {
       return true;
     }
