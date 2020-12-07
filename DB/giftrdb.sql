@@ -491,6 +491,8 @@ COMMIT;
 START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `event` (`id`, `name`, `description`, `start_date`, `end_date`, `enabled`, `budget_id`, `image_url`, `creator_id`, `created_date`, `last_update`) VALUES (1, 'Giftr Event Name', 'Giftr Event Description', NULL, NULL, 1, 1, NULL, 1, NULL, NULL);
+INSERT INTO `event` (`id`, `name`, `description`, `start_date`, `end_date`, `enabled`, `budget_id`, `image_url`, `creator_id`, `created_date`, `last_update`) VALUES (2, 'New EVENT', 'New Event Descreption', NULL, NULL, 1, 1, NULL, 1, NULL, NULL);
+INSERT INTO `event` (`id`, `name`, `description`, `start_date`, `end_date`, `enabled`, `budget_id`, `image_url`, `creator_id`, `created_date`, `last_update`) VALUES (3, 'NEW NEW Event', 'NEW NEW EVENT DESCRIPTION', NULL, NULL, 1, 1, NULL, 1, NULL, NULL);
 
 COMMIT;
 

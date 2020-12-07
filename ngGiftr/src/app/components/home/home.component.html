@@ -22,12 +22,12 @@
 </tr>
 </tbody>
 </table> -->
-<div>
-  <ul id="homeEvents">
+<div id="homeEvents">
+  <ul  id="horizontal-list">
 
 
       <li  (click)="selected = event" *ngFor=" let event of events ">
-        <div class="col-sm-4 mt-5">
+        <div id="eventCard">
         <div class="card h-100" style="width: auto;">
           <h5  id="homeHeader" class="card-header"><i class="far fa-clipboard"></i> {{event.name}}</h5>
           <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
