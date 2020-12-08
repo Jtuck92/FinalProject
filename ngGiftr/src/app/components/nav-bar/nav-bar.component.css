@@ -1,9 +1,15 @@
-nav{
+.navbar{
   background-color: rgb(53, 203, 233);
 }
 
-div{
+.divNav{
   margin: 10px;
+  overflow: hidden!important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
 }
 .btn{
   border-color: #fff07e;
