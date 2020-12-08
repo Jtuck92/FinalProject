@@ -1,0 +1,11 @@
+.login, h1, p{
+  text-align: center;
+}
+#homeHeader, #homeEvents, #homeDescription{
+  text-align: center;
+}
+
+#homeHeader{
+  background-color: rgb(255,240,126);
+}
+

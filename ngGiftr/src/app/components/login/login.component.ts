@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
+
+
+  login(registerForm: NgForm) {
+    const user = registerForm.value;
+    console.log(user);
+    this.authService.login(user.username, user.password).subscribe(
+      (data) => {
+        this.router.navigateByUrl('/profile');
+        console.log('User Login');
+      },
+      (err) => {
+        console.log('error on Login*******');
+      }
+    );
+    console.log(user);
+  }
   ngOnInit(): void {
   }
 

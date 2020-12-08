@@ -1,1 +1,29 @@
-<p>login works!</p>
+
+<div id="eventCard">
+  <div class="card h-100" style="width: auto;">
+    <h1 id="homeHeader" class="card-header"><i class="far fa-clipboard"></i>   Log In</h1>
+    <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
+  <div  class="card-body">
+      <div class="text-div">
+
+
+        <form class="login" #loginForm="ngForm">
+          <input
+            type="text"
+            name="username"
+            placeholder="UserName"
+            ngModel
+          /> <br>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            ngModel
+          /> <br>
+          <button (click)="login(loginForm)">Login</button>
+        </form> <br>
+        <p>If you haven't already, create a
+        <a href="/register">Giftr account</a></p>
+  </div>
+  </div>
+</div>

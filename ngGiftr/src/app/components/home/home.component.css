@@ -23,6 +23,7 @@ text-decoration: underline;
 
 
   }
-  ul#horizontal-list li:not(:last-child) {
+  ul#horizontal-list li {
     margin-right: 40px;
   }
+
