@@ -2,8 +2,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a *ngIf="checkUserLoggedIn() == false" class="navbar-brand" href="/home"><img src="/assets/Screen Shot 2020-12-06 at 11.45.20 AM.png/" alt="Giftr Logo Navigate to Home" height="45px" width="85px"></a>
-  <a *ngIf="checkUserLoggedIn() == true" class="navbar-brand" href="/profile"><img src="/assets/Screen Shot 2020-12-06 at 11.45.20 AM.png/" alt="Giftr Logo Navigate to Home" height="45px" width="85px"></a>
+  <a class="navbar-brand" href="/home"><img src="/assets/Logo.png/" alt="Giftr Logo Navigate to Home" height="45px" width="85px"></a>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngbCollapse]='isCollapsed'>
       <ul *ngIf="isCollapsed" class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -25,26 +24,32 @@
         <li *ngIf="checkUserLoggedIn() == false" class="nav-item">
           <a class="nav-link" href="/register">Create Account</a>
         </li>
-        <li *ngIf="checkUserLoggedIn() == true">
-          <app-logout></app-logout>
-        </li>
-        <!-- *********** BreaK collapsed menu *******  -->
-      </ul>
-      <ul *ngIf="!isCollapsed" class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="/pastEvents">Past Events <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/gallery">Pictures</a>
-        </li>
-      </ul>
-      <ul *ngIf="!isCollapsed" class="navbar-nav ml-auto mt-2 mt-lg-0">
-        <li *ngIf="checkUserLoggedIn() == false"  class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
-        </li>
-        <li *ngIf="checkUserLoggedIn() == false" class="nav-item">
-          <a class="nav-link" href="/register">Sign Up</a>
-        </li>
+            <li *ngIf="checkUserLoggedIn() == true">
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+            <li *ngIf="checkUserLoggedIn() == true">
+              <app-logout></app-logout>
+            </li>
+            <!-- *********** BreaK collapsed menu *******  -->
+          </ul>
+          <ul *ngIf="!isCollapsed" class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/pastEvents">Past Events <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/gallery">Pictures</a>
+            </li>
+          </ul>
+          <ul *ngIf="!isCollapsed" class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li *ngIf="checkUserLoggedIn() == false"  class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li *ngIf="checkUserLoggedIn() == false" class="nav-item">
+              <a class="nav-link" href="/register">Sign Up</a>
+            </li>
+                                                    <li *ngIf="checkUserLoggedIn() == true">
+                                                      <a class="nav-link" href="/profile">Profile</a>
+                                                    </li>
         <li *ngIf="checkUserLoggedIn() == true">
           <app-logout></app-logout>
         </li>
