@@ -784,40 +784,59 @@ export class RegisterComponent implements OnInit {
     "states": ["Bulawayo", "Harare", "Manicaland", "Mashonaland Central", "Mashonaland East", "Mashonaland West", "Masvingo", "Matabeleland North", "Matabeleland South", "Midlands"]
   }
 ];
+passErrors = ["Your Password must contain 8 Characters", "Your password must contain a numeric 0-9"];
+constructor(private auth: AuthService, private router: Router, private aServ: AddressService) { }
 
-  constructor(private auth: AuthService, private router: Router, private aServ: AddressService) { }
-
-  ngOnInit(): void {
-    this.auth.isHomePageComponent(true);
-  }
+ngOnInit(): void {
+  this.auth.isHomePageComponent(true);
+}
 
 findStateList(){
   let index = this.findIndexOfCountry();
   console.log(index);
-   this.states = this.countries[index].states;
+  this.states = this.countries[index].states;
 
 }
 findIndexOfCountry(): number{
   let index: number = 0;
 
-for(let i = 0; i < this.countries.length; i++){
-  if(this.countries[i].country == this.selectedCountry ){
-   return index;
-  }
-index = index + 1;
-};
-return index;
+  for(let i = 0; i < this.countries.length; i++){
+    if(this.countries[i].country == this.selectedCountry ){
+      return index;
+    }
+    index = index + 1;
+  };
+  return index;
 
 }
 
 signUpUser(){
+this.passErrors = [];
 this.errors = [];
+if(this.newUser.password.length < 8){
+  this.passErrors.push("Your Password must contain 8 Characters")
+}
+if(
+  !this.newUser.password.includes("1") ||
+  !this.newUser.password.includes("2") ||
+  !this.newUser.password.includes("3") ||
+  !this.newUser.password.includes("4") ||
+  !this.newUser.password.includes("5") ||
+  !this.newUser.password.includes("6") ||
+  !this.newUser.password.includes("7") ||
+  !this.newUser.password.includes("8") ||
+  !this.newUser.password.includes("9") ||
+  !this.newUser.password.includes("0")
+  ){
+    this.passErrors.push("Your password must contain a numeric 0-9")
+  }
 if(this.psw2 != this.newUser.password){
   this.errors.push("The Passwords you provided did not match")
+  this.passErrors.push("The Passwords you provided did not match")
 }
 
 
-if(this.errors.length == 0){
+if(this.errors.length == 0 && this.passErrors.length == 0){
   this.aServ.create(this.newAddress).subscribe(
     (data) => {
       console.log(data);

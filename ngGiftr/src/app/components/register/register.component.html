@@ -11,23 +11,28 @@
               <li *ngFor="let e of errors">{{e}}</li>
               </ul>
             </div>
-      <hr>
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" [(ngModel)]="newUser.email" required>
+            <hr>
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" [(ngModel)]="newUser.email" required>
 
-      <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Email" name="username" [(ngModel)]="newUser.username" required>
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Email" name="username" [(ngModel)]="newUser.username" required>
 
-      <label for="firstName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="newUser.firstName" required>
+            <label for="firstName"><b>First Name</b></label>
+            <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="newUser.firstName" required>
 
-      <label for="lastName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="newUser.lastName" required>
+            <label for="lastName"><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="newUser.lastName" required>
 
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="newUser.password" required>
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="newUser.password" required>
+            <div *ngIf="passErrors" class="errors">
+              <ul style="list-style: none;">
+              <li *ngFor="let e of passErrors">{{e}}</li>
+              </ul>
+            </div>
 
-      <label for="psw-repeat"><b>Repeat Password</b></label>
+            <label for="psw-repeat"><b>Repeat Password</b></label>
       <input type="password" placeholder="Repeat Password" name="psw-repeat" [(ngModel)]="psw2" required>
 
       <label for="street"><b>Street</b></label>
@@ -55,6 +60,14 @@
 
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
+      <div id="message">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+      </div>
+
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class=" btn cancelbtn">Cancel</button>
         <button (click)="signUpUser()" type="submit" class="btn signupbtn">Sign Up</button>
@@ -62,3 +75,4 @@
     </div>
   </form>
 </div>
+
