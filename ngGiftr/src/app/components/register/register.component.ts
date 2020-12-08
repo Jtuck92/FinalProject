@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(false);
   }
+
+
+
 
 }

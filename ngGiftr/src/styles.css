@@ -14,3 +14,9 @@ body{
   background-color: rgb(22,172,202);
 }
 
+.btn{
+  border-color: #fff07e;
+}
+.btn:hover{
+  background-color: #fff07e;
+}
