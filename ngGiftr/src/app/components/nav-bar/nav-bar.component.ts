@@ -27,4 +27,5 @@ export class NavBarComponent implements OnInit {
      this.router.navigateByUrl("/search/" + this.search);
 
    }
+
 }
