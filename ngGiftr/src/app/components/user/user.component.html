@@ -1,1 +1,46 @@
-<p>user works!</p>
+
+<!-- TODO
+event details page
+backbutton on page
+-->
+
+<h2 >Current Exchanges</h2>
+
+<div  id="homeEvents">
+  <ul  id="horizontal-list">
+
+
+      <li (click)="event" (click)="eventResult(event)" *ngFor=" let event of events ">
+        <div id="eventCard">
+        <div class="card h-100" style="width: auto;">
+          <h5  id="homeHeader" class="card-header"><i class="far fa-clipboard"></i> {{event.name}}</h5>
+          <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
+        <div  class="card-body">
+            <div class="text-div">
+              <div class="card-text">Description: {{event.description}}</div>
+            </div>
+          </div>
+
+          <!-- <div id="homeHeader" class="card-footer social-icons">
+            <input
+
+            class="btn btn-outline-primary"
+            (click)="selected = event"
+            type="submit"
+            value="Sign Up"
+          />
+        </div> -->
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- <div *ngIf="selected" id="homeEvents">
+  <h3> {{ selected.name }}</h3>
+
+  <p>{{selected.description}}</p>
+</div> -->
+
+<p>No exchanges here right now. In the mean time, check out other exchanges or the gallery.</p>

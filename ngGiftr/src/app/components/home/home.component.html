@@ -1,81 +1,86 @@
 <div *ngIf="!selected">
+  <h3 id="homeHeader">About</h3>
+  <!-- TODO  -->
+  <div ng-container id="homeDescription">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo ipsam ex
+    aliquid natus ipsum, fugit culpa soluta minus perferendis quis vel
+    doloremque sed, alias non omnis vitae id hic harum. Lorem ipsum dolor sit
+    amet consectetur adipisicing elit. Suscipit delectus, aspernatur nihil quo
+    dicta totam atque enim ipsum natus nostrum consequatur quia. Tenetur sit
+    beatae veniam sint quod quia labore!
+  </div>
+  <br />
+  <br />
+  <h3 id="homeHeader">Current Events</h3>
 
-<h3 id="homeHeader">About</h3>
-<!-- TODO  -->
-<div ng-container id="homeDescription">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo ipsam ex aliquid natus ipsum, fugit culpa soluta minus perferendis quis vel doloremque sed, alias non omnis vitae id hic harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit delectus, aspernatur nihil quo dicta totam atque enim ipsum natus nostrum consequatur quia. Tenetur sit beatae veniam sint quod quia labore!</div>
-<br />
-<br />
-<h3 id="homeHeader">Current Events</h3>
-
-<div  id="homeEvents">
-  <ul  id="horizontal-list">
-
-
-      <li   *ngFor=" let event of events ">
+  <div id="homeEvents">
+    <ul id="horizontal-list">
+      <li *ngFor="let event of events">
         <div id="eventCard">
-        <div class="card h-100" style="width: auto;">
-          <h5  id="homeHeader" class="card-header"><i class="far fa-clipboard"></i> {{event.name}}</h5>
-          <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
-        <div  class="card-body">
-            <div class="text-div">
-              <div (click)="selected = event" class="card-text">Description: {{event.description}}</div>
+          <div class="card h-100" style="width: auto">
+            <h5 id="homeHeader" class="card-header">
+              <i class="far fa-clipboard"></i> {{ event.name }}
+            </h5>
+            <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
+            <div class="card-body">
+              <div class="text-div">
+                <div (click)="eventResult(event)" class="card-text">
+                  Description: {{ event.description }}
+                </div>
+              </div>
+            </div>
+
+            <div id="homeHeader" class="card-footer social-icons">
+              <input
+                (click)="eventResult(event)"
+                class="btn btn-outline-primary"
+                type="submit"
+                value="Sign Up"
+              />
             </div>
           </div>
-
-          <div id="homeHeader" class="card-footer social-icons">
-            <input
-
-            class="btn btn-outline-primary"
-            (click)="selected = event"
-            type="submit"
-            value="Sign Up"
-          />
         </div>
-        </div>
-      </div>
-    </li>
-
-  </ul>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+      </li>
+    </ul>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
 </div>
 
-
-<div *ngIf="selected" id="homeEvents">
+<!-- <div *ngIf="selected" id="homeEvents">
   <h3> {{ selected.name }}</h3>
 
   <p>{{selected.description}}</p>
-</div>
+</div> -->

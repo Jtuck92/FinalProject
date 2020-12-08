@@ -11,6 +11,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { PastEventsComponent } from './components/past-events/past-events.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'search/:param', component: SearchResultsComponent },
   { path: 'profile', component: UserComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'eventDetails', component: EventDetailsComponent },
   { path: 'pastEvents', component: PastEventsComponent }, //TODO PAST EVENT COMPONENT
   {path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', component: NotFoundComponent }

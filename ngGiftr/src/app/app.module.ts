@@ -32,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { PastEventsComponent } from './components/past-events/past-events.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { FaqComponent } from './components/faq/faq.component';
     FooterComponent,
     GalleryComponent,
     PastEventsComponent,
-    FaqComponent
+    FaqComponent,
+    EventDetailsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [

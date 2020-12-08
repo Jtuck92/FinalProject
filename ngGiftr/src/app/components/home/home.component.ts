@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../service/auth.service';
 import { PrivateEvent } from './../../models/private-event';
 import { Event } from './../../models/event';
@@ -13,7 +14,7 @@ import { PrivateEventService } from 'src/app/service/private-event.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService) { }
+  constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService, private router: Router) { }
 events: Event[];
 selected: Event = null;
 
@@ -33,5 +34,9 @@ selected: Event = null;
       }
     );
   }
-
+  eventResult(event){
+    this.selected = event;
+    localStorage.setItem('event' , "" + this.selected.id);
+    this.router.navigateByUrl("/eventDetails");
+  }
 }
