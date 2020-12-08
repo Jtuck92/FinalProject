@@ -35,3 +35,24 @@ h3, #homeDescription, .homeTitle{
   margin-left: 11.5%;
   margin-right: 11.5%;
 }
+
+.hero {
+  /* Sizing */
+  margin: 10px;
+  width: 100vw;
+  height: 25vh;
+
+  /* Flexbox stuff */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Text styles */
+  text-align: center;
+ /* Background styles */
+  background: url("/assets/herobackground.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+}
