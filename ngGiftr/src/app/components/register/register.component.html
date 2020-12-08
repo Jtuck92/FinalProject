@@ -31,6 +31,15 @@
       <label for="street2"><b>Ste/Apt/Unit</b></label>
       <input type="text" placeholder="Enter Ste/Apt#..." name="street2" required>
 
+      <label for="country"><b>Country</b></label>
+      <select  (change)="findStateList()" id="country" name="country" class="form-control" [(ngModel)]="selectedCountry"  >
+        <option  *ngFor="let c of countries ; index as i">{{c.country}}</option>
+      </select>
+
+      <label *ngIf="selectedCountry" for="stateProvince"><b>State/Province</b></label>
+      <select *ngIf="selectedCountry" id="stateProvince" name="stateProvince" class="form-control">
+        <option *ngFor="let s of states; index as i">{{s}}</option>
+      </select>
 
 
 
