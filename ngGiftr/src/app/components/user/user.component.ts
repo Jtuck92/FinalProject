@@ -55,10 +55,8 @@ export class UserComponent implements OnInit {
 
   }
 
-  pEventResult(pEvent){
-    this.selected = pEvent;
-    localStorage.setItem('event' , "" + this.selected.id);
-    this.router.navigateByUrl("/eventDetails");
+  pEventResult(){
+    this.router.navigateByUrl("/gallery");
 
   }
 //   eventDetails(workout){
