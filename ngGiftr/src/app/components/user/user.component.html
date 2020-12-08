@@ -3,44 +3,86 @@
 event details page
 backbutton on page
 -->
+<table class="center">
+  <thead>
+    <tr>
+      <td id="homeList">Event</td>
+      <td id="homeList">Description</td>
 
+      <td id="homeList">Reciving User</td>
+
+      <td id="homeList">Address to Send</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr (click)="event" (click)="eventResult(event)" *ngFor=" let event of events "
+    >
+      <td id="homeList" >{{event.name}}</td>
+      <td id="homeList" > {{event.description}}</td>
+
+
+    </tr>
+    <tr (click)="pEvent" (click)="eventResult(pEvent)" *ngFor=" let pEvent of pEvents ">
+
+    <td id="homeList" style="text-align: center">{{pEvent.name}}</td>
+
+      <td id="homeList" style="text-align: center">{{pEvent.description}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<!-- <div class="userEventLists" id="userEvents">
 <h2 >Current Exchanges</h2>
 
 <div  id="homeEvents">
   <ul  id="horizontal-list">
 
 
-      <li (click)="event" (click)="eventResult(event)" *ngFor=" let event of events ">
+      <li (click)="event" (click)="eventResult(event)" *ngFor=" let event of events " *ngFor=" let pEvent of pEvents ">
         <div id="eventCard">
         <div class="card h-100" style="width: auto;">
-          <h5  id="homeHeader" class="card-header"><i class="far fa-clipboard"></i> {{event.name}}</h5>
+          <h5  id="homeHeader" class="card-header"><i class="far fa-clipboard"></i> {{event.name}}</h5> -->
           <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
-        <div  class="card-body">
+        <!-- <div  class="card-body">
             <div class="text-div">
               <div class="card-text">Description: {{event.description}}</div>
             </div>
           </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+</div>
 
-          <!-- <div id="homeHeader" class="card-footer social-icons">
-            <input
+<div class="userEventLists" id="userPrivateEvents">
+<h2 >Private Exchanges</h2>
+<div  id="homeEvents">
+  <ul  id="horizontal-list">
 
-            class="btn btn-outline-primary"
-            (click)="selected = event"
-            type="submit"
-            value="Sign Up"
-          />
-        </div> -->
+      <li (click)="pEvent" (click)="eventResult(pEvent)" *ngFor=" let pEvent of pEvents ">
+        <div id="eventCard">
+        <div class="card h-100" style="width: auto;">
+          <h5  id="homeHeader" class="card-header"><i class="far fa-clipboard"></i> {{pEvent.name}}</h5> -->
+          <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
+        <!-- <div  class="card-body">
+            <div class="text-div">
+              <div class="card-text">Description: {{pEvent.description}}</div>
+            </div>
+          </div>
         </div>
       </div>
     </li>
 
   </ul>
 </div>
-
-<!-- <div *ngIf="selected" id="homeEvents">
-  <h3> {{ selected.name }}</h3>
-
-  <p>{{selected.description}}</p>
 </div> -->
 
+
 <p>No exchanges here right now. In the mean time, check out other exchanges or the gallery.</p>
+<div style="width: 100%;"></div>
+<br>
+<br>
+
