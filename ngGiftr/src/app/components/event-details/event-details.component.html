@@ -1,10 +1,14 @@
 <div *ngIf="selected" id="homeEvents">
-  <h3> {{ selected.name }}</h3>
+  <h1> {{ selected.name }}</h1>
 <img class="eventImg" src="{{selected.imageUrl}}" alt="">
 
-  <p>{{selected.description}}</p>
 </div>
-
+<br>
+<h3 class="eventDesc">{{selected.description}}<h3>
+  <br>
+<br><br>
+<br>
+  <p> Still have questions? Check out the <a href="/faq" class="btn">FAQ</a> or <a href="/contact" class="btn">Contact Us</a></p>
 <br>
 <br>
 <h3>How do exchanges work?</h3>

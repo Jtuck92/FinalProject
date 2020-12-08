@@ -17,6 +17,7 @@ h6{
   width: auto!important;
   table-layout: auto!important;
   border: 2px solid #555 !important;
+
 }
 .center, #homeList{
   border: 2px solid #555 !important;
@@ -28,8 +29,16 @@ h6{
 
 
 }
+td{
+  font-size: 20px;
+}
+th{
+  background-color:  rgb(53,203,233);
+  font-size: 20px;
+}
 table{
   margin-left: 1%;
+  margin-right: 1%;
   margin-top: 1%;
   margin-bottom: 3%;
   text-align: center;
