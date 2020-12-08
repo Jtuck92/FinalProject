@@ -33,7 +33,6 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { PastEventsComponent } from './components/past-events/past-events.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
-import { StatesPipe } from './pipes/states.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { StatesPipe } from './pipes/states.pipe';
     PastEventsComponent,
     FaqComponent,
     EventDetailsComponent,
-    StatesPipe
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
