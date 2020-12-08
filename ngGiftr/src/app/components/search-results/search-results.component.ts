@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SearchResultsComponent implements OnInit {
 
 
-  constructor(private router: Router, private currentRoute: ActivatedRoute) { }
+  constructor(private router: Router, public currentRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
