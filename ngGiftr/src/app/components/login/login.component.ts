@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
         console.log('error on Login*******');
       }
     );
-    console.log(user);
   }
   ngOnInit(): void {
   }
