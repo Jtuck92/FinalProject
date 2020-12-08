@@ -3,33 +3,62 @@
 event details page
 backbutton on page
 -->
-<table class="center">
-  <thead>
-    <tr>
-      <td id="homeList">Event</td>
-      <td id="homeList">Description</td>
+<div class="tables">
 
-      <td id="homeList">Reciving User</td>
+<h2> Your Events  <br><button
 
-      <td id="homeList">Address to Send</td>
+  class="btn"
+  type="submit"
+  value="Post your gift"
+  >Post your gift</button></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Description</th>
+      <th class="col">Receiver</th>
+      <th class="col">Address to Send</th>
     </tr>
   </thead>
-  <tbody>
-    <tr (click)="event" (click)="eventResult(event)" *ngFor=" let event of events "
+  <tbody class="center">
+    <tr class="col" (click)="event" (click)="eventResult(event)" *ngFor=" let event of events "
     >
-      <td id="homeList" >{{event.name}}</td>
-      <td id="homeList" > {{event.description}}</td>
+      <td class="col" id="homeList" >{{event.name}}</td>
+      <td  class="col" id="homeList" > {{event.description}}</td>
 
 
-    </tr>
-    <tr (click)="pEvent" (click)="eventResult(pEvent)" *ngFor=" let pEvent of pEvents ">
 
-    <td id="homeList" style="text-align: center">{{pEvent.name}}</td>
-
-      <td id="homeList" style="text-align: center">{{pEvent.description}}</td>
     </tr>
   </tbody>
 </table>
+
+
+<h2> Your Private Events <br> <button
+  class="btn"
+  type="submit"
+  value="Post your gift"
+  >Post your gift</button></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Description</th>
+      <th class="col">Receiver</th>
+      <th class="col">Address to Send</th>
+    </tr>
+  </thead>
+  <tbody   class="center">
+    <tr class="col" (click)="pEvent" (click)="eventResult(pEvent)" *ngFor=" let pEvent of pEvents "
+    >
+      <td class="col" id="homeList">{{pEvent.name}}</td>
+      <td class="col"  id="homeList"> {{pEvent.description}}</td>
+
+
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 
@@ -81,7 +110,7 @@ backbutton on page
 </div> -->
 
 
-<p>No exchanges here right now. In the mean time, check out other exchanges or the gallery.</p>
+<h6>No exchanges here right now. In the mean time, check out other exchanges or the gallery.</h6>
 <div style="width: 100%;"></div>
 <br>
 <br>
