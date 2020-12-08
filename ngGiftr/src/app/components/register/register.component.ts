@@ -1,5 +1,9 @@
+import { AddressService } from './../../service/address.service';
+import { Address } from './../../models/address';
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +13,11 @@ import { Component, OnInit } from '@angular/core';
 export class RegisterComponent implements OnInit {
   selectedCountry: String;
   selectedCountryIndex = null;
-  states = []
+  newAddress = new Address();
+  newUser = new User();
+  states = [];
+  psw2 = null;
+  errors = null;
  countries = [
   {
     "country": "Afghanistan",
@@ -777,10 +785,10 @@ export class RegisterComponent implements OnInit {
   }
 ];
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router, private aServ: AddressService) { }
 
   ngOnInit(): void {
-    this.auth.isHomePageComponent(false);
+    this.auth.isHomePageComponent(true);
   }
 
 findStateList(){
@@ -802,5 +810,58 @@ return index;
 
 }
 
+signUpUser(){
+this.errors = [];
+if(this.psw2 != this.newUser.password){
+  this.errors.push("The Passwords you provided did not match")
+}
+
+
+if(this.errors.length == 0){
+  this.aServ.create(this.newAddress).subscribe(
+    (data) => {
+      console.log(data);
+      this.newAddress = data;
+      console.log(this.newAddress);
+
+      this.newUser.address = this.newAddress;
+      console.log(this.newAddress);
+
+      this.auth.register(this.newUser).subscribe(
+        data => {
+
+          console.log('RegisterComponent.register(): user registered.');
+
+
+          this.auth.login(this.newUser.username, this.newUser.password).subscribe(
+            next => {
+              console.log('RegisterComponent.register(): user logged in, routing to /profile.');
+              this.router.navigateByUrl('/profile');
+            },
+            error => {
+              this.errors.push("We're sorry, there was an error creating your account. Please check all fields and re-submit")
+              console.error('RegisterComponent.register(): error logging in.');
+
+            }
+            );
+          },
+          err => {
+            console.error('RegisterComponent.register(): error registering.');
+            console.error(err);
+            this.errors.push("We're sorry, there was an error creating your account. Please check all fields and re-submit")
+        }
+      );
+    },
+    (err) => {
+      this.errors.push("We're sorry, there was an error creating your account. Please check all fields and re-submit")
+
+    }
+  );
+}
 
 }
+
+
+}
+
+

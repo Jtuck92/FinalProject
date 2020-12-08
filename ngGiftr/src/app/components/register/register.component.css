@@ -99,3 +99,7 @@ hr {
      width: 100%;
   }
 }
+.errors{
+  color: red;
+font-weight: bolder;
+}

@@ -6,47 +6,48 @@
     <div class="container">
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
+            <div *ngIf="errors" class="errors">
+              <ul style="list-style: none;">
+              <li *ngFor="let e of errors">{{e}}</li>
+              </ul>
+            </div>
       <hr>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <input type="text" placeholder="Enter Email" name="email" [(ngModel)]="newUser.email" required>
 
       <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Email" name="username" required>
+      <input type="text" placeholder="Enter Email" name="username" [(ngModel)]="newUser.username" required>
 
       <label for="firstName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstName" required>
+      <input type="text" placeholder="Enter First Name" name="firstName" [(ngModel)]="newUser.firstName" required>
 
       <label for="lastName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastName" required>
+      <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="newUser.lastName" required>
 
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
+      <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="newUser.password" required>
 
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" [(ngModel)]="psw2" required>
 
       <label for="street"><b>Street</b></label>
-      <input type="text" placeholder="Enter Street Address" name="street" required>
+      <input type="text" placeholder="Enter Street Address" name="street" [(ngModel)]="newAddress.street" required>
 
       <label for="street2"><b>Ste/Apt/Unit</b></label>
-      <input type="text" placeholder="Enter Ste/Apt#..." name="street2" required>
+      <input type="text" placeholder="Enter Ste/Apt#..." name="street2" [(ngModel)]="newAddress.street2" required>
 
       <label for="country"><b>Country</b></label>
-      <select  (change)="findStateList()" id="country" name="country" class="form-control" [(ngModel)]="selectedCountry"  >
+      <select  (change)="findStateList()" id="country" name="country" class="form-control" [(ngModel)]="selectedCountry" [(ngModel)]="newAddress.country"  >
         <option  *ngFor="let c of countries ; index as i">{{c.country}}</option>
       </select>
 
-      <label *ngIf="selectedCountry" for="stateProvince"><b>State/Province</b></label>
-      <select *ngIf="selectedCountry" id="stateProvince" name="stateProvince" class="form-control">
+      <label *ngIf="selectedCountry" for="stateProvince" ><b>State/Province</b></label>
+      <select *ngIf="selectedCountry" id="stateProvince" [(ngModel)]="newAddress.stateProvince" name="stateProvince" class="form-control">
         <option *ngFor="let s of states; index as i">{{s}}</option>
       </select>
 
-
-
-
-
       <label for="zip"><b>Postal Code</b></label>
-      <input type="text" placeholder="Enter Postal Code" name="zip" required>
+      <input type="text" placeholder="Enter Postal Code" name="zip" [(ngModel)]="newAddress.zip" required>
 
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -56,7 +57,7 @@
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class=" btn cancelbtn">Cancel</button>
-        <button type="submit" class="btn signupbtn">Sign Up</button>
+        <button (click)="signUpUser()" type="submit" class="btn signupbtn">Sign Up</button>
       </div>
     </div>
   </form>

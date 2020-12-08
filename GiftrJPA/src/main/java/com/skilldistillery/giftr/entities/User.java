@@ -25,6 +25,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	private String role;
 
 	private String username;
 
@@ -142,6 +144,14 @@ public class User {
 		return sentGifts;
 	}
 	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	public List<EventComment> getEventComments() {
 		return eventComments;
 	}
