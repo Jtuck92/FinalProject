@@ -10,7 +10,7 @@ color: blue;
 text-decoration: underline;
 }
 #homeHeader{
-  background-color: rgb(255,240,126);
+  background-color: rgb(53,203,233);;
 }
 #eventCard{
   width: 300px;
@@ -25,4 +25,13 @@ text-decoration: underline;
   ul#horizontal-list li {
     margin-right: 40px;
   }
-
+  .btn{
+    border-color: #fff07e;
+  }
+  .btn:hover{
+    background-color: #fff07e;
+  }
+h3, #homeDescription, .homeTitle{
+  margin-left: 11.5%;
+  margin-right: 11.5%;
+}
