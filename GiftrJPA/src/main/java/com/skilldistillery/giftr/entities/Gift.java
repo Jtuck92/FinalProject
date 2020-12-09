@@ -104,12 +104,12 @@ public class Gift {
 		this.gifter = gifter;
 	}
 
-	public User getReciever() {
+	public User getReceiver() {
 		return receiver;
 	}
 
-	public void setReciever(User reciever) {
-		this.receiver = reciever;
+	public void setReceiver(User receiver) {
+		this.receiver = receiver;
 	}
 
 	public Integer getRating() {

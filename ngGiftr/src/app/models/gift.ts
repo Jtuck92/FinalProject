@@ -1,4 +1,5 @@
 import { User } from 'src/app/models/user';
+import { Event } from 'src/app/models/event';
 export class Gift {
   id: number;
   price: number;

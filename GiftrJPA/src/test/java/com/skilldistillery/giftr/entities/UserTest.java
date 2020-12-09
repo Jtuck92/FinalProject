@@ -141,7 +141,7 @@ public class UserTest {
 		assertNotNull(user.getSentGifts());
 		assertTrue(user.getSentGifts().size()>0);
 		assertEquals(12.5, user.getSentGifts().get(0).getPrice());	
-		assertEquals(2, user.getSentGifts().get(0).getReciever().getId());	
+		assertEquals(2, user.getSentGifts().get(0).getReceiver().getId());	
 		assertEquals("New Gift", user.getSentGifts().get(0).getDescription());	
 
 
