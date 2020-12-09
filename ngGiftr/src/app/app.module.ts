@@ -38,7 +38,7 @@ import { DisabledPipe } from './pipes/disabled.pipe';
 import { UserEventsPipe } from './pipes/user-events.pipe';
 import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
-import { PostComponent } from './components/post/post.component';
+// import { PostComponent } from './components/post/post.component';
 import { EventSignupComponent } from './components/event-signup/event-signup.component';
 import { MessageBoardComponent } from './components/message-board/message-board.component';
 
@@ -67,7 +67,7 @@ import { MessageBoardComponent } from './components/message-board/message-board.
     FilterPipe,
 
     EventSignupComponent,
-    PostComponent,
+    // PostComponent,
     MessageBoardComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],

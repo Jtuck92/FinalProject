@@ -29,6 +29,7 @@ export class SearchResultsComponent implements OnInit {
     this.auth.isHomePageComponent(true);
     this.getEvents();
     this.searchString = this.currentRoute.snapshot.paramMap.get('param');
+    localStorage.removeItem('search')
   }
   constructor(private formBuilder: FormBuilder, private eventSvc: EventService, public currentRoute: ActivatedRoute, private auth: AuthService, private router: Router) {
     this.formGroup = formBuilder.group({ filter: [''] });
