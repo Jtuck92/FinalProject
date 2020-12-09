@@ -89,11 +89,6 @@
     <div class="container">
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
-      <div *ngIf="errors" class="errors">
-        <ul style="list-style: none;">
-          <li *ngFor="let e of errors">{{e}}</li>
-        </ul>
-      </div>
       <hr>
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" [(ngModel)]="newUser.email" required>
@@ -112,16 +107,16 @@
       <div *ngIf="passErrors" class="errors">
         <ul style="list-style: none;">
           <li *ngFor="let e of passErrors">{{e}}</li>
-              </ul>
-            </div>
+        </ul>
+      </div>
 
-            <label for="psw-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" [(ngModel)]="psw2" required>
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" [(ngModel)]="psw2" required>
 
-            <label for="street"><b>Street</b></label>
-            <input type="text" placeholder="Enter Street Address" name="street" [(ngModel)]="newAddress.street" required>
+      <label for="street"><b>Street</b></label>
+      <input type="text" placeholder="Enter Street Address" name="street" [(ngModel)]="newAddress.street" required>
 
-            <label for="street2"><b>Ste/Apt/Unit</b></label>
+      <label for="street2"><b>Ste/Apt/Unit</b></label>
             <input type="text" placeholder="Enter Ste/Apt#..." name="street2" [(ngModel)]="newAddress.street2" required>
 
             <label for="country"><b>Country</b></label>
@@ -149,6 +144,11 @@
             <button (click)="signUpUser()" type="submit" class="btn signupbtn">Sign Up</button>
             &nbsp;Already a user?&nbsp;<button class="btn" (click)="goToLogin()">Login</button>
           </div>
+                        <div *ngIf="errors" class="errors">
+                          <ul style="list-style: none;">
+                            <li *ngFor="let e of errors">{{e}}</li>
+                          </ul>
+                        </div>
           <br>
   </form>
 </div>

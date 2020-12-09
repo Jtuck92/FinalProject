@@ -1,3 +1,4 @@
+import { UserService } from './../../service/user.service';
 import { AddressService } from './../../service/address.service';
 import { Address } from './../../models/address';
 import { AuthService } from './../../service/auth.service';
@@ -785,11 +786,29 @@ export class RegisterComponent implements OnInit {
   }
 ];
 passErrors = ["Your Password must contain 8 Characters", "Your password must contain a numeric 0-9"];
-user: User = null;
-constructor(private auth: AuthService, private router: Router, private aServ: AddressService) { }
+user: User = new User ();
+users: User[] = [];
+
+constructor(private auth: AuthService, private router: Router, private aServ: AddressService, private userSvc: UserService) { }
 
 ngOnInit(): void {
   this.auth.isHomePageComponent(true);
+  this.loadUsers();
+}
+
+loadUsers() {
+  this.userSvc.index().subscribe(
+    data => {
+      this.users = data;
+    },
+    error => {
+      console.error('Failed To load user list');
+
+    }
+    );
+
+
+
 }
 
 goToLogin(){
@@ -818,6 +837,11 @@ findIndexOfCountry(): number{
 signUpUser(){
 this.passErrors = [];
 this.errors = [];
+for(let i = 0; i< this.users.length; i++){
+  if(this.newUser.username == this.users[i].username){
+    this.errors.push("Sorry, that username is already taken. Please try a different username")
+  }
+}
 if(this.newUser.password.length < 8){
   this.passErrors.push("Your Password must contain 8 Characters")
 }
@@ -827,8 +851,8 @@ var reg = new RegExp('[0-9]');
 
 if(!reg.test(this.newUser.password))
 {
-    this.passErrors.push("Your password must contain a numeric 0-9")
-  }
+  this.passErrors.push("Your password must contain a numeric 0-9")
+}
 if(this.psw2 != this.newUser.password){
   this.errors.push("The Passwords you provided did not match")
   this.passErrors.push("The Passwords you provided did not match")
