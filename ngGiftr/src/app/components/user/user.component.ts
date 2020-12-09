@@ -41,6 +41,11 @@ export class UserComponent implements OnInit {
     this.userSrv.show(this.numUserId).subscribe(
       (data) => {
         this.user = data;
+        for (let i = 0; i < this.gifts.length; i++){
+          if(this.gifts[i].gifter.id == this.user.id){
+            this.receivers.push(this.gifts[i].receiver);
+          }
+          }
         this.events = this.uEPipe.transform(this.gifts, this.user);
       },
       (err) => {
@@ -91,11 +96,6 @@ export class UserComponent implements OnInit {
 
   }
   findReceiverUsername(index){
-    for (let i = 0; i < this.gifts.length; i++){
-      if(this.gifts[i].gifter.id == this.user.id){
-        this.receivers.push(this.gifts[i].receiver);
-      }
-      }
 return this.receivers[index].username
 
 
