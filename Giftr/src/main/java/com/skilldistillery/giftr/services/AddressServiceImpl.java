@@ -79,6 +79,7 @@ public class AddressServiceImpl implements AddressService {
 				if(updateAdd.getEnabled() == true) {
 					if(updateAdd.getStreet() != null) {updateAdd.setStreet(address.getStreet());}
 					if(updateAdd.getStreet2() != null) {updateAdd.setStreet2(address.getStreet2());}
+					if(updateAdd.getCity() != null) {updateAdd.setCity(address.getCity());}
 					if(updateAdd.getCountry() != null) {updateAdd.setCountry(address.getCountry());}
 					if(updateAdd.getZip() != null) {updateAdd.setZip(address.getZip());}
 					if(updateAdd.getStateProvince() != null) {updateAdd.setStateProvince(address.getStateProvince());}

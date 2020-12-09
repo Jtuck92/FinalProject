@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `address` (
   `zip` VARCHAR(45) NULL,
   `state_province` VARCHAR(45) NOT NULL,
   `enabled` TINYINT NULL,
+  `city` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -428,8 +429,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`) VALUES (1, 'Street Name 1', '11', 'USA', '11111', 'CO', 1);
-INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`) VALUES (2, 'Street Name 2', '22', 'USA', '22222', 'CO', 1);
+INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (1, 'Street Name 1', '11', 'USA', '11111', 'CO', 1, 'Denver');
+INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (2, 'Street Name 2', '22', 'USA', '22222', 'CO', 1, 'Lakewood');
 
 COMMIT;
 
@@ -505,8 +506,9 @@ COMMIT;
 START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (1, 12.50, 12, 'New Gift', 1, 1, 1, 2, 5, 'name', 'image');
-INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (2, 12.50, 12, 'New Gift', 1, 1, 2, 1, 4, 'name', NULL);
-INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (3, 12.50, 12, 'New Gift', 1, 2, 2, 1, 4, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (2, 12.50, 12, 'New Gift', 1, 2, 1, 2, 1, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (3, 12.50, 13, 'New Gift', 1, 2, 2, 1, 4, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (4, 12.50, 14, 'New Gift', 1, 3, 1, 2, 5, NULL, NULL);
 
 COMMIT;
 
