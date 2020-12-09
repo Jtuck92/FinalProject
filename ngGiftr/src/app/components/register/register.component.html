@@ -119,6 +119,9 @@
       <label for="street2"><b>Ste/Apt/Unit</b></label>
             <input type="text" placeholder="Enter Ste/Apt#..." name="street2" [(ngModel)]="newAddress.street2" required>
 
+            <label for="city"><b>City</b></label>
+            <input type="text" placeholder="Enter City" name="city" [(ngModel)]="newAddress.city" required>
+
             <label for="country"><b>Country</b></label>
             <select  (change)="findStateList()" id="country" name="country" class="form-control" [(ngModel)]="selectedCountry" [(ngModel)]="newAddress.country"  >
               <option  *ngFor="let c of countries ; index as i">{{c.country}}</option>
