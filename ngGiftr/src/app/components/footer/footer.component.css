@@ -30,6 +30,8 @@
 
 .page-footer {
   border-top: 1px solid rgb(53, 203, 233);
+  margin-bottom: -100px;
+  margin: 10px;
 }
 
 #footerDiv{
