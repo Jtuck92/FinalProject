@@ -95,6 +95,8 @@ export class UserComponent implements OnInit {
     this.router.navigateByUrl("/gallery");
 
   }
+
+
   findReceiverUsername(index){
 return this.receivers[index].username
 
