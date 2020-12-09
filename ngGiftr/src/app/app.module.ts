@@ -33,6 +33,8 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { PastEventsComponent } from './components/past-events/past-events.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { ActivePipe } from './pipes/active.pipe';
+import { DisabledPipe } from './pipes/disabled.pipe';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { EventDetailsComponent } from './components/event-details/event-details.
     PastEventsComponent,
     FaqComponent,
     EventDetailsComponent,
+    ActivePipe,
+    DisabledPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
