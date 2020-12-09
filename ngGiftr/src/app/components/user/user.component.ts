@@ -27,6 +27,7 @@ export class UserComponent implements OnInit {
   user: User = null;
   gifts: Gift [];
   userEvents: Event [];
+  receivers: User [] = [];
 
   ngOnInit(): void {
     this.loadPrivateEvents();
@@ -89,17 +90,16 @@ export class UserComponent implements OnInit {
     this.router.navigateByUrl("/gallery");
 
   }
-  findReceiver(index){
-
-    for (let i = 0; i < this.gifts.length; i++) {
+  findReceiverUsername(index){
+    for (let i = 0; i < this.gifts.length; i++){
       if(this.gifts[i].gifter.id == this.user.id){
-       return this.gifts[index].receiver.username;
-
+        this.receivers.push(this.gifts[i].receiver);
       }
+      }
+return this.receivers[index].username
 
 
 
-    }
   }
 //   eventDetails(workout){
 // this.selected = workout
