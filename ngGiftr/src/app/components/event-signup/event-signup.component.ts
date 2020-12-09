@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { GiftService } from './../../service/gift.service';
 import { BudgetService } from './../../service/budget.service';
 import { Budget } from './../../models/budget';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +8,9 @@ import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Event } from './../../models/event';
+import { create } from 'domain';
+import { Gift } from 'src/app/models/gift';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-event-signup',
@@ -18,7 +23,9 @@ export class EventSignupComponent implements OnInit {
     private pEventSrv: PrivateEventService,
     private auth: AuthService,
     private router: Router,
-    private budgetsSvc: BudgetService
+    private budgetsSvc: BudgetService,
+    private giftSvc: GiftService,
+    private userSrv: UserService
   ) {}
 
   events: Event[];
@@ -26,6 +33,10 @@ export class EventSignupComponent implements OnInit {
   idString = null;
   loggedIn = false;
   budgets: Budget[];
+  gift: Gift = new Gift();
+  user: User = null;
+  stringId = '';
+  numUserId = 0;
 
   ngOnInit(): void {
     if (this.auth.checkLogin) {
@@ -39,7 +50,7 @@ export class EventSignupComponent implements OnInit {
       (data) => {
         this.selected = data;
         console.log(this.selected);
-        localStorage.removeItem('event');
+        // localStorage.removeItem('event');
       },
       (err) => {
         this.router.navigateByUrl('notFound');
@@ -49,9 +60,38 @@ export class EventSignupComponent implements OnInit {
   catch(error) {
     this.router.navigateByUrl('notFound');
   }
+
   pEventSignupDone() {
-    localStorage.setItem('event', '' + this.selected.id);
-    this.router.navigateByUrl('profile');
+    this.gift.event = this.selected;
+    console.log(this.gift.event);
+    this.stringId = localStorage.getItem('userId');
+    console.log(this.stringId);
+    this.numUserId = parseInt(this.stringId);
+    console.log(this.numUserId);
+
+    this.userSrv.show(this.numUserId).subscribe(
+      (data) => {
+        this.user = data;
+        console.log('Inside Show');
+        console.log(this.user);
+        this.gift.gifter = this.user; //TODO find user
+        this.giftSvc.create(this.gift).subscribe(
+          (data) => {
+            this.gift = data;
+            console.log(this.gift);
+          },
+          (err) => {
+            this.router.navigateByUrl('notFound');
+          }
+        );
+
+        this.router.navigateByUrl('profile');
+      },
+      (err) => {
+        console.error('User retrive failed');
+      }
+    );
+    console.log('After Show');
   }
 
   loadBudgets(): void {
