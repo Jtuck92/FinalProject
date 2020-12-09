@@ -28,7 +28,6 @@ export class UserComponent implements OnInit {
   gifts: Gift [];
 
   ngOnInit(): void {
-    this.loadEvents();
     this.loadPrivateEvents();
     this.loadGifts();
   }
@@ -54,7 +53,6 @@ export class UserComponent implements OnInit {
       this.giftSrv.index().subscribe(
         (data) => {
           this.gifts = data;
-          console.log(this.gifts);
           this.loadPersonalEventList();
       },
       (err) => {
@@ -64,19 +62,6 @@ export class UserComponent implements OnInit {
     );
   }
 
-    loadEvents(): void {
-      this.eventSvc.index().subscribe(
-        (data) => {
-          this.events = data;
-          console.log(this.events);
-          this.loadPersonalEventList();
-      },
-      (err) => {
-        console.error('Events retrive failed');
-
-      }
-    );
-  }
 
   loadPrivateEvents(): void {
     this.pEventSrv.index().subscribe(
