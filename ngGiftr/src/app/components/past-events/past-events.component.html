@@ -2,7 +2,7 @@
 
   <div id="homeEvents">
     <ul id="horizontal-list">
-      <li *ngFor="let event of events">
+      <li *ngFor="let event of events | disabled">
         <div id="eventCard">
           <div class="card h-100" style="width: auto">
             <h5 id="homeHeader" class="card-header">
