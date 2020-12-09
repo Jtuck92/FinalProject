@@ -16,7 +16,7 @@ placeholder="{{this.currentRoute.snapshot.paramMap.get('param')}}"
     <th class="text-right">Giftr Range</th>
   </tr>
   <tr (click)="goToEventDetails(e)"
-    *ngFor="let e of events | filter : 'description' : searchString; let i = index"
+    *ngFor="let e of events | filter : 'name' : 'description' : searchString; let i = index"
   >
   <td class="text-center data" ><img src="{{e.imageUrl}}" alt="" height="100px" width="100px"></td>
     <td class="text-left data">
