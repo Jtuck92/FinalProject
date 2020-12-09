@@ -99,11 +99,32 @@ export class UserComponent implements OnInit {
 
   findReceiverUsername(index){
 return this.receivers[index].username
+  }
+  findReceiverAddressStreet(index){
+    console.log(this.receivers[index]);
 
 
+return this.receivers[index].address.street
 
   }
-//   eventDetails(workout){
+  findReceiverAddressStreet2(index){
+    console.log([index]);
+return "Ste/Apt/Unit: " + this.receivers[index].address.street2
+  }
+  findReceiverAddressCity(index){
+    console.log([index]);
+return this.receivers[index].address.city+ ", "
+  }
+  findReceiverAddressState(index){
+return this.receivers[index].address.stateProvince + " "
+  }
+  findReceiverAddressCountry(index){
+return this.receivers[index].address.country
+  }
+  findReceiverAddressZip(index){
+return this.receivers[index].address.zip
+  }
+  //   eventDetails(workout){
 // this.selected = workout
 //   }
 

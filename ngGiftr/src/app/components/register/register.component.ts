@@ -821,18 +821,12 @@ this.errors = [];
 if(this.newUser.password.length < 8){
   this.passErrors.push("Your Password must contain 8 Characters")
 }
-if(
-  !this.newUser.password.includes("1") ||
-  !this.newUser.password.includes("2") ||
-  !this.newUser.password.includes("3") ||
-  !this.newUser.password.includes("4") ||
-  !this.newUser.password.includes("5") ||
-  !this.newUser.password.includes("6") ||
-  !this.newUser.password.includes("7") ||
-  !this.newUser.password.includes("8") ||
-  !this.newUser.password.includes("9") ||
-  !this.newUser.password.includes("0")
-  ){
+console.log(this.newUser.password);
+
+var reg = new RegExp('[0-9]');
+
+if(!reg.test(this.newUser.password))
+{
     this.passErrors.push("Your password must contain a numeric 0-9")
   }
 if(this.psw2 != this.newUser.password){

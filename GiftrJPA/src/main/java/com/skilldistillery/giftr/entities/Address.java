@@ -19,6 +19,7 @@ public class Address {
 	private int id;
 	private String street;
 	private String street2;
+	private String city;
 	private String country;
 	private String zip;
 	
@@ -40,6 +41,14 @@ public class Address {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public List<Payment> getPayments() {
@@ -139,9 +148,12 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "AddressTest [id=" + id + ", street=" + street + ", street2=" + street2 + ", country=" + country
-				+ ", zip=" + zip + ", stateProvince=" + stateProvince + ", enabled=" + enabled + "]";
+		return "Address [id=" + id + ", street=" + street + ", street2=" + street2 + ", city=" + city + ", country="
+				+ country + ", zip=" + zip + ", stateProvince=" + stateProvince + ", enabled=" + enabled + ", users="
+				+ users + ", payments=" + payments + "]";
 	}
+
+
 	
 	
 	
