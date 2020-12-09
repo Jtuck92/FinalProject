@@ -1,1 +1,32 @@
-<p>past-events works!</p>
+<h3 id="homeHeader">Past Giftrs</h3>
+
+  <div id="homeEvents">
+    <ul id="horizontal-list">
+      <li *ngFor="let event of events">
+        <div id="eventCard">
+          <div class="card h-100" style="width: auto">
+            <h5 id="homeHeader" class="card-header">
+              <i class="far fa-clipboard"></i> {{ event.name }}
+            </h5>
+            <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
+            <div class="card-body">
+              <div class="text-div">
+                <div (click)="eventResult(event)" class="card-text">
+                  <img id="cardImg" src="{{event.imageUrl}}" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div id="homeHeader" class="card-footer social-icons">
+              <input
+                (click)="eventResult(event)"
+                class="btn"
+                type="submit"
+                value="Sign Up"
+              />
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
