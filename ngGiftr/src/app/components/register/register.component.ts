@@ -785,6 +785,7 @@ export class RegisterComponent implements OnInit {
   }
 ];
 passErrors = ["Your Password must contain 8 Characters", "Your password must contain a numeric 0-9"];
+user: User = null;
 constructor(private auth: AuthService, private router: Router, private aServ: AddressService) { }
 
 ngOnInit(): void {
@@ -852,7 +853,8 @@ if(this.errors.length == 0 && this.passErrors.length == 0){
 
       this.auth.register(this.newUser).subscribe(
         data => {
-
+            this.user = data;
+            localStorage.setItem("userId", "" + this.user.id);
           console.log('RegisterComponent.register(): user registered.');
 
 

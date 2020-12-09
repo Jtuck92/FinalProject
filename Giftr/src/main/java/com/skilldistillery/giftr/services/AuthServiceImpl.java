@@ -30,7 +30,6 @@ public class AuthServiceImpl implements AuthService {
 
 	@Override
 	public User getUser(String username) {
-
 		return userRepo.findByUsername(username);
 	}
 

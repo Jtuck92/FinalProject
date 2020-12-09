@@ -11,7 +11,7 @@ import { User } from '../models/user';
 export class AuthService {
   private baseUrl = environment.baseUrl;
   isHomePage: boolean;
-
+  user: User = null;
   constructor(
     private http: HttpClient
   ) { }
@@ -35,6 +35,10 @@ export class AuthService {
       .get<User>(this.baseUrl + 'authenticate', httpOptions)
       .pipe(
         tap((res) => {
+          this.user = res;
+
+
+          localStorage.setItem('userId' , "" + this.user.id);
           localStorage.setItem('credentials' , credentials);
           return res;
         }),
@@ -62,6 +66,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('credentials');
+    localStorage.removeItem('userId');
   }
 
 isHomePageComponent(home: boolean){

@@ -1,12 +1,13 @@
+import { User } from 'src/app/models/user';
 export class Gift {
   id: number;
   price: number;
   weight: number;
-  description: string;
+  description: String;
   enabled: boolean;
-  eventId: number;
-  gifterId: number;
-  receiverId: number;
+  event: Event;
+  gifter: User;
+  receiver: User;
   rating: number;
   name: string;
   imageUrl: string;
@@ -17,9 +18,9 @@ export class Gift {
     weight?: number,
     description?: string,
     enabled?: boolean,
-    eventId?: number,
-    gifterId?: number,
-    receiverId?: number,
+    event?: Event,
+    gifter?: User,
+    receiver?: User,
     rating?: number,
     name?: string,
     imageUrl?: string
@@ -29,9 +30,9 @@ export class Gift {
     this.weight = weight;
     this.description = description;
     this.enabled = enabled;
-    this.eventId = eventId;
-    this.gifterId = gifterId;
-    this.receiverId = receiverId;
+    this.event = event;
+    this.gifter = gifter;
+    this.receiver = receiver;
     this.rating = rating;
     this.name = name;
     this.imageUrl = imageUrl;

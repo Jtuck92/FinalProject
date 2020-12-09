@@ -35,6 +35,8 @@ import { FaqComponent } from './components/faq/faq.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import { ActivePipe } from './pipes/active.pipe';
 import { DisabledPipe } from './pipes/disabled.pipe';
+import { UserEventsPipe } from './pipes/user-events.pipe';
+import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { DisabledPipe } from './pipes/disabled.pipe';
     EventDetailsComponent,
     ActivePipe,
     DisabledPipe,
+    UserEventsPipe,
+    UserPrvEventsPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
@@ -69,7 +73,11 @@ import { DisabledPipe } from './pipes/disabled.pipe';
     PrivateCommentService,
     PrivateEventService,
     PrivatePostService,
-    UserService
+    UserService,
+    UserEventsPipe,
+    ActivePipe,
+    DisabledPipe,
+    UserPrvEventsPipe
   ],
   bootstrap: [AppComponent],
 })
