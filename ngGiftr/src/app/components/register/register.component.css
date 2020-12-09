@@ -13,33 +13,16 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
 
-/* Set a style for all buttons */
-button {
-  padding: 14px 20px;
-  margin: 8px 0;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
 
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-}
 
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
   float: left;
-  width: 50%;
 }
 
 /* Add padding to container elements */
 .container {
-  padding: 16px;
+  padding: 1px;
 }
 
 /* The Modal (background) */
@@ -103,49 +86,30 @@ hr {
   color: red;
 font-weight: bolder;
 }
-
-#message {
-  display:none;
-  background: #f1f1f1;
-  color: #000;
-  position: relative;
-  padding: 20px;
-  margin-top: 10px;
+#logo{
+  text-align: left;
+  display: inline-block;
 }
 
-#message {
-  display:none;
-  background: #f1f1f1;
-  color: #000;
-  position: relative;
-  padding: 20px;
-  margin-top: 10px;
+h3{
+  background-color: #35cbe9;
+  width: 100%;
+  float: right;
 }
 
-#message p {
-  padding: 10px 35px;
-  font-size: 18px;
+.collage
+{
+  display: inline-block;
+  height: 300px;
+    width: 30%;
 }
 
-/* Add a green text color and a checkmark when the requirements are right */
-.valid {
-  color: green;
+.collage img:nth-child(odd)
+{
+  transform: rotateY(0deg) rotate(-30deg);
 }
-
-.valid:before {
-  position: relative;
-  left: -35px;
-  content: "✔";
-}
-
-/* Add a red text color and an "x" when the requirements are wrong */
-.invalid {
-  color: red;
-}
-
-.invalid:before {
-  position: relative;
-  left: -35px;
-  content: "✖";
+.collage img:nth-child(even)
+{
+  transform: rotateY(0deg) rotate(30deg);
 }
 

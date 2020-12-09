@@ -791,6 +791,10 @@ ngOnInit(): void {
   this.auth.isHomePageComponent(true);
 }
 
+goToLogin(){
+  this.router.navigateByUrl("login")
+}
+
 findStateList(){
   let index = this.findIndexOfCountry();
   console.log(index);
@@ -882,5 +886,6 @@ if(this.errors.length == 0 && this.passErrors.length == 0){
 
 
 }
+
 
 
