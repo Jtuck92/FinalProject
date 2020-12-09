@@ -15,7 +15,8 @@ backbutton on page
   <thead class="col">
     <tr class="col">
       <th class="col">Event</th>
-      <th class="col">Description</th>
+      <th class="col">Start Date</th>
+      <th class="col">End Date</th>
       <th class="col">Receiver</th>
       <th class="col">Address to Send</th>
     </tr>
@@ -23,8 +24,9 @@ backbutton on page
   <tbody class="center">
     <tr class="col" (click)="event" (click)="eventResult(event)" *ngFor=" let event of events "
     >
-      <td class="col" id="homeList" >{{event.name}}</td>
-      <td  class="col" id="homeList" > {{event.description}}</td>
+      <td class="col"  id="homeList">{{event.name}}</td>
+      <td  class="col"  id="homeList"> {{event.startDate}}</td>
+      <td  class="col"  id="homeList"> {{event.endDate}}</td>
 
 
 
