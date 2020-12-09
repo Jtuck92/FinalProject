@@ -4,35 +4,56 @@
 
 
 </div>
-<div style="text-align: center; display: inline-block;">
-<button class="btn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Create An Account</button>
+<div class="header" style="text-align: center; display: inline-block;">
+<button class="btn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register An Account</button>
 <br><br>
 <h3>Why become a part of the Giftr community?</h3>
-
-
-
-
-
-
-
-
-
-
+<div id="faqDiv">
+  <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0, ngb-panel-1, ngb-panel-2, ngb-panel-3, ngb-panel-4, ngb-panel-5, ngb-panel-6  ">
+    <ngb-panel title="Not just a Secret Santa. We call them Giftrs for a reason.">
+      <ng-template ngbPanelContent>
+        Sure, like Santa Clause, we get a lot more attention come November and December, but we offer many different themed Giftrs you can participate in throughout the year! Giftrs aren't just for the holidays. Sometimes you are just in the giving spirit or would love to get that nervous, excited feeling of not knowing what you might receive in return. Whatever your motivation, we'll keep a Giftr open for you to participate in.
+      </ng-template>
+    </ngb-panel>
+        <ngb-panel title="Enter Giftrs with other participants from around the globe.">
+          <ng-template ngbPanelContent>
+            Click one of our register buttons to create an account and choose the event you want to participate in! Once you select an event, go to your profile to see where to send the gift! Join with other participants from nearby or choose one of our global Giftrs and interact with other Giftr enthusiasts from around the world!
+          </ng-template>
+        </ngb-panel>
+    <ngb-panel title="Create your own Giftrs to share with just a group of friends or co-workers.">
+      <ng-template ngbPanelContent>
+        You are only able to give and recieve one gift per Giftr but nothing is stopping you from joining as many Giftrs as you can handle. Even create you own personal group Giftr and invite your friends and family using our easy-to-use invite feature.
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Giftrs for all price points. Only enter a Giftr you are comfortable with.">
+      <ng-template ngbPanelContent>
+        There is no age limit to participate. We only ask that you put time and effort into your gift! We will close signups and Giftr's own matching algorithm will choose who you should send a gift to. When you receive a gift, we'd love for you to come back here and share your Giftr experience. Maybe with a note, hopefully with photos! Knowing how awesome the Giftr community is inspires us and will only fuel bigger and better Giftrs in the future.
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Anonymously rate the gifts you and others recieve on our public forum.">
+      <ng-template ngbPanelContent>
+        Visit our <a href="gallery">gallery</a> to check out the amazing gifts that you and others have sent during Giftrs recent and past. This is where you get to show off the spoils of your most recent Giftr. Comment on how your Giftr was the greatest ever and how you can't wait to participate in the next one!
+      </ng-template>
+    </ngb-panel>
+                                                  <ngb-panel title="What is a Giftr?">
+                                                    <ng-template ngbPanelContent>
+                                                      Ever wanted to participate in Secret Santa, but never had a big enough group to participate with? A Giftr gives
+                                                      you the option with giving gifts to anyone else participating! You are not only limited to Secret Santa, but any other
+                                                      themed events that we also host! These events are what we affectionately call Giftrs. Giftrs come in all themes and times of the year. Don't limit your giving spirit to just a couple months of the year. Use Giftrs to keep that excitement going year round!
+                                                    </ng-template>
+                                                  </ngb-panel>
+  </ngb-accordion>
+</div>
+<button class="btn" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register An Account</button>
 </div>
 <div class="collage">
   <img src="/assets/package3.png" alt="">
+  <img src="/assets/package4.png" alt="">
   <img src="/assets/Package1.png" alt="">
   <img src="/assets/package2.png" alt="">
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 
 
