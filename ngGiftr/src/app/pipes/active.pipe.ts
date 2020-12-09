@@ -5,7 +5,7 @@ import { Event } from './../models/event';
 })
 export class ActivePipe implements PipeTransform {
 
-  transform(fullList: Event []): Event[] {
+  transform(fullList: any []): any[] {
     const results = []
    for (let i = 0; i< fullList.length; i++){
      if(fullList[i].enabled) {
