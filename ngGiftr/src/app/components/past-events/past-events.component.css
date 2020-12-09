@@ -17,18 +17,23 @@ text-decoration: underline;
   margin-top: 100px;
 }
 
-	ul#horizontal-list li {
+.text-div:hover img {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+ul#horizontal-list li {
     display: inline-block;
 
 
   }
-  ul#horizontal-list li {
+ul#horizontal-list li {
     margin-right: 40px;
   }
-  .btn{
+.btn{
     border-color: #fff07e;
   }
-  .btn:hover{
+.btn:hover{
     background-color: #fff07e;
   }
 h3, #homeDescription, .homeTitle{
