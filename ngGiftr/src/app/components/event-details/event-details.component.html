@@ -2,7 +2,7 @@
   <h1> {{ selected.name }}</h1>
 <img class="eventImg" src="{{selected.imageUrl}}" alt="">
 <div class="btnDiv">
-<button
+<button *ngIf="selected.enabled"
   (click)="pEventSignup()"
   class="btn"
   type="submit"
