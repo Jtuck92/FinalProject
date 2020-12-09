@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Event } from './../../models/event';
 import { EventPostService } from 'src/app/service/event-post.service';
 import { EventService } from 'src/app/service/event.service';
 import { UserService } from 'src/app/service/user.service';
