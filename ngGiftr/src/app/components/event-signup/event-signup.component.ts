@@ -1,29 +1,29 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Event } from './../../models/event';
 
 @Component({
-  selector: 'app-event-details',
-  templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.css'],
+  selector: 'app-event-signup',
+  templateUrl: './event-signup.component.html',
+  styleUrls: ['./event-signup.component.css']
 })
-export class EventDetailsComponent implements OnInit {
-  constructor(
-    private eventSvc: EventService,
+export class EventSignupComponent implements OnInit {
+
+  constructor(    private eventSvc: EventService,
     private pEventSrv: PrivateEventService,
     private auth: AuthService,
-    private router: Router
-  ) {}
-  events: Event[];
-  selected: Event = new Event();
-  idString = null;
-  loggedIn = false;
+    private router: Router) { }
+
+    events: Event[];
+    selected: Event = new Event();
+    idString = null;
+    loggedIn = false;
 
   ngOnInit(): void {
-    if (this.auth.checkLogin) {
+if(this.auth.checkLogin){
       this.loggedIn = true;
     }
     console.log(this.selected);
@@ -35,17 +35,20 @@ export class EventDetailsComponent implements OnInit {
         this.selected = data;
         console.log(this.selected);
         localStorage.removeItem('event');
+
       },
       (err) => {
         this.router.navigateByUrl('notFound');
       }
     );
+
   }
   catch(error) {
     this.router.navigateByUrl('notFound');
   }
-  pEventSignup() {
+  pEventSignupDone() {
     localStorage.setItem('event' , "" + this.selected.id);
-    this.router.navigateByUrl('eventSignup');
+    this.router.navigateByUrl('profile');
   }
 }
+

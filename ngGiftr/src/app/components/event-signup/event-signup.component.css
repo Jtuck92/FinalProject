@@ -1,4 +1,4 @@
-h3, h1{
+#h3, h1{
   text-align: center;
 }
 h5{
@@ -23,8 +23,8 @@ margin-left: 2%;
   margin-left: 5%;
   margin-right: 5%;
 }
-.btnDiv{
-  text-align: center;
-
+.radio{
+  text-align: left;
+  margin-left: 24%;
 
 }
