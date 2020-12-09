@@ -37,6 +37,7 @@ import { ActivePipe } from './pipes/active.pipe';
 import { DisabledPipe } from './pipes/disabled.pipe';
 import { UserEventsPipe } from './pipes/user-events.pipe';
 import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
     DisabledPipe,
     UserEventsPipe,
     UserPrvEventsPipe,
+    PostComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
