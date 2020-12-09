@@ -20,7 +20,7 @@
 .form-control{
   width: 12%;
   position: fixed;
-  top: 4.7%;
+  top: 26px;
   left: 44%;
   z-index: 1;
 
@@ -28,7 +28,7 @@
   }
   .form-control-button{
     position: fixed;
-    top: 4.7%;
+    top: 26px;
     left: 57%;
     z-index: 1;
 
