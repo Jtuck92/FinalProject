@@ -506,6 +506,7 @@ START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (1, 12.50, 12, 'New Gift', 1, 1, 1, 2, 5, 'name', 'image');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (2, 12.50, 12, 'New Gift', 1, 1, 2, 1, 4, 'name', NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`) VALUES (3, 12.50, 12, 'New Gift', 1, 2, 2, 1, 4, NULL, NULL);
 
 COMMIT;
 
