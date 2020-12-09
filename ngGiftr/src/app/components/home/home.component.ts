@@ -15,7 +15,7 @@ import { PrivateEventService } from 'src/app/service/private-event.service';
 export class HomeComponent implements OnInit {
 
   constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService, private router: Router) { }
-events: Event[];
+events: Event[] = [];
 selected: Event = null;
 
   ngOnInit(): void {

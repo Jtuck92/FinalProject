@@ -18,7 +18,7 @@ export class EventDetailsComponent implements OnInit {
     private router: Router
   ) {}
   events: Event[];
-  selected: Event = null;
+  selected: Event = new Event();
   idString = null;
   loggedIn = false;
 

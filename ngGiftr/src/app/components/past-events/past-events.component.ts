@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
+import { Event } from './../../models/event';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 
 @Component({
@@ -13,8 +14,8 @@ export class PastEventsComponent implements OnInit {
 
   constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService, private router: Router) { }
 
-  events: Event[];
-  selected: Event = null;
+  events: Event[] = [];
+  selected: Event = new Event();
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
