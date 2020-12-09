@@ -1,9 +1,14 @@
 .form-control{
-width: 195px;
+width: 12%;
 position: fixed;
-top: 26px;
+top: 4.7%;
 left: 44%;
 z-index: 1;
 
 
+}
+
+.data:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }

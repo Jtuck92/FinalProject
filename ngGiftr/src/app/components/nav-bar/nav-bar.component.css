@@ -17,3 +17,20 @@
 .btn:hover{
   background-color: #fff07e;
 }
+.form-control{
+  width: 12%;
+  position: fixed;
+  top: 4.7%;
+  left: 44%;
+  z-index: 1;
+
+
+  }
+  .form-control-button{
+    position: fixed;
+    top: 4.7%;
+    left: 57%;
+    z-index: 1;
+
+
+    }

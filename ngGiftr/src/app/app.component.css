@@ -1,4 +1,5 @@
 router-outlet {
+  overflow: scroll;
   position: relative;
   min-height: 100vh;
 }

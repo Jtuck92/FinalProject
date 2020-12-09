@@ -18,19 +18,34 @@ export class SearchResultsComponent implements OnInit {
   foodItem: FoodItem;
   searchString: string;
   formGroup: FormGroup;
+  selected = new Event();
+  formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  })
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
     this.getEvents();
     this.searchString = this.currentRoute.snapshot.paramMap.get('param');
   }
-  constructor(private formBuilder: FormBuilder, private eventSvc: EventService, public currentRoute: ActivatedRoute, private auth: AuthService) {
+  constructor(private formBuilder: FormBuilder, private eventSvc: EventService, public currentRoute: ActivatedRoute, private auth: AuthService, private router: Router) {
     this.formGroup = formBuilder.group({ filter: [''] });
 
 
 
   }
 
+  goToEventDetails(event){
+    this.selected = event;
+    localStorage.setItem('event' , "" + this.selected.id);
+    this.router.navigateByUrl("/eventDetails");
+  }
+
+  formatCurrency(num: number){
+    return this.formatter.format(num);
+  }
 
   private getEvents() {
     this.eventSvc.index().subscribe(

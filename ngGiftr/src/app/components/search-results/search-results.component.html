@@ -6,8 +6,8 @@ name="searchString"
 placeholder="{{this.currentRoute.snapshot.paramMap.get('param')}}"
 [(ngModel)]="searchString"
 />
-
-
+<div class="content">
+<div style="text-align: center; margin-left: 25%; margin-right: 25%;">
 <table class="table">
   <tr>
     <th></th>
@@ -15,12 +15,16 @@ placeholder="{{this.currentRoute.snapshot.paramMap.get('param')}}"
     <th>Start Date</th>
     <th class="text-right">Giftr Range</th>
   </tr>
-  <tr
+  <tr (click)="goToEventDetails(e)"
     *ngFor="let e of events | filter : 'description' : searchString; let i = index"
   >
-    <td class="text-left">
+  <td class="text-center data" ><img src="{{e.imageUrl}}" alt="" height="100px" width="100px"></td>
+    <td class="text-left data">
       {{e.name}}
     </td>
-    // ...
+    <td class="data">{{e.startDate}}</td>
+    <td class="text-right data">{{formatCurrency(e.budget.lowPrice)}} - {{formatCurrency(e.budget.highPrice)}}</td>
   </tr>
 </table>
+</div>
+</div>

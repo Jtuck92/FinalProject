@@ -15,7 +15,7 @@
       </ul>
       <form *ngIf="isCollapsed" class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" [(ngModel)]="search" name="search"  type="search" placeholder="Search" aria-label="Search">
-        <button class="btn" type="submit" href="/search" (click)="searchResult()">Search</button>
+        <button class="btn form-control-button" type="submit" href="/search" (click)="searchResult()">Search</button>
       </form>
       <ul *ngIf="isCollapsed" class="navbar-nav ml-auto mt-2 mt-lg-0">
         <li *ngIf="checkUserLoggedIn() == false"  class="nav-item">
