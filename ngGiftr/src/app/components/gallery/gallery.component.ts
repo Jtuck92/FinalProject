@@ -1,3 +1,6 @@
+import { AuthService } from 'src/app/service/auth.service';
+import { UserEventsPipe } from './../../pipes/user-events.pipe';
+import { GiftService } from './../../service/gift.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Event } from './../../models/event';
@@ -13,8 +16,23 @@ import { User } from './../../models/user';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
+  stringId: string;
+  numUserId: number;
+  userSrv: any;
+  user: any;
+  gifts: any;
+  receivers: any;
+  uEPipe: any;
+  giftSrv: any;
 
-  constructor(private userSvc: UserService, private eventSvc: EventService, private eventPostSvc: EventPostService, private router: Router) { }
+  constructor(private userSvc: UserService,
+    private eventSvc: EventService,
+    private eventPostSvc: EventPostService,
+    private giftSvc: GiftService,
+    private userEventsPipe: UserEventsPipe,
+    private auth: AuthService,
+    private router: Router) { }
+
     users: User[] = [];
     selectedUser: User = null;
     events: Event[] = [];
@@ -22,9 +40,13 @@ export class GalleryComponent implements OnInit {
     eventPosts: EventPost[] = [];
     selectedEventPost: Event = null;
 
+
+    newImageUrl: string = "";
+
   ngOnInit(): void {
+    this.auth.isHomePageComponent(true);
     this.loadUsers();
-    this.loadEvents();
+    this.loadGifts();
     this.loadEventPosts();
   }
   loadUsers(): void {
@@ -43,14 +65,33 @@ export class GalleryComponent implements OnInit {
     localStorage.setItem('user', "" + this.selectedUser.id);
     this.router.navigateByUrl("/users");
   }
-  loadEvents(): void {
-    this.eventSvc.index().subscribe(
+  loadPersonalEventList() {
+    this.stringId = localStorage.getItem('userId');
+
+    this.numUserId = parseInt(this.stringId);
+    this.userSvc.show(this.numUserId).subscribe(
       (data) => {
-        this.events = data;
-        console.log(this.events);
+        this.user = data;
+        for (let i = 0; i < this.gifts.length; i++) {
+          if (this.gifts[i].gifter.id == this.user.id) {
+            this.receivers.push(this.gifts[i].receiver);
+          }
+        }
+        this.events = this.uEPipe.transform(this.gifts, this.user);
       },
       (err) => {
-        console.error('EventComponent.LoadEvent(); retrieve failed');
+        console.error('User retrive failed');
+      }
+    );
+  }
+  loadGifts(): void {
+    this.giftSvc.index().subscribe(
+      (data) => {
+        this.gifts = data;
+        this.loadPersonalEventList();
+      },
+      (err) => {
+        console.error('Gifts retrive failed');
       }
     );
   }
@@ -62,6 +103,7 @@ export class GalleryComponent implements OnInit {
   loadEventPosts(): void {
     this.eventPostSvc.index().subscribe(
       (data) => {
+        console.log(data);
         this.eventPosts = data;
         console.log(this.eventPosts);
       },
@@ -74,5 +116,8 @@ export class GalleryComponent implements OnInit {
     this.selectedEventPost = eventPost;
     localStorage.setItem('eventPost', "" + this.selectedEventPost);
     this.router.navigateByUrl("/eventPosts");
+  }
+  addImageUrl(url: string){
+  // TODO
   }
 }

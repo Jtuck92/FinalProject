@@ -1,3 +1,4 @@
+import { MessageBoardComponent } from './components/message-board/message-board.component';
 import { UserComponent } from './components/user/user.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'eventDetails', component: EventDetailsComponent },
   { path: 'pastEvents', component: PastEventsComponent }, //TODO PAST EVENT COMPONENT
-  {path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'post/:id', component: MessageBoardComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
