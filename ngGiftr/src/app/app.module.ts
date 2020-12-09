@@ -40,6 +40,7 @@ import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { PostComponent } from './components/post/post.component';
 import { EventSignupComponent } from './components/event-signup/event-signup.component';
+import { MessageBoardComponent } from './components/message-board/message-board.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { EventSignupComponent } from './components/event-signup/event-signup.com
     FilterPipe,
 
     EventSignupComponent,
-    PostComponent
+    PostComponent,
+    MessageBoardComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
   providers: [

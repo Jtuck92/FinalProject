@@ -1,27 +1,68 @@
-.row {
+.hero {
+  /* Sizing */
+  margin: 10px;
+  width: 100vw;
+  height: 35vh;
+
+  /* Flexbox stuff */
   display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
+  justify-content: center;
+  align-items: center;
+
+  /* Text styles */
+  text-align: center;
+ /* Background styles */
+  background: url("/assets/herobackground.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
 }
-.column {
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
+
+#homeHeader, #homeEvents, #homeDescription{
+  text-align: center;
 }
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
+#homeEvents{
+  list-style: none;
+}
+
+.text-div {
+  background-color: white;
+}
+
+.text-div:hover img {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+#homeHeader{
+  background-color: rgb(53,203,233);;
+}
+#eventCard{
+  width: 300px;
+  margin-top: 100px;
+}
+	ul#horizontal-list li {
+    display: inline-block;
+
+
+  }
+  ul#horizontal-list li {
+    margin-right: 40px;
+  }
+  .btn{
+    border-color: #fff07e;
+  }
+  .btn:hover{
+    background-color: #fff07e;
+  }
+h3, #homeDescription, .homeTitle{
+  margin-left: 11.5%;
+  margin-right: 11.5%;
+}
+
+#cardImg{
   width: 100%;
-}
-@media screen and (max-width: 800px) {
-  .column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-@media screen and (max-width: 600px) {
-  .column {
-    flex: 100%;
-    max-width: 100%;
-  }
+  height: 20vw;
+  object-fit: cover;
 }
