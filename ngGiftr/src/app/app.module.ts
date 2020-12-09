@@ -37,6 +37,7 @@ import { ActivePipe } from './pipes/active.pipe';
 import { DisabledPipe } from './pipes/disabled.pipe';
 import { UserEventsPipe } from './pipes/user-events.pipe';
 import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
+import { PostComponent } from './components/post/post.component';
 import { EventSignupComponent } from './components/event-signup/event-signup.component';
 
 @NgModule({
@@ -62,6 +63,7 @@ import { EventSignupComponent } from './components/event-signup/event-signup.com
     UserEventsPipe,
     UserPrvEventsPipe,
     EventSignupComponent,
+    PostComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
