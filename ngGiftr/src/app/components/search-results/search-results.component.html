@@ -1,2 +1,26 @@
-<p>{{this.currentRoute.snapshot.paramMap.get('param')}} is the term.</p>
-<!-- dont mind this error. it stil works.-->
+
+<input
+type="text"
+class="form-control"
+name="searchString"
+placeholder="{{this.currentRoute.snapshot.paramMap.get('param')}}"
+[(ngModel)]="searchString"
+/>
+
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Start Date</th>
+    <th class="text-right">Giftr Range</th>
+  </tr>
+  <tr
+    *ngFor="let e of events | filter : 'description' : searchString; let i = index"
+  >
+    <td class="text-left">
+      {{e.name}}
+    </td>
+    // ...
+  </tr>
+</table>

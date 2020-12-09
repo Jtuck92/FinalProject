@@ -817,7 +817,6 @@ goToLogin(){
 
 findStateList(){
   let index = this.findIndexOfCountry();
-  console.log(index);
   this.states = this.countries[index].states;
 
 }
@@ -845,7 +844,6 @@ for(let i = 0; i< this.users.length; i++){
 if(this.newUser.password.length < 8){
   this.passErrors.push("Your Password must contain 8 Characters")
 }
-console.log(this.newUser.password);
 
 var reg = new RegExp('[0-9]');
 
@@ -862,12 +860,9 @@ if(this.psw2 != this.newUser.password){
 if(this.errors.length == 0 && this.passErrors.length == 0){
   this.aServ.create(this.newAddress).subscribe(
     (data) => {
-      console.log(data);
       this.newAddress = data;
-      console.log(this.newAddress);
 
       this.newUser.address = this.newAddress;
-      console.log(this.newAddress);
 
       this.auth.register(this.newUser).subscribe(
         data => {

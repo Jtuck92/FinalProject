@@ -26,7 +26,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { HttpClientModule } from '@angular/common/http';
 import { AddressService } from './service/address.service';
 import { PaymentService } from './service/payment.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './components/footer/footer.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
@@ -37,6 +37,7 @@ import { ActivePipe } from './pipes/active.pipe';
 import { DisabledPipe } from './pipes/disabled.pipe';
 import { UserEventsPipe } from './pipes/user-events.pipe';
 import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -60,8 +61,10 @@ import { UserPrvEventsPipe } from './pipes/user-prv-events.pipe';
     DisabledPipe,
     UserEventsPipe,
     UserPrvEventsPipe,
+    FilterPipe,
+
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
   providers: [
     AddressService,
     BudgetService,
