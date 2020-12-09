@@ -1,7 +1,14 @@
 <div *ngIf="selected" id="homeEvents">
   <h1> {{ selected.name }}</h1>
 <img class="eventImg" src="{{selected.imageUrl}}" alt="">
-
+<div class="btnDiv">
+<button
+  (click)="pEventSignup()"
+  class="btn"
+  type="submit"
+  value=""
+  >Sign up for this Event</button>
+</div>
 </div>
 <br>
 <h3 class="eventDesc">{{selected.description}}<h3>

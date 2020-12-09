@@ -12,11 +12,13 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { PastEventsComponent } from './components/past-events/past-events.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { EventSignupComponent } from './components/event-signup/event-signup.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'gallery', component: GalleryComponent }, //TODO GALLERY COMPONENT
   { path: 'login', component: LoginComponent },
+  { path: 'eventSignup', component: EventSignupComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },

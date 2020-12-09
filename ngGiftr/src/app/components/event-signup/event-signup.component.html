@@ -1,0 +1,63 @@
+<div *ngIf="selected" id="homeEvents">
+  <h1> {{ selected.name }}</h1>
+<img class="eventImg" src="{{selected.imageUrl}}" alt="">
+
+</div>
+<br>
+<h3 id="h3" class="eventDesc">{{selected.description}}<h3>
+  <br>
+<br><br>
+<br>
+  <p> Still have questions? Check out the <a href="/faq" class="btn">FAQ</a> or <a href="/contact" class="btn">Contact Us</a></p>
+<br>
+<br>
+
+<div class="howTo">
+
+  <br>
+  <!-- [(ngModel)]="newWorkout.weight" -->
+  <h3 id="h3" >Notes to help your Gifter</h3>
+  <textarea id="howToPoints"
+  name="notes"
+  id="gifterNotes"
+  cols="60"
+  rows="10"
+  type="text"
+  id="gifterNotes"
+  placeholder="Notes to help your Giftr "
+></textarea>
+<br><br>
+
+<div class="radio">
+<h3>Choose your preferred matching tier.</h3>
+<br>
+<input  type="radio" id="bracket25" name="budget" value="25">
+<label for="male">Sign me up for $25 - $50 bracket</label><br>
+<input type="radio" id="bracket50" name="budget" value="50">
+<label for="female">Sign me up for $50 - $75 bracket</label><br>
+<input type="radio" id="bracket75" name="budget" value="75">
+<label for="other">Sign me up for $75 - $100 bracket
+</label><br>
+<input type="radio" id="bracket100" name="bracket" value="100">
+<label for="other">Sign me up for $100 on up bracket
+</label><br>
+
+
+<br>
+<br>
+<h3>Match me with someone: </h3><br>
+<input type="radio" id="CountryUS" name="countrySelect" value="usa">
+<label for="usa">In my same country</label><br>
+<input type="radio" id="CountryWorld" name="countrySelect" value="world">
+<label for="world">Anywhere in the world</label><br>
+</div>
+<br>
+<button
+  (click)="pEventSignupDone()"
+  class="btn"
+  type="submit"
+  value=""
+  >Sign up for this Event</button>
+  <br>
+  <br>
+</div>
