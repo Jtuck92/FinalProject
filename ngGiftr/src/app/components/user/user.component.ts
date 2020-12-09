@@ -40,9 +40,7 @@ export class UserComponent implements OnInit {
     this.userSrv.show(this.numUserId).subscribe(
       (data) => {
         this.user = data;
-        console.log(this.events);
         this.events = this.uEPipe.transform(this.gifts, this.user);
-        localStorage.removeItem("userId")
       },
       (err) => {
         console.error('User retrive failed');
