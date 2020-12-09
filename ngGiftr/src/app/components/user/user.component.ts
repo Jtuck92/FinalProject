@@ -98,28 +98,48 @@ export class UserComponent implements OnInit {
   }
 
   findReceiverUsername(index) {
+    if(this.receivers[index] == null){
+      return " Check back Soon! "
+    }
     return this.receivers[index].username;
   }
   findReceiverAddressStreet(index) {
     console.log(this.receivers[index]);
-
+    if(this.receivers[index] == null){
+      return ""
+    }
     return this.receivers[index].address.street;
   }
   findReceiverAddressStreet2(index) {
     console.log([index]);
+    if(this.receivers[index] == null){
+      return ""
+    }
     return 'Ste/Apt/Unit: ' + this.receivers[index].address.street2;
   }
   findReceiverAddressCity(index) {
     console.log([index]);
+    if(this.receivers[index] == null){
+      return ""
+    }
     return this.receivers[index].address.city + ', ';
   }
   findReceiverAddressState(index) {
+    if(this.receivers[index] == null){
+      return ""
+    }
     return this.receivers[index].address.stateProvince + ' ';
   }
   findReceiverAddressCountry(index) {
+    if(this.receivers[index] == null){
+      return ""
+    }
     return this.receivers[index].address.country;
   }
   findReceiverAddressZip(index) {
+    if(this.receivers[index] == null){
+      return ""
+    }
     return this.receivers[index].address.zip;
   }
   //   eventDetails(workout){
