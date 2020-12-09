@@ -14,61 +14,65 @@ import { User } from 'src/app/models/user';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService, private giftSrv: GiftService, private router: Router, private uEPipe: UserEventsPipe, private userSrv: UserService) { }
+  constructor(
+    private eventSvc: EventService,
+    private pEventSrv: PrivateEventService,
+    private auth: AuthService,
+    private giftSrv: GiftService,
+    private router: Router,
+    private uEPipe: UserEventsPipe,
+    private userSrv: UserService
+  ) {}
   events: Event[];
   pEvents: PrivateEvent[];
   selected: Event = null;
   pSelected: PrivateEvent = null;
-  stringId = "";
+  stringId = '';
   numUserId = 0;
   user: User = null;
-  gifts: Gift [];
-  userEvents: Event [];
-  receivers: User [] = [];
+  gifts: Gift[];
+  userEvents: Event[];
+  receivers: User[] = [];
 
   ngOnInit(): void {
     this.loadPrivateEvents();
     this.loadGifts();
   }
 
-  loadPersonalEventList(){
-    this.stringId = localStorage.getItem("userId");
+  loadPersonalEventList() {
+    this.stringId = localStorage.getItem('userId');
 
     this.numUserId = parseInt(this.stringId);
     this.userSrv.show(this.numUserId).subscribe(
       (data) => {
         this.user = data;
-        for (let i = 0; i < this.gifts.length; i++){
-          if(this.gifts[i].gifter.id == this.user.id){
+        for (let i = 0; i < this.gifts.length; i++) {
+          if (this.gifts[i].gifter.id == this.user.id) {
             this.receivers.push(this.gifts[i].receiver);
           }
-          }
+        }
         this.events = this.uEPipe.transform(this.gifts, this.user);
       },
       (err) => {
         console.error('User retrive failed');
-
-      }
-      );
-
-    }
-
-    loadGifts(): void {
-      this.giftSrv.index().subscribe(
-        (data) => {
-          this.gifts = data;
-          this.loadPersonalEventList();
-      },
-      (err) => {
-        console.error('Gifts retrive failed');
-
       }
     );
   }
 
+  loadGifts(): void {
+    this.giftSrv.index().subscribe(
+      (data) => {
+        this.gifts = data;
+        this.loadPersonalEventList();
+      },
+      (err) => {
+        console.error('Gifts retrive failed');
+      }
+    );
+  }
 
   loadPrivateEvents(): void {
     this.pEventSrv.index().subscribe(
@@ -78,54 +82,47 @@ export class UserComponent implements OnInit {
       },
       (err) => {
         console.error('Private Events retrive failed');
-
       }
     );
   }
-  eventResult(event){
+  eventResult(event) {
     console.log(event);
 
     this.selected = event;
-    localStorage.setItem('event' , "" + this.selected.id);
-    this.router.navigateByUrl("/eventDetails");
-
+    localStorage.setItem('event', '' + this.selected.id);
+    this.router.navigateByUrl('/eventDetails');
   }
 
-  pEventResult(){
-    this.router.navigateByUrl("/gallery");
-
+  pEventResult() {
+    this.router.navigateByUrl('/gallery');
   }
 
-
-  findReceiverUsername(index){
-return this.receivers[index].username
+  findReceiverUsername(index) {
+    return this.receivers[index].username;
   }
-  findReceiverAddressStreet(index){
+  findReceiverAddressStreet(index) {
     console.log(this.receivers[index]);
 
-
-return this.receivers[index].address.street
-
+    return this.receivers[index].address.street;
   }
-  findReceiverAddressStreet2(index){
+  findReceiverAddressStreet2(index) {
     console.log([index]);
-return "Ste/Apt/Unit: " + this.receivers[index].address.street2
+    return 'Ste/Apt/Unit: ' + this.receivers[index].address.street2;
   }
-  findReceiverAddressCity(index){
+  findReceiverAddressCity(index) {
     console.log([index]);
-return this.receivers[index].address.city+ ", "
+    return this.receivers[index].address.city + ', ';
   }
-  findReceiverAddressState(index){
-return this.receivers[index].address.stateProvince + " "
+  findReceiverAddressState(index) {
+    return this.receivers[index].address.stateProvince + ' ';
   }
-  findReceiverAddressCountry(index){
-return this.receivers[index].address.country
+  findReceiverAddressCountry(index) {
+    return this.receivers[index].address.country;
   }
-  findReceiverAddressZip(index){
-return this.receivers[index].address.zip
+  findReceiverAddressZip(index) {
+    return this.receivers[index].address.zip;
   }
   //   eventDetails(workout){
-// this.selected = workout
-//   }
-
+  // this.selected = workout
+  //   }
 }
