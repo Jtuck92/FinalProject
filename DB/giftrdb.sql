@@ -433,6 +433,7 @@ START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (1, 'Street Name 1', '11', 'USA', '11111', 'CO', 1, 'Denver');
 INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (2, 'Street Name 2', '22', 'USA', '22222', 'CO', 1, 'Lakewood');
+INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (3, 'gifter', 'gifter', 'gifter', '111', 'CO', 1, 'gifter');
 
 COMMIT;
 
@@ -442,9 +443,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (1, '11', '11@giftr.com', '$2a$10$N8jBGxjk4M3fghOgXo2Us.wRZSRStbDtQXtBlqloiG70Kz3gUN1Ke', 1, '11', '11', NULL, NULL, 1, NULL, 'm', NULL);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, '22', '22@giftr.com', '$2a$10$ADCtBZImdUBJMrkIfUIq0.bNfXVqi4Hvu7M0tXyODBc8ueeNZBif6', 1, '22', '22', NULL, NULL, 2, NULL, 'f', NULL);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (3, '33', '33@giftr.com', '$2a$10$qas4NU73vdWMuEGvZ16WrOjRznTeeeA9lYoTcuc2t0gwooif4ghVO', 1, '33', '33', NULL, NULL, 2, NULL, 'm', NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (1, '11', '11@giftr.com', '$2a$10$N8jBGxjk4M3fghOgXo2Us.wRZSRStbDtQXtBlqloiG70Kz3gUN1Ke', 1, '11', '11', NULL, NULL, 1, NULL, 'm', 2);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, '22', '22@giftr.com', '$2a$10$ADCtBZImdUBJMrkIfUIq0.bNfXVqi4Hvu7M0tXyODBc8ueeNZBif6', 1, '22', '22', NULL, NULL, 2, NULL, 'f', 2);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (3, '33', '33@giftr.com', '$2a$10$qas4NU73vdWMuEGvZ16WrOjRznTeeeA9lYoTcuc2t0gwooif4ghVO', 1, '33', '33', NULL, NULL, 2, NULL, 'm', 2);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (4, 'giftr', 'giftr@giftr.com', '$2a$10$n7j.29fHydLG5FCttxC0E.NkrJtr8VonA5wf8nkBrXgrKLmWqzrgm', 1, 'giftr', 'giftr', NULL, NULL, 3, NULL, NULL, 1);
 
 COMMIT;
 
@@ -585,9 +587,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', 'http://3.bp.blogspot.com/-Wv5pmUeecKg/Vmk7__8tB5I/AAAAAAAAHNY/OaTNMzax5Uk/s1600/special-events-1_1_.jpg', NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
-INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (2, 'Cool Wine Glasses', 'https://ctl.s6img.com/society6/img/77Ia9R3Np358ceA9hup-yBttP80/w_700/pillows/~artwork,fw_3501,fh_3501,fx_27,fy_-369,iw_3499,ih_4949/s6-original-art-uploads/society6/uploads/misc/35ae7d401869471c90b5f2ba0d277bb1/~~/giraffe-head1761989-pillows.jpg?wait=0&attempt=0', NULL, NULL, 1, '5', 1, 2, 'Cool Wine Glasses');
-INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (3, 'Best Board Game EVER!', 'https://www.thespruce.com/thmb/w2R2SW6DqAy3W3OdI6uotfznNBM=/850x850/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/_hero_SQ_Catan-Board-Game-1-4e3bc64d68ea4b2d99840e423879cb9f.jpg', NULL, NULL, 1, '5', 1, 1, 'Board Games');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', NULL, NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
 
 COMMIT;
 
