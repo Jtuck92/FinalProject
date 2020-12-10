@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
     private router: Router,
     private auth: AuthService
   ) {}
-  events: Event[];
+  events: Event[] = [];
   receivers: User[] = [];
   selected: Event = null;
 
