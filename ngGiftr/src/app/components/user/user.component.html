@@ -30,7 +30,7 @@ backbutton on page
       <td  class="col"  (click)="eventResult(e)" id="homeList"> {{findReceiverUsername(i)}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{findReceiverAddressStreet(i)}} <br> {{findReceiverAddressStreet2(i)}}
       <br>{{findReceiverAddressCity(i)}}  {{findReceiverAddressState(i)}} {{findReceiverAddressZip(i)}}<br> {{findReceiverAddressCountry(i)}}</td>
-      <td>{{findNote(e,i)}} </td>
+      <td> </td>
       <td *ngIf='!e.enabled'><button
         (click)="removeEvent(e)"
         class="btn"
