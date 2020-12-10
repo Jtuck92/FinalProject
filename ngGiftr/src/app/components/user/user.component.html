@@ -22,14 +22,20 @@ backbutton on page
     </tr>
   </thead>
   <tbody class="center">
-    <tr class="col" (click)="eventResult(e)" *ngFor=" let e of events; let i = index "
+    <tr class="col"  *ngFor=" let e of events; let i = index "
     >
-      <td class="col"  id="homeList">{{e.name}}</td>
-      <td  class="col"  id="homeList"> {{e.startDate}}</td>
-      <td  class="col"  id="homeList"> {{e.endDate}}</td>
-      <td  class="col"  id="homeList"> {{findReceiverUsername(i)}}</td>
-      <td  class="col"  id="homeList"> {{findReceiverAddressStreet(i)}} <br> {{findReceiverAddressStreet2(i)}}
+      <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
+      <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
+      <td  class="col"  (click)="eventResult(e)" id="homeList"> {{findReceiverUsername(i)}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{findReceiverAddressStreet(i)}} <br> {{findReceiverAddressStreet2(i)}}
       <br>{{findReceiverAddressCity(i)}}  {{findReceiverAddressState(i)}} {{findReceiverAddressZip(i)}}<br> {{findReceiverAddressCountry(i)}}</td>
+      <td *ngIf='!e.enabled'><button
+        (click)="removeEvent(e)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Remove</button></td>
       <!-- <td  class="col"  id="homeList"> {{g.receiver.address.street}}</td> -->
 
 

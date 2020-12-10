@@ -62,6 +62,20 @@ export class UserComponent implements OnInit {
     );
   }
 
+  removeEvent(e){
+    this.giftSrv.destroy(e).subscribe(
+      (data) => {
+        this.pEvents = data;
+        console.log(this.pEvents);
+      },
+      (err) => {
+        console.error('Private Events retrive failed');
+      }
+    );
+  }
+
+
+
   loadGifts(): void {
     this.giftSrv.index().subscribe(
       (data) => {
@@ -73,6 +87,7 @@ export class UserComponent implements OnInit {
       }
     );
   }
+
 
   loadPrivateEvents(): void {
     this.pEventSrv.index().subscribe(
