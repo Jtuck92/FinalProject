@@ -39,6 +39,7 @@ export class UserComponent implements OnInit {
   receivers: User[] = [];
   activeGifts: Gift[] = [];
   userGifts: Gift[] = [];
+  notes: String [] = [];
 
   ngOnInit(): void {
     this.loadPrivateEvents();
@@ -64,7 +65,9 @@ export class UserComponent implements OnInit {
         console.error('User retrive failed');
       }
     );
-  }
+ }
+
+
 
   removeEvent(e) {
     for (let i = 0; i < this.gifts.length; i++) {
@@ -85,62 +88,12 @@ export class UserComponent implements OnInit {
     }
   }
 
-  findNote(e, index) {
-    this.userGifts = [];
-    for (let i = 0; i < this.gifts.length; i++) {
-      if (this.gifts[i].gifter.id == this.user.id) {
-        if (e.id == this.gifts[i].event.id) {
-          // console.log("event matched");
-
-          this.userGifts.push(this.gifts[i]);
-          // console.log("user matched");
-        }
-        // console.log(this.userGifts);
-      }
-    }
-    let receivers = [];
-    let notes = [];
-    for (let j = 0; j < this.userGifts.length; j++) {
-      receivers.push(this.userGifts[j].receiver);
-    }
-              // console.log(receivers);
-    // for (let i = 0; i < this.userGifts.length; i++) {
-    //   for (let j = 0; j < receivers.length; j++) {
-    //     if(receivers[j] == null){
-    //       notes.push("");
-    //     }
-    //     else if (this.gifts[i].gifter.id == receivers[j].id) {
-    //       console.log('receiver matched');
-
-    //       notes.push(receivers[j].note);
-    //     }
-    //     console.log(notes);
-    //   }
-    // }
-    //   findReceiverNote(this.gifts[i].id);
-    // }
-
-    //           // for (let j = 0; j < this.gifts.length; j++) {
-    //             //   if (this.gifts[j].gifter.id == receiver.id) {
-    //               //     if (this.gifts[i].event.id == e.id) {
-    //                 //       return this.gifts[j].note;
-    //                 //     }
-    //                 //   }
-    //                 // }
-    //                 console.log(notes);
-
-    //                 return notes[index];
-    //               }
-
-    return '';
-  }
 
   loadGifts(): void {
     this.giftSrv.index().subscribe(
       (data) => {
         this.gifts = data;
         for (let i = 0; i < this.gifts.length; i++) {
-          console.log(this.gifts[i].enabled);
 
           if (this.gifts[i].enabled) {
             this.activeGifts.push(this.gifts[i]);
@@ -158,7 +111,6 @@ export class UserComponent implements OnInit {
     this.pEventSrv.index().subscribe(
       (data) => {
         this.pEvents = data;
-        console.log(this.pEvents);
       },
       (err) => {
         console.error('Private Events retrive failed');
@@ -222,7 +174,5 @@ export class UserComponent implements OnInit {
     }
     return this.receivers[index].address.zip;
   }
-  //   eventDetails(workout){
-  // this.selected = workout
-  //   }
+
 }

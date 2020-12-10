@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="event_comment")
 public class EventComment {
@@ -34,6 +36,7 @@ public class EventComment {
 	
 	private boolean enabled = true;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="event_post_id")
 	private EventPost post;

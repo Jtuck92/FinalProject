@@ -62,36 +62,37 @@ export class EventSignupComponent implements OnInit {
   }
 
   pEventSignupDone() {
-    this.gift.event = this.selected;
-    console.log(this.gift.event);
-    this.stringId = localStorage.getItem('userId');
-    console.log(this.stringId);
-    this.numUserId = parseInt(this.stringId);
-    console.log(this.numUserId);
+      this.gift.event = this.selected;
+      console.log(this.gift.event);
+      this.stringId = localStorage.getItem('userId');
+      console.log(this.stringId);
+      this.numUserId = parseInt(this.stringId);
+      console.log(this.numUserId);
 
-    this.userSrv.show(this.numUserId).subscribe(
-      (data) => {
-        this.user = data;
-        console.log('Inside Show');
-        console.log(this.user);
-        this.gift.gifter = this.user; //TODO find user
-        this.giftSvc.create(this.gift).subscribe(
-          (data) => {
-            this.gift = data;
-            console.log(this.gift);
-          },
-          (err) => {
-            this.router.navigateByUrl('notFound');
-          }
-        );
+      this.userSrv.show(this.numUserId).subscribe(
+        (data) => {
+          this.user = data;
+          console.log('Inside Show');
+          console.log(this.user);
+          this.gift.gifter = this.user; //TODO find user
+          this.giftSvc.create(this.gift).subscribe(
+            (data) => {
+              this.gift = data;
+              console.log(this.gift);
+            },
+            (err) => {
+              this.router.navigateByUrl('notFound');
+            }
+          );
 
-        this.router.navigateByUrl('profile');
-      },
-      (err) => {
-        console.error('User retrive failed');
-      }
-    );
-    console.log('After Show');
+          this.router.navigateByUrl('profile');
+        },
+        (err) => {
+          console.error('User retrive failed');
+        }
+      );
+      console.log('After Show');
+
   }
 
   loadBudgets(): void {
