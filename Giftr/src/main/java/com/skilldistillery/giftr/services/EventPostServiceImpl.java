@@ -45,10 +45,8 @@ public class EventPostServiceImpl implements EventPostService {
 		if(ePOpt.isPresent()) {
 			ep = ePOpt.get();
 			if(ep.isEnabled()) {
-			if (user.getEventPosts().contains(ep)) {
 					return ep;					
 			}
-				}
 			}			
 		}
 		return null;

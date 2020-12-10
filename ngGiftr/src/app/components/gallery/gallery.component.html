@@ -36,7 +36,7 @@
           </h5>
           <div class="card-body">
             <div class="text-div">
-              <div [routerLink]="['/post/' + post.id]" class="btn" type="submit" value="Comments">
+              <div (click)="eventPostResult(post)" class="btn" type="submit" value="Comments">
                 <img id="cardImg" src="{{post.imageUrl}}" alt="">
                 </div>
               </div>
@@ -44,6 +44,6 @@
           </div>
 
           <div id="galleryHeader" class="card-footer social-icons">
-            <input [routerLink]="['/post/' + post.id]" class="btn" type="submit" value="Comments"/>
+            <input (click)="['/post/' + post.id]" class="btn" type="submit" value="Comments"/>
           </div>
 

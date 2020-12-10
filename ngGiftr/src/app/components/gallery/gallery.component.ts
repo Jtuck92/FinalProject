@@ -45,8 +45,8 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
-    this.loadUsers();
-    this.loadGifts();
+    // this.loadUsers();
+    // this.loadGifts();
     this.loadEventPosts();
   }
   loadUsers(): void {
@@ -65,41 +65,41 @@ export class GalleryComponent implements OnInit {
     localStorage.setItem('user', "" + this.selectedUser.id);
     this.router.navigateByUrl("/users");
   }
-  loadPersonalEventList() {
-    this.stringId = localStorage.getItem('userId');
+  // loadPersonalEventList() {
+  //   this.stringId = localStorage.getItem('userId');
 
-    this.numUserId = parseInt(this.stringId);
-    this.userSvc.show(this.numUserId).subscribe(
-      (data) => {
-        this.user = data;
-        for (let i = 0; i < this.gifts.length; i++) {
-          if (this.gifts[i].gifter.id == this.user.id) {
-            this.receivers.push(this.gifts[i].receiver);
-          }
-        }
-        this.events = this.uEPipe.transform(this.gifts, this.user);
-      },
-      (err) => {
-        console.error('User retrive failed');
-      }
-    );
-  }
-  loadGifts(): void {
-    this.giftSvc.index().subscribe(
-      (data) => {
-        this.gifts = data;
-        this.loadPersonalEventList();
-      },
-      (err) => {
-        console.error('Gifts retrive failed');
-      }
-    );
-  }
-  eventResult(event){
-    this.selectedEvent = event;
-    localStorage.setItem('event', "" + this.selectedEvent);
-    this.router.navigateByUrl("/events");
-  }
+  //   this.numUserId = parseInt(this.stringId);
+  //   this.userSvc.show(this.numUserId).subscribe(
+  //     (data) => {
+  //       this.user = data;
+  //       for (let i = 0; i < this.gifts.length; i++) {
+  //         if (this.gifts[i].gifter.id == this.user.id) {
+  //           this.receivers.push(this.gifts[i].receiver);
+  //         }
+  //       }
+  //       this.events = this.uEPipe.transform(this.gifts, this.user);
+  //     },
+  //     (err) => {
+  //       console.error('User retrive failed');
+  //     }
+    // );
+  // }
+  // loadGifts(): void {
+  //   this.giftSvc.index().subscribe(
+  //     (data) => {
+  //       this.gifts = data;
+  //       this.loadPersonalEventList();
+  //     },
+  //     (err) => {
+  //       console.error('Gifts retrive failed');
+  //     }
+  //   );
+  // }
+  // eventResult(event){
+  //   this.selectedEvent = event;
+  //   localStorage.setItem('event', "" + this.selectedEvent);
+  //   this.router.navigateByUrl("/events");
+  // }
   loadEventPosts(): void {
     this.eventPostSvc.index().subscribe(
       (data) => {
@@ -114,8 +114,8 @@ export class GalleryComponent implements OnInit {
   }
   eventPostResult(eventPost){
     this.selectedEventPost = eventPost;
-    localStorage.setItem('eventPost', "" + this.selectedEventPost);
-    this.router.navigateByUrl("/eventPosts");
+    localStorage.setItem('eventPost', "" + this.selectedEventPost.id);
+    this.router.navigateByUrl("/post/:id");
   }
   addImageUrl(url: string){
   // TODO

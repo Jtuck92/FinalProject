@@ -1,1 +1,12 @@
-<p>message-board works!</p>
+<div *ngIf="selected" id="eventPost">
+  <h1> {{ selected.subject }}</h1>
+<img class="eventImg" src="{{selected.imageUrl}}" alt="">
+<!-- <div class="btnDiv">
+<button *ngIf="selected.enabled"
+  (click)="pEventSignup()"
+  class="btn"
+  type="submit"
+  value=""
+  >Sign up for this Event</button>
+</div> -->
+</div>
