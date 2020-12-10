@@ -1,0 +1,12 @@
+.eventPost{
+  margin-right: auto;
+}
+
+.eventImg{
+  margin: 10px;
+  width: 400px;
+  height: 450px;
+  display: block;
+  margin-right: auto;
+  border: 6px solid  rgb(53,203,233)!important;
+}
