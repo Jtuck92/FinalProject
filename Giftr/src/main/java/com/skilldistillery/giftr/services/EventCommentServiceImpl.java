@@ -59,6 +59,7 @@ public class EventCommentServiceImpl implements EventCommentService {
 	public EventComment create(String username, EventComment eventComment) {
 		User user = uRepo.findByUsername(username);
 		if (user != null) {
+			eventComment.setUser(user);
 			eCRepo.saveAndFlush(eventComment);
 			user.getEventComments().add(eventComment);
 			uRepo.save(user);

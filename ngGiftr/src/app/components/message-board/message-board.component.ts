@@ -25,6 +25,7 @@ export class MessageBoardComponent implements OnInit {
   selected: EventPost = new EventPost();
   idString = null;
   loggedIn = false;
+  newComment = new EventComment();
 
   ngOnInit(): void {
     if (this.auth.checkLogin) {
@@ -50,4 +51,23 @@ export class MessageBoardComponent implements OnInit {
   pEventSignup() {
     localStorage.setItem('eventPost', '' + this.selected.id);
   }
+
+  postComment() {
+    if(!this.auth.checkLogin()) {
+      this.router.navigateByUrl('login')
+    }
+    this.newComment.post = this.selected;
+    this.eventCommentSvc.create(this.newComment).subscribe(
+      (good) => {
+        this.selected.comments.push(good);
+        location.reload();
+      },
+      (bad) => {
+        console.error(bad);
+      }
+    );
+    this.newComment = new EventComment();
+  }
+
+
 }
