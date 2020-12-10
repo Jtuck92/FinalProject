@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AddressService {
-  url = environment.baseUrl + 'api/addresss';
+  url = environment.baseUrl + 'api/addresses';
 
   gethttpOptions(){
     const  credentials = this.auth.getCredentials();
