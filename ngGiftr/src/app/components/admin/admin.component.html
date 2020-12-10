@@ -90,17 +90,17 @@
   <table >
     <thead class="col">
       <tr class="col">
-        <th class="col">Event</th>
-        <th class="col">Start Date</th>
-        <th class="col">End Date</th>
+        <th class="col">First Name</th>
+        <th class="col">Last Name</th>
+        <th class="col">Username</th>
       </tr>
     </thead>
     <tbody class="center">
       <tr class="col" *ngFor="let e of events | disabled "
       >
-      <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
-      <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
-      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
+      <td class="col"  id="homeList">{{u.firstName}}</td>
+      <td class="col"  id="homeList">{{u.lastName}}</td>
+      <td class="col"  id="homeList">{{u.username}}</td>
     </tr>
   </tbody>
 </table>
