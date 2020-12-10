@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService, private router: Router) { }
 events: Event[] = [];
 selected: Event = null;
+selectedBudget = 0;
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
@@ -26,7 +27,6 @@ selected: Event = null;
     this.eventSvc.index().subscribe(
       (data) => {
         this.events = data;
-        console.log(this.events);
       },
       (err) => {
         console.error('WorkoutComponent.LoadWorkout(); retrive failed');

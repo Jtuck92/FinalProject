@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "private_comment")
 public class PrivateComment {
@@ -40,6 +42,7 @@ public class PrivateComment {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private PrivatePost post;
