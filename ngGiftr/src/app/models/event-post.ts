@@ -1,6 +1,7 @@
+import { EventComment } from './event-comment';
 import { User } from './user';
 import { Event } from './event';
-import { EventComment } from './event-comment';
+
 export class EventPost {
   id: number;
   description: string;

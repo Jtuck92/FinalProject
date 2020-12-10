@@ -1,1 +1,47 @@
-<p>admin works!</p>
+<div class="tables">
+<h2>On going Events  <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Start Date</th>
+      <th class="col">End Date</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let e of events | active "
+    >
+      <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
+      <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
+      <td *ngIf='e.enabled'><button
+        (click)="disableEvent(e)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Disable</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<br>
+<h2>Past Events  <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Start Date</th>
+      <th class="col">End Date</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let e of events | disabled "
+    >
+      <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
+      <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

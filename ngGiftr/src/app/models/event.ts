@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 export class Event {
   id: number;
   name: string;
@@ -10,6 +11,7 @@ export class Event {
   creatorId: number;
   createdDate: string;
   lastUpdate: string;
+  users: User[];
 
   constructor(
     id?: number,
@@ -22,7 +24,8 @@ export class Event {
     imageUrl?: string,
     creatorId?: number,
     createdDate?: string,
-    lastUpdate?: string
+    lastUpdate?: string,
+    users?: User[]
   ) {
     this.id = id;
     this.name = name;
@@ -35,5 +38,6 @@ export class Event {
     this.creatorId = creatorId;
     this.createdDate = createdDate;
     this.lastUpdate = lastUpdate;
+    this.users = users;
   }
 }

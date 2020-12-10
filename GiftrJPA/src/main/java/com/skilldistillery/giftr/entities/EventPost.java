@@ -50,7 +50,7 @@ public class EventPost {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy="post")
 	private List<EventComment> comments;
 
