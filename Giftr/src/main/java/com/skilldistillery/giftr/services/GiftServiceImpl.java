@@ -60,6 +60,9 @@ public class GiftServiceImpl implements GiftService {
 			if(gift.getImageUrl() != null) {
 				updatedGift.setImageUrl(gift.getImageUrl());
 			}
+			if(gift.getNote() != null) {
+				updatedGift.setNote(gift.getNote());
+			}
 		gRepo.flush();
 		}
 		return updatedGift;

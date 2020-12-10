@@ -10,6 +10,7 @@ import { Event } from './../../models/event';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { relative } from 'path';
 
 @Component({
   selector: 'app-user',
@@ -33,9 +34,11 @@ export class UserComponent implements OnInit {
   stringId = '';
   numUserId = 0;
   user: User = null;
-  gifts: Gift[];
+  gifts: Gift[] = [];
   userEvents: Event[];
   receivers: User[] = [];
+  activeGifts: Gift[] = [];
+  userGifts: Gift[] = [];
 
   ngOnInit(): void {
     this.loadPrivateEvents();
@@ -44,17 +47,18 @@ export class UserComponent implements OnInit {
 
   loadPersonalEventList() {
     this.stringId = localStorage.getItem('userId');
+    // console.log(this.activeGifts);
 
     this.numUserId = parseInt(this.stringId);
     this.userSrv.show(this.numUserId).subscribe(
       (data) => {
         this.user = data;
-        for (let i = 0; i < this.gifts.length; i++) {
-          if (this.gifts[i].gifter.id == this.user.id) {
-            this.receivers.push(this.gifts[i].receiver);
+        for (let i = 0; i < this.activeGifts.length; i++) {
+          if (this.activeGifts[i].gifter.id == this.user.id) {
+            this.receivers.push(this.activeGifts[i].receiver);
           }
         }
-        this.events = this.uEPipe.transform(this.gifts, this.user);
+        this.events = this.uEPipe.transform(this.activeGifts, this.user);
       },
       (err) => {
         console.error('User retrive failed');
@@ -62,24 +66,86 @@ export class UserComponent implements OnInit {
     );
   }
 
-  removeEvent(e){
-    this.giftSrv.destroy(e).subscribe(
-      (data) => {
-        this.pEvents = data;
-        console.log(this.pEvents);
-      },
-      (err) => {
-        console.error('Private Events retrive failed');
+  removeEvent(e) {
+    for (let i = 0; i < this.gifts.length; i++) {
+      if (this.gifts[i].gifter.id == this.user.id) {
+        if (this.gifts[i].event.id == e.id) {
+          this.giftSrv.destroy(this.gifts[i].id).subscribe(
+            (data) => {
+              console.log(this.gifts);
+              this.loadGifts();
+              location.reload();
+            },
+            (err) => {
+              console.error('Private Events retrive failed');
+            }
+          );
+        }
       }
-    );
+    }
   }
 
+  findNote(e, index) {
+    this.userGifts = [];
+    for (let i = 0; i < this.gifts.length; i++) {
+      if (this.gifts[i].gifter.id == this.user.id) {
+        if (e.id == this.gifts[i].event.id) {
+          // console.log("event matched");
 
+          this.userGifts.push(this.gifts[i]);
+          // console.log("user matched");
+        }
+        // console.log(this.userGifts);
+      }
+    }
+    let receivers = [];
+    let notes = [];
+    for (let j = 0; j < this.userGifts.length; j++) {
+      receivers.push(this.userGifts[j].receiver);
+    }
+              console.log(receivers);
+    // for (let i = 0; i < this.userGifts.length; i++) {
+    //   for (let j = 0; j < receivers.length; j++) {
+    //     if(receivers[j] == null){
+    //       notes.push("");
+    //     }
+    //     else if (this.gifts[i].gifter.id == receivers[j].id) {
+    //       console.log('receiver matched');
+
+    //       notes.push(receivers[j].note);
+    //     }
+    //     console.log(notes);
+    //   }
+    // }
+    //   findReceiverNote(this.gifts[i].id);
+    // }
+
+    //           // for (let j = 0; j < this.gifts.length; j++) {
+    //             //   if (this.gifts[j].gifter.id == receiver.id) {
+    //               //     if (this.gifts[i].event.id == e.id) {
+    //                 //       return this.gifts[j].note;
+    //                 //     }
+    //                 //   }
+    //                 // }
+    //                 console.log(notes);
+
+    //                 return notes[index];
+    //               }
+
+    return '';
+  }
 
   loadGifts(): void {
     this.giftSrv.index().subscribe(
       (data) => {
         this.gifts = data;
+        for (let i = 0; i < this.gifts.length; i++) {
+          console.log(this.gifts[i].enabled);
+
+          if (this.gifts[i].enabled) {
+            this.activeGifts.push(this.gifts[i]);
+          }
+        }
         this.loadPersonalEventList();
       },
       (err) => {
@@ -87,7 +153,6 @@ export class UserComponent implements OnInit {
       }
     );
   }
-
 
   loadPrivateEvents(): void {
     this.pEventSrv.index().subscribe(
@@ -101,7 +166,7 @@ export class UserComponent implements OnInit {
     );
   }
   eventResult(event) {
-    console.log(event);
+    // console.log(event);
 
     this.selected = event;
     localStorage.setItem('event', '' + this.selected.id);
@@ -113,47 +178,47 @@ export class UserComponent implements OnInit {
   }
 
   findReceiverUsername(index) {
-    if(this.receivers[index] == null){
-      return " Check back Soon! "
+    if (this.receivers[index] == null) {
+      return ' Check back Soon! ';
     }
     return this.receivers[index].username;
   }
   findReceiverAddressStreet(index) {
-    console.log(this.receivers[index]);
-    if(this.receivers[index] == null){
-      return ""
+    // console.log(this.receivers[index]);
+    if (this.receivers[index] == null) {
+      return '';
     }
     return this.receivers[index].address.street;
   }
   findReceiverAddressStreet2(index) {
-    console.log([index]);
-    if(this.receivers[index] == null){
-      return ""
+    // console.log([index]);
+    if (this.receivers[index] == null) {
+      return '';
     }
     return 'Ste/Apt/Unit: ' + this.receivers[index].address.street2;
   }
   findReceiverAddressCity(index) {
-    console.log([index]);
-    if(this.receivers[index] == null){
-      return ""
+    // console.log([index]);
+    if (this.receivers[index] == null) {
+      return '';
     }
     return this.receivers[index].address.city + ', ';
   }
   findReceiverAddressState(index) {
-    if(this.receivers[index] == null){
-      return ""
+    if (this.receivers[index] == null) {
+      return '';
     }
     return this.receivers[index].address.stateProvince + ' ';
   }
   findReceiverAddressCountry(index) {
-    if(this.receivers[index] == null){
-      return ""
+    if (this.receivers[index] == null) {
+      return '';
     }
     return this.receivers[index].address.country;
   }
   findReceiverAddressZip(index) {
-    if(this.receivers[index] == null){
-      return ""
+    if (this.receivers[index] == null) {
+      return '';
     }
     return this.receivers[index].address.zip;
   }
