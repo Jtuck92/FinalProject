@@ -1,3 +1,4 @@
+import { AdminComponent } from './components/admin/admin.component';
 import { MessageBoardComponent } from './components/message-board/message-board.component';
 import { UserComponent } from './components/user/user.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
@@ -17,7 +18,8 @@ import { EventSignupComponent } from './components/event-signup/event-signup.com
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'gallery', component: GalleryComponent }, //TODO GALLERY COMPONENT
+  { path: 'admin', component: AdminComponent },
+  { path: 'gallery', component: GalleryComponent },
   { path: 'login', component: LoginComponent },
   { path: 'eventSignup', component: EventSignupComponent },
   { path: 'register', component: RegisterComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
   { path: 'profile', component: UserComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'eventDetails', component: EventDetailsComponent },
-  { path: 'pastEvents', component: PastEventsComponent }, //TODO PAST EVENT COMPONENT
+  { path: 'pastEvents', component: PastEventsComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'post/:id', component: MessageBoardComponent },
   { path: '**', component: NotFoundComponent }

@@ -41,6 +41,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 // import { PostComponent } from './components/post/post.component';
 import { EventSignupComponent } from './components/event-signup/event-signup.component';
 import { MessageBoardComponent } from './components/message-board/message-board.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MessageBoardComponent } from './components/message-board/message-board.
 
     EventSignupComponent,
     // PostComponent,
-    MessageBoardComponent
+    MessageBoardComponent,
+    AdminComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
   providers: [
