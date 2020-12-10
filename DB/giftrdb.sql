@@ -444,6 +444,7 @@ START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (1, '11', '11@giftr.com', '$2a$10$N8jBGxjk4M3fghOgXo2Us.wRZSRStbDtQXtBlqloiG70Kz3gUN1Ke', 1, '11', '11', NULL, NULL, 1, NULL, 'm', NULL);
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, '22', '22@giftr.com', '$2a$10$ADCtBZImdUBJMrkIfUIq0.bNfXVqi4Hvu7M0tXyODBc8ueeNZBif6', 1, '22', '22', NULL, NULL, 2, NULL, 'f', NULL);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (3, '33', '33@giftr.com', '$2a$10$qas4NU73vdWMuEGvZ16WrOjRznTeeeA9lYoTcuc2t0gwooif4ghVO', 1, '33', '33', NULL, NULL, 2, NULL, 'm', NULL);
 
 COMMIT;
 
@@ -521,6 +522,7 @@ INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (2, 12, 12, 'New Gift', 1, 2, 2, 1, NULL, NULL, NULL, 'THIS IS A NEW NOTE FOR YOU');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (3, 12, 12, 'New Gift', 1, 3, 2, 1, NULL, NULL, NULL, 'THIS IS A NEW NOTE FOR YOU');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (4, 12, 12, 'New Gift', 1, 1, 1, 2, NULL, NULL, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (5, 12, 12, 'new', 1, 5, 3, 2, NULL, NULL, NULL, NULL);
 
 COMMIT;
 
