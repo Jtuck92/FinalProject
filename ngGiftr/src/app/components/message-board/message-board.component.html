@@ -20,25 +20,20 @@
                       Comment panel
                   </div>
                   <div class="panel-body">
-                      <textarea class="form-control" placeholder="write a comment..." rows="3"></textarea>
+                      <textarea [(ngModel)]="newComment.comment" class="form-control" placeholder="write a comment..." rows="3"></textarea>
                       <br>
-                      <button type="button" class="btn btn-info pull-right">Post</button>
+                      <button type="button" (click)="postComment()" class="btn btn-info pull-right">Post</button>
                       <div class="clearfix"></div>
                       <hr>
                       <ul class="media-list">
-                          <li class="media">
-                              <a href="#" class="pull-left">
-                                  <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
-                              </a>
+                          <li class="media" *ngFor="let c of selected.comments">
                               <div class="media-body">
-                                  <span class="text-muted pull-right">
-                                      <small class="text-muted">30 min ago</small>
-                                  </span>
-                                  <strong class="text-success">@MartinoMont</strong>
+                                <div>
                                   <p>
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                      Lorem ipsum dolor sit amet, <a href="#">#consecteturadipiscing </a>.
+                                    Username:{{c.user.username}}
+                                    {{c.comment}}
                                   </p>
+                                </div>
                               </div>
                           </li>
                       </ul>
@@ -49,6 +44,3 @@
       </div>
   </div>
   </div>
-<div *ngIf="selected" id="eventPost">
-<p> {{selected.comment}</p>
-</div>
