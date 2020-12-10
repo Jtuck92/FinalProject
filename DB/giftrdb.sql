@@ -585,7 +585,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', NULL, NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', 'http://3.bp.blogspot.com/-Wv5pmUeecKg/Vmk7__8tB5I/AAAAAAAAHNY/OaTNMzax5Uk/s1600/special-events-1_1_.jpg', NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (2, 'Cool Wine Glasses', 'https://ctl.s6img.com/society6/img/77Ia9R3Np358ceA9hup-yBttP80/w_700/pillows/~artwork,fw_3501,fh_3501,fx_27,fy_-369,iw_3499,ih_4949/s6-original-art-uploads/society6/uploads/misc/35ae7d401869471c90b5f2ba0d277bb1/~~/giraffe-head1761989-pillows.jpg?wait=0&attempt=0', NULL, NULL, 1, '5', 1, 2, 'Cool Wine Glasses');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (3, 'Best Board Game EVER!', 'https://www.thespruce.com/thmb/w2R2SW6DqAy3W3OdI6uotfznNBM=/850x850/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/_hero_SQ_Catan-Board-Game-1-4e3bc64d68ea4b2d99840e423879cb9f.jpg', NULL, NULL, 1, '5', 1, 1, 'Board Games');
 
 COMMIT;
 

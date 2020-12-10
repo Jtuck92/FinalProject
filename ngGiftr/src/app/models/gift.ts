@@ -12,6 +12,7 @@ export class Gift {
   rating: number;
   name: string;
   imageUrl: string;
+  note: string;
 
   constructor(
     id?: number,
@@ -24,7 +25,8 @@ export class Gift {
     receiver?: User,
     rating?: number,
     name?: string,
-    imageUrl?: string
+    imageUrl?: string,
+    note?: string
   ) {
     this.id = id;
     this.price = price;
@@ -37,5 +39,6 @@ export class Gift {
     this.rating = rating;
     this.name = name;
     this.imageUrl = imageUrl;
+    this.note = note;
   }
 }

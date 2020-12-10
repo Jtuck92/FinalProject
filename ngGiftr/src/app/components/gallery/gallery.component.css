@@ -52,6 +52,7 @@
   }
   .btn{
     border-color: #fff07e;
+    text-align: center;
   }
   .btn:hover{
     background-color: #fff07e;
@@ -65,4 +66,7 @@ h3, #homeDescription, .homeTitle{
   width: 100%;
   height: 20vw;
   object-fit: cover;
+}
+#galleryHeader {
+text-align: center;
 }

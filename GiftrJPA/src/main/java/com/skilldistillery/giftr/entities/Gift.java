@@ -15,7 +15,7 @@ public class Gift {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Double price;
-
+	private String note;
 	@Column(name = "weight_kg")
 	private Double weight;
 	private String description;
@@ -78,6 +78,14 @@ public class Gift {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	public Boolean getEnabled() {
