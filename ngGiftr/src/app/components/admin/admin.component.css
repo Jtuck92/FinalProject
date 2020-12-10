@@ -1,0 +1,53 @@
+ul{
+  list-style: none;
+}
+
+h2{
+text-align: center;
+  padding-bottom: 1%;
+  background-color: rgb(53,203,233);
+  margin-left: 1%;
+  margin-right: 1%;
+}
+h6{
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.col, .pcol{
+  width: auto!important;
+  table-layout: auto!important;
+  border: 2px solid #555 !important;
+
+}
+.center, #homeList{
+  border: 2px solid #555 !important;
+  text-align: left;
+  margin-left:  2%;
+  margin-right: 2%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+
+
+}
+td{
+  font-size: 20px;
+}
+th{
+  background-color:  rgb(53,203,233);
+  font-size: 20px;
+}
+table{
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  text-align: center;
+}
+/* ul#horizontal-list li {
+  display: inline-block;
+} */
+#userPrivateEvents{
+  /* float: right; */
+}
+/* <div class="userEventLists" id="userEvents"> */

@@ -103,7 +103,7 @@ export class UserComponent implements OnInit {
     for (let j = 0; j < this.userGifts.length; j++) {
       receivers.push(this.userGifts[j].receiver);
     }
-              console.log(receivers);
+              // console.log(receivers);
     // for (let i = 0; i < this.userGifts.length; i++) {
     //   for (let j = 0; j < receivers.length; j++) {
     //     if(receivers[j] == null){
