@@ -1,3 +1,4 @@
+<div>
 <div *ngIf="selected" id="eventPost">
   <h1> {{ selected.subject }}</h1>
 <img class="eventImg" src="{{selected.imageUrl}}" alt="">
@@ -9,4 +10,8 @@
   value=""
   >Sign up for this Event</button>
 </div> -->
+</div>
+
+<div *ngIf="selected" id="eventPost">
+<p> {{selected.comments[0]}</p>
 </div>

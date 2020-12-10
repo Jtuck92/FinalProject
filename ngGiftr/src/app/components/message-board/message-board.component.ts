@@ -1,3 +1,5 @@
+import { EventComment } from './../../models/event-comment';
+import { EventCommentService } from './../../service/event-comment.service';
 import { EventPostService } from 'src/app/service/event-post.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,8 +17,10 @@ export class MessageBoardComponent implements OnInit {
     private eventSvc: EventService,
     private eventPostSvc: EventPostService,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private eventCommentSvc: EventCommentService
   ) {}
+  comSelected: EventComment = new EventComment();
   events: EventPost[];
   selected: EventPost = new EventPost();
   idString = null;

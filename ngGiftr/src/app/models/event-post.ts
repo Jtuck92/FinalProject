@@ -1,5 +1,6 @@
 import { User } from './user';
 import { Event } from './event';
+import { EventComment } from './event-comment';
 export class EventPost {
   id: number;
   description: string;
@@ -10,6 +11,7 @@ export class EventPost {
   rating: string;
   event: Event;
   user: User;
+  comments: EventComment[];
   subject: string;
 
   constructor(
@@ -22,6 +24,7 @@ export class EventPost {
     rating?: string,
     event?: Event,
     user?: User,
+    comments?: EventComment[],
     subject?: string
   ) {
     this.id = id;
@@ -33,6 +36,7 @@ export class EventPost {
     this.rating = rating;
     this.event = event;
     this.user = user;
+    this.comments = comments;
     this.subject = subject;
   }
 }
