@@ -1,5 +1,14 @@
 <div class="tables">
-<h2>On going Events  <br></h2>
+  <label style="padding-left: 40px;" for="selectListType">Filter By: </label> &nbsp;
+  <select name="selectListType" id="" [(ngModel)]="selectedListType">
+<option value="" *ngFor="let t of listTypes" value="{{t}}">{{t}}</option>
+  </select>
+
+
+
+  <!-- ******************** START OF EVENTS TABLES ****************************** -->
+  <div *ngIf="selectedListType == 'Events' || selectedListType == 'All'">
+<h2>Current Active Giftrs  <br></h2>
 <table >
   <thead class="col">
     <tr class="col">
@@ -26,7 +35,7 @@
 
 <br>
 <br>
-<h2>Past Events  <br></h2>
+<h2>Past Giftrs  <br></h2>
 <table >
   <thead class="col">
     <tr class="col">
@@ -44,4 +53,63 @@
     </tr>
   </tbody>
 </table>
+</div>
+<!-- ******************** END OF EVENTS TABLES ****************************** -->
+<!-- ******************** START OF USER TABLES ****************************** -->
+
+<div *ngIf="selectedListType == 'Users' || selectedListType == 'All'">
+  <h2>Current Active Users  <br></h2>
+  <table >
+    <thead class="col">
+      <tr class="col">
+        <th class="col">First Name</th>
+        <th class="col">Last Name</th>
+        <th class="col">Username</th>
+      </tr>
+    </thead>
+    <tbody class="center">
+      <tr class="col" *ngFor="let u of users | active "
+      >
+      <td class="col"  id="homeList">{{u.firstName}}</td>
+      <td class="col"  id="homeList">{{u.lastName}}</td>
+      <td class="col"  id="homeList">{{u.username}}</td>
+
+      <td *ngIf='u.enabled'><button
+        (click)="disableUser(u)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Disable</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <h2>Past Giftrs  <br></h2>
+  <table >
+    <thead class="col">
+      <tr class="col">
+        <th class="col">Event</th>
+        <th class="col">Start Date</th>
+        <th class="col">End Date</th>
+      </tr>
+    </thead>
+    <tbody class="center">
+      <tr class="col" *ngFor="let e of events | disabled "
+      >
+      <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
+      <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- ******************** END OF USER TABLES ****************************** -->
+
+
+
+
+
+
 </div>
