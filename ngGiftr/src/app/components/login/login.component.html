@@ -1,17 +1,24 @@
 
 <div id="eventCard">
+<div class="loginForm">
   <div class="card h-100" style="width: auto;">
     <h1 id="homeHeader" class="card-header"><i class="far fa-clipboard"></i>   Log In</h1>
     <!-- <img class="card-img-top" src="assets/img/GoatEvents2.png" alt="Card image cap"> -->
   <div  class="card-body">
       <div class="text-div">
+        <div class="errors" style="text-align: center;">
+          <ul *ngFor="let e of errors" style="list-style: none;">
+          <li>{{e}}</li>
+          </ul>
 
+
+        </div>
 
         <form class="login" #loginForm="ngForm">
           <input
             type="text"
             name="username"
-            placeholder="UserName"
+            placeholder="Username"
             ngModel
           /> <br>
           <input
@@ -20,14 +27,15 @@
             placeholder="Password"
             ngModel
           /> <br>
-          <button (click)="login(loginForm)">Login</button>
+          <button class="btn" (click)="login(loginForm)">Login</button>
         </form> <br>
         <p>If you haven't already, create a
         <a href="/register">Giftr account</a></p>
   </div>
+</div>
   <br>
   <br>
-  <div style="text-align: center;"><img src="/assets/Logo.png" height="400%" alt="">
+  <div style="text-align: center; margin-left: 25%; margin-right: 25%;"><img src="/assets/Logo.png" height="400%" alt="">
   </div>
   <div style= "height: 50px">
 </div>

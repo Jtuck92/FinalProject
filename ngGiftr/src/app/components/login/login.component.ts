@@ -12,22 +12,23 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent implements OnInit {
 user: User = null;
   constructor(private authService: AuthService, private router: Router) { }
-
+errors = [];
 
 
   login(registerForm: NgForm) {
     const user = registerForm.value;
-    console.log(user);
+    // console.log(user);
     this.authService.login(user.username, user.password).subscribe(
       (data) => {
         this.user = data;
-        console.log(localStorage.getItem("userId"));
+        // console.log(localStorage.getItem("userId"));
 
         this.router.navigateByUrl('/profile');
-        console.log('User Login');
+        // console.log('User Login');
       },
       (err) => {
-        console.log('error on Login*******');
+        this.errors.push("Your username or password was not found. Please try again. ")
+        console.error('error on Login*******');
       }
     );
   }

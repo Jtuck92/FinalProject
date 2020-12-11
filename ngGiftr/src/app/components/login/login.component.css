@@ -9,3 +9,11 @@
   background-color: rgb(53,203,233);
 }
 
+.errors{
+  color: red;
+font-weight: bolder;
+}
+.loginForm{
+  margin-right: 25%;
+  margin-left: 25%;
+}
