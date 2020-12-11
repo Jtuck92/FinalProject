@@ -41,7 +41,7 @@ export class EventDetailsComponent implements OnInit {
       (data) => {
         this.selected = data;
         console.log(this.selected);
-        localStorage.removeItem('event');
+        // localStorage.removeItem('event');
       },
       (err) => {
         this.router.navigateByUrl('notFound');
