@@ -571,6 +571,10 @@ START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 1);
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 1);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 3);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 2);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (3, 3);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (3, 2);
 
 COMMIT;
 
@@ -590,7 +594,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', NULL, NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', 'https://patch.com/img/cdn20/shutterstock/22924509/20201105/021120/styles/patch_image/public/shutterstock-531534538___05135828973.jpg?width=695', NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (2, 'THIS IS FOR POKEMON Des', 'https://www.denofgeek.com/wp-content/uploads/2019/05/pokemon_go_december_community_day.0.jpg?resize=768%2C432', NULL, NULL, 1, '2', 4, 2, 'pokemon Subject');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (3, 'this is for new year Des', 'https://thumbs.dreamstime.com/b/happy-new-year-string-red-background-resolution-concept-197583096.jpg', NULL, NULL, 1, '2', 2, 1, 'New year subject');
 
 COMMIT;
 
