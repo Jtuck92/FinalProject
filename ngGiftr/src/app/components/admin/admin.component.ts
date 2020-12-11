@@ -320,11 +320,23 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // DISABLE  Event Comments IN DB ====================================
+  disableEventComments(e) {
+    this.eCommentSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadEventComments();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
   // DISABLE Private Events IN DB ====================================
   disablePrivateEvent(e) {
     this.privateEventSvc.destroy(e.id).subscribe(
       (data) => {
-        this.loadEventPosts();
+        this.loadPrivateEvents();
         location.reload();
       },
       (err) => {
@@ -344,7 +356,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
-  // DISABLE Private Event Posts IN DB ====================================
+  // DISABLE Private Event Comments IN DB ====================================
   disablePrivateEventComments(e) {
     this.privateCommetSvc.destroy(e.id).subscribe(
       (data) => {
@@ -356,7 +368,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
-  // UPDATE Private Event Posts IN DB ====================================
+  // UPDATE Addresses IN DB ====================================
   updateAddress(e) {
     this.addressSvc.update(e.id).subscribe(
       (data) => {
@@ -368,10 +380,23 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // DISABLE Budgets IN DB ====================================
   disableBudget(e) {
     this.privateCommetSvc.destroy(e.id).subscribe(
       (data) => {
         this.loadPrivateEventPosts();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
+  // DISABLE Event Types IN DB ====================================
+  disableEventTypes(e) {
+    this.eTypeSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadEventTypes();
         location.reload();
       },
       (err) => {

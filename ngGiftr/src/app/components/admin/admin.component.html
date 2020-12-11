@@ -109,8 +109,11 @@
 <!-- ******************** START OF EVENT POSTS TABLES ****************************** -->
 
 
+
+
 <br>
 <br>
+<div *ngIf="selectedListType == 'Event Posts' || selectedListType == 'All'">
 <h2>Event Posts <br></h2>
 <table >
   <thead class="col">
@@ -140,7 +143,7 @@
 
 <br>
 <br>
-<h2>Event Posts <br></h2>
+<h2>Disabled Event Posts <br></h2>
 <table >
   <thead class="col">
     <tr class="col">
@@ -159,3 +162,185 @@
   </tbody>
 </table>
 </div>
+<!-- ******************** END OF EVENT POSTS TABLES ****************************** -->
+<!-- ******************** START OF EVENT COMMENTS TABLES ****************************** -->
+
+<br>
+<br>
+<div *ngIf="selectedListType == 'Event Comments'|| selectedListType == 'All'">
+
+<h2>Event Comments <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Post</th>
+      <th class="col">Comment</th>
+      <th class="col">User</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let ec of eventComments | active "
+    >
+    <td  class="col"   id="homeList"> {{ec.post.event.name}}</td>
+      <td class="col"  id="homeList">{{ec.post.subject}}</td>
+      <td class="col"  id="homeList">{{ec.comment}}</td>
+      <td class="col"  id="homeList">{{ec.user.username}}</td>
+      <td *ngIf='ec.enabled'><button
+        (click)="disableEventComments(ec)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Disable</button></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+<br>
+<br>
+<h2>Disabled Event Comments <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Post</th>
+      <th class="col">Comment</th>
+      <th class="col">User</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let ec of eventComments | disabled "
+    >
+    <td  class="col"   id="homeList"> {{ec.post.event.name}}</td>
+      <td class="col"  id="homeList">{{ec.post.subject}}</td>
+      <td class="col"  id="homeList">{{ec.comment}}</td>
+      <td class="col"  id="homeList">{{ec.user.username}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- ******************** END OF EVENT COMMENTS TABLES ****************************** -->
+  <!-- ******************** START OF PRIVATE EVENTS TABLES ****************************** -->
+  <div *ngIf="selectedListType == 'Private Events' || selectedListType == 'All'">
+    <h2>Active Private Giftrs  <br></h2>
+    <table >
+      <thead class="col">
+        <tr class="col">
+          <th class="col">Event</th>
+          <th class="col">Date Created</th>
+          <th class="col">Description</th>
+          <th class="col">Manager</th>
+        </tr>
+      </thead>
+      <tbody class="center">
+        <tr class="col" *ngFor="let pe of privateEvents | active "
+        >
+          <td class="col"   id="homeList">{{pe.name}}</td>
+          <td  class="col"   id="homeList"> {{pe.createDate}}</td>
+          <td  class="col"   id="homeList"> {{pe.description}}</td>
+          <td  class="col"   id="homeList"> {{pe.manager}}</td>
+
+          <td *ngIf='pe.enabled'><button
+            (click)="disablePrivateEvent(pe)"
+            class="btn"
+            type="submit"
+            value="remove"
+            >Disable</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <h2>Past Private Giftrs  <br></h2>
+    <table >
+      <thead class="col">
+        <tr class="col">
+          <th class="col">Event</th>
+          <th class="col">Date Created</th>
+          <th class="col">Description</th>
+          <th class="col">Manager</th>
+        </tr>
+      </thead>
+      <tbody class="center">
+        <tr class="col" *ngFor="let pe of privateEvents | disabled "
+        >
+          <td class="col"   id="homeList">{{pe.name}}</td>
+          <td  class="col"   id="homeList"> {{pe.createDate}}</td>
+          <td  class="col"   id="homeList"> {{pe.description}}</td>
+          <td  class="col"   id="homeList"> {{pe.manager}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <!-- ******************** END OF PRIVATE EVENTS TABLES ****************************** -->
+<!-- ******************** START OF PRIVATE EVENT POSTS TABLES ****************************** -->
+<!-- <br>
+<br>
+<div *ngIf="selectedListType == 'Private Event Posts'|| selectedListType == 'All'">
+
+<h2>Private Event Posts <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <tr class="col">
+        <th class="col">Event</th>
+        <th class="col">Post</th>
+        <th class="col">Post User</th>
+      </tr>
+
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let pep of privateEventPosts | active "
+    >
+    <td  class="col"   id="homeList"> {{pep.description}}</td>
+      <td class="col"  id="homeList">{{pep.prvEvent.subject}}</td>
+      <td class="col"  id="homeList">{{pep.comment}}</td>
+      <td class="col"  id="homeList">{{pep.user.username}}</td>
+      <td *ngIf='pep.enabled'><button
+        (click)="disablePrivateEventPost(pep)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Disable</button></td>
+      </tr>
+  </tbody>
+</table> -->
+
+
+
+<!-- <br>
+<br>
+<h2>Disabled Event Comments <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Post</th>
+      <th class="col">Comment</th>
+      <th class="col">User</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let ec of eventComments | disabled "
+    >
+    <td  class="col"   id="homeList"> {{ec.post.event.name}}</td>
+      <td class="col"  id="homeList">{{ec.post.subject}}</td>
+      <td class="col"  id="homeList">{{ec.comment}}</td>
+      <td class="col"  id="homeList">{{ec.user.username}}</td>
+    </tr>
+  </tbody>
+</table>
+</div> -->
+<!-- ******************** END OF EVENT COMMENTS TABLES ****************************** -->
+
+'Private Events',
+'Private Event Posts',
+'Private Event Comments',
+'Addresses',
+'Payments',
+'Budegts',
+'Event Types',
+'Gifts',

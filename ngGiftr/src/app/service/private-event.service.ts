@@ -10,7 +10,6 @@ import { pid } from 'process';
 @Injectable({
   providedIn: 'root',
 })
-
 export class PrivateEventService {
   constructor(private http: HttpClient, private authService: AuthService) {}
   private url = environment.baseUrl + 'api/privateEvents';
@@ -40,9 +39,12 @@ export class PrivateEventService {
     console.log(privateEvent);
     const httpOptions = this.gettingHttpOptions();
     this.privateEvents.push(privateEvent);
-    return this.http
-      .post<any>(this.url, privateEvent, httpOptions)
-      .pipe(catchError(this.handleError));
+    return this.http.post<any>(this.url, privateEvent, httpOptions).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError('Error Creating PrivateComment');
+      })
+    );
   }
 
   updateTodo(privateEvent: PrivateEvent) {
