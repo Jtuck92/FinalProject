@@ -14,6 +14,5 @@
 
 
 
-<p style="text-align: center;">
+
 ##### Ryan Miskoviak (Developer, DBA) <br/> Aaron Cottrell (Developer, Scrum Master)<br/> Jess Tucker (Developer, Repo Owner) <br/> Justin Livingston (Developer, Web Design Specialist)
-</p>
