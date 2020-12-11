@@ -1,5 +1,6 @@
 package com.skilldistillery.giftr.controllers;
 
+import java.security.Principal;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,14 +33,14 @@ public class PrivateEventPostController {
 //	************ SECURITY API REST POINTS ************************
 
 	@GetMapping("privatePosts")
-	public Set<PrivatePost> index(String username) {
-		return pPostSvc.index(username);
+	public Set<PrivatePost> index(Principal p) {
+		return pPostSvc.index(p.getName());
 	}
 
 	@GetMapping("privatePosts/{ppId}")
-	public PrivatePost show(@PathVariable int ppId, String username, HttpServletResponse response) {
+	public PrivatePost show(@PathVariable int ppId, Principal p, HttpServletResponse response) {
 		try {
-			PrivatePost pPost = pPostSvc.show(username, ppId);
+			PrivatePost pPost = pPostSvc.show(p.getName(), ppId);
 			response.setStatus(200);
 			if (pPost == null) {
 				response.setStatus(404);
@@ -48,12 +49,12 @@ public class PrivateEventPostController {
 			e.printStackTrace();
 			response.setStatus(404);
 		}
-		return pPostSvc.show(username, ppId);
+		return pPostSvc.show(p.getName(), ppId);
 	}
 
 	@PostMapping("privatePosts")
-	public PrivatePost create(@RequestBody PrivatePost pPost, String username, HttpServletRequest req, HttpServletResponse res) {
-		pPost = pPostSvc.create(username, pPost);
+	public PrivatePost create(@RequestBody PrivatePost pPost, Principal p, HttpServletRequest req, HttpServletResponse res) {
+		pPost = pPostSvc.create(p.getName(), pPost);
 		if(pPost == null) {
 			res.setStatus(404);
 		} else {
@@ -62,14 +63,14 @@ public class PrivateEventPostController {
 			url.append("/").append(pPost.getId());
 			req.setAttribute("Location", url.toString());
 		}
-		return pPostSvc.create(username, pPost);
+		return pPostSvc.create(p.getName(), pPost);
 	}
 	
 	@PutMapping("privatePosts/{ppId}")
-	public PrivatePost update(@PathVariable int ppId, @RequestBody PrivatePost pPost, String username, HttpServletRequest req,
+	public PrivatePost update(@PathVariable int ppId, @RequestBody PrivatePost pPost, Principal p, HttpServletRequest req,
 			HttpServletResponse res) {
 		try {
-			pPost = pPostSvc.update(username, ppId, pPost);
+			pPost = pPostSvc.update(p.getName(), ppId, pPost);
 			if (pPost == null) {
 				res.setStatus(404);
 				pPost = null;
@@ -84,9 +85,9 @@ public class PrivateEventPostController {
 	}
 	
 	@DeleteMapping("privatePosts/{ppId}")
-	public void destory(HttpServletRequest req, HttpServletResponse res,@RequestBody String username, @PathVariable int ppId) {
+	public void destory(HttpServletRequest req, HttpServletResponse res,@RequestBody Principal p, @PathVariable int ppId) {
 		try {
-			if (pPostSvc.destroy(username, ppId)) {
+			if (pPostSvc.destroy(p.getName(), ppId)) {
 				res.setStatus(204);
 			} else {
 				res.setStatus(404);
