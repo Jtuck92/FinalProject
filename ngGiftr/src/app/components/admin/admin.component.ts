@@ -17,7 +17,7 @@ import { Event } from './../../models/event';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { relative } from 'path';
+// import { relative } from 'path';
 import { AddressService } from 'src/app/service/address.service';
 import { BudgetService } from 'src/app/service/budget.service';
 import { EventCommentService } from 'src/app/service/event-comment.service';
