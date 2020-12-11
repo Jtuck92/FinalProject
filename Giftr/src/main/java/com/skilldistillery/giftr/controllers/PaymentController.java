@@ -27,7 +27,7 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentSvc;
 	
-	private String username = "11";
+//	private String username = "11";
 	
 	
 //	************ SECURITY API REST POINTS ************************
@@ -43,6 +43,10 @@ public class PaymentController {
 		try {
 			Payment payment = paymentSvc.show(p.getName() ,id);
 			response.setStatus(200);
+			  if(payment == null) {
+				  response.setStatus(400);
+				  
+			  }
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.setStatus(404);

@@ -28,7 +28,7 @@ public class BudgetController {
 	@Autowired
 	private BudgetService budgetSvc;
 
-	private String username = "11";
+//	private String username = "11";
 // **************** SECURITY API ENDPOINTS *********************
 	@GetMapping("budgets")
 	public Set<Budget> index(Principal p) {
@@ -41,6 +41,10 @@ public class BudgetController {
 		try {
 			Budget budget = budgetSvc.show(p.getName(), bid);
 			res.setStatus(200);
+			  if(budget == null) {
+				  res.setStatus(400);
+				  
+			  }
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(404);

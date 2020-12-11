@@ -1,7 +1,6 @@
 package com.skilldistillery.giftr.controllers;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.giftr.entities.Address;
-import com.skilldistillery.giftr.entities.PrivateComment;
-import com.skilldistillery.giftr.entities.PrivateEvent;
 import com.skilldistillery.giftr.services.AddressService;
-import com.skilldistillery.giftr.services.PrivateEventService;
 
 @CrossOrigin({ "*", "http://localhost:4210" })
 @RestController
@@ -32,7 +28,7 @@ public class AddressController {
 	@Autowired
 	private AddressService addSvc;
 
-	private String username = "11";
+//	private String username = "11";
 
 
 	// THIS IS THE PRINCIPAL Index METHOD

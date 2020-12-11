@@ -2,7 +2,6 @@ package com.skilldistillery.giftr.controllers;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +28,7 @@ public class PrivateEventController {
 	@Autowired
 	private PrivateEventService pEventSvc;
 
-	private String username = "11";
+//	private String username = "11";
 
 //// THIS IS THE PRINCIPAL Index METHOD 
 		@GetMapping("privateEvents")

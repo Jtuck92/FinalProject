@@ -28,7 +28,7 @@ public class UserController {
 	@Autowired
 	private UserService uSvc;
 	
-	private String username = "11";
+//	private String username = "11";
 
 // ********** SECURITY API REST POINTS *****************
 	

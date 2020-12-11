@@ -27,7 +27,7 @@ public class EventPostController {
 	@Autowired
 	private EventPostService eventPostSvc;
 	
-	private String username = "11";
+//	private String username = "11";
 	
 //	******************* SECURITY API REST POINTS *******************************
 	
@@ -44,6 +44,10 @@ public class EventPostController {
 		  try {
 			  EventPost eventPost = eventPostSvc.show(p.getName() ,id);
 			  response.setStatus(200);
+			  if(eventPost == null) {
+				  response.setStatus(400);
+				  
+			  }
 		  } catch (Exception e) {
 			  e.printStackTrace();
 			  response.setStatus(404);

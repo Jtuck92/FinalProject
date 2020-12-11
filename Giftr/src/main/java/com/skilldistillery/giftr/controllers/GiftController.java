@@ -2,7 +2,6 @@ package com.skilldistillery.giftr.controllers;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.giftr.entities.EventType;
 import com.skilldistillery.giftr.entities.Gift;
 import com.skilldistillery.giftr.services.GiftService;
 
@@ -30,7 +28,7 @@ public class GiftController {
 	@Autowired
 	private GiftService gSvc;
 
-	private String username = "11";
+//	private String username = "11";
 
 //	************ SECURITY API REST POINTS ************************
 

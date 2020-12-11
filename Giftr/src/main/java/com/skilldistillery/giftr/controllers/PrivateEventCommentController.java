@@ -29,7 +29,7 @@ public class PrivateEventCommentController {
 	@Autowired
 	private PrivateCommentService pCommentSrv;
 
-	private String username = "22";
+//	private String username = "22";
 
 	
 //	******************* SECURITY API REST POINTS *******************************
@@ -48,6 +48,10 @@ public class PrivateEventCommentController {
 		  try {
 			  PrivateComment privateComment = pCommentSrv.show(p.getName() ,id);
 			  res.setStatus(200);
+			  if(privateComment == null) {
+				  res.setStatus(400);
+				  
+			  }
 		  } catch (Exception e) {
 			  e.printStackTrace();
 			  res.setStatus(404);

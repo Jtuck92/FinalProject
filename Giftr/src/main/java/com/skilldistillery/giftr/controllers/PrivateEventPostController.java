@@ -28,7 +28,7 @@ public class PrivateEventPostController {
 	@Autowired
 	private PrivateEventPostService pPostSvc;
 	
-	private String username = "11";
+//	private String username = "11";
 	
 //	************ SECURITY API REST POINTS ************************
 

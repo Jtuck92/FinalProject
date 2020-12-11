@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	public User findById(String username, Integer userId) {
 		Optional<User> userOpt = userRepo.findById(userId);
 		User user = null;
-		if(userOpt.isPresent()) {
+		if (userOpt.isPresent()) {
 			user = userOpt.get();
 		}
 		return user;
@@ -42,23 +42,67 @@ public class UserServiceImpl implements UserService {
 		User updatedUser = null;
 		if (userOpt.isPresent()) {
 			updatedUser = userOpt.get();
-			if(user.getUsername() != null) {
+			if (user.getUsername() != null) {
 				updatedUser.setUsername(user.getUsername());
 			}
-			if(user.getPassword() != null) {
+			if (user.getPassword() != null) {
 				updatedUser.setPassword(user.getPassword());
 			}
-			if(user.getEmail() != null) {
+			if (user.getEmail() != null) {
 				updatedUser.setEmail(user.getEmail());
 			}
-			if(user.getFirstName() != null) {
+			if (user.getFirstName() != null) {
 				updatedUser.setFirstName(user.getFirstName());
 			}
-			if(user.getLastName() != null) {
+			if (user.getLastName() != null) {
 				updatedUser.setLastName(user.getLastName());
 			}
-		
-		userRepo.flush();	
+			if (user.getRole() != null) {
+				updatedUser.setRole(user.getRole());
+			}
+			if (user.getGender() != null) {
+				updatedUser.setGender(user.getGender());
+			}
+			if (user.getBirthDate() != null) {
+				updatedUser.setBirthDate(user.getBirthDate());
+			}
+			if (user.getAddress() != null) {
+				updatedUser.setAddress(user.getAddress());
+			}
+			if (user.getEventPosts() != null) {
+				updatedUser.setEventPosts(user.getEventPosts());
+			}
+			if (user.getEventComments() != null) {
+				updatedUser.setEventComments(user.getEventComments());
+			}
+
+			if (user.getManagerEvents() != null) {
+				updatedUser.setManagerEvents(user.getManagerEvents());
+			}
+			if (user.getSentGifts() != null) {
+				updatedUser.setSentGifts(user.getSentGifts());
+			}
+
+			if (user.getRecievedGifts() != null) {
+				updatedUser.setRecievedGifts(user.getRecievedGifts());
+			}
+			if (user.getManagerPrvEvents() != null) {
+				updatedUser.setManagerPrvEvents(user.getManagerPrvEvents());
+			}
+			if (user.getPrvEventPosts() != null) {
+				updatedUser.setPrvEventPosts(user.getPrvEventPosts());
+			}
+			if (user.getPrvEventComments() != null) {
+				updatedUser.setPrvEventComments(user.getPrvEventComments());
+			}
+			if (user.getPrvEvents() != null) {
+				updatedUser.setPrvEvents(user.getPrvEvents());
+			}
+			if (user.getPayments() != null) {
+				updatedUser.setPayments(user.getPayments());
+			}
+
+			userRepo.flush();
 		}
 		return updatedUser;
 	}
@@ -66,14 +110,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean destroy(String username, Integer userId) {
 		boolean deleted = false;
-	Optional<User> userToDelete = userRepo.findById(userId);
-	User user = null;
-	if(userToDelete.isPresent()) {
-		user = userToDelete.get();
-		user.setEnabled(false);
-		userRepo.saveAndFlush(user);
-		deleted = true;
-	}
-	return deleted;
+		Optional<User> userToDelete = userRepo.findById(userId);
+		User user = null;
+		if (userToDelete.isPresent()) {
+			user = userToDelete.get();
+			user.setEnabled(false);
+			userRepo.saveAndFlush(user);
+			deleted = true;
+		}
+		return deleted;
 	}
 }

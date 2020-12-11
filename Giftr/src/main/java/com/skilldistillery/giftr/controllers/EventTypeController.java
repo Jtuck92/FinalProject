@@ -27,7 +27,7 @@ public class EventTypeController {
 	@Autowired
 	private EventTypeService eventTypeSvc;
 	
-	private String username = "11";
+//	private String username = "11";
 	
 	
 //	************ SECURITY API REST POINTS ************************
@@ -44,6 +44,10 @@ public class EventTypeController {
 		try {
 			EventType eventType = eventTypeSvc.show(p.getName() ,id);
 			response.setStatus(200);
+			  if(eventType == null) {
+				  response.setStatus(400);
+				  
+			  }
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.setStatus(404);

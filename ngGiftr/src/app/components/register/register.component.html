@@ -102,6 +102,15 @@
       <label for="lastName"><b>Last Name</b></label>
       <input type="text" placeholder="Enter Last Name" name="lastName" [(ngModel)]="newUser.lastName" required>
 
+      <form >
+        <input type="radio" name="gender" value="female" [(ngModel)]="newUser.gender" checked> Female<br>
+        <input type="radio" name="gender" value="male" [(ngModel)]="newUser.gender" > Male<br>
+        <input type="radio" name="gender" value="other" [(ngModel)]="newUser.gender" > Other
+      </form><br>
+
+      <label for="birthday">Birthday:</label> &nbsp;
+      <input type="date" id="birthday" name="birthday" [(ngModel)]="newUser.birthDate" > <br> <br>
+
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="newUser.password" required>
       <div *ngIf="passErrors" class="errors">

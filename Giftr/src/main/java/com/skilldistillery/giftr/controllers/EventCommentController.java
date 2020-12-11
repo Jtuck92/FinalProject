@@ -27,7 +27,7 @@ public class EventCommentController {
 	@Autowired
 	private EventCommentService eventCommentSvc;
 	
-	private String username = "22";
+//	private String username = "22";
 	
 	
 //	************ SECURITY API REST POINTS ************************
@@ -43,6 +43,10 @@ public class EventCommentController {
 		try {
 			EventComment eventComment = eventCommentSvc.show(p.getName() ,id);
 			response.setStatus(200);
+			  if(eventComment == null) {
+				  response.setStatus(400);
+				  
+			  }
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.setStatus(404);
