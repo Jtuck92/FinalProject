@@ -8,7 +8,6 @@ import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Event } from './../../models/event';
-import { create } from 'domain';
 import { Gift } from 'src/app/models/gift';
 import { UserService } from 'src/app/service/user.service';
 

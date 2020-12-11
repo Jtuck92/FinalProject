@@ -10,7 +10,6 @@ import { Event } from './../../models/event';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { relative } from 'path';
 
 @Component({
   selector: 'app-user',
