@@ -106,10 +106,56 @@
 </table>
 </div>
 <!-- ******************** END OF USER TABLES ****************************** -->
+<!-- ******************** START OF EVENT POSTS TABLES ****************************** -->
+
+
+<br>
+<br>
+<h2>Event Posts <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Post</th>
+      <th class="col">Post User</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let ep of eventPosts | active "
+    >
+    <td  class="col"   id="homeList"> {{ep.event.name}}</td>
+      <td class="col"  id="homeList">{{ep.subject}}</td>
+      <td class="col"  id="homeList">{{ep.user.username}}</td>
+      <td *ngIf='ep.enabled'><button
+        (click)="disableEventPost(ep)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Disable</button></td>
+      </tr>
+  </tbody>
+</table>
 
 
 
-
-
-
+<br>
+<br>
+<h2>Event Posts <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Post</th>
+      <th class="col">Post User</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let ep of eventPosts | disabled "
+    >
+    <td  class="col"   id="homeList"> {{ep.event.name}}</td>
+      <td class="col"  id="homeList">{{ep.subject}}</td>
+      <td class="col"  id="homeList">{{ep.user.username}}</td>
+    </tr>
+  </tbody>
+</table>
 </div>

@@ -63,22 +63,22 @@ export class AdminComponent implements OnInit {
   budgets: Budget[] = [];
   receivers: User[] = [];
   selected: Event = null;
-  selectedListType = "All"
-  listTypes =[
-    "All",
-    "Events",
-    "Users",
-    "Event Posts",
-    "Event Comments",
-    "Private Events",
-    "Private Event Posts",
-    "Private Event Comments",
-    "Addresses",
-    "Payments",
-    "Budegts",
-    "Event Types",
-    "Gifts"
-  ]
+  selectedListType = 'All';
+  listTypes = [
+    'All',
+    'Events',
+    'Users',
+    'Event Posts',
+    'Event Comments',
+    'Private Events',
+    'Private Event Posts',
+    'Private Event Comments',
+    'Addresses',
+    'Payments',
+    'Budegts',
+    'Event Types',
+    'Gifts',
+  ];
 
   ngOnInit(): void {
     // this.auth.isHomePageComponent(true);
@@ -105,12 +105,13 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL USERS IN DB ====================================
   loadUsers(): void {
     this.userSvc.index().subscribe(
       (data) => {
         this.users = data;
-        for(let i = 0; i < this.users.length; i++){
-          if(this.users[i].username == "giftr"){
+        for (let i = 0; i < this.users.length; i++) {
+          if (this.users[i].username == 'giftr') {
             this.users.splice(i, 1);
           }
         }
@@ -120,6 +121,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Addresses IN DB ====================================
   loadAddresses(): void {
     this.addressSvc.index().subscribe(
       (data) => {
@@ -130,6 +132,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Payments IN DB ====================================
   loadPayments(): void {
     this.paymentSvc.index().subscribe(
       (data) => {
@@ -140,6 +143,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Event Comments IN DB ====================================
   loadEventComments(): void {
     this.eCommentSvc.index().subscribe(
       (data) => {
@@ -150,6 +154,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Event Posts IN DB ====================================
   loadEventPosts(): void {
     this.ePostSvc.index().subscribe(
       (data) => {
@@ -160,6 +165,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Gifts IN DB ====================================
   loadGifts(): void {
     this.giftSvc.index().subscribe(
       (data) => {
@@ -170,6 +176,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Budget Cat IN DB ====================================
   loadBudgets(): void {
     this.budgetSvc.index().subscribe(
       (data) => {
@@ -180,6 +187,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Private Events IN DB ====================================
   loadPrivateEvents(): void {
     this.privateEventSvc.index().subscribe(
       (data) => {
@@ -190,6 +198,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Private Event Posts IN DB ====================================
   loadPrivateEventPosts(): void {
     this.privatePostSvc.index().subscribe(
       (data) => {
@@ -200,6 +209,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Private Event Comments IN DB ====================================
   loadPrivateEventComments(): void {
     this.privateCommetSvc.index().subscribe(
       (data) => {
@@ -210,6 +220,7 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+  // LOAD ALL Event types IN DB ====================================
   loadEventTypes(): void {
     this.eTypeSvc.index().subscribe(
       (data) => {
@@ -220,7 +231,6 @@ export class AdminComponent implements OnInit {
       }
     );
   }
-
   eventResult(event) {
     // console.log(event);
 
@@ -228,7 +238,6 @@ export class AdminComponent implements OnInit {
     localStorage.setItem('event', '' + this.selected.id);
     this.router.navigateByUrl('/eventDetails');
   }
-
   findReceiverUsername(index) {
     if (this.receivers[index] == null) {
       return ' Check back Soon! ';
@@ -274,34 +283,101 @@ export class AdminComponent implements OnInit {
     }
     return this.receivers[index].address.zip;
   }
+  // DISABLE Event IN DB ====================================
   disableEvent(e) {
-        this.eventSvc.destroy(e.id).subscribe(
-          (data) => {
-            console.log(data);
-
-            this.loadEvents();
-
-            location.reload();
-          },
-          (err) => {
-            console.error(' Events disable failed');
-          }
-        );
+    this.eventSvc.destroy(e.id).subscribe(
+      (data) => {
+        console.log(data);
+        this.loadEvents();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Events disable failed');
       }
-  disableUser(e) {
-
-        this.userSvc.destroy(e.id).subscribe(
-          (data) => {
-
-            this.loadUsers();
-
-            location.reload();
-          },
-          (err) => {
-            console.error(' Events disable failed');
-          }
-        );
-      }
-
+    );
   }
+  // DISABLE Users IN DB ====================================
+  disableUser(e) {
+    this.userSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadUsers();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Events disable failed');
+      }
+    );
+  }
+  // DISABLE Event Posts IN DB ====================================
+  disableEventPost(e) {
+    this.ePostSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadEventPosts();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
+  // DISABLE Private Events IN DB ====================================
+  disablePrivateEvent(e) {
+    this.privateEventSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadEventPosts();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
+  // DISABLE Private Event Posts IN DB ====================================
+  disablePrivateEventPost(e) {
+    this.privateEventSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadPrivateEventPosts();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
+  // DISABLE Private Event Posts IN DB ====================================
+  disablePrivateEventComments(e) {
+    this.privateCommetSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadPrivateEventPosts();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
+  // UPDATE Private Event Posts IN DB ====================================
+  updateAddress(e) {
+    this.addressSvc.update(e.id).subscribe(
+      (data) => {
+        this.loadAddresses();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
+  disableBudget(e) {
+    this.privateCommetSvc.destroy(e.id).subscribe(
+      (data) => {
+        this.loadPrivateEventPosts();
+        location.reload();
+      },
+      (err) => {
+        console.error(' Event Posts disable failed');
+      }
+    );
+  }
+}
 // }
