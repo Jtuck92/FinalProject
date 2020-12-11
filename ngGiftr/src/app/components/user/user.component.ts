@@ -66,7 +66,6 @@ export class UserComponent implements OnInit {
           }
         }
         this.events = this.uEPipe.transform(this.activeGifts, this.user);
-        this.loadReceiverInfo();
       },
       (err) => {
         console.error('User retrive failed');
@@ -114,21 +113,6 @@ export class UserComponent implements OnInit {
     );
   }
 
-  loadReceiverInfo(){
-    for(let i = 0; i< this.gifts.length; i++){
-      if(this.events.length > this.loadRecieverCount){
-
-        if(this.gifts[i].gifter.id == this.receivers[this.loadRecieverCount].id){
-          if(!this.receiverGifts.includes(this.gifts[i])){
-            this.receiverGifts.push(this.gifts[i])
-          }
-    }
-  }
-this.loadRecieverCount = this.loadRecieverCount + 1;
-}
-console.log(this.receiverGifts);
-
-  }
 
 
   loadPrivateEvents(): void {
@@ -199,9 +183,26 @@ console.log(this.receiverGifts);
     return this.receivers[index].address.zip;
   }
 
-displayNote(index){
+displayNote(event, index){
+  console.log(this.receivers);
+  for(let i = 0; i < this.gifts.length; i++){
+    if( this.gifts[i].gifter.id == this.receivers[index].id){
+    if(this.gifts[i].event.id == event.id){
+          if(!this.receiverGifts.includes(this.gifts[i])){
+            console.log(this.gifts[i].id);
 
+            this.receiverGifts.push(this.gifts[i])
 
+        }
+      }
+
+    }
+  }
+if(this.receiverGifts[index].note == null){
+return "No notes from receipient"
+
+}
+return this.receiverGifts[index].note
 }
 
 }

@@ -525,9 +525,9 @@ USE `giftrdb`;
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (1, 12.50, 12, 'New Gift', 1, 1, 1, 2, 5, 'name', 'image', 'THIS IS A NEW NOTE FOR YOU');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (2, 12, 12, 'New Gift', 1, 1, 2, 1, NULL, NULL, NULL, 'THIS IS A NEW NOTE FOR YOU');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (3, 12, 12, 'New Gift', 1, 3, 2, 3, NULL, NULL, NULL, 'THIS IS A NEW NOTE FOR YOU');
-INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (4, 12, 12, 'New Gift', 1, 1, 1, 3, NULL, NULL, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (4, 12, 12, 'New Gift', 1, 2, 1, 3, NULL, NULL, NULL, NULL);
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (5, 12, 12, 'new', 1, 3, 3, 2, NULL, NULL, NULL, NULL);
-INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (6, 25.99, 22, 'PolyMorph', 1, 1, 3, 1, NULL, NULL, NULL, 'This note should be the solution');
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (6, 25.99, 22, 'PolyMorph', 1, 2, 3, 1, NULL, NULL, NULL, 'This note should be the solution');
 
 COMMIT;
 
