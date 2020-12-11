@@ -159,6 +159,7 @@ CREATE TABLE IF NOT EXISTS `budget` (
   `low_price` DOUBLE NULL,
   `high_price` DOUBLE NULL,
   `enabled` TINYINT NULL,
+  `name` VARCHAR(100) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -433,7 +434,7 @@ START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (1, 'Street Name 1', '11', 'USA', '11111', 'CO', 1, 'Denver');
 INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (2, 'Street Name 2', '22', 'USA', '22222', 'CO', 1, 'Lakewood');
-INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (3, 'gifter', 'gifter', 'gifter', '111', 'CO', 1, 'Gifter');
+INSERT INTO `address` (`id`, `street`, `street2`, `country`, `zip`, `state_province`, `enabled`, `city`) VALUES (3, 'gifter', 'gifter', 'gifter', '111', 'CO', 1, 'gifter');
 
 COMMIT;
 
@@ -486,7 +487,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `budget` (`id`, `low_price`, `high_price`, `enabled`) VALUES (1, 5.00, 10.00, 1);
+INSERT INTO `budget` (`id`, `low_price`, `high_price`, `enabled`, `name`) VALUES (1, 25.00, 50.00, 1, '$25 - $50');
+INSERT INTO `budget` (`id`, `low_price`, `high_price`, `enabled`, `name`) VALUES (2, 50.00, NULL, 1, 'Unlimited');
 
 COMMIT;
 
@@ -587,7 +589,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `giftrdb`;
-INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', 'https://zoo.sandiegozoo.org/sites/default/files/2019-01/thumb-giraffe.jpg', NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
+INSERT INTO `event_post` (`id`, `description`, `image_url`, `created_date`, `last_update`, `enabled`, `rating`, `event_id`, `user_id`, `subject`) VALUES (1, 'New Event Description', NULL, NULL, NULL, 1, '5', 1, 1, 'New Event Subject');
 
 COMMIT;
 
@@ -598,9 +600,6 @@ COMMIT;
 START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `event_comment` (`id`, `comment`, `created_date`, `last_update`, `enabled`, `event_post_id`, `user_id`) VALUES (1, 'THIS WAS SUPER FUN', NULL, NULL, 1, 1, 2);
-INSERT INTO `event_comment` (`id`, `comment`, `created_date`, `last_update`, `enabled`, `event_post_id`, `user_id`) VALUES (2, 'I wish I got that gift.', NULL, NULL, 1, 1, 2);
-INSERT INTO `event_comment` (`id`, `comment`, `created_date`, `last_update`, `enabled`, `event_post_id`, `user_id`) VALUES (3, 'Can you tell me where they got it?', NULL, NULL, 1, 1, 2);
-INSERT INTO `event_comment` (`id`, `comment`, `created_date`, `last_update`, `enabled`, `event_post_id`, `user_id`) VALUES (4, 'Please answer back.', NULL, NULL, 1, 1, 2);
 
 COMMIT;
 
