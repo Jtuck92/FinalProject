@@ -3,11 +3,11 @@
 
 ### Description
 
-#### Users
-#### Admin
+#### *Users*
+#### *Admin*
 
 ### Implementation
-#### API RestPoints
+#### *API RestPoints*
 http://localhost:8090/
 
 | Return Type         | Route                                 | Functionality                           |
@@ -75,8 +75,28 @@ http://localhost:8090/
 
 
 ### Technologies and Methodologies Used
+1. JPA
+2. RESTful Services
+3. VS Code
+4. MYSQL WorkBench
+5. JUnit Testing/TDD
+6. Postman
+7. STS
+8. Zoom Remote Development
+9. Java
+10. JavaScript
+11. HTML5
 
 
 
 
 ##### Ryan Miskoviak (Developer, DBA) <br/> Aaron Cottrell (Developer, Scrum Master)<br/> Jess Tucker (Developer, Repo Owner) <br/> Justin Livingston (Developer, Web Design Specialist)
+
+## Ryan's Lessons Learned
+## Struggles
+## Aaron's Lessons Learned
+## Struggles
+## Jess' Lessons Learned
+## Struggles
+## Justin's Lessons Learned
+## Struggles
