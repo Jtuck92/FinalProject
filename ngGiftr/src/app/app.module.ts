@@ -43,6 +43,7 @@ import { EventSignupComponent } from './components/event-signup/event-signup.com
 import { MessageBoardComponent } from './components/message-board/message-board.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { BudgetFilterPipe } from './pipes/budget-filter.pipe';
+import { PrivateEventComponent } from './components/private-event/private-event.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { BudgetFilterPipe } from './pipes/budget-filter.pipe';
     // PostComponent,
     MessageBoardComponent,
     AdminComponent,
-    BudgetFilterPipe
+    BudgetFilterPipe,
+    PrivateEventComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
   providers: [
