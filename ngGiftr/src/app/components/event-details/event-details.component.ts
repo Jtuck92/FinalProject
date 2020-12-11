@@ -41,7 +41,7 @@ export class EventDetailsComponent implements OnInit {
     this.eventSvc.show(this.idString).subscribe(
       (data) => {
         this.selected = data;
-        console.log(this.selected);
+        // console.log(this.selected);
         // localStorage.removeItem('event');
       },
       (err) => {

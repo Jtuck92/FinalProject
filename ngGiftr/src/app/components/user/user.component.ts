@@ -43,8 +43,16 @@ export class UserComponent implements OnInit {
   loadRecieverCount = 0;
 
   ngOnInit(): void {
-    this.loadPrivateEvents();
-    this.loadGifts();
+    if (!localStorage.getItem('foo')) {
+      console.log("Setting Foo");
+
+      localStorage.setItem('foo', 'no reload')
+      location.reload()
+    } else {
+      localStorage.removeItem('foo')
+      this.loadPrivateEvents();
+      this.loadGifts();
+    }
 
   }
 

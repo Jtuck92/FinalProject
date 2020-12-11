@@ -30,6 +30,7 @@ export class SearchResultsComponent implements OnInit {
     this.getEvents();
     this.searchString = this.currentRoute.snapshot.paramMap.get('param');
     localStorage.removeItem('search')
+
   }
   constructor(private formBuilder: FormBuilder, private eventSvc: EventService, public currentRoute: ActivatedRoute, private auth: AuthService, private router: Router) {
     this.formGroup = formBuilder.group({ filter: [''] });
@@ -52,7 +53,7 @@ export class SearchResultsComponent implements OnInit {
     this.eventSvc.index().subscribe(
       (data) => {
         this.events = data;
-        console.log(this.events);
+        // console.log(this.events);
       },
       (err) => {
         console.error("Events retrieve failed");

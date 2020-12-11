@@ -41,14 +41,14 @@ export class EventSignupComponent implements OnInit {
     if (this.auth.checkLogin) {
       this.loggedIn = true;
     }
-    console.log(this.selected);
+    // console.log(this.selected);
 
     this.idString = localStorage.getItem('event');
     this.idString = parseInt(this.idString);
     this.eventSvc.show(this.idString).subscribe(
       (data) => {
         this.selected = data;
-        console.log(this.selected);
+        // console.log(this.selected);
         // localStorage.removeItem('event');
       },
       (err) => {
@@ -73,17 +73,17 @@ export class EventSignupComponent implements OnInit {
       this.userSrv.show(this.numUserId).subscribe(
         (data) => {
           this.user = data;
-          console.log('Inside Show');
+          // console.log('Inside Show');
           // console.log(this.user);
           this.selected.users.push(this.user);
-          console.log(this.selected.users);
+          // console.log(this.selected.users);
 
           this.gift.gifter = this.user; //TODO find user
           this.eventSvc.update(this.selected).subscribe(
             (data) => {
-              console.log('Inside Update');
+              // console.log('Inside Update');
               this.selected = data;
-              console.log(this.selected.users);
+              // console.log(this.selected.users);
             },
             (err) => {
               console.error("This is the Event Update Failing ");
@@ -93,7 +93,7 @@ export class EventSignupComponent implements OnInit {
           this.giftSvc.create(this.gift).subscribe(
             (data) => {
               this.gift = data;
-              console.log(this.gift);
+              // console.log(this.gift);
             },
             (err) => {
               this.router.navigateByUrl('notFound');
@@ -105,8 +105,8 @@ export class EventSignupComponent implements OnInit {
         (err) => {
           console.error('User retrive failed');
         }
-      );
-      console.log('After Show');
+        );
+        // console.log('After Show');
 
   }
 
@@ -114,7 +114,7 @@ export class EventSignupComponent implements OnInit {
     this.budgetsSvc.index().subscribe(
       (data) => {
         this.budgets = data;
-        console.log(this.budgets);
+        // console.log(this.budgets);
       },
       (err) => {
         console.error('WorkoutComponent.LoadWorkout(); retrive failed');
