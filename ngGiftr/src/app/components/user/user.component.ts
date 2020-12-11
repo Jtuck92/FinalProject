@@ -40,10 +40,13 @@ export class UserComponent implements OnInit {
   activeGifts: Gift[] = [];
   userGifts: Gift[] = [];
   notes: String [] = [];
+  receiverGifts: Gift [] = [];
+  loadRecieverCount = 0;
 
   ngOnInit(): void {
     this.loadPrivateEvents();
     this.loadGifts();
+
   }
 
   loadPersonalEventList() {
@@ -56,10 +59,14 @@ export class UserComponent implements OnInit {
         this.user = data;
         for (let i = 0; i < this.activeGifts.length; i++) {
           if (this.activeGifts[i].gifter.id == this.user.id) {
+            if(this.activeGifts[i].receiver == null){
+              this.receivers.push(new User());
+            }
             this.receivers.push(this.activeGifts[i].receiver);
           }
         }
         this.events = this.uEPipe.transform(this.activeGifts, this.user);
+        this.loadReceiverInfo();
       },
       (err) => {
         console.error('User retrive failed');
@@ -106,6 +113,23 @@ export class UserComponent implements OnInit {
       }
     );
   }
+
+  loadReceiverInfo(){
+    for(let i = 0; i< this.gifts.length; i++){
+      if(this.events.length > this.loadRecieverCount){
+
+        if(this.gifts[i].gifter.id == this.receivers[this.loadRecieverCount].id){
+          if(!this.receiverGifts.includes(this.gifts[i])){
+            this.receiverGifts.push(this.gifts[i])
+          }
+    }
+  }
+this.loadRecieverCount = this.loadRecieverCount + 1;
+}
+console.log(this.receiverGifts);
+
+  }
+
 
   loadPrivateEvents(): void {
     this.pEventSrv.index().subscribe(
@@ -174,5 +198,10 @@ export class UserComponent implements OnInit {
     }
     return this.receivers[index].address.zip;
   }
+
+displayNote(index){
+
+
+}
 
 }

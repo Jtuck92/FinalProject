@@ -22,14 +22,22 @@
   <br />
   <br />
   <h3 id="homeHeader">Current Giftr Exchanges</h3>
+
+
+
+
   <form style="text-align: center;">
- <input type="radio" id="allBudgets" name="allBudget" value=0 [(ngModel)]="selectedBudget" ng-checked="checked">&nbsp;
-<label for="selectedBudegt">All Giftrs</label> &nbsp;&nbsp;
-<input type="radio" id="25-50budget" name="25-50"[(ngModel)]="selectedBudget" value=1>&nbsp;
-<label for="selectedBudegt">$25 - $50 budget</label> &nbsp;&nbsp;
-<input type="radio" id="unlimited" name="unlimited"[(ngModel)]="selectedBudget" value=2>&nbsp;
-<label for="selectedBudegt">Unlimited budget</label>
+ <input type="radio" id="allBudgets" name="allBudget" value=0 [(ngModel)]="selectedBudget" ng-checked="checked">   &nbsp;
+<label for="selectedBudegt">All Giftrs</label>       &nbsp;&nbsp;
+<div style="display: inline-block;" *ngFor="let b of budgets">
+  <input type="radio" id="25-50budget" name="25-50"[(ngModel)]="selectedBudget" value={{b.id}}>  &nbsp;
+  <label for="selectedBudegt">{{b.name}}</label>       &nbsp;&nbsp;
+</div>
   </form>
+
+
+
+
   <div id="homeEvents">
     <ul id="horizontal-list">
       <li *ngFor="let event of events | active | budgetFilter : selectedBudget">

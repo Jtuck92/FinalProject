@@ -1,11 +1,10 @@
+import { Budget } from './../../models/budget';
 import { Router } from '@angular/router';
 import { AuthService } from './../../service/auth.service';
-import { PrivateEvent } from './../../models/private-event';
 import { Event } from './../../models/event';
 import { EventService } from './../../service/event.service';
 import { Component, OnInit } from '@angular/core';
-import { error } from 'protractor';
-import { PrivateEventService } from 'src/app/service/private-event.service';
+import { BudgetService } from 'src/app/service/budget.service';
 
 @Component({
   selector: 'app-home',
@@ -14,19 +13,35 @@ import { PrivateEventService } from 'src/app/service/private-event.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private eventSvc: EventService, private pEventSrv: PrivateEventService, private auth: AuthService, private router: Router) { }
+  constructor(private eventSvc: EventService,
+     private budgetSvc: BudgetService,
+      private auth: AuthService,
+       private router: Router) { }
 events: Event[] = [];
 selected: Event = null;
 selectedBudget = 0;
+budgets: Budget [] = []
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
     this.loadEvents();
+    this.loadBudgets();
   }
   loadEvents(): void {
     this.eventSvc.index().subscribe(
       (data) => {
         this.events = data;
+      },
+      (err) => {
+        console.error('WorkoutComponent.LoadWorkout(); retrive failed');
+
+      }
+    );
+  }
+  loadBudgets(): void {
+    this.budgetSvc.index().subscribe(
+      (data) => {
+        this.budgets = data;
       },
       (err) => {
         console.error('WorkoutComponent.LoadWorkout(); retrive failed');

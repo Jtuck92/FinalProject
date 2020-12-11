@@ -25,6 +25,8 @@ public class Budget {
 	
 	private Boolean enabled = true;
 	
+	private String name;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="budget")
 	private List<Event> events;
@@ -36,6 +38,14 @@ public class Budget {
 
 	public void setEvents(List<Event> events) {
 		this.events = events;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Budget() {

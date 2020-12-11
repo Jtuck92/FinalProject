@@ -66,16 +66,21 @@ export class EventDetailsComponent implements OnInit {
     this.router.navigateByUrl('notFound');
   }
   pEventSignup() {
-    console.log(this.selected.users);
-    console.log("this is the logged in User" + this.user);
-for(let i = 0; i < this.selected.users.length; i++){
-  if(this.selected.users[i].id == this.user.id){
-    alert("You have already signed up for this event. Check your profile for additional details")
-    return "";
-  }
-}
-    localStorage.setItem('event' , "" + this.selected.id);
-    this.router.navigateByUrl('eventSignup');
+    if(!this.auth.checkLogin()){
+    this.router.navigateByUrl("login");
+    }else{
+
+      console.log(this.selected.users);
+      console.log("this is the logged in User" + this.user);
+      for(let i = 0; i < this.selected.users.length; i++){
+        if(this.selected.users[i].id == this.user.id){
+          alert("You have already signed up for this event. Check your profile for additional details")
+          return "";
+        }
+      }
+      localStorage.setItem('event' , "" + this.selected.id);
+      this.router.navigateByUrl('eventSignup');
+    }
 
   }
 }

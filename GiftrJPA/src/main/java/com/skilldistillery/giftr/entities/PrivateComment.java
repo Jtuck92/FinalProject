@@ -2,7 +2,6 @@ package com.skilldistillery.giftr.entities;
 
 import java.time.LocalDateTime;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "private_comment")
@@ -42,7 +41,7 @@ public class PrivateComment {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties("comments")
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private PrivatePost post;
