@@ -58,7 +58,7 @@ export class PrivateEventService {
 
   destroy(id: number) {
     const httpOptions = this.gettingHttpOptions();
-    this.url = environment.baseUrl + 'api/events/' + id;
+    this.url = environment.baseUrl + 'api/privateEvents/' + id;
     return this.http.delete<any>(this.url, httpOptions).pipe(
       catchError((err: any) => {
         console.log(err);

@@ -89,7 +89,7 @@ export class AdminComponent implements OnInit {
     this.loadEvents();
     this.loadGifts();
     this.loadPayments();
-    // this.loadPrivateEventComments();
+    this.loadPrivateEventComments();
     this.loadPrivateEventPosts();
     this.loadPrivateEvents();
     this.loadUsers();
@@ -209,16 +209,16 @@ export class AdminComponent implements OnInit {
     );
   }
   // LOAD ALL Private Event Comments IN DB ====================================
-  // loadPrivateEventComments(): void {
-  //   this.privateCommetSvc.index().subscribe(
-  //     (data) => {
-  //       this.privateEventComments = data;
-  //     },
-  //     (err) => {
-  //       console.error('Admin LoadPrivateEventComments(); retrieve failed');
-  //     }
-  //   );
-  // }
+  loadPrivateEventComments(): void {
+    this.privateCommetSvc.index().subscribe(
+      (data) => {
+        this.privateEventComments = data;
+      },
+      (err) => {
+        console.error('Admin LoadPrivateEventComments(); retrieve failed');
+      }
+    );
+  }
   // LOAD ALL Event types IN DB ====================================
   loadEventTypes(): void {
     this.eTypeSvc.index().subscribe(
@@ -345,7 +345,7 @@ export class AdminComponent implements OnInit {
   }
   // DISABLE Private Event Posts IN DB ====================================
   disablePrivateEventPost(e) {
-    this.privateEventSvc.destroy(e.id).subscribe(
+    this.privatePostSvc.destroy(e.id).subscribe(
       (data) => {
         this.loadPrivateEventPosts();
         location.reload();
@@ -381,7 +381,7 @@ export class AdminComponent implements OnInit {
   }
   // DISABLE Budgets IN DB ====================================
   disableBudget(e) {
-    this.privateCommetSvc.destroy(e.id).subscribe(
+    this.budgetSvc.destroy(e.id).subscribe(
       (data) => {
         this.loadPrivateEventPosts();
         location.reload();

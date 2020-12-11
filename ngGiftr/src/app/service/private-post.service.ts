@@ -76,7 +76,7 @@ constructor(private http: HttpClient,private auth: AuthService) { }
 
           }
 
-          destroy(id: Number){
+          destroy(id: number){
             const httpOptions = this.gethttpOptions();
       this.url = environment.baseUrl + 'api/privatePosts/' + id;
        return this.http.delete<any>(this.url, httpOptions)
