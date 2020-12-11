@@ -1,46 +1,62 @@
-<div>
+<div class="container">
+  <div id ="leftbox">
 <div *ngIf="selected" id="eventPost">
   <h1> {{ selected.subject }}</h1>
 <img class="eventImg" src="{{selected.imageUrl}}" alt="">
-<!-- <div class="btnDiv">
-<button *ngIf="selected.enabled"
-  (click)="pEventSignup()"
-  class="btn"
-  type="submit"
-  value=""
-  >Sign up for this Event</button>
-</div> -->
 </div>
-<div class="container">
-  <div class="row bootstrap snippets bootdeys">
-      <div class="col-md-8 col-sm-12">
-          <div class="comment-wrapper">
-              <div class="panel panel-info">
-                  <div class="panel-heading">
-                      Comment panel
-                  </div>
-                  <div class="panel-body">
-                      <textarea [(ngModel)]="newComment.comment" class="form-control" placeholder="write a comment..." rows="3"></textarea>
-                      <br>
-                      <button type="button" (click)="postComment()" class="btn btn-info pull-right">Post</button>
-                      <div class="clearfix"></div>
-                      <hr>
-                      <ul class="media-list">
-                          <li class="media" *ngFor="let c of selected.comments">
-                              <div class="media-body">
-                                <div>
-                                  <p>
-                                    Username:{{c.user.username}}
-                                    {{c.comment}}
-                                  </p>
-                                </div>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
+</div>
+<div id="rightbox">
+<div *ngIf="selected" id="eventPost">
+  <p>{{selected.description}}</p>
+</div>
+</div>
+<div class="container"  id="commentbox">
+  <div class="comment-wrapper">
+      <div class="panel panel-info">
+          <div class="panel-heading">
+              Comment panel
           </div>
-
+          <div class="panel-body">
+              <textarea [(ngModel)]="newComment.comment" class="form-control" placeholder="write a comment..." rows="3"></textarea>
+              <br>
+              <button type="button" (click)="postComment()" class="btn btn-info pull-right">Post</button>
+              <div class="clearfix"></div>
+              <hr>
+              <ul class="media-list">
+                  <li class="media" *ngFor="let c of selected.comments">
+                      <div class="media-body">
+                        <div>
+                          <p>
+                           {{c.user.username}}:
+                            {{c.comment}}
+                          </p>
+                        </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
       </div>
-  </div>
-  </div>
+    </div>
+</div>
+</div>
+
+
+
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>

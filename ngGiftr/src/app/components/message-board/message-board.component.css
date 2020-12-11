@@ -11,7 +11,9 @@
   border: 6px solid  rgb(53,203,233)!important;
 }
 
-body{margin-top:20px;}
+body{
+  margin-top:20px;
+  }
 
 .comment-wrapper .panel-body {
     max-height:650px;
@@ -27,4 +29,33 @@ body{margin-top:20px;}
 .comment-wrapper .media-list .media {
     border-bottom:1px dashed #efefef;
     margin-bottom:25px;
+}
+
+#leftbox {
+  float: left;
+  text-align: center;
+}
+
+#rightbox {
+  float: right;
+  border: solid 1px black;
+  margin-top: 60px;
+  margin-right: 200px;
+  width: 400px;
+  height: 100px;
+  position: relative;
+}
+
+#rightbox p {
+  text-align: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+
+}
+
+#commentbox {
+  text-align: center;
+float: right;
 }

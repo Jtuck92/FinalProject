@@ -55,18 +55,19 @@ export class MessageBoardComponent implements OnInit {
   postComment() {
     if(!this.auth.checkLogin()) {
       this.router.navigateByUrl('login')
+    } else {
+      this.newComment.post = this.selected;
+      this.eventCommentSvc.create(this.newComment).subscribe(
+        (good) => {
+          this.selected.comments.push(good);
+          location.reload();
+        },
+        (bad) => {
+          console.error(bad);
+        }
+      );
+      this.newComment = new EventComment();
     }
-    this.newComment.post = this.selected;
-    this.eventCommentSvc.create(this.newComment).subscribe(
-      (good) => {
-        this.selected.comments.push(good);
-        location.reload();
-      },
-      (bad) => {
-        console.error(bad);
-      }
-    );
-    this.newComment = new EventComment();
   }
 
 
