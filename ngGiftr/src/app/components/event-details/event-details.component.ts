@@ -34,6 +34,7 @@ export class EventDetailsComponent implements OnInit {
     if (this.auth.checkLogin) {
       this.loggedIn = true;
     }
+    window.scrollTo(0,0);
 
     this.idString = localStorage.getItem('event');
     this.idString = parseInt(this.idString);
@@ -41,7 +42,7 @@ export class EventDetailsComponent implements OnInit {
       (data) => {
         this.selected = data;
         console.log(this.selected);
-        localStorage.removeItem('event');
+        // localStorage.removeItem('event');
       },
       (err) => {
         this.router.navigateByUrl('notFound');

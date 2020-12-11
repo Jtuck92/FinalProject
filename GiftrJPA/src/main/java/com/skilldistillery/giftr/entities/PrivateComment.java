@@ -41,7 +41,7 @@ public class PrivateComment {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@JsonIgnoreProperties("comments")
+	@JsonIgnoreProperties("prvComments")
 	@ManyToOne
 	@JoinColumn(name="post_id")
 	private PrivatePost post;
