@@ -10,7 +10,7 @@ import { Event } from './../../models/event';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { relative } from 'path';
+// import { relative } from 'path';
 
 @Component({
   selector: 'app-user',
@@ -59,9 +59,9 @@ export class UserComponent implements OnInit {
         this.user = data;
         for (let i = 0; i < this.activeGifts.length; i++) {
           if (this.activeGifts[i].gifter.id == this.user.id) {
-            if(this.activeGifts[i].receiver == null){
-              this.receivers.push(new User());
-            }
+            // if(this.activeGifts[i].receiver == null){
+            //   this.receivers.push(new User());
+            // }
             this.receivers.push(this.activeGifts[i].receiver);
           }
         }
@@ -183,26 +183,23 @@ export class UserComponent implements OnInit {
     return this.receivers[index].address.zip;
   }
 
-displayNote(event, index){
-  console.log(this.receivers);
-  for(let i = 0; i < this.gifts.length; i++){
-    if( this.gifts[i].gifter.id == this.receivers[index].id){
-    if(this.gifts[i].event.id == event.id){
-          if(!this.receiverGifts.includes(this.gifts[i])){
-            console.log(this.gifts[i].id);
-
-            this.receiverGifts.push(this.gifts[i])
-
+  displayNote(event, index){
+    for(let i = 0; i < this.gifts.length; i++){
+      if(this.receivers[index] == null){
+        return "";
+      }
+      if( this.gifts[i].gifter.id == this.receivers[index].id){
+      if(this.gifts[i].event.id == event.id){
+            if(!this.receiverGifts.includes(this.gifts[i])){
+              this.receiverGifts.push(this.gifts[i])
+          }
         }
       }
-
     }
+  if(this.receiverGifts[index].note == null){
+  return "No notes from receipient"
   }
-if(this.receiverGifts[index].note == null){
-return "No notes from receipient"
-
-}
-return this.receiverGifts[index].note
-}
+  return this.receiverGifts[index].note
+  }
 
 }

@@ -334,7 +334,67 @@
   </tbody>
 </table>
 </div> -->
+<!-- ******************** END OF PRIVATE EVENT POST TABLES ****************************** -->
+<!-- ******************** START OF PRIVATE EVENT COMMENTS TABLES ****************************** -->
+
+<br>
+<br>
+<div *ngIf="selectedListType == 'Event Comments'|| selectedListType == 'All'">
+
+<h2>Event Comments <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Post</th>
+      <th class="col">Comment</th>
+      <th class="col">User</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let ec of eventComments | active "
+    >
+    <td  class="col"   id="homeList"> {{ec.post.event.name}}</td>
+      <td class="col"  id="homeList">{{ec.post.subject}}</td>
+      <td class="col"  id="homeList">{{ec.comment}}</td>
+      <td class="col"  id="homeList">{{ec.user.username}}</td>
+      <td *ngIf='ec.enabled'><button
+        (click)="disableEventComments(ec)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Disable</button></td>
+      </tr>
+  </tbody>
+</table>
+
+
+
+<br>
+<br>
+<h2>Disabled Event Comments <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">Event</th>
+      <th class="col">Post</th>
+      <th class="col">Comment</th>
+      <th class="col">User</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let ec of eventComments | disabled "
+    >
+    <td  class="col"   id="homeList"> {{ec.post.event.name}}</td>
+      <td class="col"  id="homeList">{{ec.post.subject}}</td>
+      <td class="col"  id="homeList">{{ec.comment}}</td>
+      <td class="col"  id="homeList">{{ec.user.username}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <!-- ******************** END OF EVENT COMMENTS TABLES ****************************** -->
+
 
 'Private Events',
 'Private Event Posts',
