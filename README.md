@@ -92,11 +92,11 @@ http://localhost:8090/
 
 ##### Ryan Miskoviak (Developer, DBA) <br/> Aaron Cottrell (Developer, Scrum Master)<br/> Jess Tucker (Developer, Repo Owner) <br/> Justin Livingston (Developer, Web Design Specialist)
 
-##### Ryan's Lessons Learned
-##### Struggles
-##### Aaron's Lessons Learned
-##### Struggles
-##### Jess' Lessons Learned
-##### Struggles
-##### Justin's Lessons Learned
-##### Struggles
+#### Ryan's Lessons Learned
+#### Struggles
+#### Aaron's Lessons Learned
+#### Struggles
+#### Jess' Lessons Learned
+#### Struggles
+#### Justin's Lessons Learned
+#### Struggles
