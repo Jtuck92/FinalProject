@@ -182,27 +182,23 @@ export class UserComponent implements OnInit {
     return this.receivers[index].address.zip;
   }
 
-displayNote(event, index){
-  for(let i = 0; i < this.gifts.length; i++){
-    if(this.receivers[index] == null){
-      return "";
-    }
-    if( this.gifts[i].gifter.id == this.receivers[index].id){
-    if(this.gifts[i].event.id == event.id){
-          if(!this.receiverGifts.includes(this.gifts[i])){
-
-            this.receiverGifts.push(this.gifts[i])
-
+  displayNote(event, index){
+    for(let i = 0; i < this.gifts.length; i++){
+      if(this.receivers[index] == null){
+        return "";
+      }
+      if( this.gifts[i].gifter.id == this.receivers[index].id){
+      if(this.gifts[i].event.id == event.id){
+            if(!this.receiverGifts.includes(this.gifts[i])){
+              this.receiverGifts.push(this.gifts[i])
+          }
         }
       }
-
     }
+  if(this.receiverGifts[index].note == null){
+  return "No notes from receipient"
   }
-if(this.receiverGifts[index].note == null){
-return "No notes from receipient"
-
-}
-return this.receiverGifts[index].note
-}
+  return this.receiverGifts[index].note
+  }
 
 }
