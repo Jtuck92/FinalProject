@@ -2,7 +2,6 @@ package com.skilldistillery.giftr.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,11 +57,47 @@ public class EventServiceImpl implements EventService {
 		Event e = null;
 		if (managedEvent.isPresent()) {
 			e = managedEvent.get();
-			e.setName(event.getName());
-			e.setDescription(event.getDescription());
-			e.setStartDate(event.getStartDate());
-			e.setEndDate(event.getEndDate());
-			e.setImageUrl(event.getImageUrl());
+			if(event.getName() != null) {
+				e.setName(event.getName());
+			}
+			if(event.getDescription() != null) {
+				e.setDescription(event.getDescription());
+			}
+			if(event.getEnabled() != null) {
+				e.setEnabled(event.getEnabled());
+			}
+			if(event.getBudget() != null) {
+				e.setBudget(event.getBudget());
+			}
+			if(event.getImageUrl() != null) {
+				e.setImageUrl(event.getImageUrl());
+			}
+			if(event.getEventManager() != null) {
+				e.setEventManager(event.getEventManager());
+			}
+			if(event.getEventTypes() != null) {
+				e.setEventTypes(event.getEventTypes());
+			}
+			if(event.getUsers() != null) {
+				e.setUsers(event.getUsers());
+			}
+			if(event.getPosts() != null) {
+				e.setPosts(event.getPosts());
+			}
+			if(event.getGifts() != null) {
+				e.setGifts(event.getGifts());
+			}
+			if(event.getStartDate() != null) {
+				e.setStartDate(event.getStartDate());
+			}
+			if(event.getEndDate() != null) {
+				e.setEndDate(event.getEndDate());
+			}
+			
+			
+			
+			
+			
 			eventRepo.saveAndFlush(e);
 		}
 		return e;

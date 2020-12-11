@@ -8,7 +8,6 @@ import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Event } from './../../models/event';
-// import { create } from 'domain';
 import { Gift } from 'src/app/models/gift';
 import { UserService } from 'src/app/service/user.service';
 
@@ -63,18 +62,34 @@ export class EventSignupComponent implements OnInit {
 
   pEventSignupDone() {
       this.gift.event = this.selected;
-      console.log(this.gift.event);
+      // console.log(this.gift.event);
       this.stringId = localStorage.getItem('userId');
-      console.log(this.stringId);
+      // console.log(this.stringId);
       this.numUserId = parseInt(this.stringId);
-      console.log(this.numUserId);
+      // console.log(this.numUserId);
+
+
 
       this.userSrv.show(this.numUserId).subscribe(
         (data) => {
           this.user = data;
           console.log('Inside Show');
-          console.log(this.user);
+          // console.log(this.user);
+          this.selected.users.push(this.user);
+          console.log(this.selected.users);
+
           this.gift.gifter = this.user; //TODO find user
+          this.eventSvc.update(this.selected).subscribe(
+            (data) => {
+              console.log('Inside Update');
+              this.selected = data;
+              console.log(this.selected.users);
+            },
+            (err) => {
+              console.error("This is the Event Update Failing ");
+              ;
+            }
+          );
           this.giftSvc.create(this.gift).subscribe(
             (data) => {
               this.gift = data;
