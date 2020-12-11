@@ -85,7 +85,7 @@ public class PrivateEventPostController {
 	}
 	
 	@DeleteMapping("privatePosts/{ppId}")
-	public void destory(HttpServletRequest req, HttpServletResponse res,@RequestBody Principal p, @PathVariable int ppId) {
+	public void destory(HttpServletRequest req, HttpServletResponse res, Principal p, @PathVariable int ppId) {
 		try {
 			if (pPostSvc.destroy(p.getName(), ppId)) {
 				res.setStatus(204);
