@@ -23,6 +23,7 @@
       <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
       <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.budget.name}}</td>
       <td *ngIf='e.enabled'><button
         (click)="disableEvent(e)"
         class="btn"
@@ -333,15 +334,15 @@
     </tr>
   </tbody>
 </table>
-</div> -->
+  </div>
 <!-- ******************** END OF PRIVATE EVENT POST TABLES ****************************** -->
 <!-- ******************** START OF PRIVATE EVENT COMMENTS TABLES ****************************** -->
 
+<!-- <br>
 <br>
-<br>
-<div *ngIf="selectedListType == 'Event Comments'|| selectedListType == 'All'">
+<div *ngIf="selectedListType == 'Private Event Comments'|| selectedListType == 'All'">
 
-<h2>Event Comments <br></h2>
+<h2>Private Event Comments <br></h2>
 <table >
   <thead class="col">
     <tr class="col">
@@ -352,14 +353,14 @@
     </tr>
   </thead>
   <tbody class="center">
-    <tr class="col" *ngFor="let ec of eventComments | active "
+    <tr class="col" *ngFor="let pec of privateEventComments | active "
     >
-    <td  class="col"   id="homeList"> {{ec.post.event.name}}</td>
-      <td class="col"  id="homeList">{{ec.post.subject}}</td>
-      <td class="col"  id="homeList">{{ec.comment}}</td>
-      <td class="col"  id="homeList">{{ec.user.username}}</td>
-      <td *ngIf='ec.enabled'><button
-        (click)="disableEventComments(ec)"
+    <td  class="col"   id="homeList"> {{pec.prvEvent.name}}</td>
+      <td class="col"  id="homeList">{{pec.prvEvent.subject}}</td>
+      <td class="col"  id="homeList">{{pec.comment}}</td>
+      <td class="col"  id="homeList">{{pec.user.username}}</td>
+      <td *ngIf='pec.enabled'><button
+        (click)="disablePrivateEventComments(pec)"
         class="btn"
         type="submit"
         value="remove"
@@ -383,24 +384,225 @@
     </tr>
   </thead>
   <tbody class="center">
-    <tr class="col" *ngFor="let ec of eventComments | disabled "
+    <tr class="col" *ngFor="let pec of privateEventComments | disabled "
     >
-    <td  class="col"   id="homeList"> {{ec.post.event.name}}</td>
-      <td class="col"  id="homeList">{{ec.post.subject}}</td>
-      <td class="col"  id="homeList">{{ec.comment}}</td>
-      <td class="col"  id="homeList">{{ec.user.username}}</td>
+    <td  class="col"   id="homeList"> {{pec.prvEvent.name}}</td>
+      <td class="col"  id="homeList">{{pec.prvEvent.subject}}</td>
+      <td class="col"  id="homeList">{{pec.comment}}</td>
+      <td class="col"  id="homeList">{{pec.user.username}}</td>
     </tr>
   </tbody>
 </table>
-</div>
+</div> -->
 <!-- ******************** END OF EVENT COMMENTS TABLES ****************************** -->
+<!-- ******************** START OF ADDRESS TABLES ****************************** -->
+
+<br>
+<br>
+<div *ngIf="selectedListType == 'Addresses'|| selectedListType == 'All'">
+
+<h2>Addresses <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">First Name</th>
+      <th class="col">Last Name</th>
+      <th class="col">Username</th>
+      <th class="col">Address </th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let u of users | active "
+    >
+    <td  class="col"   id="homeList"> {{u.firstName}}</td>
+      <td class="col"  id="homeList">{{u.lastName}}</td>
+      <td class="col"  id="homeList">{{u.username}}</td>
+      <td class="col"  id="homeList">{{u.address.street}} <br> {{u.address.street2}} <br> {{u.address.city}}, {{u.address.state}} {{u.address.zip}} <br> {{u.address.country}}</td>
+      <td *ngIf='u.enabled'><button
+        (click)="updateAddress(u)"
+        class="btn"
+        type="submit"
+        value="remove"
+        >Update</button></td>
+      </tr>
+  </tbody>
+</table>
+</div>
+<!-- ******************** END OF ADDRESS TABLE ****************************** -->
+<!-- ******************** START OF PAYMENT TABLES ****************************** -->
+<br>
+<br>
+<div *ngIf="selectedListType == 'Payments' || selectedListType == 'All'">
+<h2>User Payments <br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+      <th class="col">First Name</th>
+      <th class="col">Last Name</th>
+      <th class="col">Username</th>
+      <th class="col">Card Number</th>
+      <th class="col">Exp Date</th>
+      <th class="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let pay of payments | active "
+    >
+    <td  class="col"   id="homeList"> {{pay.user.firstName}}</td>
+      <td class="col"  id="homeList">{{pay.user.lastName}}</td>
+      <td class="col"  id="homeList">{{pay.user.username}}</td>
+      <td class="col"  id="homeList">{{pay.cardNumber}}</td>
+      <td class="col"  id="homeList">{{pay.exp}}</td>
+      <td class="col"  id="homeList">{{pay.amount}}</td>
+
+      </tr>
+  </tbody>
+</table>
+</div>
+<!-- ******************** END OF PAYMENT TABLE ****************************** -->
+  <!-- ******************** START OF BUDGET TABLES ****************************** -->
+  <div *ngIf="selectedListType == 'Budegts' || selectedListType == 'All'">
+    <h2>Active Budgets  <br></h2>
+    <table >
+      <thead class="col">
+        <tr class="col">
+          <th class="col">Budget</th>
+          <th class="col">Low</th>
+          <th class="col">Events</th>
+        </tr>
+      </thead>
+      <tbody class="center">
+        <tr class="col" *ngFor="let bud of budgets | active "
+        >
+          <td class="col"   id="homeList">{{bud.name}}</td>
+          <td  class="col"   id="homeList"> {{bud.lowPrice}}</td>
+          <td  class="col"   id="homeList"> {{bud.highPrice}}</td>
+
+          <td *ngIf='bud.enabled'><button
+            (click)="disableBudget(bud)"
+            class="btn"
+            type="submit"
+            value="remove"
+            >Disable</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <h2>Past Private Giftrs  <br></h2>
+    <table >
+      <thead class="col">
+        <tr class="col">
+          <th class="col">Event</th>
+          <th class="col">Date Created</th>
+          <th class="col">Description</th>
+          <th class="col">Manager</th>
+        </tr>
+      </thead>
+      <tbody class="center">
+        <tr class="col" *ngFor="let bud of budgets | disabled "
+        >
+          <td class="col"   id="homeList">{{bud.name}}</td>
+          <td  class="col"   id="homeList"> {{bud.lowPrice}}</td>
+          <td  class="col"   id="homeList"> {{bud.highPrice}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- ******************** END OF PRIVATE EVENTS TABLES ****************************** -->
+  <!-- ******************** START OF EVENT TYPE TABLES ****************************** -->
+  <div *ngIf="selectedListType == 'Event Types' || selectedListType == 'All'">
+    <h2>Active Budgets  <br></h2>
+    <table >
+      <thead class="col">
+        <tr class="col">
+          <th class="col">Name</th>
+          <th class="col">Description</th>
+       </tr>
+      </thead>
+      <tbody class="center">
+        <tr class="col" *ngFor="let et of eventTypes | active "
+        >
+          <td class="col"   id="homeList">{{et.name}}</td>
+          <td  class="col"   id="homeList"> {{et.description}}</td>
 
 
-'Private Events',
-'Private Event Posts',
-'Private Event Comments',
-'Addresses',
-'Payments',
-'Budegts',
-'Event Types',
-'Gifts',
+          <td *ngIf='et.enabled'><button
+            (click)="disableEventTypes(et)"
+            class="btn"
+            type="submit"
+            value="remove"
+            >Disable</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <h2>Past Private Giftrs  <br></h2>
+    <table >
+      <thead class="col">
+        <tr class="col">
+          <th class="col">Event</th>
+          <th class="col">Date Created</th>
+          <th class="col">Description</th>
+          <th class="col">Manager</th>
+        </tr>
+      </thead>
+      <tbody class="center">
+        <tr class="col" *ngFor="let et of eventTypes | disabled "
+        >
+          <td class="col"   id="homeList">{{et.name}}</td>
+          <td  class="col"   id="homeList"> {{et.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- ******************** END OF EVENT TYPE TABLES ****************************** -->
+  <!-- ******************** START OF GIFTS TABLES ****************************** -->
+
+    <br>
+<br>
+<div *ngIf="selectedListType == 'Gifts' || selectedListType == 'All'">
+<h2>Gifts<br></h2>
+<table >
+  <thead class="col">
+    <tr class="col">
+
+      <th class="col">Giftr Username</th>
+      <th class="col">Reciver Username</th>
+      <th class="col">Price</th>
+      <th class="col">Weight kg</th>
+      <th class="col">Description</th>
+      <th class="col">Rating</th>
+      <th class="col">Name</th>
+      <th class="col">Note</th>
+    </tr>
+  </thead>
+  <tbody class="center">
+    <tr class="col" *ngFor="let gif of gifts | active "
+    >
+
+      <td class="col"  id="homeList">{{gif.gifter.username}}</td>
+
+      <td class="col"  id="homeList">{{gif.receiver.username}}</td>
+      <td class="col"  id="homeList">{{gif.price}}</td>
+      <td class="col"  id="homeList">{{gif.weight}}</td>
+      <td class="col"  id="homeList">{{gif.description}}</td>
+      <td class="col"  id="homeList">{{gif.rating}}</td>
+      <td class="col"  id="homeList">{{gif.name}}</td>
+      <td class="col"  id="homeList">{{gif.note}}</td>
+
+      </tr>
+  </tbody>
+</table>
+</div>
+  <!-- ******************** END OF GIFTS TABLES ****************************** -->
+
+'Private Events', - Cannot Disable
+'Private Event Posts', - Cannot Disable
+'Private Event Comments', - Cannot Load Error
+'Budegts', - Cannot Disable

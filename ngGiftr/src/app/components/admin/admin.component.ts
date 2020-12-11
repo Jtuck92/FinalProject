@@ -90,7 +90,7 @@ export class AdminComponent implements OnInit {
     this.loadEvents();
     this.loadGifts();
     this.loadPayments();
-    this.loadPrivateEventComments();
+    // this.loadPrivateEventComments();
     this.loadPrivateEventPosts();
     this.loadPrivateEvents();
     this.loadUsers();
@@ -210,16 +210,16 @@ export class AdminComponent implements OnInit {
     );
   }
   // LOAD ALL Private Event Comments IN DB ====================================
-  loadPrivateEventComments(): void {
-    this.privateCommetSvc.index().subscribe(
-      (data) => {
-        this.privateEventComments = data;
-      },
-      (err) => {
-        console.error('Admin LoadPrivateEventComments(); retrieve failed');
-      }
-    );
-  }
+  // loadPrivateEventComments(): void {
+  //   this.privateCommetSvc.index().subscribe(
+  //     (data) => {
+  //       this.privateEventComments = data;
+  //     },
+  //     (err) => {
+  //       console.error('Admin LoadPrivateEventComments(); retrieve failed');
+  //     }
+  //   );
+  // }
   // LOAD ALL Event types IN DB ====================================
   loadEventTypes(): void {
     this.eTypeSvc.index().subscribe(
