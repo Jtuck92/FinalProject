@@ -1,1 +1,18 @@
-<p>private-event works!</p>
+<div *ngIf="selected" id="privateEvents">
+  <h1> {{ selected.name }}</h1>
+</div>
+<img class="eventImg" src="{{selected.imageUrl}}" alt="">
+<div class="btnDiv">
+<button *ngIf="selected.enabled"
+  class="btn"
+  type="submit"
+  value=""
+  >Sign up for this Event</button>
+</div>
+<br>
+<h3 class="eventDesc">{{selected.description}}<h3>
+  <br>
+<br><br>
+<br>
+  <p> Still have questions? Check out the <a href="/faq" class="btn">FAQ</a> or <a href="/contact" class="btn">Contact Us</a></p>
+
