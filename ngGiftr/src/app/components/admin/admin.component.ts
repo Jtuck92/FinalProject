@@ -75,7 +75,7 @@ export class AdminComponent implements OnInit {
     'Private Event Comments',
     'Addresses',
     'Payments',
-    'Budegts',
+    'Budgets',
     'Event Types',
     'Gifts',
   ];
@@ -93,6 +93,11 @@ export class AdminComponent implements OnInit {
   newEvent = new Event();
   newBudget = new Budget;
   errors = [];
+  formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0
+  })
 
   ngOnInit(): void {
     window.scrollTo(0,0);
@@ -143,12 +148,49 @@ export class AdminComponent implements OnInit {
       this.loadUsers();
     }
     // END ON INIT ======================================
+                                    formatCurrency(num: number){
+                                      return this.formatter.format(num);
+                                    }
 
   // START CLICK EVENTS ===================================================
+
+createBudget(){
+this.errors = [];
+this.newBudget.name = "" + this.formatCurrency(this.newBudget.lowPrice) + " - " + this.formatCurrency(this.newBudget.highPrice);
+console.log(this.newBudget);
+if(this.newBudget.name == undefined){
+  this.errors.push("Low Price and High Price must be selected to create name");
+}
+if(this.newBudget.lowPrice == undefined){
+  this.errors.push("Low Price must be selected");
+}
+if(this.newBudget.highPrice == undefined){
+  this.errors.push("High Price must be selected");
+}
+if(this.errors.length == 0){
+  this.budgetSvc.create(this.newBudget).subscribe(
+    (data) => {
+      localStorage.removeItem('pageView');
+      localStorage.setItem('pageView', 'Content');
+      localStorage.removeItem('listType');
+      localStorage.setItem('listType', 'Budgets');
+      this.newBudget = new Budget();
+      location.reload();
+
+    },
+    (err) => {
+      console.error('Admin ShowBudget(); retrieve failed');
+    }
+    );
+  }
+
+
+}
+
+
   createEvent(){
     // console.log(this.newEvent);
-    console.log(this.newBudget);
-  this.errors = [];
+    this.errors = [];
   if(this.newEvent.name == undefined){
     this.errors.push("Giftr name must be filled out");
   }
@@ -172,10 +214,10 @@ export class AdminComponent implements OnInit {
     this.budgetSvc.show(this.newBudget.id).subscribe(
       (data) => {
         this.newBudget = data;
-          console.log(this.newBudget);
+        console.log(this.newBudget);
 
-        },
-        (err) => {
+      },
+      (err) => {
         console.error('Admin ShowBudget(); retrieve failed');
       }
       );
@@ -188,32 +230,32 @@ export class AdminComponent implements OnInit {
 
       this.eventSvc.create(this.newEvent).subscribe(
         (data) => {
-        // console.log(Event);
-        localStorage.removeItem('pageView');
-        localStorage.setItem('pageView', 'Content');
-        localStorage.removeItem('listType');
-        localStorage.setItem('listType', 'Event');
-        this.newBudget = new Budget();
-        this.newEvent = new Event();
-        location.reload();
-      },
-      (err) => {
-        console.error('Admin LoadEvent(); retrieve failed');
+          // console.log(Event);
+          localStorage.removeItem('pageView');
+          localStorage.setItem('pageView', 'Content');
+          localStorage.removeItem('listType');
+          localStorage.setItem('listType', 'Events');
+          this.newBudget = new Budget();
+          this.newEvent = new Event();
+          location.reload();
+        },
+        (err) => {
+          console.error('Admin LoadEvent(); retrieve failed');
+        }
+        );
       }
-      );
     }
-  }
-  // START NON CREATE CLICK EVENTS ===================================================
+    // START NON CREATE CLICK EVENTS ===================================================
 
-  confirmCancelNewEvent(form: NgForm){
-    let response = confirm("Are you sure you want to leave? Any changes will be lost");
-    if(response){
-      localStorage.removeItem('pageView');
-      localStorage.setItem('pageView', 'Dashboard');
-      location.reload();
+    confirmCancelNewEvent(form: NgForm){
+      let response = confirm("Are you sure you want to leave? Any changes will be lost");
+      if(response){
+        localStorage.removeItem('pageView');
+        localStorage.setItem('pageView', 'Dashboard');
+        location.reload();
+      }
+
     }
-
-  }
 
     setListTypeCookie(){
       localStorage.removeItem('listType');
@@ -228,8 +270,8 @@ export class AdminComponent implements OnInit {
     }
     // LOAD ALL EVENTS IN DB ======================================
     loadEvents(): void {
-    this.eventSvc.index().subscribe(
-      (data) => {
+      this.eventSvc.index().subscribe(
+        (data) => {
         this.events = data;
       },
       (err) => {

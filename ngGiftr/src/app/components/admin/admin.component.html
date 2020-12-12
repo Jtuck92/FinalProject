@@ -23,7 +23,7 @@
       <input type="text" placeholder="Enter Giftr Name" name="name" [(ngModel)]="newEvent.name" required>
       <br>
       <br>
-      <label for="username"><b>Description</b></label>
+      <label for="description"><b>Description</b></label>
       <textarea name="description" placeholder="Please Enter Description" cols="50" rows="8" type="text" [(ngModel)]="newEvent.description" ></textarea>
       <br>
       <br>
@@ -40,7 +40,7 @@
 
       <label for="budget"><b>Budget</b></label>
       <select id="budget" name="budget" [(ngModel)]="newBudget.id" >
-        <option *ngFor="let b of budgets" value="{{b.id}}">{{b.name}}</option>
+        <option *ngFor="let b of budgets | active" value="{{b.id}}">{{b.name}}</option>
       </select>
 
       <br>
@@ -79,7 +79,39 @@
 </div>
 <!-- ******************** END OF ADD NEW EVENT ****************************** -->
 <!-- ******************** START OF ADD BUDGET ****************************** -->
+    <div *ngIf="pageView == 'Add New Budget'">
 
+      <form #newBudgetForm="ngForm" class="modal-content" action="/action_page.php">
+        <div class="container-fluid">
+          <h1>New Budget Level</h1>
+          <p>Please fill in this form to create a new Budget.</p>
+          <hr>
+
+          <label for="lowPrice"><b>Low Price</b></label>
+          <input name="lowPrice" min="25" max="{{newBudget.highPrice}}" type="number" [(ngModel)]="newBudget.lowPrice" >
+          <br>
+          <br>
+
+          <label for="highPrice"><b>High Price</b></label>
+          <input type="number" min="{{newBudget.lowPrice}}"  name="highPrice" [(ngModel)]="newBudget.highPrice" required>
+          <br>
+
+          <br>
+
+      <div class="clearfix">
+        <button (click)="createBudget()" type="submit" class="btn signupbtn">Create Budget</button>
+        <button type="button" (click)='confirmCancelNewBudget(newBudgetForm)' class=" btn cancelbtn">Cancel</button>
+        <div *ngIf="errors" class="errors">
+          <ul style="list-style: none;">
+            <li *ngFor="let e of errors">{{e}}</li>
+          </ul>
+        </div>
+        <br>
+        <div style="height: 260px;"></div>
+      </div>
+    </div>
+  </form>
+    </div>
 
 
 
@@ -215,9 +247,9 @@
 
 
 
-<br>
-<br>
 <div *ngIf="selectedListType == 'Event Posts' || selectedListType == 'All'">
+  <br>
+  <br>
 <h2>Event Posts <br></h2>
 <table >
   <thead class="col">
@@ -269,9 +301,9 @@
 <!-- ******************** END OF EVENT POSTS TABLES ****************************** -->
 <!-- ******************** START OF EVENT COMMENTS TABLES ****************************** -->
 
-<br>
-<br>
 <div *ngIf="selectedListType == 'Event Comments'|| selectedListType == 'All'">
+  <br>
+  <br>
 
 <h2>Event Comments <br></h2>
 <table >
@@ -381,9 +413,9 @@
     </div>
     <!-- ******************** END OF PRIVATE EVENTS TABLES ****************************** -->
 <!-- ******************** START OF PRIVATE EVENT POSTS TABLES ****************************** -->
- <br>
-<br>
 <div *ngIf="selectedListType == 'Private Event Posts'|| selectedListType == 'All'">
+  <br>
+ <br>
 
 <h2>Private Event Posts <br></h2>
 <table >
@@ -441,9 +473,9 @@
 <!-- ******************** END OF PRIVATE EVENT POST TABLES ****************************** -->
 <!-- ******************** START OF PRIVATE EVENT COMMENTS TABLES ****************************** -->
 
-<br>
-<br>
 <div *ngIf="selectedListType == 'Private Event Comments'|| selectedListType == 'All'">
+  <br>
+  <br>
 
 <h2>Private Event Comments <br></h2>
 <table >
@@ -500,9 +532,9 @@
 <!-- ******************** END OF PRIVATE EVENT COMMENTS TABLES ****************************** -->
 <!-- ******************** START OF ADDRESS TABLES ****************************** -->
 
-<br>
-<br>
 <div *ngIf="selectedListType == 'Addresses'|| selectedListType == 'All'">
+  <br>
+  <br>
 
 <h2>Addresses <br></h2>
 <table >
@@ -533,9 +565,9 @@
 </div>
 <!-- ******************** END OF ADDRESS TABLE ****************************** -->
 <!-- ******************** START OF PAYMENT TABLES ****************************** -->
-<br>
-<br>
 <div *ngIf="selectedListType == 'Payments' || selectedListType == 'All'">
+  <br>
+  <br>
 <h2>User Payments <br></h2>
 <table >
   <thead class="col">
@@ -564,14 +596,14 @@
 </div>
 <!-- ******************** END OF PAYMENT TABLE ****************************** -->
   <!-- ******************** START OF BUDGET TABLES ****************************** -->
-  <div *ngIf="selectedListType == 'Budegts' || selectedListType == 'All'">
+  <div *ngIf="selectedListType == 'Budgets' || selectedListType == 'All'">
     <h2>Active Budgets  <br></h2>
     <table >
       <thead class="col">
         <tr class="col">
           <th class="col">Budget</th>
           <th class="col">Low</th>
-          <th class="col">Events</th>
+          <th class="col">High</th>
         </tr>
       </thead>
       <tbody class="center">
@@ -597,10 +629,9 @@
     <table >
       <thead class="col">
         <tr class="col">
-          <th class="col">Event</th>
-          <th class="col">Date Created</th>
-          <th class="col">Description</th>
-          <th class="col">Manager</th>
+          <th class="col">Budget</th>
+          <th class="col">Low</th>
+          <th class="col">High</th>
         </tr>
       </thead>
       <tbody class="center">
@@ -667,9 +698,9 @@
     <!-- ******************** END OF EVENT TYPE TABLES ****************************** -->
   <!-- ******************** START OF GIFTS TABLES ****************************** -->
 
+  <div *ngIf="selectedListType == 'Gifts' || selectedListType == 'All'">
     <br>
 <br>
-<div *ngIf="selectedListType == 'Gifts' || selectedListType == 'All'">
 <h2>Gifts<br></h2>
 <table >
   <thead class="col">
