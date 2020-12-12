@@ -42,7 +42,7 @@ export class PrivateEventComponent implements OnInit {
     this.userSvc.index().subscribe(
       (data) => {
         this.users = data;
-        console.log(this.users);
+        // console.log(this.users);
       },
       (err) => {
         console.error('UserComponent.LoadUser(); retrieve failed');
@@ -57,9 +57,9 @@ export class PrivateEventComponent implements OnInit {
   loadPrivateEvent(): void {
     this.privateEventSvc.index().subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.privateEvent = data;
-        console.log(this.privateEvent);
+        // console.log(this.privateEvent);
       },
       (err) => {
         console.error('PrivateEventComponent.LoadPrivateEvent(); retrieve failed');

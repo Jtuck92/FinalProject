@@ -33,7 +33,7 @@ budgets: Budget [] = []
         this.events = data;
       },
       (err) => {
-        console.error('WorkoutComponent.LoadWorkout(); retrive failed');
+        console.error('HomeComponent.LoadEvents(); retrieve failed');
 
       }
     );
@@ -44,7 +44,7 @@ budgets: Budget [] = []
         this.budgets = data;
       },
       (err) => {
-        console.error('WorkoutComponent.LoadWorkout(); retrive failed');
+        console.error('HomeComponent.LoadBudgets(); retrieve failed');
 
       }
     );

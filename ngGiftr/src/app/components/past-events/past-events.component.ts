@@ -25,10 +25,10 @@ export class PastEventsComponent implements OnInit {
     this.eventSvc.index().subscribe(
       (data) => {
         this.events = data;
-        console.log(this.events);
+        // console.log(this.events);
       },
       (err) => {
-        console.error('WorkoutComponent.LoadWorkout(); retrive failed');
+        console.error('PastEventsComponent.LoadEvents(); retrieve failed');
 
       }
     );

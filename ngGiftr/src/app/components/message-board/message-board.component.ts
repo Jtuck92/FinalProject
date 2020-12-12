@@ -32,13 +32,13 @@ export class MessageBoardComponent implements OnInit {
       this.loggedIn = true;
     }
     this.idString = localStorage.getItem('eventPost');
-    console.log(this.idString);
+    // console.log(this.idString);
     this.idString = parseInt(this.idString);
     this.eventPostSvc.show(this.idString).subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.selected = data;
-        console.log(this.selected);
+        // console.log(this.selected);
       },
       (err) => {
         this.router.navigateByUrl('notFound');

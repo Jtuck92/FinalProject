@@ -86,7 +86,7 @@ export class EventSignupComponent implements OnInit {
               // console.log(this.selected.users);
             },
             (err) => {
-              console.error("This is the Event Update Failing ");
+              console.error("This is the Event User list Update Failing ");
               ;
             }
           );
@@ -103,7 +103,7 @@ export class EventSignupComponent implements OnInit {
           this.router.navigateByUrl('profile');
         },
         (err) => {
-          console.error('User retrive failed');
+          console.error('User retrieve failed');
         }
         );
         // console.log('After Show');
@@ -117,7 +117,7 @@ export class EventSignupComponent implements OnInit {
         // console.log(this.budgets);
       },
       (err) => {
-        console.error('WorkoutComponent.LoadWorkout(); retrive failed');
+        console.error('Budget Index retrieve failed');
       }
     );
   }
