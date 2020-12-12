@@ -86,11 +86,13 @@ export class AdminComponent implements OnInit {
     'Add New Event',
     'Add New Budget',
     'Add New Event Type',
-    'Update Event'
-  ]
-  stringId = "";
+    'Update Event',
+    'Update Budget'
+  ];
+  stringId = '';
   numUserId = 0;
   user = new User();
+  updateBudget = new Budget();
   updateEvent = new Event();
   newEvent = new Event();
   newBudget = new Budget();
@@ -99,22 +101,20 @@ export class AdminComponent implements OnInit {
   formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    minimumFractionDigits: 0
-  })
+    minimumFractionDigits: 0,
+  });
 
   ngOnInit(): void {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 
     if (!localStorage.getItem('listType')) {
-
       localStorage.setItem('listType', this.selectedListType);
-    }else{
+    } else {
       this.selectedListType = localStorage.getItem('listType');
     }
     if (!localStorage.getItem('pageView')) {
-
       localStorage.setItem('pageView', this.pageView);
-    }else{
+    } else {
       this.pageView = localStorage.getItem('pageView');
     }
     this.stringId = localStorage.getItem('userId');
@@ -124,151 +124,155 @@ export class AdminComponent implements OnInit {
     this.userSvc.show(this.numUserId).subscribe(
       (data) => {
         this.user = data;
-        if(this.user.username != 'giftr'){
-          this.router.navigateByUrl('notfound')
-
+        if (this.user.username != 'giftr') {
+          this.router.navigateByUrl('notfound');
         }
-
       },
       (err) => {
         console.error('User retrive failed');
-        this.router.navigateByUrl('notfound')
+        this.router.navigateByUrl('notfound');
       }
-      );
+    );
 
-      // this.auth.isHomePageComponent(true);
-      this.loadAddresses();
-      this.loadBudgets();
-      this.loadEventComments();
-      this.loadEventPosts();
-      this.loadEventTypes();
-      this.loadEvents();
-      this.loadGifts();
-      this.loadPayments();
-      this.loadPrivateEventComments();
-      this.loadPrivateEventPosts();
-      this.loadPrivateEvents();
-      this.loadUsers();
-    }
-    // END ON INIT ======================================
-                                    formatCurrency(num: number){
-                                      return this.formatter.format(num);
-                                    }
+    // this.auth.isHomePageComponent(true);
+    this.loadAddresses();
+    this.loadBudgets();
+    this.loadEventComments();
+    this.loadEventPosts();
+    this.loadEventTypes();
+    this.loadEvents();
+    this.loadGifts();
+    this.loadPayments();
+    this.loadPrivateEventComments();
+    this.loadPrivateEventPosts();
+    this.loadPrivateEvents();
+    this.loadUsers();
+  }
+  // END ON INIT ======================================
+  formatCurrency(num: number) {
+    return this.formatter.format(num);
+  }
 
   // START CLICK EVENTS ===================================================
-findEvent(){
-  this.eventSvc.show(this.updateEvent.id).subscribe(
-    (data) => {
-      this.updateEvent = data;
-      console.log(this.updateEvent);
-
-    },
-    (err) => {
-      console.error('Admin ShowEvent(); retrieve failed');
-    }
-    );
-  }
-
-createEventType(){
-this.errors = [];
-console.log(this.newEventType);
-if(this.newEventType.name == undefined){
-  this.errors.push("Name will be the identifier. You may not leave this empty.");
-}
-if(this.newEventType.description == undefined){
-  this.errors.push("Please Provide a Description");
-}
-if(this.newEventType.imageUrl == undefined){
-  this.errors.push("Please provide an image URL");
-}
-if(this.errors.length == 0){
-  this.eTypeSvc.create(this.newEventType).subscribe(
-    (data) => {
-      localStorage.removeItem('pageView');
-      localStorage.setItem('pageView', 'Content');
-      localStorage.removeItem('listType');
-      localStorage.setItem('listType', 'Event Types');
-      this.newEventType = new EventType();
-      location.reload();
-
-    },
-    (err) => {
-      console.error('Admin Show New Event Type(); retrieve failed');
-    }
-    );
-  }
-
-
-}
-createBudget(){
-this.errors = [];
-this.newBudget.name = "" + this.formatCurrency(this.newBudget.lowPrice) + " - " + this.formatCurrency(this.newBudget.highPrice);
-console.log(this.newBudget);
-if(this.newBudget.name == undefined){
-  this.errors.push("Low Price and High Price must be selected to create name");
-}
-if(this.newBudget.lowPrice == undefined){
-  this.errors.push("Low Price must be selected");
-}
-if(this.newBudget.highPrice == undefined){
-  this.errors.push("High Price must be selected");
-}
-if(this.errors.length == 0){
-  this.budgetSvc.create(this.newBudget).subscribe(
-    (data) => {
-      localStorage.removeItem('pageView');
-      localStorage.setItem('pageView', 'Content');
-      localStorage.removeItem('listType');
-      localStorage.setItem('listType', 'Budgets');
-      this.newBudget = new Budget();
-      location.reload();
-
-    },
-    (err) => {
-      console.error('Admin ShowBudget(); retrieve failed');
-    }
-    );
-  }
-
-
-}
-
-
-  createEvent(){
-    // console.log(this.newEvent);
-    this.errors = [];
-  if(this.newEvent.name == undefined){
-    this.errors.push("Giftr name must be filled out");
-  }
-  if(this.newEvent.description == undefined){
-    this.errors.push("Giftr description must be filled defined");
-  }
-  if(this.newEvent.startDate == undefined){
-    this.errors.push("Giftr start date must be selected");
-  }
-  if(this.newEvent.endDate == undefined){
-    this.errors.push("Giftr end date must be selected");
-  }
-  if(this.newBudget == null){
-    this.errors.push("Giftr budget must be selected");
-  }
-  if(this.newEvent.imageUrl == undefined){
-    this.errors.push("Giftr image must be provided");
-  }
-  if(this.errors.length == 0){
-
-    this.budgetSvc.show(this.newBudget.id).subscribe(
+  findEvent() {
+    this.eventSvc.show(this.updateEvent.id).subscribe(
       (data) => {
-        this.newBudget = data;
-        console.log(this.newBudget);
-
+        this.updateEvent = data;
+        console.log(this.updateEvent);
       },
       (err) => {
-        console.error('Admin ShowBudget(); retrieve failed');
+        console.error('Admin ShowEvent(); retrieve failed');
       }
+    );
+  }
+  findBudget() {
+    this.budgetSvc.show(this.updateBudget.id).subscribe(
+      (data) => {
+        this.updateBudget = data;
+        console.log(this.updateBudget);
+      },
+      (err) => {
+        console.error('Admin ShowEvent(); retrieve failed');
+      }
+    );
+  }
+
+  createEventType() {
+    this.errors = [];
+    console.log(this.newEventType);
+    if (this.newEventType.name == undefined) {
+      this.errors.push(
+        'Name will be the identifier. You may not leave this empty.'
       );
-
-
+    }
+    if (this.newEventType.description == undefined) {
+      this.errors.push('Please Provide a Description');
+    }
+    if (this.newEventType.imageUrl == undefined) {
+      this.errors.push('Please provide an image URL');
+    }
+    if (this.errors.length == 0) {
+      this.eTypeSvc.create(this.newEventType).subscribe(
+        (data) => {
+          localStorage.removeItem('pageView');
+          localStorage.setItem('pageView', 'Content');
+          localStorage.removeItem('listType');
+          localStorage.setItem('listType', 'Event Types');
+          this.newEventType = new EventType();
+          location.reload();
+        },
+        (err) => {
+          console.error('Admin Show New Event Type(); retrieve failed');
+        }
+      );
+    }
+  }
+  createBudget() {
+    this.errors = [];
+    this.newBudget.name =
+      '' +
+      this.formatCurrency(this.newBudget.lowPrice) +
+      ' - ' +
+      this.formatCurrency(this.newBudget.highPrice);
+    console.log(this.newBudget);
+    if (this.newBudget.name == undefined) {
+      this.errors.push(
+        'Low Price and High Price must be selected to create name'
+      );
+    }
+    if (this.newBudget.lowPrice == undefined) {
+      this.errors.push('Low Price must be selected');
+    }
+    if (this.newBudget.highPrice == undefined) {
+      this.errors.push('High Price must be selected');
+    }
+    if (this.errors.length == 0) {
+      this.budgetSvc.create(this.newBudget).subscribe(
+        (data) => {
+          localStorage.removeItem('pageView');
+          localStorage.setItem('pageView', 'Content');
+          localStorage.removeItem('listType');
+          localStorage.setItem('listType', 'Budgets');
+          this.newBudget = new Budget();
+          location.reload();
+        },
+        (err) => {
+          console.error('Admin ShowBudget(); retrieve failed');
+        }
+      );
+    }
+  }
+  createEvent() {
+    // console.log(this.newEvent);
+    this.errors = [];
+    if (this.newEvent.name == undefined) {
+      this.errors.push('Giftr name must be filled out');
+    }
+    if (this.newEvent.description == undefined) {
+      this.errors.push('Giftr description must be filled defined');
+    }
+    if (this.newEvent.startDate == undefined) {
+      this.errors.push('Giftr start date must be selected');
+    }
+    if (this.newEvent.endDate == undefined) {
+      this.errors.push('Giftr end date must be selected');
+    }
+    if (this.newBudget == null) {
+      this.errors.push('Giftr budget must be selected');
+    }
+    if (this.newEvent.imageUrl == undefined) {
+      this.errors.push('Giftr image must be provided');
+    }
+    if (this.errors.length == 0) {
+      this.budgetSvc.show(this.newBudget.id).subscribe(
+        (data) => {
+          this.newBudget = data;
+          console.log(this.newBudget);
+        },
+        (err) => {
+          console.error('Admin ShowBudget(); retrieve failed');
+        }
+      );
 
       this.newEvent.budget = this.newBudget;
       this.newEvent.eventManager = this.user;
@@ -288,55 +292,58 @@ if(this.errors.length == 0){
         (err) => {
           console.error('Admin LoadEvent(); retrieve failed');
         }
-        );
-      }
+      );
     }
-    // START NON CREATE CLICK EVENTS ===================================================
+  }
+  // START NON CREATE CLICK EVENTS ===================================================
 
-    confirmCancelNewEvent(form: NgForm){
-      let response = confirm("Are you sure you want to leave? Any changes will be lost");
-      if(response){
-        localStorage.removeItem('pageView');
-        localStorage.setItem('pageView', 'Dashboard');
-        form.reset();
-        location.reload();
-      }
-
-    }
-    confirmCancelNewBudget(form: NgForm){
-      let response = confirm("Are you sure you want to leave? Any changes will be lost");
-      if(response){
-        localStorage.removeItem('pageView');
-        localStorage.setItem('pageView', 'Dashboard');
-        form.reset();
-        location.reload();
-      }
-    }
-    confirmCancelNewEventType(form: NgForm){
-      let response = confirm("Are you sure you want to leave? Any changes will be lost");
-      if(response){
-        localStorage.removeItem('pageView');
-        localStorage.setItem('pageView', 'Dashboard');
-        form.reset();
-        location.reload();
-      }
-    }
-
-    setListTypeCookie(){
-      localStorage.removeItem('listType');
-      localStorage.setItem('listType', this.selectedListType);
-
-    }
-
-    setPageViewCookie(){
+  confirmCancelNewEvent(form: NgForm) {
+    let response = confirm(
+      'Are you sure you want to leave? Any changes will be lost'
+    );
+    if (response) {
       localStorage.removeItem('pageView');
-      localStorage.setItem('pageView', this.pageView);
-
+      localStorage.setItem('pageView', 'Dashboard');
+      form.reset();
+      location.reload();
     }
-    // LOAD ALL EVENTS IN DB ======================================
-    loadEvents(): void {
-      this.eventSvc.index().subscribe(
-        (data) => {
+  }
+  confirmCancelNewBudget(form: NgForm) {
+    let response = confirm(
+      'Are you sure you want to leave? Any changes will be lost'
+    );
+    if (response) {
+      localStorage.removeItem('pageView');
+      localStorage.setItem('pageView', 'Dashboard');
+      form.reset();
+      location.reload();
+    }
+  }
+  confirmCancelNewEventType(form: NgForm) {
+    let response = confirm(
+      'Are you sure you want to leave? Any changes will be lost'
+    );
+    if (response) {
+      localStorage.removeItem('pageView');
+      localStorage.setItem('pageView', 'Dashboard');
+      form.reset();
+      location.reload();
+    }
+  }
+
+  setListTypeCookie() {
+    localStorage.removeItem('listType');
+    localStorage.setItem('listType', this.selectedListType);
+  }
+
+  setPageViewCookie() {
+    localStorage.removeItem('pageView');
+    localStorage.setItem('pageView', this.pageView);
+  }
+  // LOAD ALL EVENTS IN DB ======================================
+  loadEvents(): void {
+    this.eventSvc.index().subscribe(
+      (data) => {
         this.events = data;
       },
       (err) => {
@@ -644,52 +651,20 @@ if(this.errors.length == 0){
     );
   }
 
+  // Update Events IN DB ====================================
 
-
-
-
-
-// Update Events IN DB ====================================
-
-  changeEvent(){
-    // console.log(this.newEvent);
+  changeEvent() {
     this.errors = [];
-
-  // if(this.updateEvent.id == undefined){
-  //   this.errors.push("Giftr ID must be filled out");
-  // }
-  // if(this.updateEvent.name == undefined){
-  //   this.errors.push("Giftr name must be filled out");
-  // }
-  // if(this.updateEvent.description == undefined){
-  //   this.errors.push("Giftr description must be filled defined");
-  // }
-  // if(this.updateEvent.startDate == undefined){
-  //   this.errors.push("Giftr start date must be selected");
-  // }
-  // if(this.updateEvent.endDate == undefined){
-  //   this.errors.push("Giftr end date must be selected");
-  // }
-  // if(this.newBudget == null){
-  //   this.errors.push("Giftr budget must be selected");
-  // }
-  // if(this.updateEvent.imageUrl == undefined){
-  //   this.errors.push("Giftr image must be provided");
-  // }
-  if(this.errors.length == 0){
-
-    this.budgetSvc.show(this.newBudget.id).subscribe(
-      (data) => {
-        this.newBudget = data;
-        console.log(this.newBudget);
-
-      },
-      (err) => {
-        console.error('Admin ShowBudget(); retrieve failed');
-      }
+    if (this.errors.length == 0) {
+      this.budgetSvc.show(this.newBudget.id).subscribe(
+        (data) => {
+          this.newBudget = data;
+          console.log(this.newBudget);
+        },
+        (err) => {
+          console.error('Admin ShowBudget(); retrieve failed');
+        }
       );
-
-
 
       this.updateEvent.budget = this.newBudget;
       this.updateEvent.eventManager = this.user;
@@ -709,9 +684,31 @@ if(this.errors.length == 0){
         (err) => {
           console.error('Admin LoadEvent(); retrieve failed');
         }
-        );
-      }
+      );
     }
+  }
+    // Update Budgets IN DB ====================================
 
+  changeBudget() {
+    this.updateBudget.name = '' +
+    this.formatCurrency(this.updateBudget.lowPrice) +
+    ' - ' +
+    this.formatCurrency(this.updateBudget.highPrice);
+    this.budgetSvc.update(this.updateBudget).subscribe(
+      (data) => {
+        // console.log(Event);
+        localStorage.removeItem('pageView');
+        localStorage.setItem('pageView', 'Content');
+        localStorage.removeItem('listType');
+        localStorage.setItem('listType', 'Budgets');
+        this.updateBudget = new Budget();
+        location.reload();
+      },
+      (err) => {
+        console.error('Admin LoadEvent(); retrieve failed');
+      }
+    );
+  }
 }
+
 // }

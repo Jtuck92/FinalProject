@@ -240,7 +240,7 @@
 </form>
 
 </div>
-<!-- ******************** END OF ADD NEW EVENT ****************************** -->
+<!-- ******************** END OF UPDATE  EVENT ****************************** -->
 
 <!-- ******************** START OF EVENTS TABLES ****************************** -->
 <div *ngIf="pageView == 'Content'" class="tables">
@@ -838,5 +838,47 @@
   </tbody>
 </table>
 </div>
+</div>
   <!-- ******************** END OF GIFTS TABLES ****************************** -->
+
+  <div *ngIf="pageView == 'Update Budget'">
+
+    <form #newEventForm="ngForm" class="modal-content" action="/action_page.php">
+      <div class="container-fluid">
+        <h1>Update Budget</h1>
+        <p>Please fill in this form to update a Budget.</p>
+        <hr>
+        <label for="updateBudget"><b>Budget ID</b></label>
+        <select id="updateBudget"  (change)="findBudget()" name="updateBudget" [(ngModel)]="updateBudget.id" >
+          <option *ngFor="let b of budgets" value="{{b.id}}">{{b.name}}</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="description"><b>Low Price</b></label>
+        <input name="description" value="{{updateBudget.lowPrice}}" type="number" [(ngModel)]="updateBudget.lowPrice" />
+        <br>
+        <br>
+
+        <label for="startDate"><b>High Price</b></label>
+        <input type="number"  name="startDate" value="{{updateBudget.highPrice}}" [(ngModel)]="updateBudget.highPrice" required>
+        <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="clearfix">
+      <button (click)="changeBudget(updateBudget.id)" type="submit" class="btn signupbtn">Update Budget</button>
+      <button type="button" (click)='confirmCancelNewEvent(newEventForm)' class=" btn cancelbtn">Cancel</button>
+    </div>
+  </div>
+  <div *ngIf="errors" class="errors">
+    <ul style="list-style: none;">
+      <li *ngFor="let e of errors">{{e}}</li>
+    </ul>
+  </div>
+  <br>
+  </form>
+
+  </div>
 
