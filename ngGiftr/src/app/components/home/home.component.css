@@ -16,7 +16,11 @@
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+}
 
+.hero:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 #homeHeader, #homeEvents, #homeDescription{

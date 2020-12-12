@@ -5,6 +5,7 @@ import { Event } from './../../models/event';
 import { EventService } from './../../service/event.service';
 import { Component, OnInit } from '@angular/core';
 import { BudgetService } from 'src/app/service/budget.service';
+import { EventPost } from 'src/app/models/event-post';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ events: Event[] = [];
 selected: Event = null;
 selectedBudget = 0;
 budgets: Budget [] = []
+eventPost: EventPost = null;
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
@@ -53,5 +55,10 @@ budgets: Budget [] = []
     this.selected = event;
     localStorage.setItem('event' , "" + this.selected.id);
     this.router.navigateByUrl("/eventDetails");
+  }
+
+  secretSanta() {
+    localStorage.setItem('event' , "1");
+    this.router.navigateByUrl("/eventDetails")
   }
 }

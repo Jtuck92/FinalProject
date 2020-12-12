@@ -37,6 +37,7 @@ body{
 }
 
 #rightbox {
+  text-align: center;
   float: right;
   border: solid 1px black;
   margin-top: 75px;
@@ -47,7 +48,7 @@ body{
 }
 
 #rightbox p {
-  text-align: center;
+  vertical-align: middle;
   position: relative;
   margin: 0;
   padding: 0;
