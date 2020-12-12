@@ -15,6 +15,7 @@ import { PastEventsComponent } from './components/past-events/past-events.compon
 import { FaqComponent } from './components/faq/faq.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import { EventSignupComponent } from './components/event-signup/event-signup.component';
+import { PrivateEventComponent } from './components/private-event/private-event.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'pastEvents', component: PastEventsComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'post/:id', component: MessageBoardComponent },
+  { path: 'privateEvent', component: PrivateEventComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

@@ -27,6 +27,7 @@ export class PrivateEventComponent implements OnInit {
     users: User[] = [];
     selectedUser: User = null;
     events: Event[] = [];
+    selected: PrivateEvent = new PrivateEvent();
     selectedEvent: PrivateEvent = null;
     privateEvent: PrivateEvent[] = [];
 
