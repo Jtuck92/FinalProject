@@ -44,6 +44,7 @@ import { MessageBoardComponent } from './components/message-board/message-board.
 import { AdminComponent } from './components/admin/admin.component';
 import { BudgetFilterPipe } from './pipes/budget-filter.pipe';
 import { PrivateEventComponent } from './components/private-event/private-event.component';
+import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 // import { ComponentComponent } from './component/component.component';
 
 @NgModule({
@@ -76,6 +77,7 @@ import { PrivateEventComponent } from './components/private-event/private-event.
     AdminComponent,
     BudgetFilterPipe,
     PrivateEventComponent,
+    TermsOfServiceComponent,
     // ComponentComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],

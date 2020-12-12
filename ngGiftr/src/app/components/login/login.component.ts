@@ -22,8 +22,12 @@ errors = [];
       (data) => {
         this.user = data;
         // console.log(localStorage.getItem("userId"));
+        if( this.user.username == 'giftr'){
+          this.router.navigateByUrl('/admin');
+        }else{
+          this.router.navigateByUrl('/profile');
 
-        this.router.navigateByUrl('/profile');
+        }
         // console.log('User Login');
       },
       (err) => {

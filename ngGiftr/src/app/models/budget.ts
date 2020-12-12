@@ -8,12 +8,12 @@ export class Budget {
 
 
   constructor(
-    id: number,
-    lowPrice: number,
-    highPrice: number,
-    enabled: boolean,
-    events: Event [],
-    name: String
+    id?: number,
+    lowPrice?: number,
+    highPrice?: number,
+    enabled?: boolean,
+    events?: Event [],
+    name?: String
   ){
     this.id= id;
     this.lowPrice= lowPrice;

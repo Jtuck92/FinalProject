@@ -874,6 +874,8 @@ if(this.errors.length == 0 && this.passErrors.length == 0){
           this.auth.login(this.newUser.username, this.newUser.password).subscribe(
             next => {
               console.log('RegisterComponent.register(): user logged in, routing to /profile.');
+             this.newUser = new User();
+             this.newAddress = new Address();
               this.router.navigateByUrl('/profile');
             },
             error => {

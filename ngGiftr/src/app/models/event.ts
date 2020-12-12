@@ -1,3 +1,4 @@
+import { Budget } from 'src/app/models/budget';
 import { User } from 'src/app/models/user';
 export class Event {
   id: number;
@@ -6,12 +7,13 @@ export class Event {
   startDate: string;
   endDate: string;
   enabled: boolean;
-  budgetId: number;
+  budget: Budget;
   imageUrl: string;
-  creatorId: number;
+  eventManager: User;
   createdDate: string;
   lastUpdate: string;
   users: User[];
+  region: number;
 
   constructor(
     id?: number,
@@ -20,12 +22,13 @@ export class Event {
     startDate?: string,
     endDate?: string,
     enabled?: boolean,
-    budgetId?: number,
+    budget?: Budget,
     imageUrl?: string,
-    creatorId?: number,
+    eventManager?: User,
     createdDate?: string,
     lastUpdate?: string,
-    users?: User[]
+    users?: User[],
+    region?: number
   ) {
     this.id = id;
     this.name = name;
@@ -33,11 +36,12 @@ export class Event {
     this.startDate = startDate;
     this.endDate = endDate;
     this.enabled = enabled;
-    this.budgetId = budgetId;
+    this.budget = budget;
     this.imageUrl = imageUrl;
-    this.creatorId = creatorId;
+    this.eventManager = eventManager;
     this.createdDate = createdDate;
     this.lastUpdate = lastUpdate;
     this.users = users;
+    this.region = region;
   }
 }

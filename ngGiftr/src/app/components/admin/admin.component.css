@@ -51,3 +51,24 @@ table{
   /* float: right; */
 }
 /* <div class="userEventLists" id="userEvents"> */
+.modal-content{
+  left: 25%;
+  text-align: center;
+  width: 50%;
+
+}
+.container-fluid{
+  text-align: left;
+}
+.container-fluid label{
+  display: block;
+  width: 100px;
+}
+.container-fluid input{
+  width: 75%;
+}
+.errors{
+  text-align: left;
+  color: red;
+  font-weight: bolder;
+}

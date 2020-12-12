@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Budget } from './../../models/budget';
 import { PrivatePost } from './../../models/private-post';
 import { PrivateComment } from './../../models/private-comment';
@@ -78,23 +79,155 @@ export class AdminComponent implements OnInit {
     'Event Types',
     'Gifts',
   ];
+  pageView = 'Dashboard';
+  pageViews = [
+    'Dashboard',
+    'Content',
+    'Add New Event',
+    'Add New Budget',
+    'Add New Event Type'
+  ]
+  stringId = "";
+  numUserId = 0;
+  user = new User();
+  newEvent = new Event();
+  newBudget = new Budget;
+  errors = [];
 
   ngOnInit(): void {
-    // this.auth.isHomePageComponent(true);
-    this.loadAddresses();
-    this.loadBudgets();
-    this.loadEventComments();
-    this.loadEventPosts();
-    this.loadEventTypes();
-    this.loadEvents();
-    this.loadGifts();
-    this.loadPayments();
-    this.loadPrivateEventComments();
-    this.loadPrivateEventPosts();
-    this.loadPrivateEvents();
-    this.loadUsers();
+    window.scrollTo(0,0);
+
+    if (!localStorage.getItem('listType')) {
+
+      localStorage.setItem('listType', this.selectedListType);
+    }else{
+      this.selectedListType = localStorage.getItem('listType');
+    }
+    if (!localStorage.getItem('pageView')) {
+
+      localStorage.setItem('pageView', this.pageView);
+    }else{
+      this.pageView = localStorage.getItem('pageView');
+    }
+    this.stringId = localStorage.getItem('userId');
+    // console.log(this.activeGifts);
+
+    this.numUserId = parseInt(this.stringId);
+    this.userSvc.show(this.numUserId).subscribe(
+      (data) => {
+        this.user = data;
+        if(this.user.username != 'giftr'){
+          this.router.navigateByUrl('notfound')
+
+        }
+
+      },
+      (err) => {
+        console.error('User retrive failed');
+        this.router.navigateByUrl('notfound')
+      }
+      );
+
+      // this.auth.isHomePageComponent(true);
+      this.loadAddresses();
+      this.loadBudgets();
+      this.loadEventComments();
+      this.loadEventPosts();
+      this.loadEventTypes();
+      this.loadEvents();
+      this.loadGifts();
+      this.loadPayments();
+      this.loadPrivateEventComments();
+      this.loadPrivateEventPosts();
+      this.loadPrivateEvents();
+      this.loadUsers();
+    }
+    // END ON INIT ======================================
+
+  // START CLICK EVENTS ===================================================
+  createEvent(){
+    // console.log(this.newEvent);
+    console.log(this.newBudget);
+  this.errors = [];
+  if(this.newEvent.name == undefined){
+    this.errors.push("Giftr name must be filled out");
   }
-  loadEvents(): void {
+  if(this.newEvent.description == undefined){
+    this.errors.push("Giftr description must be filled defined");
+  }
+  if(this.newEvent.startDate == undefined){
+    this.errors.push("Giftr start date must be selected");
+  }
+  if(this.newEvent.endDate == undefined){
+    this.errors.push("Giftr end date must be selected");
+  }
+  if(this.newBudget == null){
+    this.errors.push("Giftr budget must be selected");
+  }
+  if(this.newEvent.imageUrl == undefined){
+    this.errors.push("Giftr image must be provided");
+  }
+  if(this.errors.length == 0){
+
+    this.budgetSvc.show(this.newBudget.id).subscribe(
+      (data) => {
+        this.newBudget = data;
+          console.log(this.newBudget);
+
+        },
+        (err) => {
+        console.error('Admin ShowBudget(); retrieve failed');
+      }
+      );
+
+
+
+      this.newEvent.budget = this.newBudget;
+      this.newEvent.eventManager = this.user;
+      console.log(this.newEvent);
+
+      this.eventSvc.create(this.newEvent).subscribe(
+        (data) => {
+        // console.log(Event);
+        localStorage.removeItem('pageView');
+        localStorage.setItem('pageView', 'Content');
+        localStorage.removeItem('listType');
+        localStorage.setItem('listType', 'Event');
+        this.newBudget = new Budget();
+        this.newEvent = new Event();
+        location.reload();
+      },
+      (err) => {
+        console.error('Admin LoadEvent(); retrieve failed');
+      }
+      );
+    }
+  }
+  // START NON CREATE CLICK EVENTS ===================================================
+
+  confirmCancelNewEvent(form: NgForm){
+    let response = confirm("Are you sure you want to leave? Any changes will be lost");
+    if(response){
+      localStorage.removeItem('pageView');
+      localStorage.setItem('pageView', 'Dashboard');
+      location.reload();
+    }
+
+  }
+
+    setListTypeCookie(){
+      localStorage.removeItem('listType');
+      localStorage.setItem('listType', this.selectedListType);
+
+    }
+
+    setPageViewCookie(){
+      localStorage.removeItem('pageView');
+      localStorage.setItem('pageView', this.pageView);
+
+    }
+    // LOAD ALL EVENTS IN DB ======================================
+    loadEvents(): void {
     this.eventSvc.index().subscribe(
       (data) => {
         this.events = data;

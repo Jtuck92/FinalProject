@@ -1,3 +1,4 @@
+import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MessageBoardComponent } from './components/message-board/message-board.component';
 import { UserComponent } from './components/user/user.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'search', component: SearchResultsComponent },
   { path: 'search/:param', component: SearchResultsComponent },
   { path: 'profile', component: UserComponent },
+  { path: 'terms', component: TermsOfServiceComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'eventDetails', component: EventDetailsComponent },
   { path: 'pastEvents', component: PastEventsComponent },

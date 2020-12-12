@@ -37,6 +37,8 @@ public class Event {
 		this.name = name;
 	}
 
+	private Integer region;
+	
 	private String description;
 	
 	@Column(name="start_date")
@@ -91,6 +93,14 @@ public class Event {
 
 	public List<EventPost> getPosts() {
 		return posts;
+	}
+
+	public Integer getRegion() {
+		return region;
+	}
+
+	public void setRegion(Integer region) {
+		this.region = region;
 	}
 
 	public void setPosts(List<EventPost> posts) {
