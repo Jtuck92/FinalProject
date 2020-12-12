@@ -45,6 +45,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { BudgetFilterPipe } from './pipes/budget-filter.pipe';
 import { PrivateEventComponent } from './components/private-event/private-event.component';
 import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
+import { UserInEventPipe } from './pipes/user-in-event.pipe';
 // import { ComponentComponent } from './component/component.component';
 
 @NgModule({
@@ -70,7 +71,6 @@ import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-
     UserEventsPipe,
     UserPrvEventsPipe,
     FilterPipe,
-
     EventSignupComponent,
     // PostComponent,
     MessageBoardComponent,
@@ -78,6 +78,7 @@ import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-
     BudgetFilterPipe,
     PrivateEventComponent,
     TermsOfServiceComponent,
+    UserInEventPipe,
     // ComponentComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
@@ -96,7 +97,8 @@ import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-
     UserEventsPipe,
     ActivePipe,
     DisabledPipe,
-    UserPrvEventsPipe
+    UserPrvEventsPipe,
+    UserInEventPipe
   ],
   bootstrap: [AppComponent],
 })

@@ -1,3 +1,4 @@
+import { UserInEventPipe } from './../../pipes/user-in-event.pipe';
 import { EventPostService } from './../../service/event-post.service';
 import { UserService } from './../../service/user.service';
 import { Router } from '@angular/router';
@@ -8,7 +9,6 @@ import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Event } from './../../models/event';
 import { User } from 'src/app/models/user';
 import { EventPost } from 'src/app/models/event-post';
-import { updateFor } from 'typescript';
 
 @Component({
   selector: 'app-event-details',
@@ -17,6 +17,7 @@ import { updateFor } from 'typescript';
 })
 export class EventDetailsComponent implements OnInit {
   constructor(
+    private buttonPipe: UserInEventPipe,
     private eventSvc: EventService,
     private pEventSrv: PrivateEventService,
     private auth: AuthService,
@@ -32,6 +33,7 @@ export class EventDetailsComponent implements OnInit {
   numUserId = null;
   user: User = new User();
   eventPost = new EventPost;
+  button = false;
 
 
 
@@ -40,7 +42,6 @@ export class EventDetailsComponent implements OnInit {
       this.loggedIn = true;
     }
     window.scrollTo(0,0);
-
     this.idString = localStorage.getItem('event');
     this.idString = parseInt(this.idString);
     this.eventSvc.show(this.idString).subscribe(
@@ -48,23 +49,24 @@ export class EventDetailsComponent implements OnInit {
         this.selected = data;
         // console.log(this.selected);
         // localStorage.removeItem('event');
+        this.stringId = localStorage.getItem('userId');
+        // console.log(this.activeGifts);
+
+        this.numUserId = parseInt(this.stringId);
+        this.userSrv.show(this.numUserId).subscribe(
+          (data) => {
+            this.user = data;
+           this.button = this.buttonPipe.transform(this.selected.users, this.user.id);
+          },
+        (err) => {
+          console.error('User retrieve failed');
+        }
+      );
       },
       (err) => {
         this.router.navigateByUrl('notFound');
       }
-    );
-    this.stringId = localStorage.getItem('userId');
-    // console.log(this.activeGifts);
-
-    this.numUserId = parseInt(this.stringId);
-    this.userSrv.show(this.numUserId).subscribe(
-      (data) => {
-        this.user = data;
-      },
-      (err) => {
-        console.error('User retrieve failed');
-      }
-    );
+      );
 
 
   }
