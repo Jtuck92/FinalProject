@@ -1,46 +1,55 @@
-<div >
+<div>
   <body>
     <section class="hero">
-        <div class="hero-inner">
-            <h1>Upcoming Giftr</h1>
-            <h2>Participate in this year's Secret Santa!</h2>
-            <br>
-            <a href="/register" class="btn">Sign Up...</a>
-        </div>
+      <div class="hero-inner">
+        <h1>Upcoming Giftr</h1>
+        <h2>Participate in this year's Secret Santa!</h2>
+        <br />
+        <a href="/register" class="btn">Sign Up...</a>
+      </div>
     </section>
-</body>
-<section>
-  <br>
-  <br>
-  <h3 id="homeHeader">Welcome</h3>
-  <!-- TODO  -->
-  <div ng-container id="homeDescription">
-    <br>
-    Giftr is a place for those who love to gift not just during the holidays, but year round. Here you can participate in many of our Giftr exhanges not only limited to Secret Santa. Explore our page for current Giftr exchanges and sign up to be included in our upcoming exchanges.
-  </div>
-</section>
+  </body>
+  <section>
+    <br />
+    <br />
+    <!-- <h3 id="homeHeader">Welcome</h3> -->
+    <!-- <div ng-container id="homeDescription">
+      <br />
+      Giftr is a place for those who love to gift not just during the holidays,
+      but year round. Here you can participate in many of our Giftr exhanges not
+      only limited to Secret Santa. Explore our page for current Giftr exchanges
+      and sign up to be included in our upcoming exchanges.
+    </div> -->
+  </section>
   <br />
   <br />
   <h3 id="homeHeader">Current Giftr Exchanges</h3>
 
-
-
-
-  <form style="text-align: center;">
- <input type="radio" id="allBudgets" name="allBudget" value=0 [(ngModel)]="selectedBudget" ng-checked="checked">   &nbsp;
-<label for="selectedBudegt">All Giftrs</label>       &nbsp;&nbsp;
-<div style="display: inline-block;" *ngFor="let b of budgets">
-  <input type="radio" id="25-50budget" name="25-50"[(ngModel)]="selectedBudget" value={{b.id}}>  &nbsp;
-  <label for="selectedBudegt">{{b.name}}</label>       &nbsp;&nbsp;
-</div>
+  <form style="text-align: center">
+    <input
+      type="radio"
+      id="allBudgets"
+      name="allBudget"
+      value="0"
+      [(ngModel)]="selectedBudget"
+      ng-checked="checked"
+    />
+    &nbsp; <label for="selectedBudegt">All Giftrs</label> &nbsp;&nbsp;
+    <div style="display: inline-block" *ngFor="let b of budgets">
+      <input
+        type="radio"
+        id="25-50budget"
+        name="25-50"
+        [(ngModel)]="selectedBudget"
+        value="{{ b.id }}"
+      />
+      &nbsp; <label for="selectedBudegt">{{ b.name }}</label> &nbsp;&nbsp;
+    </div>
   </form>
-
-
-
 
   <div id="homeEvents">
     <ul id="horizontal-list">
-      <li *ngFor="let event of events | active | budgetFilter : selectedBudget">
+      <li *ngFor="let event of events | active | budgetFilter: selectedBudget">
         <div id="eventCard">
           <div class="card h-100" style="width: auto">
             <h5 id="homeHeader" class="card-header">
@@ -50,7 +59,7 @@
             <div class="card-body">
               <div class="text-div">
                 <div (click)="eventResult(event)" class="card-text">
-                  <img id="cardImg" src="{{event.imageUrl}}" alt="">
+                  <img id="cardImg" src="{{ event.imageUrl }}" alt="" />
                 </div>
               </div>
             </div>
@@ -71,11 +80,14 @@
   <br />
   <br />
   <br />
-  <br /> <br />
-  <br /> <br />
-  <br /> <br />
-  <br /> <br />
-
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
 </div>
 
 <!-- <div *ngIf="selected" id="homeEvents">
