@@ -72,20 +72,20 @@ public class BudgetServiceImpl implements BudgetService {
 			Budget managedBudget = null;
 			if (ePOpt.isPresent()) {
 				managedBudget = ePOpt.get();
-				if (managedBudget.getEnabled() == true) {
-					if (managedBudget.getLowPrice() != null) {
+				
+					if (budget.getLowPrice() != null) {
 						managedBudget.setLowPrice(budget.getLowPrice());
 					}
-					if (managedBudget.getHighPrice() != null) {
+					if (budget.getHighPrice() != null) {
 						managedBudget.setHighPrice(budget.getHighPrice());
 					}
-					if (managedBudget.getEvents() != null) {
+					if (budget.getEvents() != null) {
 						managedBudget.setEvents(budget.getEvents());
 					}
 					budgetRepo.saveAndFlush(managedBudget);
 					userRepo.saveAndFlush(user);
 					return managedBudget;
-				}
+				
 			}
 		}
 		return null;
