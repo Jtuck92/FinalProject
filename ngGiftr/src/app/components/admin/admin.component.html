@@ -137,7 +137,7 @@
               <br>
               <br>
           <div class="clearfix">
-            <button (click)="createEventType()" type="submit" class="btn signupbtn">Create Budget</button>
+            <button (click)="createEventType()" type="submit" class="btn signupbtn">Create Event Type</button>
             <button type="button" (click)='confirmCancelNewEventType(newTypeForm)' class=" btn cancelbtn">Cancel</button>
             <div *ngIf="errors" class="errors">
               <ul style="list-style: none;">
@@ -254,6 +254,7 @@
       <th class="col">Event</th>
       <th class="col">Start Date</th>
       <th class="col">End Date</th>
+      <th class="col">Budget</th>
     </tr>
   </thead>
   <tbody class="center">
@@ -282,6 +283,7 @@
       <th class="col">Event</th>
       <th class="col">Start Date</th>
       <th class="col">End Date</th>
+      <th class="col">Budget</th>
     </tr>
   </thead>
   <tbody class="center">
@@ -290,6 +292,8 @@
       <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
       <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.budget.name}}</td>
+
     </tr>
   </tbody>
 </table>
@@ -305,6 +309,7 @@
         <th class="col">First Name</th>
         <th class="col">Last Name</th>
         <th class="col">Username</th>
+        <th class="col">Email</th>
       </tr>
     </thead>
     <tbody class="center">
@@ -313,6 +318,7 @@
       <td class="col"  id="homeList">{{u.firstName}}</td>
       <td class="col"  id="homeList">{{u.lastName}}</td>
       <td class="col"  id="homeList">{{u.username}}</td>
+      <td class="col"  id="homeList">{{u.email}}</td>
 
       <td *ngIf='u.enabled'><button
         (click)="disableUser(u)"
@@ -333,6 +339,8 @@
         <th class="col">First Name</th>
         <th class="col">Last Name</th>
         <th class="col">Username</th>
+        <th class="col">Email</th>
+
       </tr>
     </thead>
     <tbody class="center">
@@ -341,6 +349,8 @@
       <td class="col"  id="homeList">{{u.firstName}}</td>
       <td class="col"  id="homeList">{{u.lastName}}</td>
       <td class="col"  id="homeList">{{u.username}}</td>
+      <td class="col"  id="homeList">{{u.email}}</td>
+
     </tr>
   </tbody>
 </table>
@@ -657,12 +667,6 @@
       <td class="col"  id="homeList">{{u.lastName}}</td>
       <td class="col"  id="homeList">{{u.username}}</td>
       <td class="col"  id="homeList">{{u.address.street}} <br> {{u.address.street2}} <br> {{u.address.city}}, {{u.address.state}} {{u.address.zip}} <br> {{u.address.country}}</td>
-      <td *ngIf='u.enabled'><button
-        (click)="updateAddress(u)"
-        class="btn"
-        type="submit"
-        value="remove"
-        >Update</button></td>
       </tr>
   </tbody>
 </table>
@@ -783,10 +787,8 @@
     <table >
       <thead class="col">
         <tr class="col">
-          <th class="col">Event</th>
-          <th class="col">Date Created</th>
+          <th class="col">Name</th>
           <th class="col">Description</th>
-          <th class="col">Manager</th>
         </tr>
       </thead>
       <tbody class="center">
@@ -810,13 +812,14 @@
   <thead class="col">
     <tr class="col">
 
+      <th class="col">Event</th>
       <th class="col">Giftr Username</th>
       <th class="col">Reciver Username</th>
       <th class="col">Price</th>
       <th class="col">Weight kg</th>
       <th class="col">Description</th>
       <th class="col">Rating</th>
-      <th class="col">Name</th>
+
       <th class="col">Note</th>
     </tr>
   </thead>
@@ -824,14 +827,14 @@
     <tr class="col" *ngFor="let gif of gifts | active "
     >
 
+      <td class="col"  id="homeList">{{gif.event.name}}</td>
       <td class="col"  id="homeList">{{gif.gifter.username}}</td>
-
       <td class="col"  id="homeList">{{gif.receiver.username}}</td>
       <td class="col"  id="homeList">{{gif.price}}</td>
       <td class="col"  id="homeList">{{gif.weight}}</td>
       <td class="col"  id="homeList">{{gif.description}}</td>
       <td class="col"  id="homeList">{{gif.rating}}</td>
-      <td class="col"  id="homeList">{{gif.name}}</td>
+
       <td class="col"  id="homeList">{{gif.note}}</td>
 
       </tr>
@@ -933,3 +936,62 @@
 
 </div>
 <!-- ******************** END OF UPDATE EVENT TYPE ****************************** -->
+
+<!-- ******************** START OF UPDATE ADDRESS ****************************** -->
+<div *ngIf="pageView == 'Update Address'">
+
+  <form #newEventForm="ngForm" class="modal-content" action="/action_page.php">
+    <div class="container-fluid">
+      <h1>Update Address</h1>
+      <p>Please fill in this form to update an Address.</p>
+      <hr>
+      <label for="updateAddress"><b>Users Name</b></label>
+      <select id="updateAddress"  (change)="findAddress()" name="updateAddress" [(ngModel)]="updateAddress.id" >
+        <option *ngFor="let u of users" value="{{u.address.id}}">{{u.firstName}} {{u.lastName}}
+        </option>
+      </select>
+      <br>
+      <br>
+
+      <label for="street"><b>Street</b></label>
+      <input name="street" value="{{updateAddress.street}}" type="text" [(ngModel)]="updateAddress.street" />
+      <br>
+      <label for="street2"><b>Street2</b></label>
+      <input name="street2" value="{{updateAddress.street2}}" type="text" [(ngModel)]="updateAddress.street2" />
+      <br>
+      <label for="city"><b>City</b></label>
+      <input name="city" value="{{updateAddress.city}}" type="text" [(ngModel)]="updateAddress.city" />
+      <br>
+      <label for="stateProvince"><b>State Province</b></label>
+      <input name="stateProvince" value="{{updateAddress.stateProvince}}" type="text" [(ngModel)]="updateAddress.stateProvince" />
+      <br>
+      <label for="zip"><b>Zip Code</b></label>
+      <input name="zip" value="{{updateAddress.zip}}" type="number" [(ngModel)]="updateAddress.zip" />
+      <br>
+      <label for="country"><b>Country</b></label>
+      <input name="country" value="{{updateAddress.country}}" type="text" [(ngModel)]="updateAddress.country" />
+      <br>
+
+
+      <br>
+
+
+  <br>
+  <br>
+  <br>
+
+  <div class="clearfix">
+    <button (click)="changeAddress(updateAddress.id)" type="submit" class="btn signupbtn">Update Address</button>
+    <button type="button" (click)='confirmCancelNewEvent(newEventForm)' class=" btn cancelbtn">Cancel</button>
+  </div>
+</div>
+<div *ngIf="errors" class="errors">
+  <ul style="list-style: none;">
+    <li *ngFor="let e of errors">{{e}}</li>
+  </ul>
+</div>
+<br>
+</form>
+
+</div>
+<!-- ******************** END OF UPDATE ADDRESS ****************************** -->
