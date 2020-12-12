@@ -451,8 +451,8 @@ COMMIT;
 START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (1, '11', '11@giftr.com', '$2a$10$N8jBGxjk4M3fghOgXo2Us.wRZSRStbDtQXtBlqloiG70Kz3gUN1Ke', 1, 'Marty ', 'McFly', NULL, NULL, 1, NULL, 'm', 2);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, 'TheDude33', '22@giftr.com', '$2a$10$ADCtBZImdUBJMrkIfUIq0.bNfXVqi4Hvu7M0tXyODBc8ueeNZBif6', 1, 'The', 'Dude', NULL, NULL, 2, NULL, 'm', 2);
-INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (3, 'HairyPoppins', '33@giftr.com', '$2a$10$qas4NU73vdWMuEGvZ16WrOjRznTeeeA9lYoTcuc2t0gwooif4ghVO', 1, 'Darth', 'Vader', NULL, NULL, 4, NULL, 'm', 2);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (2, 'TheDude33', 'TheDude33@giftr.com', '$2a$10$ADCtBZImdUBJMrkIfUIq0.bNfXVqi4Hvu7M0tXyODBc8ueeNZBif6', 1, 'The', 'Dude', NULL, NULL, 2, NULL, 'm', 2);
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (3, 'HairyPoppins', 'HairyPoppins@giftr.com', '$2a$10$qas4NU73vdWMuEGvZ16WrOjRznTeeeA9lYoTcuc2t0gwooif4ghVO', 1, 'Darth', 'Vader', NULL, NULL, 4, NULL, 'm', 2);
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (4, 'giftr', 'giftr@giftr.com', '$2a$10$n7j.29fHydLG5FCttxC0E.NkrJtr8VonA5wf8nkBrXgrKLmWqzrgm', 1, 'giftr', 'giftr', NULL, NULL, 3, NULL, 'm', 1);
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (5, 'hogwartsfailure', 'hogwartsfailure@giftr.com', '$2a$10$1BsarLgEiiJHJVBukG1Lq.CARDNsB.hq6EFZS3XI8Mj7beY94FxLm', 1, 'Jack', 'Sparrow', NULL, NULL, 5, NULL, 'm', 2);
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `enabled`, `first_name`, `last_name`, `created_date`, `last_update`, `address_id`, `birth_date`, `gender`, `role`) VALUES (6, 'ironmansnap', 'ironmansnap@giftr.com', '$2a$10$eTAeWXSEdvrvEG3Qohj2D.JmmGaBkuChYARtNCDxyqn8AuzkUNKOC', 1, 'Ron', 'Burgundy', NULL, NULL, 6, NULL, 'm', 2);
@@ -549,6 +549,7 @@ INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (14, 3.45, 12, 'Dumbledore', 1, 7, 3, 5, 5, NULL, NULL, 'Expelliarmus');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (15, 12.99, 11, 'Sorry', 1, 8, 2, 1, 1, NULL, NULL, 'Sorry, back to home');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (16, 15.99, 10, 'Checkers', 1, 8, 1, 2, 1, NULL, NULL, 'King Me!');
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (17, NULL, NULL, NULL, 1, 6, 1, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 

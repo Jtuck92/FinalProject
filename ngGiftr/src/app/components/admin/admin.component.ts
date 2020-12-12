@@ -90,10 +90,12 @@ export class AdminComponent implements OnInit {
     'Update Event',
     'Update Budget',
     'Update Event Type',
+    'Update Address'
   ];
   stringId = '';
   numUserId = 0;
   user = new User();
+  updateAddress = new Address();
   updateEventType = new EventType();
   updateBudget = new Budget();
   updateEvent = new Event();
@@ -184,6 +186,17 @@ export class AdminComponent implements OnInit {
       (data) => {
         this.updateEventType = data;
         console.log(this.updateEventType);
+      },
+      (err) => {
+        console.error('Admin ShowEventType(); retrieve failed');
+      }
+    );
+  }
+  findAddress() {
+    this.addressSvc.show(this.updateAddress.id).subscribe(
+      (data) => {
+        this.updateAddress = data;
+        console.log(this.updateAddress);
       },
       (err) => {
         console.error('Admin ShowEventType(); retrieve failed');
@@ -431,6 +444,11 @@ export class AdminComponent implements OnInit {
     this.giftSvc.index().subscribe(
       (data) => {
         this.gifts = data;
+        for( let i = 0; i < this.gifts.length; i ++){
+          if ( this.gifts[i].receiver == null ){
+            this.gifts[i].receiver = new User();
+          }
+        }
       },
       (err) => {
         console.error('Admin LoadGifts(); retrieve failed');
@@ -629,18 +647,6 @@ export class AdminComponent implements OnInit {
       }
     );
   }
-  // UPDATE Addresses IN DB ====================================
-  updateAddress(e) {
-    this.addressSvc.update(e.id).subscribe(
-      (data) => {
-        this.loadAddresses();
-        location.reload();
-      },
-      (err) => {
-        console.error(' Event Posts disable failed');
-      }
-    );
-  }
   // DISABLE Budgets IN DB ====================================
   disableBudget(e) {
     this.budgetSvc.destroy(e.id).subscribe(
@@ -744,6 +750,26 @@ export class AdminComponent implements OnInit {
       }
     );
   }
+
+
+    // Update ADDRESS IN DB ====================================
+
+    changeAddress() {
+      this.addressSvc.update(this.updateAddress).subscribe(
+        (data) => {
+          // console.log(Event);
+          localStorage.removeItem('pageView');
+          localStorage.setItem('pageView', 'Content');
+          localStorage.removeItem('listType');
+          localStorage.setItem('listType', 'Addresses');
+          this.updateAddress = new Address();
+          location.reload();
+        },
+        (err) => {
+          console.error('Admin LoadAddress(); retrieve failed');
+        }
+      );
+    }
 }
 
 // }
