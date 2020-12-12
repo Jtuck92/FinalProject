@@ -73,6 +73,9 @@ public class BudgetServiceImpl implements BudgetService {
 			if (ePOpt.isPresent()) {
 				managedBudget = ePOpt.get();
 				
+				if (budget.getName() != null) {
+					managedBudget.setName(budget.getName());
+				}
 					if (budget.getLowPrice() != null) {
 						managedBudget.setLowPrice(budget.getLowPrice());
 					}
