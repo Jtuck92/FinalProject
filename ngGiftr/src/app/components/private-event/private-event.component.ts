@@ -31,7 +31,7 @@ export class PrivateEventComponent implements OnInit {
     private auth: AuthService,
     private router: Router
   ) {}
-
+  idString = null;
   users: User[] = [];
   selectedUser: User = null;
   events: Event[] = [];
@@ -44,6 +44,18 @@ export class PrivateEventComponent implements OnInit {
   ngOnInit(): void {
     this.auth.isHomePageComponent(true);
     this.loadPrivateEvent();
+    this.idString = localStorage.getItem('event');
+    this.idString = parseInt(this.idString);
+    this.eventSvc.show(this.idString).subscribe(
+      (data) => {
+        this.selected = data;
+        // console.log(this.selected);
+        // localStorage.removeItem('event');
+      },
+      (err) => {
+        this.router.navigateByUrl('notFound');
+      }
+    );
   }
   loadUsers(): void {
     this.userSvc.index().subscribe(

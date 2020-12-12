@@ -43,8 +43,8 @@ backbutton on page
 </table>
 
 
+<!-- (click)="pEventResult()" -->
 <h2> Your Private Events <br> <button
-  (click)="pEventResult()"
   class="btn"
   type="submit"
   value="Post your gift"
@@ -59,7 +59,7 @@ backbutton on page
     </tr>
   </thead>
   <tbody   class="center">
-    <tr class="col" (click)="pEvent" (click)="eventResult(pEvent)" *ngFor=" let pEvent of pEvents "
+    <tr class="col" (click)="pEvent" (click)="pEventResult(pEvent)" *ngFor=" let pEvent of pEvents "
     >
       <td class="col" id="homeList">{{pEvent.name}}</td>
       <td class="col"  id="homeList"> {{pEvent.description}}</td>

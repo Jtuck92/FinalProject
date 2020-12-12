@@ -176,12 +176,14 @@
       <h1>Update Giftr</h1>
       <p>Please fill in this form to update a Giftr.</p>
       <hr>
-      <label for="name"><b>Giftr ID</b></label>
-      <input type="text" placeholder="{{updateEvent.id}}" name="name" [(ngModel)]="updateEvent.id" required>
+      <label for="updateEvent"><b>Giftr ID</b></label>
+      <select id="updateEvent"  (change)="findEvent()" name="updateEvent" [(ngModel)]="updateEvent.id" >
+        <option *ngFor="let e of events" value="{{e.id}}">{{e.name}}</option>
+      </select>
       <br>
       <br>
       <label for="name"><b>Giftr Name</b></label>
-      <input type="text" value="{{updateEvent.name}}" name="name" [(ngModel)]="updateEvent.name" required>
+      <input type="text" value="{{updateEvent.name}}"  name="name" [(ngModel)]="updateEvent.name" required>
       <br>
       <br>
       <label for="description"><b>Description</b></label>
