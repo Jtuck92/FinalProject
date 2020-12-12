@@ -1,3 +1,4 @@
+import { EventPostService } from './../../service/event-post.service';
 import { UserService } from './../../service/user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -6,6 +7,8 @@ import { EventService } from 'src/app/service/event.service';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Event } from './../../models/event';
 import { User } from 'src/app/models/user';
+import { EventPost } from 'src/app/models/event-post';
+import { updateFor } from 'typescript';
 
 @Component({
   selector: 'app-event-details',
@@ -18,7 +21,8 @@ export class EventDetailsComponent implements OnInit {
     private pEventSrv: PrivateEventService,
     private auth: AuthService,
     private router: Router,
-    private userSrv: UserService
+    private userSrv: UserService,
+    private eventPostSvc: EventPostService
   ) {}
   events: Event[];
   selected: Event = new Event();
@@ -27,6 +31,7 @@ export class EventDetailsComponent implements OnInit {
   stringId = null;
   numUserId = null;
   user: User = new User();
+  eventPost = new EventPost;
 
 
 
@@ -84,4 +89,30 @@ export class EventDetailsComponent implements OnInit {
     }
 
   }
+
+  submitEventPost() {
+    if(!this.auth.checkLogin()){
+      this.router.navigateByUrl("login");
+    } else {
+      this.eventPost.user = this.user;
+      this.eventPost.event = this.selected;
+      for(let i = 0; i < this.selected.users.length; i++){
+        if(this.selected.users[i].id == this.user.id) {
+          this.eventPostSvc.create(this.eventPost).subscribe(
+            (data) => {
+              this.eventPost = data;
+              localStorage.setItem('eventPost' , "" + this.selected.id);
+              this.router.navigateByUrl('/gallery');
+            },
+            (err) => {
+              this.router.navigateByUrl('notFound');
+            }
+          );
+        }
+      }
+    }
+  }
+
+  // ##TODO Need to address the alert, can still post a picture even if not tied to an event.
+
 }

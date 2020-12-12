@@ -1,3 +1,4 @@
+import { EventPostService } from './../../service/event-post.service';
 import { GiftService } from './../../service/gift.service';
 import { Gift } from './../../models/gift';
 import { UserService } from './../../service/user.service';
@@ -10,6 +11,7 @@ import { Event } from './../../models/event';
 import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { EventPost } from 'src/app/models/event-post';
 
 @Component({
   selector: 'app-user',
@@ -24,8 +26,10 @@ export class UserComponent implements OnInit {
     private giftSrv: GiftService,
     private router: Router,
     private uEPipe: UserEventsPipe,
-    private userSrv: UserService
+    private userSrv: UserService,
+    private eventPostSvc: EventPostService
   ) {}
+  eventPost = new EventPost;
   events: Event[];
   pEvents: PrivateEvent[];
   selected: Event = null;
@@ -207,6 +211,10 @@ export class UserComponent implements OnInit {
   return "No notes from receipient"
   }
   return this.receiverGifts[index].note
+  }
+
+  submitEvent() {
+
   }
 
 }
