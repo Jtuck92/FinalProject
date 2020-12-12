@@ -45,14 +45,7 @@ public class EventTypeServiceImpl implements EventTypeService {
 		EventType eType = null;
 		if(eTypeOpt.isPresent()) {
 			eType = eTypeOpt.get();
-			if(eType.getEnabled() == true) {
-				for (Event e : user.getEvents()) {
-					if(e.getEventTypes().contains(eType)) {
 						return eType;									
-				}
-		
-			}
-				}
 			}			
 		}
 		return null;
