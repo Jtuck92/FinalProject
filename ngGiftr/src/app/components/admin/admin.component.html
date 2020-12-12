@@ -112,6 +112,44 @@
     </div>
   </form>
     </div>
+    <!-- ******************** END OF ADD NEW BUDGET ****************************** -->
+    <!-- ******************** START OF ADD NEW EVENT TYPE ****************************** -->
+        <div *ngIf="pageView == 'Add New Event Type'">
+
+          <form #newTypeForm="ngForm" class="modal-content" action="/action_page.php">
+            <div class="container-fluid">
+              <h1>New Event Type</h1>
+              <p>Please fill in this form to create a new Event Type.</p>
+              <hr>
+
+              <label for="name"><b>Event Type Name</b></label>
+              <input type="text" placeholder="Enter Event Type Name" name="name" [(ngModel)]="newEventType.name" required>
+              <br>
+              <br>
+              <label for="description"><b>Description</b></label>
+              <textarea name="description" placeholder="Please Enter Description" cols="50" rows="8" type="text" [(ngModel)]="newEventType.description" ></textarea>
+
+              <br>
+              <br>
+
+              <label for="imageUrl"><b>Image URL</b></label>
+              <input type="text" placeholder="Enter Image URL" name="imageUrl" [(ngModel)]="newEventType.imageUrl" required>
+              <br>
+              <br>
+          <div class="clearfix">
+            <button (click)="createEventType()" type="submit" class="btn signupbtn">Create Budget</button>
+            <button type="button" (click)='confirmCancelNewEventType(newTypeForm)' class=" btn cancelbtn">Cancel</button>
+            <div *ngIf="errors" class="errors">
+              <ul style="list-style: none;">
+                <li *ngFor="let e of errors">{{e}}</li>
+              </ul>
+            </div>
+            <br>
+          </div>
+        </div>
+      </form>
+
+        </div>
 
 
 
@@ -124,20 +162,8 @@
 
 
 
-<!-- ******************** END OF ADD NEW BUDGET ****************************** -->
 
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- ******************** END OF ADD NEW EVENT TYPE ****************************** -->
 <!-- ******************** START OF EVENTS TABLES ****************************** -->
 <div *ngIf="pageView == 'Content'" class="tables">
 

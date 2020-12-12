@@ -91,7 +91,8 @@ export class AdminComponent implements OnInit {
   numUserId = 0;
   user = new User();
   newEvent = new Event();
-  newBudget = new Budget;
+  newBudget = new Budget();
+  newEventType = new EventType();
   errors = [];
   formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -154,6 +155,37 @@ export class AdminComponent implements OnInit {
 
   // START CLICK EVENTS ===================================================
 
+createEventType(){
+this.errors = [];
+console.log(this.newEventType);
+if(this.newEventType.name == undefined){
+  this.errors.push("Name will be the identifier. You may not leave this empty.");
+}
+if(this.newEventType.description == undefined){
+  this.errors.push("Please Provide a Description");
+}
+if(this.newEventType.imageUrl == undefined){
+  this.errors.push("Please provide an image URL");
+}
+if(this.errors.length == 0){
+  this.eTypeSvc.create(this.newEventType).subscribe(
+    (data) => {
+      localStorage.removeItem('pageView');
+      localStorage.setItem('pageView', 'Content');
+      localStorage.removeItem('listType');
+      localStorage.setItem('listType', 'Event Types');
+      this.newEventType = new EventType();
+      location.reload();
+
+    },
+    (err) => {
+      console.error('Admin Show New Event Type(); retrieve failed');
+    }
+    );
+  }
+
+
+}
 createBudget(){
 this.errors = [];
 this.newBudget.name = "" + this.formatCurrency(this.newBudget.lowPrice) + " - " + this.formatCurrency(this.newBudget.highPrice);
@@ -252,9 +284,28 @@ if(this.errors.length == 0){
       if(response){
         localStorage.removeItem('pageView');
         localStorage.setItem('pageView', 'Dashboard');
+        form.reset();
         location.reload();
       }
 
+    }
+    confirmCancelNewBudget(form: NgForm){
+      let response = confirm("Are you sure you want to leave? Any changes will be lost");
+      if(response){
+        localStorage.removeItem('pageView');
+        localStorage.setItem('pageView', 'Dashboard');
+        form.reset();
+        location.reload();
+      }
+    }
+    confirmCancelNewEventType(form: NgForm){
+      let response = confirm("Are you sure you want to leave? Any changes will be lost");
+      if(response){
+        localStorage.removeItem('pageView');
+        localStorage.setItem('pageView', 'Dashboard');
+        form.reset();
+        location.reload();
+      }
     }
 
     setListTypeCookie(){
