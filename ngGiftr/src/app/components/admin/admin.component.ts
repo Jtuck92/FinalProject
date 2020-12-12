@@ -85,11 +85,13 @@ export class AdminComponent implements OnInit {
     'Content',
     'Add New Event',
     'Add New Budget',
-    'Add New Event Type'
+    'Add New Event Type',
+    'Update Event'
   ]
   stringId = "";
   numUserId = 0;
   user = new User();
+  updateEvent = new Event();
   newEvent = new Event();
   newBudget = new Budget();
   newEventType = new EventType();
@@ -629,5 +631,75 @@ if(this.errors.length == 0){
       }
     );
   }
+
+
+
+
+
+
+// Update Events IN DB ====================================
+
+  changeEvent(){
+    // console.log(this.newEvent);
+    this.errors = [];
+
+  if(this.updateEvent.id == undefined){
+    this.errors.push("Giftr ID must be filled out");
+  }
+  if(this.updateEvent.name == undefined){
+    this.errors.push("Giftr name must be filled out");
+  }
+  if(this.updateEvent.description == undefined){
+    this.errors.push("Giftr description must be filled defined");
+  }
+  if(this.updateEvent.startDate == undefined){
+    this.errors.push("Giftr start date must be selected");
+  }
+  if(this.updateEvent.endDate == undefined){
+    this.errors.push("Giftr end date must be selected");
+  }
+  if(this.newBudget == null){
+    this.errors.push("Giftr budget must be selected");
+  }
+  if(this.updateEvent.imageUrl == undefined){
+    this.errors.push("Giftr image must be provided");
+  }
+  if(this.errors.length == 0){
+
+    this.budgetSvc.show(this.newBudget.id).subscribe(
+      (data) => {
+        this.newBudget = data;
+        console.log(this.newBudget);
+
+      },
+      (err) => {
+        console.error('Admin ShowBudget(); retrieve failed');
+      }
+      );
+
+
+
+      this.updateEvent.budget = this.newBudget;
+      this.updateEvent.eventManager = this.user;
+      console.log(this.updateEvent);
+
+      this.eventSvc.update(this.updateEvent).subscribe(
+        (data) => {
+          // console.log(Event);
+          localStorage.removeItem('pageView');
+          localStorage.setItem('pageView', 'Content');
+          localStorage.removeItem('listType');
+          localStorage.setItem('listType', 'Events');
+          this.newBudget = new Budget();
+          this.updateEvent = new Event();
+          location.reload();
+        },
+        (err) => {
+          console.error('Admin LoadEvent(); retrieve failed');
+        }
+        );
+      }
+    }
+
 }
 // }
