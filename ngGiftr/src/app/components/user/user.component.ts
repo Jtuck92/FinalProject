@@ -144,8 +144,10 @@ export class UserComponent implements OnInit {
     this.router.navigateByUrl('/eventDetails');
   }
 
-  pEventResult() {
-    this.router.navigateByUrl('/gallery');
+  pEventResult(event) {
+    this.selected = event;
+    localStorage.setItem('event', '' + this.selected.id);
+    this.router.navigateByUrl('/privateEvent');
   }
 
   findReceiverUsername(index) {

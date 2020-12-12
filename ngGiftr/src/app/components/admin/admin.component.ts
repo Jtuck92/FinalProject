@@ -156,6 +156,18 @@ export class AdminComponent implements OnInit {
                                     }
 
   // START CLICK EVENTS ===================================================
+findEvent(){
+  this.eventSvc.show(this.updateEvent.id).subscribe(
+    (data) => {
+      this.updateEvent = data;
+      console.log(this.updateEvent);
+
+    },
+    (err) => {
+      console.error('Admin ShowEvent(); retrieve failed');
+    }
+    );
+  }
 
 createEventType(){
 this.errors = [];
@@ -643,27 +655,27 @@ if(this.errors.length == 0){
     // console.log(this.newEvent);
     this.errors = [];
 
-  if(this.updateEvent.id == undefined){
-    this.errors.push("Giftr ID must be filled out");
-  }
-  if(this.updateEvent.name == undefined){
-    this.errors.push("Giftr name must be filled out");
-  }
-  if(this.updateEvent.description == undefined){
-    this.errors.push("Giftr description must be filled defined");
-  }
-  if(this.updateEvent.startDate == undefined){
-    this.errors.push("Giftr start date must be selected");
-  }
-  if(this.updateEvent.endDate == undefined){
-    this.errors.push("Giftr end date must be selected");
-  }
-  if(this.newBudget == null){
-    this.errors.push("Giftr budget must be selected");
-  }
-  if(this.updateEvent.imageUrl == undefined){
-    this.errors.push("Giftr image must be provided");
-  }
+  // if(this.updateEvent.id == undefined){
+  //   this.errors.push("Giftr ID must be filled out");
+  // }
+  // if(this.updateEvent.name == undefined){
+  //   this.errors.push("Giftr name must be filled out");
+  // }
+  // if(this.updateEvent.description == undefined){
+  //   this.errors.push("Giftr description must be filled defined");
+  // }
+  // if(this.updateEvent.startDate == undefined){
+  //   this.errors.push("Giftr start date must be selected");
+  // }
+  // if(this.updateEvent.endDate == undefined){
+  //   this.errors.push("Giftr end date must be selected");
+  // }
+  // if(this.newBudget == null){
+  //   this.errors.push("Giftr budget must be selected");
+  // }
+  // if(this.updateEvent.imageUrl == undefined){
+  //   this.errors.push("Giftr image must be provided");
+  // }
   if(this.errors.length == 0){
 
     this.budgetSvc.show(this.newBudget.id).subscribe(
