@@ -16,9 +16,29 @@ export class NavBarComponent implements OnInit {
   user = new User();
   idString = null;
   numUserId = null;
+  isAdmin = false;
+  profile = 'profile'
   constructor(private auth: AuthService, private router: Router, private userSrv: UserService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('userId')){
+      this.idString = localStorage.getItem('userId');
+        this.numUserId = parseInt(this.idString);
+        this.userSrv.show(this.numUserId).subscribe(
+          (data) => {
+            this.user = data;
+            if(this.user.id == 4){
+              this.isAdmin = true;}
+            if(this.isAdmin){
+              this.profile = 'admin'
+            }
+          },
+        (err) => {
+          console.error('User retrieve failed');
+        }
+      );
+
+    }
 
   }
 
@@ -32,28 +52,6 @@ export class NavBarComponent implements OnInit {
      this.router.navigateByUrl("/search/" + this.search);
 
    }
-
-checkUser(){
-  this.idString = localStorage.getItem('userId');
-    this.idString = parseInt(this.idString);
-    this.userSrv.show(this.numUserId).subscribe(
-      (data) => {
-        this.user = data;
-        if(this.user.id == 4){
-          this.router.navigateByUrl("admin")
-        }else{
-          this.router.navigateByUrl("profile")
-
-        }
-      },
-    (err) => {
-      console.error('User retrieve failed');
-    }
-  );
-
-
-
-}
 
 
 }

@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03" [ngbCollapse]='isCollapsed'>
       <ul *ngIf="isCollapsed" class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="/pastEvents"> Past Events </a>
+          <a class="nav-link" href="/pastEvents"> Past Giftrs </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/gallery">Pictures</a>
+          <a class="nav-link" href="/gallery">Gallery</a>
         </li>
       </ul>
       <form *ngIf="isCollapsed" class="form-inline my-2 my-lg-0">
@@ -25,7 +25,7 @@
           <a class="nav-link" href="/register">Create Account</a>
         </li>
             <li *ngIf="checkUserLoggedIn() == true">
-              <a class="nav-link" (click)="checkUser()" >Profile</a>
+              <a class="nav-link" href="/{{profile}}" >Profile</a>
             </li>
             <li *ngIf="checkUserLoggedIn() == true">
               <app-logout></app-logout>
@@ -34,10 +34,10 @@
           </ul>
           <ul *ngIf="!isCollapsed" class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="/pastEvents">Past Events </a>
+              <a class="nav-link" href="/pastEvents">Past Giftrs </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/gallery">Pictures</a>
+              <a class="nav-link" href="/gallery">Gallery</a>
             </li>
           </ul>
           <ul *ngIf="!isCollapsed" class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -48,7 +48,7 @@
               <a class="nav-link" href="/register">Sign Up</a>
             </li>
                                                     <li *ngIf="checkUserLoggedIn() == true">
-                                                      <a class="nav-link" href="/profile">Profile</a>
+                                                      <a class="nav-link" href="/{{profile}}">Profile</a>
                                                     </li>
         <li *ngIf="checkUserLoggedIn() == true">
           <app-logout></app-logout>
