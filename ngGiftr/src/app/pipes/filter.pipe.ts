@@ -28,7 +28,10 @@ results1.forEach(r => {
 });
 
 results2.forEach(r => {
-  results.push(r);
+  if(!results.includes(r)){
+    results.push(r);
+
+  }
 
 });
 

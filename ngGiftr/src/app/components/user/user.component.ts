@@ -48,7 +48,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     if (!localStorage.getItem('foo')) {
-      console.log("Setting Foo");
+      // console.log("Setting Foo");
 
       localStorage.setItem('foo', 'no reload')
       location.reload()
@@ -79,7 +79,7 @@ export class UserComponent implements OnInit {
         this.events = this.uEPipe.transform(this.activeGifts, this.user);
       },
       (err) => {
-        console.error('User retrive failed');
+        console.error('User retrieve failed');
       }
     );
  }
@@ -92,12 +92,12 @@ export class UserComponent implements OnInit {
         if (this.gifts[i].event.id == e.id) {
           this.giftSrv.destroy(this.gifts[i].id).subscribe(
             (data) => {
-              console.log(this.gifts);
+              // console.log(this.gifts);
               this.loadGifts();
               location.reload();
             },
             (err) => {
-              console.error('Private Events retrive failed');
+              console.error('Private Events retrieve failed');
             }
           );
         }
@@ -119,7 +119,7 @@ export class UserComponent implements OnInit {
         this.loadPersonalEventList();
       },
       (err) => {
-        console.error('Gifts retrive failed');
+        console.error('Gifts retrieve failed');
       }
     );
   }
@@ -132,7 +132,7 @@ export class UserComponent implements OnInit {
         this.pEvents = data;
       },
       (err) => {
-        console.error('Private Events retrive failed');
+        console.error('Private Events retrieve failed');
       }
     );
   }
@@ -144,10 +144,8 @@ export class UserComponent implements OnInit {
     this.router.navigateByUrl('/eventDetails');
   }
 
-  pEventResult(event) {
-    this.selected = event;
-    localStorage.setItem('event', '' + this.selected.id);
-    this.router.navigateByUrl('/privateEvent');
+  pEventResult() {
+    this.router.navigateByUrl('/gallery');
   }
 
   findReceiverUsername(index) {
