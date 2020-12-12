@@ -35,14 +35,16 @@ export class NavBarComponent implements OnInit {
 
 checkUser(){
   this.idString = localStorage.getItem('userId');
-    this.numUserId = parseInt(this.idString);
-  this.userSrv.show(this.numUserId).subscribe(
-    (data) => {
-      this.user = data;
+    this.idString = parseInt(this.idString);
+    this.userSrv.show(this.numUserId).subscribe(
+      (data) => {
+        this.user = data;
         if(this.user.id == 4){
           this.router.navigateByUrl("admin")
         }else{
           this.router.navigateByUrl("profile")
+
+        }
       },
     (err) => {
       console.error('User retrieve failed');
@@ -50,10 +52,8 @@ checkUser(){
   );
 
 
+
 }
-
-
-
 
 
 }
