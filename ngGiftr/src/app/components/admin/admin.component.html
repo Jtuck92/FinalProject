@@ -841,6 +841,9 @@
 </div>
   <!-- ******************** END OF GIFTS TABLES ****************************** -->
 
+
+<!-- ******************** START OF UPDATE BUDGET ****************************** -->
+
   <div *ngIf="pageView == 'Update Budget'">
 
     <form #newEventForm="ngForm" class="modal-content" action="/action_page.php">
@@ -881,4 +884,52 @@
   </form>
 
   </div>
+<!-- ******************** End OF UPDATE BUDGET ****************************** -->
+<!-- ******************** START OF UPDATE EVENT TYPE ****************************** -->
+<div *ngIf="pageView == 'Update Event Type'">
 
+  <form #newEventForm="ngForm" class="modal-content" action="/action_page.php">
+    <div class="container-fluid">
+      <h1>Update Event Type</h1>
+      <p>Please fill in this form to update an Event Type.</p>
+      <hr>
+      <label for="updateEventType"><b>Event Type Name</b></label>
+      <select id="updateEventType"  (change)="findEventType()" name="updateEventType" [(ngModel)]="updateEventType.id" >
+        <option *ngFor="let et of eventTypes" value="{{et.id}}">{{et.name}}</option>
+      </select>
+      <br>
+      <br>
+
+      <label for="name"><b>Event Type Name</b></label>
+      <input name="name" value="{{updateEventType.name}}" type="text" [(ngModel)]="updateEventType.name" />
+      <br>
+      <br>
+      <label for="description"><b>Event Type Description</b></label>
+      <input name="description" value="{{updateEventType.description}}" type="text" [(ngModel)]="updateEventType.description" />
+      <br>
+      <br>
+      <label for="imageUrl"><b>Event Type Image</b></label>
+      <input name="imageUrl" value="{{updateEventType.imageUrl}}" type="text" [(ngModel)]="updateEventType.imageUrl" />
+      <br>
+      <br>
+
+
+  <br>
+  <br>
+  <br>
+
+  <div class="clearfix">
+    <button (click)="changeEventType(updateEventType.id)" type="submit" class="btn signupbtn">Update Event Type</button>
+    <button type="button" (click)='confirmCancelNewEvent(newEventForm)' class=" btn cancelbtn">Cancel</button>
+  </div>
+</div>
+<div *ngIf="errors" class="errors">
+  <ul style="list-style: none;">
+    <li *ngFor="let e of errors">{{e}}</li>
+  </ul>
+</div>
+<br>
+</form>
+
+</div>
+<!-- ******************** END OF UPDATE EVENT TYPE ****************************** -->

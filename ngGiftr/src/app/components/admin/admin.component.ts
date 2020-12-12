@@ -35,6 +35,7 @@ import { PrivatePostService } from 'src/app/service/private-post.service';
 export class AdminComponent implements OnInit {
   constructor(
     private eventSvc: EventService,
+    private eventTypeSvc: EventTypeService,
     private addressSvc: AddressService,
     private budgetSvc: BudgetService,
     private eCommentSvc: EventCommentService,
@@ -87,11 +88,13 @@ export class AdminComponent implements OnInit {
     'Add New Budget',
     'Add New Event Type',
     'Update Event',
-    'Update Budget'
+    'Update Budget',
+    'Update Event Type',
   ];
   stringId = '';
   numUserId = 0;
   user = new User();
+  updateEventType = new EventType();
   updateBudget = new Budget();
   updateEvent = new Event();
   newEvent = new Event();
@@ -172,10 +175,22 @@ export class AdminComponent implements OnInit {
         console.log(this.updateBudget);
       },
       (err) => {
-        console.error('Admin ShowEvent(); retrieve failed');
+        console.error('Admin ShowBudget(); retrieve failed');
       }
     );
   }
+  findEventType() {
+    this.eventTypeSvc.show(this.updateEventType.id).subscribe(
+      (data) => {
+        this.updateEventType = data;
+        console.log(this.updateEventType);
+      },
+      (err) => {
+        console.error('Admin ShowEventType(); retrieve failed');
+      }
+    );
+  }
+  // END OF CLICK EVENTS ===================================================
 
   createEventType() {
     this.errors = [];
@@ -687,13 +702,14 @@ export class AdminComponent implements OnInit {
       );
     }
   }
-    // Update Budgets IN DB ====================================
+  // Update Budgets IN DB ====================================
 
   changeBudget() {
-    this.updateBudget.name = '' +
-    this.formatCurrency(this.updateBudget.lowPrice) +
-    ' - ' +
-    this.formatCurrency(this.updateBudget.highPrice);
+    this.updateEvent.name =
+      '' +
+      this.formatCurrency(this.updateBudget.lowPrice) +
+      ' - ' +
+      this.formatCurrency(this.updateBudget.highPrice);
     this.budgetSvc.update(this.updateBudget).subscribe(
       (data) => {
         // console.log(Event);
@@ -705,7 +721,26 @@ export class AdminComponent implements OnInit {
         location.reload();
       },
       (err) => {
-        console.error('Admin LoadEvent(); retrieve failed');
+        console.error('Admin LoadBudget(); retrieve failed');
+      }
+    );
+  }
+
+  // Update Event Type IN DB ====================================
+
+  changeEventType() {
+    this.eventTypeSvc.update(this.updateEventType).subscribe(
+      (data) => {
+        // console.log(Event);
+        localStorage.removeItem('pageView');
+        localStorage.setItem('pageView', 'Content');
+        localStorage.removeItem('listType');
+        localStorage.setItem('listType', 'Event Types');
+        this.updateEventType = new EventType();
+        location.reload();
+      },
+      (err) => {
+        console.error('Admin LoadEventType(); retrieve failed');
       }
     );
   }
