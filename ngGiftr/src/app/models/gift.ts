@@ -10,7 +10,7 @@ export class Gift {
   gifter: User;
   receiver: User;
   rating: number;
-  name: string;
+  name: String;
   imageUrl: string;
   note: string;
 
@@ -24,7 +24,7 @@ export class Gift {
     gifter?: User,
     receiver?: User,
     rating?: number,
-    name?: string,
+    name?: String,
     imageUrl?: string,
     note?: string
   ) {

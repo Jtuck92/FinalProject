@@ -570,11 +570,13 @@ export class AdminComponent implements OnInit {
     return this.receivers[index].address.zip;
   }
   // DISABLE Event ASSIGN ALL GIFTS A RECEIVER IN DB ====================================
-  disableEvent(e) {
+
+
+  disableEvent(e){
     let noReceiverGiftList = [];
-for(let i = 0; i < this.gifts.length; i++){
+  for(let i = 0; i < this.gifts.length; i++){
   // console.log(this.gifts.length);
-// console.log(this.gifts[i].receiver);
+  // console.log(this.gifts[i].receiver);
   if(this.gifts[i].event.id == e.id){
     if(this.gifts[i].receiver.id == undefined){
       noReceiverGiftList.push(this.gifts[i]);
@@ -586,59 +588,44 @@ for(let i = 0; i < this.gifts.length; i++){
     if(noReceiverGiftList[i].receiver.id == undefined){
     console.log(noReceiverGiftList[i].gifter);
 
-    let randomAssignUser = noReceiverGiftList[i].gifter.id;
+    let randomAssignUser = noReceiverGiftList[0].gifter.id;
     // console.log(randomAssignUser);
 
     do{
-      randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length - 1));
+      randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
       console.log(randomAssignUser);
-      console.log(randomAssignUser == noReceiverGiftList[i].gifter.id);
-    }while(randomAssignUser == noReceiverGiftList[i].gifter.id);
+      console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
+    }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id );
     noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
   console.log(noReceiverGiftList[i].receiver);
+  console.log(noReceiverGiftList[i]);
+
   this.giftSvc.update(noReceiverGiftList[i]).subscribe(
     (data) => {
        console.log("Receiver Assign Success");
 
-    },
-    (err) => {
-      console.error('Admin LoadEvent(); retrieve failed');
-    }
-  );
-  }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    this.eventSvc.destroy(e.id).subscribe(
-      (data) => {
-        console.log(data);
-        this.loadEvents();
-        location.reload();
       },
       (err) => {
-        console.error(' Events disable failed');
+        console.error('Admin UpdateGift(); retrieve failed');
       }
+      );
+    }
+
+  }
+
+  this.eventSvc.destroy(e.id).subscribe(
+    (data) => {
+      console.log(data);
+      this.loadGifts();
+      this.loadEvents();
+      location.reload();
+    },
+    (err) => {
+      console.error(' Events disable failed');
+    }
     );
   }
+
   // DISABLE Users IN DB ====================================
   disableUser(e) {
     this.userSvc.destroy(e.id).subscribe(

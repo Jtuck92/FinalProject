@@ -38,34 +38,57 @@ public class GiftServiceImpl implements GiftService {
 
 	@Override
 	public Gift updateGift(String name, Integer giftId, Gift gift) {
+		System.err.println("GIFT WITH UPDATES" + gift);
 		Optional<Gift> giftOpt = gRepo.findById(giftId);
 		Gift updatedGift = null;
 		if(giftOpt.isPresent()) {
+			System.err.println("OPT GET" + giftOpt.get());
 			updatedGift = giftOpt.get();
+			System.err.println("SET PRICE");
 			if(gift.getPrice() != null) {
+				System.err.println("SET PRICE");
 				updatedGift.setPrice(gift.getPrice());
 			}
+			System.err.println("SET WEIGHT");
 			if(gift.getWeight() != null) {
+				System.err.println("SET WEIGHT");
 				updatedGift.setWeight(gift.getWeight());
 			}
+			System.err.println("SET DESCRIPTION");
 			if(gift.getDescription() != null) {
+				System.err.println("SET DESCRIPTION");
 				updatedGift.setDescription(gift.getDescription());
 			}
-			if(gift.getRating() != 0 ) {
+			System.err.println("SET RATING");
+			if(gift.getRating() != null ) {
+				System.err.println("SET RATING");
 				updatedGift.setRating(gift.getRating());
 			}
+			System.err.println("SET Name");
 			if(gift.getName() != null) {
+				System.err.println("SET Name");
 				updatedGift.setName(gift.getName());
 			}
+			System.err.println("SET IMAGE");
 			if(gift.getImageUrl() != null) {
+				System.err.println("SET IMAGE");
 				updatedGift.setImageUrl(gift.getImageUrl());
 			}
+			System.err.println("SET NOTE");
 			if(gift.getNote() != null) {
+				System.err.println("SET NOTE");
 				updatedGift.setNote(gift.getNote());
 			}
-		gRepo.flush();
+			System.err.println("SET RECIEVER");
+			if(gift.getReceiver() != null) {
+				System.err.println("SET RECIEVER");
+				updatedGift.setReceiver(gift.getReceiver());
+			}
+			gRepo.saveAndFlush(updatedGift);
+			System.err.println("BEFORE RETURN" + updatedGift);
+			return updatedGift;
 		}
-		return updatedGift;
+		return null;
 		
 	}
 

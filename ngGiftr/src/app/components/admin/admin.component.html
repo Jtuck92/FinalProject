@@ -1,7 +1,7 @@
 <!-- ******************** START OF FILTERS ****************************** -->
-<label style="padding-left: 40px" for="selectListType">Filter By: </label>
+<label *ngIf="pageView == 'Content'" style="padding-left: 40px" for="selectListType">Filter By: </label>
 &nbsp;
-<select
+<select *ngIf="pageView == 'Content'"
   (change)="setListTypeCookie()"
   name="selectListType"
   id=""
