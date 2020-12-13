@@ -1,3 +1,5 @@
+import { Address } from './../../models/address';
+import { AddressService } from 'src/app/service/address.service';
 import { EventPostService } from './../../service/event-post.service';
 import { GiftService } from './../../service/gift.service';
 import { Gift } from './../../models/gift';
@@ -14,6 +16,7 @@ import { User } from 'src/app/models/user';
 import { EventPost } from 'src/app/models/event-post';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -21,6 +24,7 @@ import { NgForm } from '@angular/forms';
 })
 export class UserComponent implements OnInit {
   constructor(
+    private authService: AuthService,
     private eventSvc: EventService,
     private pEventSrv: PrivateEventService,
     private auth: AuthService,
@@ -28,14 +32,16 @@ export class UserComponent implements OnInit {
     private router: Router,
     private uEPipe: UserEventsPipe,
     private userSrv: UserService,
-    private eventPostSvc: EventPostService
+    private eventPostSvc: EventPostService,
+    private addressSvc: AddressService
   ) {}
-  eventPost = new EventPost;
+  eventPost = new EventPost();
   events: Event[];
   pEvents: PrivateEvent[];
   selected: Event = null;
   pSelected: PrivateEvent = null;
   stringId = '';
+  addressId = 0;
   numUserId = 0;
   user: User = null;
   gifts: Gift[] = [];
@@ -43,32 +49,31 @@ export class UserComponent implements OnInit {
   receivers: User[] = [];
   activeGifts: Gift[] = [];
   userGifts: Gift[] = [];
-  notes: String [] = [];
-  receiverGifts: Gift [] = [];
+  notes: String[] = [];
+  receiverGifts: Gift[] = [];
   loadRecieverCount = 0;
   updateGift = new Gift();
   updateUser = new User();
+  updateAddress = new Address();
   pageView = 'Profile';
   pageViews = [
     'Update User Profile',
     'Update Address',
     'Profile'
+
   ];
-
-
 
   ngOnInit(): void {
     if (!localStorage.getItem('foo')) {
       // console.log("Setting Foo");
 
-      localStorage.setItem('foo', 'no reload')
-      location.reload()
+      localStorage.setItem('foo', 'no reload');
+      location.reload();
     } else {
-      localStorage.removeItem('foo')
+      localStorage.removeItem('foo');
       this.loadPrivateEvents();
       this.loadGifts();
     }
-
   }
 
   loadPersonalEventList() {
@@ -94,51 +99,43 @@ export class UserComponent implements OnInit {
         console.error('User retrieve failed');
       }
     );
- }
+  }
 
- setUpdateGift(event){
-   for(let i = 0; i < this.userGifts.length; i++){
-    //  console.log("in for loop");
+  setUpdateGift(event) {
+    for (let i = 0; i < this.userGifts.length; i++) {
+      //  console.log("in for loop");
 
-     if(this.userGifts[i].event.id == event.id){
-       this.updateGift = this.userGifts[i];
-      //  console.log(this.updateGift);
-
-     }
-   }
- }
-
-
-checkGiftDetails(event){
-  for(let i = 0; i < this.userGifts.length; i++){
-    if(this.userGifts[i].event.id == event.id){
-      if(this.userGifts[i].description != undefined){
-        return true;
-
+      if (this.userGifts[i].event.id == event.id) {
+        this.updateGift = this.userGifts[i];
+        //  console.log(this.updateGift);
       }
     }
   }
-  return false;
-}
 
-
-
-submitGiftUpdate(){
-  this.giftSrv.update(this.updateGift).subscribe(
-    (data) => {
-      // console.log(this.gifts);
-      this.loadGifts();
-      this.updateGift = new Gift();
-      location.reload();
-    },
-    (err) => {
-      console.error('Private Events retrieve failed');
+  checkGiftDetails(event) {
+    for (let i = 0; i < this.userGifts.length; i++) {
+      if (this.userGifts[i].event.id == event.id) {
+        if (this.userGifts[i].description != undefined) {
+          return true;
+        }
+      }
     }
-  );
+    return false;
+  }
 
-}
-
-
+  submitGiftUpdate() {
+    this.giftSrv.update(this.updateGift).subscribe(
+      (data) => {
+        // console.log(this.gifts);
+        this.loadGifts();
+        this.updateGift = new Gift();
+        location.reload();
+      },
+      (err) => {
+        console.error('Private Events retrieve failed');
+      }
+    );
+  }
 
   removeEvent(e) {
     for (let i = 0; i < this.gifts.length; i++) {
@@ -159,13 +156,11 @@ submitGiftUpdate(){
     }
   }
 
-
   loadGifts(): void {
     this.giftSrv.index().subscribe(
       (data) => {
         this.gifts = data;
         for (let i = 0; i < this.gifts.length; i++) {
-
           if (this.gifts[i].enabled) {
             this.activeGifts.push(this.gifts[i]);
           }
@@ -178,11 +173,11 @@ submitGiftUpdate(){
     );
   }
 
-  isEventEnabled(event){
-    if(event.enabled){
-      return "eventEnabled"
+  isEventEnabled(event) {
+    if (event.enabled) {
+      return 'eventEnabled';
     }
-    return "eventDisabled"
+    return 'eventDisabled';
   }
 
   loadPrivateEvents(): void {
@@ -234,7 +229,7 @@ submitGiftUpdate(){
     if (this.receivers[index] == null) {
       return '';
     }
-    return this.receivers[index].address.city + ",";
+    return this.receivers[index].address.city + ',';
   }
   findReceiverAddressState(index) {
     if (this.receivers[index] == null) {
@@ -255,60 +250,98 @@ submitGiftUpdate(){
     return this.receivers[index].address.zip;
   }
 
-  displayNote(event, index){
-    for(let i = 0; i < this.gifts.length; i++){
-      if(this.receivers[index] == null){
-        return "";
+  displayNote(event, index) {
+    for (let i = 0; i < this.gifts.length; i++) {
+      if (this.receivers[index] == null) {
+        return '';
       }
-      if( this.gifts[i].gifter.id == this.receivers[index].id){
-      if(this.gifts[i].event.id == event.id){
-            if(!this.receiverGifts.includes(this.gifts[i])){
-              this.receiverGifts.push(this.gifts[i])
+      if (this.gifts[i].gifter.id == this.receivers[index].id) {
+        if (this.gifts[i].event.id == event.id) {
+          if (!this.receiverGifts.includes(this.gifts[i])) {
+            this.receiverGifts.push(this.gifts[i]);
           }
         }
       }
     }
-  if(this.receiverGifts[index].note == null){
-  return "No notes from receipient"
-  }
-  return this.receiverGifts[index].note
-  }
-
-  submitEvent() {
-
-  }
-
-    // Update User IN DB ====================================
-
-    changeUserProfile() {
-      this.userSrv.update(this.updateUser).subscribe(
-        (data) => {
-          // console.log(Event);
-          localStorage.removeItem('pageView');
-          localStorage.setItem('pageView', 'Content');
-          localStorage.removeItem('listType');
-          localStorage.setItem('listType', 'profile');
-          this.updateUser = new User();
-          location.reload();
-        },
-        (err) => {
-          console.error('User LoadUser(); retrieve failed');
-        }
-      );
+    if (this.receiverGifts[index].note == null) {
+      return 'No notes from receipient';
     }
- // START NON CREATE CLICK EVENTS ===================================================
-
- confirmCancelProfile(form: NgForm) {
-  let response = confirm(
-    'Are you sure you want to leave? Any changes will be lost'
-  );
-  if (response) {
-    localStorage.removeItem('pageView');
-    localStorage.setItem('pageView', 'profile');
-    form.reset();
-    location.reload();
+    return this.receiverGifts[index].note;
   }
-}
+
+  submitEvent() {}
+  // Update Address IN DB ====================================
+
+  changeAddress() {
+    this.addressSvc.update(this.updateAddress).subscribe(
+      (data) => {
+        // console.log(Event);
+        localStorage.removeItem('pageView');
+        localStorage.setItem('pageView', 'Content');
+        localStorage.removeItem('listType');
+        localStorage.setItem('listType', 'profile');
+        this.updateAddress = new Address();
+        location.reload();
+      },
+      (err) => {
+        console.error('User LoadUser(); retrieve failed');
+      }
+    );
+  }
+
+  // Update User IN DB ====================================
+
+  changeUserProfile() {
+    this.userSrv.update(this.updateUser).subscribe(
+      (data) => {
+        this.user = data;
+        console.log(this.user);
+
+        // console.log(Event);
+        this.authService.logout();
+        this.authService.login(this.updateUser.username, this.updateUser.password).subscribe(
+          (data) => {
+            // this.user = data;
+            localStorage.removeItem('pageView');
+            localStorage.setItem('pageView', 'Content');
+            localStorage.removeItem('listType');
+            localStorage.setItem('listType', 'profile');
+            this.updateUser = new User();
+
+            // console.log(localStorage.getItem("userId"));
+            // if( this.user.username == 'giftr'){
+            //   this.router.navigateByUrl('/admin');
+            // }else{
+              // this.router.navigateByUrl('/profile');
+              location.reload();
+
+          },
+          (err) => {
+            console.error('error on Login*******');
+          }
+        );
+
+      },
+      (err) => {
+        console.error('User LoadUser(); retrieve failed');
+      }
+
+      );
+    // console.log(user);
+  }
+  // START NON CREATE CLICK EVENTS ===================================================
+
+  confirmCancelProfile(form: NgForm) {
+    let response = confirm(
+      'Are you sure you want to leave? Any changes will be lost'
+    );
+    if (response) {
+      localStorage.removeItem('pageView');
+      localStorage.setItem('pageView', 'profile');
+      form.reset();
+      location.reload();
+    }
+  }
   // START CLICK EVENTS ===================================================
   findUser() {
     this.stringId = localStorage.getItem('userId');
@@ -317,6 +350,21 @@ submitGiftUpdate(){
       (data) => {
         this.updateUser = data;
         console.log(this.updateUser);
+      },
+      (err) => {
+        console.error('User ShowUser(); retrieve failed');
+      }
+    );
+  }
+
+  findAddress() {
+    // this.stringId = localStorage.getItem('userId');
+    // this.numUserId = parseInt(this.stringId);
+    this.addressId = this.user.address.id
+    this.addressSvc.show(this.addressId).subscribe(
+      (data) => {
+        this.updateAddress = data;
+        console.log(this.updateAddress);
       },
       (err) => {
         console.error('User ShowUser(); retrieve failed');
