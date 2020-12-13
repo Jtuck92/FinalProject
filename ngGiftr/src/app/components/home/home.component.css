@@ -70,3 +70,23 @@ h3, #homeDescription, .homeTitle{
   height: 20vw;
   object-fit: cover;
 }
+
+.howTo{
+  background-color: rgb(53,203,233);
+  margin-left: 11.5%;
+  margin-right: 11.5%;
+
+}
+#howToPoints{
+  margin-left: 11.5%;
+  margin-right: 11.5%;
+  }
+
+#howToheader {
+  margin-left: 11.5%;
+  margin-right: 11.5%;
+}
+
+#howToHeader {
+  text-align: center;
+}
