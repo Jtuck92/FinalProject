@@ -46,6 +46,7 @@ import { BudgetFilterPipe } from './pipes/budget-filter.pipe';
 import { PrivateEventComponent } from './components/private-event/private-event.component';
 import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 import { UserInEventPipe } from './pipes/user-in-event.pipe';
+import { DatePipe } from '@angular/common';
 // import { ComponentComponent } from './component/component.component';
 
 @NgModule({
@@ -83,6 +84,7 @@ import { UserInEventPipe } from './pipes/user-in-event.pipe';
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
   providers: [
+    DatePipe,
     AddressService,
     BudgetService,
     EventCommentService,

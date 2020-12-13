@@ -241,8 +241,8 @@
 
 </div>
 <!-- ******************** END OF UPDATE  EVENT ****************************** -->
-
-<!-- ******************** START OF EVENTS TABLES ****************************** -->
+<!-- ******************** START OF TABLES ****************************** -->
+<!-- ******************** START OF EVENT TABLES ****************************** -->
 <div *ngIf="pageView == 'Content'" class="tables">
 
 
@@ -255,6 +255,7 @@
       <th class="col">Start Date</th>
       <th class="col">End Date</th>
       <th class="col">Budget</th>
+      <th class="col">Image</th>
     </tr>
   </thead>
   <tbody class="center">
@@ -264,6 +265,7 @@
       <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.budget.name}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> <img src="{{e.imageUrl}}" alt="" height="100px" width="100px"></td>
       <td *ngIf='e.enabled'><button
         (click)="disableEvent(e)"
         class="btn"
@@ -293,12 +295,13 @@
       <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.budget.name}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> <img src="{{e.imageUrl}}" alt="" height="100px" width="100px"></td>
 
     </tr>
   </tbody>
 </table>
 </div>
-<!-- ******************** END OF EVENTS TABLES ****************************** -->
+<!-- ******************** END OF EVENT TABLES ****************************** -->
 <!-- ******************** START OF USER TABLES ****************************** -->
 
 <div *ngIf="selectedListType == 'Users' || selectedListType == 'All'">
@@ -696,7 +699,7 @@
       <td class="col"  id="homeList">{{pay.user.username}}</td>
       <td class="col"  id="homeList">{{pay.cardNumber}}</td>
       <td class="col"  id="homeList">{{pay.exp}}</td>
-      <td class="col"  id="homeList">{{pay.amount}}</td>
+      <td class="col"  id="homeList">{{formatCurrency(pay.amount)}}</td>
 
       </tr>
   </tbody>
@@ -769,6 +772,7 @@
         >
           <td class="col"   id="homeList">{{et.name}}</td>
           <td  class="col"   id="homeList"> {{et.description}}</td>
+          <td class="col"   id="homeList"> <img src="{{et.imageUrl}}" alt="" height="100px" width="100px"></td>
 
 
           <td *ngIf='et.enabled'><button
@@ -995,3 +999,25 @@
 
 </div>
 <!-- ******************** END OF UPDATE ADDRESS ****************************** -->
+<!-- ******************** START OF DASHBOARD ****************************** -->
+<br>
+<br>
+<div *ngIf="pageView == 'Dashboard'">
+
+    <div class="container-fluid">
+      <h1>Welcome to the Giftr Dashboard</h1>
+      <h3>Coming Soon!</h3>
+      <br>
+<br><br>
+<br>
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br><br><br>
+</div>
