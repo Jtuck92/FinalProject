@@ -48,10 +48,11 @@ export class UserComponent implements OnInit {
   loadRecieverCount = 0;
   updateGift = new Gift();
   updateUser = new User();
-  pageView = 'Update User Profile';
+  pageView = 'Profile';
   pageViews = [
     'Update User Profile',
-    'Update Address'
+    'Update Address',
+    'Profile'
   ];
 
 
@@ -233,7 +234,7 @@ submitGiftUpdate(){
     if (this.receivers[index] == null) {
       return '';
     }
-    return this.receivers[index].address.city;
+    return this.receivers[index].address.city + ",";
   }
   findReceiverAddressState(index) {
     if (this.receivers[index] == null) {
