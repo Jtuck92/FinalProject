@@ -45,7 +45,7 @@ export class UserComponent implements OnInit {
   notes: String [] = [];
   receiverGifts: Gift [] = [];
   loadRecieverCount = 0;
-
+  updateGift = new Gift();
   ngOnInit(): void {
     if (!localStorage.getItem('foo')) {
       // console.log("Setting Foo");
@@ -70,6 +70,7 @@ export class UserComponent implements OnInit {
         this.user = data;
         for (let i = 0; i < this.activeGifts.length; i++) {
           if (this.activeGifts[i].gifter.id == this.user.id) {
+            this.userGifts.push(this.activeGifts[i]);
             // if(this.activeGifts[i].receiver == null){
             //   this.receivers.push(new User());
             // }
@@ -83,6 +84,48 @@ export class UserComponent implements OnInit {
       }
     );
  }
+
+ setUpdateGift(event){
+   for(let i = 0; i < this.userGifts.length; i++){
+    //  console.log("in for loop");
+
+     if(this.userGifts[i].event.id == event.id){
+       this.updateGift = this.userGifts[i];
+      //  console.log(this.updateGift);
+
+     }
+   }
+ }
+
+
+checkGiftDetails(event){
+  for(let i = 0; i < this.userGifts.length; i++){
+    if(this.userGifts[i].event.id == event.id){
+      if(this.userGifts[i].description != undefined){
+        return true;
+
+      }
+    }
+  }
+  return false;
+}
+
+
+
+submitGiftUpdate(){
+  this.giftSrv.update(this.updateGift).subscribe(
+    (data) => {
+      // console.log(this.gifts);
+      this.loadGifts();
+      this.updateGift = new Gift();
+      location.reload();
+    },
+    (err) => {
+      console.error('Private Events retrieve failed');
+    }
+  );
+
+}
 
 
 
@@ -124,12 +167,19 @@ export class UserComponent implements OnInit {
     );
   }
 
-
+  isEventEnabled(event){
+    if(event.enabled){
+      return "eventEnabled"
+    }
+    return "eventDisabled"
+  }
 
   loadPrivateEvents(): void {
     this.pEventSrv.index().subscribe(
       (data) => {
-        this.pEvents = data;
+        console.log(data);
+
+        // this.pEvents = data;
       },
       (err) => {
         console.error('Private Events retrieve failed');
@@ -166,20 +216,20 @@ export class UserComponent implements OnInit {
     if (this.receivers[index] == null) {
       return '';
     }
-    return 'Ste/Apt/Unit: ' + this.receivers[index].address.street2;
+    return this.receivers[index].address.street2;
   }
   findReceiverAddressCity(index) {
     // console.log([index]);
     if (this.receivers[index] == null) {
       return '';
     }
-    return this.receivers[index].address.city + ', ';
+    return this.receivers[index].address.city;
   }
   findReceiverAddressState(index) {
     if (this.receivers[index] == null) {
       return '';
     }
-    return this.receivers[index].address.stateProvince + ' ';
+    return this.receivers[index].address.stateProvince;
   }
   findReceiverAddressCountry(index) {
     if (this.receivers[index] == null) {

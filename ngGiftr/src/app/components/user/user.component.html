@@ -5,29 +5,37 @@ backbutton on page
 -->
 <div class="tables">
 
-<h2> Your Events  <br></h2>
+<h2> Your Giftrs  <br></h2>
+<div style="height: 10px; width: 10px; border: solid 1px black; margin-left: 2%; background-color: rgba(255, 242, 55, 0.4); display: block;"></div><div style="height: 10px; font-size: small; display: inline-block; margin-left: 2%;"><sup>*</sup>This means sign-ups have been closed and you have been assigned a receiver.<br>Please send your gift and update Gift Details  </div>
 <table >
   <thead class="col">
     <tr class="col">
-      <th class="col">Event</th>
+      <th class="col">Giftr</th>
       <th class="col">Start Date</th>
-      <th class="col">End Date</th>
+      <th class="col">Ship Date</th>
       <th class="col">Receiver</th>
       <th class="col">Address to Send</th>
       <th class="col">Tips from your Receipient</th>
     </tr>
   </thead>
   <tbody class="center">
-    <tr class="col"  *ngFor=" let e of events; let i = index "
+    <tr [ngClass]="isEventEnabled(e)" class="col"  *ngFor=" let e of events; let i = index "
     >
       <td class="col"  (click)="eventResult(e)" id="homeList">{{e.name}}</td>
       <td  class="col"  (click)="eventResult(e)" id="homeList"> {{e.startDate}}</td>
       <td  class="col" (click)="eventResult(e)"  id="homeList"> {{e.endDate}}</td>
       <td  class="col"  (click)="eventResult(e)" id="homeList"> {{findReceiverUsername(i)}}</td>
-      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{findReceiverAddressStreet(i)}} <br> {{findReceiverAddressStreet2(i)}}
-      <br>{{findReceiverAddressCity(i)}}  {{findReceiverAddressState(i)}} {{findReceiverAddressZip(i)}}<br> {{findReceiverAddressCountry(i)}}</td>
-      <td>{{displayNote(e,i)}}</td>
+      <td  class="col" (click)="eventResult(e)"  id="homeList"> {{findReceiverAddressStreet(i)}} {{findReceiverAddressStreet2(i)}} {{findReceiverAddressCity(i)}}, {{findReceiverAddressState(i)}} {{findReceiverAddressZip(i)}} {{findReceiverAddressCountry(i)}}</td>
+      <td style="padding: 2%; vertical-align: text-top;">{{displayNote(e,i)}}</td>
       <td *ngIf='!e.enabled'><button
+        class="btn"
+        (click)="setUpdateGift(e)"
+        onclick="document.getElementById('id02').style.display='block'"
+        style="width: auto"
+      >
+        Update Gift Details
+      </button></td>
+      <td *ngIf='!e.enabled && checkGiftDetails(e)'><button
         (click)="removeEvent(e)"
         class="btn"
         type="submit"
@@ -44,15 +52,18 @@ backbutton on page
 
 
 <!-- (click)="pEventResult()" -->
-<h2> Your Private Events <br> <button
+<h2> Your Private Giftrs
+  <!-- <button *ngIf="!pEvents"
   class="btn"
   type="submit"
   value="Post your gift"
-  >Post your gift</button></h2>
+  >Post your gift</button> -->
+
+</h2>
 <table >
   <thead class="col">
     <tr class="col">
-      <th class="col">Event</th>
+      <th class="col">Giftr</th>
       <th class="col">Description</th>
       <th class="col">Receiver</th>
       <th class="col">Address to Send</th>
@@ -120,9 +131,44 @@ backbutton on page
 </div>
 </div> -->
 
-
-<h6>No exchanges here right now. In the mean time, check out other exchanges or the gallery.</h6>
+<h3 style="padding-left: 2.5%;" *ngIf="!pEvents">COMING SOON!</h3>
+<h6 *ngIf="!pEvents">No Private Giftrs here right now. In the mean time, check out other exchanges or the gallery.</h6>
 <div style="width: 100%;"></div>
 <br>
 <br>
+<!-- ================================= Update Gift Details========================= -->
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="/action_page.php">
+    <div class="container-fluid">
+      <h1>Update Gift Information</h1>
+      <p>Please fill in this form to update Giftr on the gift you sent.<br>Description is required, but you can add as much or as little else as you would like</p>
+      <hr>
 
+      <label for="subject"><b>Price</b></label>
+      <input type="text" placeholder="Price" name="price" [(ngModel)]="updateGift.price" required>
+      <br>
+      <br>
+      <label for="subject"><b>Weight (kg)</b></label>
+      <input type="text" placeholder="Weight (kg)" name="price" [(ngModel)]="updateGift.weight" required>
+      <br>
+      <br>
+      <label for="description"><b>Description</b><sup style="color: red;">*</sup></label>
+      <textarea name="description" placeholder="Please Enter Description" cols="50" rows="8" type="text" [(ngModel)]="updateGift.description" ></textarea>
+      <br>
+      <br>
+      <label for="imageUrl"><b>Image Url</b></label>
+      <label for="imageUrl"><img src="{{updateGift.imageUrl}}" height="150px" width="100px" alt=""></label>
+      <input type="text" placeholder="Enter Image Url" name="imageUrl" [(ngModel)]="updateGift.imageUrl" required>
+      <br>
+      <br>
+      <div id ="submit">
+      <button (click)="submitGiftUpdate()" type="submit" class="btn signupbtn">Submit</button>
+    </div>
+            <div class="clearfix" id="cancel">
+              <button style="float: right;" type="button" onclick="document.getElementById('id02').style.display='none'" class=" btn cancelbtn">Cancel</button>
+            </div>
+          </div>
+          <br>
+  </form>
+</div>

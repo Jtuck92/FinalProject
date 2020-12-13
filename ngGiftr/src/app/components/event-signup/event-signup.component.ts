@@ -61,6 +61,7 @@ export class EventSignupComponent implements OnInit {
   }
 
   pEventSignupDone() {
+
       this.gift.event = this.selected;
       // console.log(this.gift.event);
       this.stringId = localStorage.getItem('userId');
