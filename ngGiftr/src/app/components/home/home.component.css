@@ -12,10 +12,12 @@
   /* Text styles */
   text-align: center;
  /* Background styles */
-  background: url("/assets/herobackground.jpg");
+  background: url("/assets/christmashero.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  color: white;
+  text-shadow: 2px 2px black;
 }
 
 .hero:hover {
@@ -40,7 +42,14 @@
 }
 
 #homeHeader{
-  background-color: rgb(53,203,233);;
+  background-color: red;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+#giftrHeader {
+  background-color: rgb(53,203,233);
+  text-align: center;
 }
 #eventCard{
   width: 300px;
