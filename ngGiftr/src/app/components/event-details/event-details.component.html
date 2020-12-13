@@ -1,3 +1,4 @@
+
 <div *ngIf="selected" id="homeEvents">
   <h1> {{ selected.name }}</h1>
 </div>
@@ -13,13 +14,14 @@
 </div>
 
 <br>
-<h3 class="eventDesc">{{selected.description}}<h3>
+<h3 class="eventDesc">{{selected.description}}</h3>
   <br>
 <br><br>
 <br>
-  <p> Still have questions? Check out the <a href="/faq" class="btn">FAQ</a> or <a href="/contact" class="btn">Contact Us</a></p>
+  <p class="moreQuestions"> Still have questions? Check out the <a href="/faq" class="btn">FAQ</a> or <a href="/contact" class="btn">Contact Us</a></p>
 <br>
 <br>
+
 <h3>How do Giftrs work?</h3>
 <div class="howTo">
 
@@ -43,7 +45,7 @@ When you ship it, keep a receipt and come back here to tell us you've shipped it
   <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
   <form class="modal-content" action="/action_page.php">
     <div class="container">
-      <h1>Gallery Information</h1>
+      <h2>Gallery Information</h2>
       <p>Please fill in this form to post your gift to the gallery.</p>
       <hr>
       <label for="subject"><b>Subject: </b></label>

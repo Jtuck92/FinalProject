@@ -5,12 +5,19 @@
   list-style: none;
 }
 
+#giftrHeader {
+  text-align: center;
+  background-color:rgb(53,203,233);
+}
+
 .card-text:hover{
 color: blue;
 text-decoration: underline;
 }
 #homeHeader{
-  background-color: rgb(53,203,233);;
+  background-color: red;
+  color: white;
+  text-shadow: 2px 2px black;
 }
 #eventCard{
   width: 300px;

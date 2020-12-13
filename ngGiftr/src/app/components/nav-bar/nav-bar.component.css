@@ -7,6 +7,15 @@
   cursor: pointer;
 }
 
+.nav-link {
+  color: black!important;
+}
+
+.nav-link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
 .divNav{
   margin: 10px;
   overflow: hidden!important;
