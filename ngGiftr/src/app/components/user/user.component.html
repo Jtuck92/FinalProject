@@ -2,7 +2,7 @@
 <label style="padding-left: 100px" for="pageView">Page View: </label> &nbsp;
 <!-- (change)="setPageViewCookie()" -->
 <select
-(click)="findUser(updateUserForm)"
+(click)="findUser()"
 (click)="findAddress()"
   name="pageView"
   id=""
@@ -234,8 +234,8 @@ backbutton on page
         name="password"
         value="{{ updateUser.password }}"
         type="text"
-        [(ngModel)]="updateUser.password"
-      />
+        />
+        <!-- [(ngModel)]="updateUser.password" -->
       <br />
       <br />
       <label for="birthDate"><b>Birthday</b></label>

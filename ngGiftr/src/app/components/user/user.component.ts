@@ -301,6 +301,8 @@ export class UserComponent implements OnInit {
         this.authService.logout();
         this.authService.login(this.updateUser.username, this.updateUser.password).subscribe(
           (data) => {
+            console.log(this.updateUser);
+
             // this.user = data;
             localStorage.removeItem('pageView');
             localStorage.setItem('pageView', 'Content');
