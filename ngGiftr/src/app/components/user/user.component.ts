@@ -12,6 +12,7 @@ import { PrivateEventService } from 'src/app/service/private-event.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { EventPost } from 'src/app/models/event-post';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -46,6 +47,15 @@ export class UserComponent implements OnInit {
   receiverGifts: Gift [] = [];
   loadRecieverCount = 0;
   updateGift = new Gift();
+  updateUser = new User();
+  pageView = 'Update User Profile';
+  pageViews = [
+    'Update User Profile',
+    'Update Address'
+  ];
+
+
+
   ngOnInit(): void {
     if (!localStorage.getItem('foo')) {
       // console.log("Setting Foo");
@@ -267,4 +277,49 @@ submitGiftUpdate(){
 
   }
 
+    // Update User IN DB ====================================
+
+    changeUserProfile() {
+      this.userSrv.update(this.updateUser).subscribe(
+        (data) => {
+          // console.log(Event);
+          localStorage.removeItem('pageView');
+          localStorage.setItem('pageView', 'Content');
+          localStorage.removeItem('listType');
+          localStorage.setItem('listType', 'profile');
+          this.updateUser = new User();
+          location.reload();
+        },
+        (err) => {
+          console.error('User LoadUser(); retrieve failed');
+        }
+      );
+    }
+ // START NON CREATE CLICK EVENTS ===================================================
+
+ confirmCancelProfile(form: NgForm) {
+  let response = confirm(
+    'Are you sure you want to leave? Any changes will be lost'
+  );
+  if (response) {
+    localStorage.removeItem('pageView');
+    localStorage.setItem('pageView', 'profile');
+    form.reset();
+    location.reload();
+  }
+}
+  // START CLICK EVENTS ===================================================
+  findUser() {
+    this.stringId = localStorage.getItem('userId');
+    this.numUserId = parseInt(this.stringId);
+    this.userSrv.show(this.numUserId).subscribe(
+      (data) => {
+        this.updateUser = data;
+        console.log(this.updateUser);
+      },
+      (err) => {
+        console.error('User ShowUser(); retrieve failed');
+      }
+    );
+  }
 }
