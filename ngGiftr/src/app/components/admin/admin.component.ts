@@ -569,8 +569,65 @@ export class AdminComponent implements OnInit {
     }
     return this.receivers[index].address.zip;
   }
-  // DISABLE Event IN DB ====================================
+  // DISABLE Event ASSIGN ALL GIFTS A RECEIVER IN DB ====================================
   disableEvent(e) {
+    let noReceiverGiftList = [];
+for(let i = 0; i < this.gifts.length; i++){
+  // console.log(this.gifts.length);
+// console.log(this.gifts[i].receiver);
+  if(this.gifts[i].event.id == e.id){
+    if(this.gifts[i].receiver.id == undefined){
+      noReceiverGiftList.push(this.gifts[i]);
+    }
+  }
+  }
+
+  for(let i = 0; i < noReceiverGiftList.length; i++){
+    if(noReceiverGiftList[i].receiver.id == undefined){
+    console.log(noReceiverGiftList[i].gifter);
+
+    let randomAssignUser = noReceiverGiftList[i].gifter.id;
+    // console.log(randomAssignUser);
+
+    do{
+      randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length - 1));
+      console.log(randomAssignUser);
+      console.log(randomAssignUser == noReceiverGiftList[i].gifter.id);
+    }while(randomAssignUser == noReceiverGiftList[i].gifter.id);
+    noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
+  console.log(noReceiverGiftList[i].receiver);
+  this.giftSvc.update(noReceiverGiftList[i]).subscribe(
+    (data) => {
+       console.log("Receiver Assign Success");
+
+    },
+    (err) => {
+      console.error('Admin LoadEvent(); retrieve failed');
+    }
+  );
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     this.eventSvc.destroy(e.id).subscribe(
       (data) => {
         console.log(data);
