@@ -2,9 +2,9 @@ import { User } from './user';
 import { Address } from './address';
 export class Payment {
   id: number;
-  cardNumber: String;
+  cardNumber: string;
   amount: number;
-  exp: String;
+  exp: string;
   createdDate: String;
   lastUpdate: String;
   enabled: boolean;
@@ -13,9 +13,9 @@ export class Payment {
 
 constructor(
   id?: number,
-  cardNumber?: String,
+  cardNumber?: string,
   amount?: number,
-  exp?: String,
+  exp?: string,
   createdDate?: String,
   lastUpdate?: String,
   enabled?: boolean,

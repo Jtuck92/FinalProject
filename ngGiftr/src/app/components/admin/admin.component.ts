@@ -26,6 +26,7 @@ import { EventTypeService } from 'src/app/service/event-type.service';
 import { PaymentService } from 'src/app/service/payment.service';
 import { PrivateCommentService } from 'src/app/service/private-comment.service';
 import { PrivatePostService } from 'src/app/service/private-post.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
@@ -34,6 +35,7 @@ import { PrivatePostService } from 'src/app/service/private-post.service';
 })
 export class AdminComponent implements OnInit {
   constructor(
+    private datePipe: DatePipe,
     private eventSvc: EventService,
     private eventTypeSvc: EventTypeService,
     private addressSvc: AddressService,
@@ -408,9 +410,14 @@ export class AdminComponent implements OnInit {
   }
   // LOAD ALL Payments IN DB ====================================
   loadPayments(): void {
+
     this.paymentSvc.index().subscribe(
       (data) => {
         this.payments = data;
+        this.payments.forEach(p => {
+
+          p.exp = this.datePipe.transform( p.exp , 'yyyy-MM');
+        });
       },
       (err) => {
         console.error('Admin LoadPayments(); retrieve failed');
