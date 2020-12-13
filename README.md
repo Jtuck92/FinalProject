@@ -100,4 +100,6 @@ http://localhost:8090/
 #### Jess' Lessons Learned
 #### Struggles
 #### Justin's Lessons Learned
+What I did learn from this project that I touched on my struggles is that I still have a lot to learn when it comes to Angular and Javascript. But the lesson I did learn is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project. 
 #### Struggles
+Coming into this project, I still didn't feel as comfortable working in Angular as I do with Spring. So I felt like I couldn't contribute as much of the heavy coding as my teammates. I contributed as much typescript/javascript as I could and peer programmed the rest I couldn't figure out on my own.
