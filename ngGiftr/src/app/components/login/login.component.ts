@@ -16,6 +16,7 @@ errors = [];
 
 
   login(registerForm: NgForm) {
+    this.errors = [];
     const user = registerForm.value;
     // console.log(user);
     this.authService.login(user.username, user.password).subscribe(

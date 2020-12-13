@@ -586,19 +586,19 @@ export class AdminComponent implements OnInit {
 
   for(let i = 0; i < noReceiverGiftList.length; i++){
     if(noReceiverGiftList[i].receiver.id == undefined){
-    console.log(noReceiverGiftList[i].gifter);
+    // console.log(noReceiverGiftList[i].gifter);
 
     let randomAssignUser = noReceiverGiftList[0].gifter.id;
     // console.log(randomAssignUser);
 
     do{
       randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
-      console.log(randomAssignUser);
-      console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
+      // console.log(randomAssignUser);
+      // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
     }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id );
     noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
-  console.log(noReceiverGiftList[i].receiver);
-  console.log(noReceiverGiftList[i]);
+  // console.log(noReceiverGiftList[i].receiver);
+  // console.log(noReceiverGiftList[i]);
 
   this.giftSvc.update(noReceiverGiftList[i]).subscribe(
     (data) => {
