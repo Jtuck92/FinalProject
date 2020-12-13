@@ -67,6 +67,8 @@ export class AuthService {
   logout() {
     localStorage.removeItem('credentials');
     localStorage.removeItem('userId');
+    localStorage.removeItem('listType');
+    localStorage.removeItem('pageView');
   }
 
 isHomePageComponent(home: boolean){
