@@ -551,6 +551,7 @@ INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (15, 12.99, 11, 'Sorry', 1, 8, 2, 1, 1, NULL, NULL, 'Sorry, back to home');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (16, 15.99, 10, 'Checkers', 1, 8, 1, 2, 1, NULL, NULL, 'King Me!');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (17, NULL, NULL, NULL, 1, 6, 1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (18, NULL, NULL, NULL, 1, 6, 2, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 
