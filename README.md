@@ -115,7 +115,7 @@ Big lesson was how important notes can be to keep things organized. Notes also h
 This project gave me the chance to become more comfortable and confident working in Angular.
 #### Struggles
 The biggest struggle for me was Angular still being extremely new to me. The Admin profile was another part that was difficult for me due to the size of the file. Adding notes to help label and keep the tables organized really helped.
-![acbitmoji](src/assets/acbitmoji.png)
+![acbitmoji](ngGiftr/src/assets/acbitmoji.png)
 #### Aaron's Lessons Learned
 This project's takeaways were in Angular session data and how RESTful services interact and retrieve data. I found many instances where HTTP Requests were not completing in time to use the return data effectively. So learning how to find where I needed to nest transactions was crucial to making the site function properly.
 
