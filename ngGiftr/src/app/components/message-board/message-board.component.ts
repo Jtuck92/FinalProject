@@ -34,43 +34,48 @@ export class MessageBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.isHomePageComponent(false);
-    window.scrollTo(0,0);
-    if (this.auth.checkLogin) {
-      this.loggedIn = true;
-    }
-    this.idString = localStorage.getItem('eventPost');
-    // console.log(this.idString);
-    this.idString = parseInt(this.idString);
-    this.eventPostSvc.show(this.idString).subscribe(
-      (data) => {
-        // console.log(data);
-        this.selected = data;
-        this.stringId = localStorage.getItem('userId');
-        // console.log(this.activeGifts);
+    if (!localStorage.getItem('foo')) {
+      // console.log("Setting Foo");
 
-        this.numUserId = parseInt(this.stringId);
-        this.userSrv.show(this.numUserId).subscribe(
-          (data) => {
-            this.user = data;
+      localStorage.setItem('foo', 'no reload');
+      location.reload();
+    } else {
+      localStorage.removeItem('foo');
+
+      window.scrollTo(0,0);
+      if (this.auth.checkLogin) {
+        this.loggedIn = true;
+      }
+      this.idString = localStorage.getItem('eventPost');
+      // console.log(this.idString);
+      this.idString = parseInt(this.idString);
+      this.eventPostSvc.show(this.idString).subscribe(
+        (data) => {
+          // console.log(data);
+          this.selected = data;
+          this.stringId = localStorage.getItem('userId');
+          // console.log(this.activeGifts);
+
+          this.numUserId = parseInt(this.stringId);
+          this.userSrv.show(this.numUserId).subscribe(
+            (data) => {
+              this.user = data;
+            },
+            (err) => {
+              console.error('User retrieve failed');
+            }
+            );
+            // console.log(this.selected);
           },
           (err) => {
-            console.error('User retrieve failed');
+            this.router.navigateByUrl('notFound');
           }
           );
-          // console.log(this.selected);
-        },
-        (err) => {
-          this.router.navigateByUrl('notFound');
         }
-        );
       }
-      catch(error) {
-        this.router.navigateByUrl('notFound');
-      }
-      pEventSignup() {
+        pEventSignup() {
         localStorage.setItem('eventPost', '' + this.selected.id);
       }
-
       postComment() {
         if(!this.auth.checkLogin()) {
           this.router.navigateByUrl('login')
