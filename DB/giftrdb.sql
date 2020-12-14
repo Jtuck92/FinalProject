@@ -552,6 +552,8 @@ INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (16, 15.99, 10, 'Checkers', 1, 8, 1, 2, 1, NULL, NULL, 'King Me!');
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (17, NULL, NULL, NULL, 1, 6, 1, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (18, NULL, NULL, NULL, 1, 6, 2, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (19, NULL, NULL, NULL, 1, 6, 3, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `gift` (`id`, `price`, `weight_kg`, `description`, `enabled`, `event_id`, `gifter_id`, `receiver_id`, `rating`, `name`, `image_url`, `note`) VALUES (20, NULL, NULL, NULL, 1, 6, 5, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 
@@ -633,6 +635,8 @@ INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 8);
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 8);
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 6);
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 6);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (3, 6);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (5, 6);
 
 COMMIT;
 

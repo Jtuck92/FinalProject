@@ -585,24 +585,29 @@ export class AdminComponent implements OnInit {
     }
   }
   }
+console.log(noReceiverGiftList);
 
   for(let i = 0; i < noReceiverGiftList.length; i++){
+    console.log(indexUsedList);
     if(noReceiverGiftList[i].receiver.id == undefined){
     // console.log(noReceiverGiftList[i].gifter);
     let randomAssignUser = noReceiverGiftList[0].gifter.id;
         if(i = 0){
-          indexUsedList.push(noReceiverGiftList.length - 1);
-          randomAssignUser = noReceiverGiftList[noReceiverGiftList.length - 1];
+          indexUsedList.push(noReceiverGiftList.length -1);
+          randomAssignUser = noReceiverGiftList[noReceiverGiftList.length -1];
+          indexUsedList.push(randomAssignUser);
+
         }
     // console.log(randomAssignUser);
 
-    if(i != 0){
     do{
+      if(i != 0){
         randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
         // console.log(randomAssignUser);
         // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
+      }
       }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id || indexUsedList.includes(randomAssignUser));
-    }
+
       noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
     indexUsedList.push(randomAssignUser);
     // noReceiverGiftList.splice(i, 1);
