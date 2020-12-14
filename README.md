@@ -28,6 +28,8 @@ Creation of content is also managed by the admin. New Giftrs and Giftr settings 
 
 ### Implementation
 
+#### *AWS Deployment*
+
 #### *API RestPoints*
 http://localhost:8090/
 
