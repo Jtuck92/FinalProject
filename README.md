@@ -10,6 +10,7 @@ Giftr has created a platform for users to browse and join "Secret Santa" style g
 #### *Users*
 <img src="ngGiftr/src/assets/homepage.png" align="left" style="float: left; display: inline-block;" width="175" height ="150">
 When you visit the Giftr homepage, you may browse the available and active Giftrs. There are numerous ways to narrow down the list including an interactive search at the top of the page.
+<img src="ngGiftr/src/assets/Gallery.png" align="right" style="float: right; display: inline-block;" width="175" height ="150">
 
 Non-members may also view some of our previous Giftrs and browse through the gallery of posts gift receivers have left for members to provide insight and commentary on.
 
