@@ -111,7 +111,7 @@ http://localhost:8090/
 
 ##### Ryan Miskoviak (Developer, DBA) <br/> Aaron Cottrell (Developer, Scrum Master)<br/> Jess Tucker (Developer, Repo Owner) <br/> Justin Livingston (Developer, Web Design Specialist)
 #### Ryan's Lessons Learned
-![rmbitmoji](ngGiftr/src/assets/rmbitmoji.png=75x75)
+<img src="ngGiftr/src/assets/rmbitmoji.png" width="75" height ="75">
 Big lesson was how important notes can be to keep things organized. Notes also help when working with a team. Others will touch the files and be able to find what they are looking for.
 This project gave me the chance to become more comfortable and confident working in Angular.
 #### Struggles
