@@ -118,6 +118,7 @@ This project gave me the chance to become more comfortable and confident working
 
 #### Struggles
 The biggest struggle for me was Angular still being extremely new to me. The Admin profile was another part that was difficult for me due to the size of the file. Adding notes to help label and keep the tables organized really helped.
+
 <img src="ngGiftr/src/assets/acbitmoji.png" width="75" height ="75">
 
 #### Aaron's Lessons Learned
@@ -136,13 +137,13 @@ Per the usual, I also struggled with knowing when to let others do things on the
 <img src="ngGiftr/src/assets/jtbitmoji.png" width="75" height ="75">
 
 #### Jess' Lessons Learned
-![jtbitmoji](ngGiftr/src/assets/jtbitmoji.png =75x75)
+
 #### Struggles
 
-<img src="ngGiftr/src/assets/jl2bitmoji.png" width="75" height ="75">
+<img src="ngGiftr/src/assets/jl2bitmoji.jpeg." width="75" height ="75">
 
 #### Justin's Lessons Learned
-![jl2bitmoji](ngGiftr/src/assets/jl2bitmoji.png =75x75)
+
 I touched on this topic in my struggles below but I still have a lot to learn when it comes to Angular and Javascript. The lesson I did learn, is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project.
 #### Struggles
 Coming into this project, I still didn't feel as comfortable working in Angular as I do with Spring. So I felt like I couldn't contribute as much of the heavy coding as my teammates. I contributed as much typescript/javascript as I could and peer programmed the rest I couldn't figure out on my own.
