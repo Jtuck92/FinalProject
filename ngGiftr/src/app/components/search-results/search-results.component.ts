@@ -26,6 +26,8 @@ export class SearchResultsComponent implements OnInit {
   })
 
   ngOnInit(): void {
+
+    window.scrollTo(0,0);
     this.auth.isHomePageComponent(true);
     this.getEvents();
     this.searchString = this.currentRoute.snapshot.paramMap.get('param');

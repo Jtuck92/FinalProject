@@ -94,12 +94,15 @@ http://localhost:8090/
 ##### Ryan Miskoviak (Developer, DBA) <br/> Aaron Cottrell (Developer, Scrum Master)<br/> Jess Tucker (Developer, Repo Owner) <br/> Justin Livingston (Developer, Web Design Specialist)
 
 #### Ryan's Lessons Learned
+Big lesson was how important notes can be to keep things organized. Notes also help when working with a team. Others will touch the files and be able to find what they are looking for.
+This project gave me the chance to become more comfortable and confident working in Angular.
 #### Struggles
+The biggest struggle for me was Angular still being extremely new to me. The Admin profile was another part that was difficult for me due to the size of the file. Adding notes to help label and keep the tables organized really helped.
 #### Aaron's Lessons Learned
 #### Struggles
 #### Jess' Lessons Learned
 #### Struggles
 #### Justin's Lessons Learned
-What I did learn from this project that I touched on my struggles is that I still have a lot to learn when it comes to Angular and Javascript. But the lesson I did learn is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project. 
+What I did learn from this project that I touched on my struggles is that I still have a lot to learn when it comes to Angular and Javascript. But the lesson I did learn is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project.
 #### Struggles
 Coming into this project, I still didn't feel as comfortable working in Angular as I do with Spring. So I felt like I couldn't contribute as much of the heavy coding as my teammates. I contributed as much typescript/javascript as I could and peer programmed the rest I couldn't figure out on my own.

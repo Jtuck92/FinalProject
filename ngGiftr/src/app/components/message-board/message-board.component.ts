@@ -28,6 +28,7 @@ export class MessageBoardComponent implements OnInit {
   newComment = new EventComment();
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     if (this.auth.checkLogin) {
       this.loggedIn = true;
     }

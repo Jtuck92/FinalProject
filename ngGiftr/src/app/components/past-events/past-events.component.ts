@@ -18,6 +18,7 @@ export class PastEventsComponent implements OnInit {
   selected: Event = new Event();
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.auth.isHomePageComponent(true);
     this.loadEvents();
   }

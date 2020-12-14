@@ -617,10 +617,22 @@ START TRANSACTION;
 USE `giftrdb`;
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 1);
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 1);
-INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 3);
-INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 2);
-INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (3, 3);
 INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (3, 2);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (5, 2);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (6, 3);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (7, 3);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (8, 4);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (9, 4);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (9, 6);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (8, 6);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (7, 5);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (6, 5);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (5, 7);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (3, 7);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 8);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 8);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (1, 6);
+INSERT INTO `user_has_event` (`user_id`, `event_id`) VALUES (2, 6);
 
 COMMIT;
 

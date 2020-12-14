@@ -41,6 +41,7 @@ export class EventSignupComponent implements OnInit {
     if (this.auth.checkLogin) {
       this.loggedIn = true;
     }
+    window.scrollTo(0,0);
     // console.log(this.selected);
 
     this.idString = localStorage.getItem('event');
