@@ -38,6 +38,7 @@ export class EventSignupComponent implements OnInit {
   numUserId = 0;
 
   ngOnInit(): void {
+    this.auth.isHomePageComponent(true);
     if (this.auth.checkLogin) {
       this.loggedIn = true;
     }

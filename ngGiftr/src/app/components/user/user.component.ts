@@ -64,6 +64,7 @@ export class UserComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.auth.isHomePageComponent(false);
     if (!localStorage.getItem('foo')) {
       // console.log("Setting Foo");
 

@@ -112,6 +112,7 @@ export class AdminComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.auth.isHomePageComponent(false);
     window.scrollTo(0, 0);
 
     if (!localStorage.getItem('listType')) {

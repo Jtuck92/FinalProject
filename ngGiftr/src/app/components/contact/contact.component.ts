@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
-  ngOnInit(): void {window.scrollTo(0,0);
+  ngOnInit(): void {
+    this.auth.isHomePageComponent(false);
+    window.scrollTo(0,0);
   }
 
 }
