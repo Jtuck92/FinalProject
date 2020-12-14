@@ -9,7 +9,7 @@ export class FaqComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {window.scrollTo(0,0);
   }
 
 }

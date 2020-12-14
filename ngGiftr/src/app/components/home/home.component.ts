@@ -25,6 +25,7 @@ budgets: Budget [] = []
 eventPost: EventPost = null;
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.auth.isHomePageComponent(true);
     this.loadEvents();
     this.loadBudgets();

@@ -42,6 +42,7 @@ export class PrivateEventComponent implements OnInit {
   newImageUrl: string = '';
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.auth.isHomePageComponent(true);
     this.loadPrivateEvent();
     this.idString = localStorage.getItem('event');

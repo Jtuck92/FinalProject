@@ -792,6 +792,7 @@ users: User[] = [];
 constructor(private auth: AuthService, private router: Router, private aServ: AddressService, private userSvc: UserService) { }
 
 ngOnInit(): void {
+  window.scrollTo(0,0);
   this.auth.isHomePageComponent(true);
   this.loadUsers();
 }

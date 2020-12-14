@@ -74,6 +74,7 @@ export class UserComponent implements OnInit {
       this.loadPrivateEvents();
       this.loadGifts();
     }
+    window.scrollTo(0,0);
   }
 
   loadPersonalEventList() {
