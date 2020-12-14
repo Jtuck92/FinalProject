@@ -265,7 +265,7 @@ export class UserComponent implements OnInit {
         }
       }
     }
-    if (this.receiverGifts[index].note == null) {
+    if (this.receiverGifts[index].note == null || this.receiverGifts[index].note == undefined) {
       return 'No notes from receipient';
     }
     return this.receiverGifts[index].note;
