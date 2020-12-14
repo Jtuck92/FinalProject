@@ -1,4 +1,3 @@
-import { UserService } from './../../service/user.service';
 import { EventComment } from './../../models/event-comment';
 import { EventCommentService } from './../../service/event-comment.service';
 import { EventPostService } from 'src/app/service/event-post.service';
@@ -7,7 +6,6 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { EventService } from 'src/app/service/event.service';
 import { EventPost } from 'src/app/models/event-post';
-import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-message-board',
@@ -20,15 +18,13 @@ export class MessageBoardComponent implements OnInit {
     private eventPostSvc: EventPostService,
     private auth: AuthService,
     private router: Router,
-    private eventCommentSvc: EventCommentService,
-    private userSrv: UserService
+    private eventCommentSvc: EventCommentService
   ) {}
   comSelected: EventComment = new EventComment();
   events: EventPost[];
   selected: EventPost = new EventPost();
   idString = null;
   loggedIn = false;
-  user: User = new User();
   newComment = new EventComment();
 
   ngOnInit(): void {
