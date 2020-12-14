@@ -94,7 +94,7 @@ isHomePageComponent(home: boolean){
 
   getCredentials() {
     if(this.isHomePage){
-      return "MTE6MTE=";
+      return "Z2lmdHI6Z2lmdHI=";
     }
     return localStorage.getItem('credentials');
   }
