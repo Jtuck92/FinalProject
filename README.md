@@ -8,7 +8,7 @@ Giving doesn't have to be seasonal. We don't have to only find that spirit durin
 Giftr has created a platform for users to browse and join "Secret Santa" style gifting events all year round. We call them Giftrs. The purpose of a Giftr is to allow for random assignment of an address that the user will send a themed gift to. A receiver may give hints or notes to help the giver along the way but ultimately the Gifr spirit allows for the giver to provide what they think is cool, useful or otherwise just a great gift. At Giftr we do ask that the party sending the gift provide some information to verify that they have fulfilled their side of the agreement. Receivers may choose to re-visit the Giftr page and upload pictures for our public forum. These will not only allow public commentary, but also allow for future Giftr inspiration.   
 
 #### *Users*
-<img src="ngGiftr/src/assets/homepage.png" style="float: left;" width="150" height ="150">&nbsp;
+<img src="ngGiftr/src/assets/homepage.png" style="float: left; display: inline-block;" width="150" height ="150">&nbsp;
 When you visit the Giftr homepage, you may browse the available and active Giftrs. There are numerous ways to narrow down the list including an interactive search at the top of the page.
 
 Non-members may also view some of our previous Giftrs and browse through the gallery of posts gift receivers have left for members to provide insight and commentary on.
