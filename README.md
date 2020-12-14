@@ -147,4 +147,7 @@ Coming into this project, I still didn't feel as comfortable working in Angular 
 <img src="ngGiftr/src/assets/jtbitmoji.png" width="75" height ="75">&nbsp;
 #### Jess' Lessons Learned
 
+The final project of the SD27 cohort was natrually going to present the most challenges, compared to what came before. Interestingly, the biggest hurdles came from ranging into coding techniques and concepts that were not covered directly within the curriculum. Though, the most consistant headaches involved the technologies discussed most recently: Angular and JavaScript. These are aspects of coding that will need to be readdressed by this programmer at length in order to fully comprehend them going forward.
 #### Struggles
+
+Angular remains the most nebulous subject to me, as un-typed languages lack the assistance of previous ones learned earlier in the course. It stands to reason that the last concept that we covered would be the least understood, but I will need to spend significant effort in the immediate future to grasp what I continue to have problems using with confidence.
