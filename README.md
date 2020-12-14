@@ -140,7 +140,7 @@ Per the usual, I also struggled with knowing when to let others do things on the
 
 #### Struggles
 
-<img src="ngGiftr/src/assets/jl2bitmoji.jpeg." width="75" height ="75">
+<img src="ngGiftr/src/assets/jl2bitmoji.jpeg" width="75" height ="75">
 
 #### Justin's Lessons Learned
 
