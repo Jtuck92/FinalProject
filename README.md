@@ -103,9 +103,19 @@ This project gave me the chance to become more comfortable and confident working
 #### Struggles
 The biggest struggle for me was Angular still being extremely new to me. The Admin profile was another part that was difficult for me due to the size of the file. Adding notes to help label and keep the tables organized really helped.
 #### Aaron's Lessons Learned
+This project's takeaways were in Angular session data and how RESTful services interact and retrieve data. I found many instances where HTTP Requests were not completing in time to use the return data effectively. So learning how to find where I needed to nest transactions was crucial to making the site function properly.
+
+Once I found myself comfortable with setting and retrieving local storage data it became so much easier to pass data between pages for future use. This would also become a pain at times so knowing when to remove the storage item was also important.
+
+Some more "minor" things were finding myself more comfortable in CSS style sheets and HTML tag associations. Obviously, it would take much more time but I feel comfortable in every aspect of the code in the project and really feel I wouldn't feel out of place answering a question about any piece of the project.
 #### Struggles
+I feel like my biggest struggle was wanting things perhaps <i>too</i> clean from the start. Trying to write perfect code that wouldn't need to be looked at again. This was really an unattainable expectation of myself and my teammates. We and I probably could have gotten more stretch goals and features inserted if we had mashed some more rather than trying to find the cleanest route right away. We could have come back and cleaned things up a bit.
+
+Per the usual, I also struggled with knowing when to let others do things on their own. It was our capstone project and I really felt some of the pressure to make sure that things worked correctly so I maybe didn't focus as much on my own tasks as I should have. I feel like I should have scheduled my time a little better and perhaps worked with teammates during a couple set portions of the day to ensure that my parts of the project got the attention they deserved as well as my teammates being able to utilize each other more. Again, I feel like we left some features on the table so I kick myself a little for not finding better ways to manage the time.
+
 #### Jess' Lessons Learned
 #### Struggles
+
 #### Justin's Lessons Learned
 What I did learn from this project that I touched on my struggles is that I still have a lot to learn when it comes to Angular and Javascript. But the lesson I did learn is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project.
 #### Struggles
