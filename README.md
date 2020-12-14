@@ -117,11 +117,11 @@ http://localhost:8090/
 ##### Ryan Miskoviak (Developer, DBA) <br/> Aaron Cottrell (Developer, Scrum Master)<br/> Jess Tucker (Developer, Repo Owner) <br/> Justin Livingston (Developer, Web Design Specialist)
 <img src="ngGiftr/src/assets/rmbitmoji.png" width="75" height ="75">&nbsp;
 #### Ryan's Lessons Learned
-Big lesson was how important notes can be to keep things organized. Notes also help when working with a team. Others will touch the files and be able to find what they are looking for.
+A big lesson was how important comments/notes can be to keep things organized. Comments also help when working with a team. Others will touch the files and be able to find what they are looking for.
 This project gave me the chance to become more comfortable and confident working in Angular.
 
 #### Struggles
-The biggest struggle for me was Angular still being extremely new to me. The Admin profile was another part that was difficult for me due to the size of the file. Adding notes to help label and keep the tables organized really helped.
+The biggest struggle for me was Angular still being extremely new to me. The Admin profile was another part that was difficult for me due to the size of the file. Adding comments to help label and keep the tables organized really helped.
 
 <img src="ngGiftr/src/assets/acbitmoji.png" width="75" height ="75">&nbsp;
 #### Aaron's Lessons Learned
@@ -133,14 +133,14 @@ Once I found myself comfortable with setting and retrieving local storage data i
 Some more "minor" things were finding myself more comfortable in CSS style sheets and HTML tag associations. Obviously, it would take much more time but I feel comfortable in every aspect of the code in the project and really feel I wouldn't feel out of place answering a question about any piece of the project.
 
 #### Struggles
-I feel like my biggest struggle was wanting things perhaps <i>too</i> clean from the start. Trying to write perfect code that wouldn't need to be looked at again. This was really an unattainable expectation of myself and my teammates. We and I probably could have gotten more stretch goals and features inserted if we had mashed some more, rather than trying to find the cleanest route right away. We could have come back and cleaned things up a bit later.
+I feel like my biggest struggle was wanting things perhaps <i>too</i> clean from the start. Trying to write perfect code that wouldn't need to be looked at again. This was really an unattainable expectation of myself and my teammates. We and I, probably could have gotten more stretch goals and features inserted if we had mashed some more, rather than trying to find the cleanest route right away. We could have come back and cleaned things up a bit later.
 
 Per the usual, I also struggled with knowing when to let others do things on their own. It was our capstone project and I really felt some of the pressure to make sure that things worked correctly so I maybe didn't focus as much on my own tasks as I should have. I feel like I should have scheduled my time a little better and perhaps worked with teammates during a couple set portions of the day to ensure that my parts of the project got the attention they deserved as well as my teammates being able to utilize each other more. Again, I feel like we left some features on the table so I kick myself a little for not finding better ways to manage the time.
 
 <img src="ngGiftr/src/assets/jl2bitmoji.jpeg" width="75" height ="75">&nbsp;
 #### Justin's Lessons Learned
 
-I touched on this topic in my struggles below but I still have a lot to learn when it comes to Angular and Javascript. The lesson I did learn, is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project.
+I touched on this topic in my struggles below, but I still have a lot to learn when it comes to Angular and Javascript. The lesson I did learn, is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project.
 #### Struggles
 Coming into this project, I still didn't feel as comfortable working in Angular as I do with Spring. So I felt like I couldn't contribute as much of the heavy coding as my teammates. I contributed as much typescript/javascript as I could and peer programmed the rest I couldn't figure out on my own.
 
