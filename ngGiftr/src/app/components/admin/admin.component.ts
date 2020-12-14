@@ -589,16 +589,21 @@ export class AdminComponent implements OnInit {
   for(let i = 0; i < noReceiverGiftList.length; i++){
     if(noReceiverGiftList[i].receiver.id == undefined){
     // console.log(noReceiverGiftList[i].gifter);
-
     let randomAssignUser = noReceiverGiftList[0].gifter.id;
+        if(i = 0){
+          indexUsedList.push(noReceiverGiftList.length - 1);
+          randomAssignUser = noReceiverGiftList[noReceiverGiftList.length - 1];
+        }
     // console.log(randomAssignUser);
 
+    if(i != 0){
     do{
-      randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
-      // console.log(randomAssignUser);
-      // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
-    }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id || indexUsedList.includes(randomAssignUser));
-    noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
+        randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
+        // console.log(randomAssignUser);
+        // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
+      }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id || indexUsedList.includes(randomAssignUser));
+    }
+      noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
     indexUsedList.push(randomAssignUser);
     // noReceiverGiftList.splice(i, 1);
     // i--;
