@@ -24,6 +24,18 @@ export class EventCommentService {
   return httpOptions;
 
   }
+  gethttpOptionsLoggedIn(){
+    const  credentials = localStorage.getItem('credentials');
+
+    const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Comment':  'application/json',
+          'Authorization': `Basic ${credentials}`,
+        })
+      };
+  return httpOptions;
+
+  }
 constructor(private http: HttpClient,private auth: AuthService) { }
 
 
@@ -51,7 +63,7 @@ constructor(private http: HttpClient,private auth: AuthService) { }
       }
 
       create(eventComment: EventComment){
-        const httpOptions = this.gethttpOptions();
+        const httpOptions = this.gethttpOptionsLoggedIn();
         this.url = environment.baseUrl + 'api/eventComments';
         return this.http.post<any>(this.url, eventComment, httpOptions)
         .pipe(

@@ -30,10 +30,10 @@ export class MessageBoardComponent implements OnInit {
   stringId = null;
   numUserId = null;
   user = new User();
-
+isHomePage = true;
 
   ngOnInit(): void {
-    this.auth.isHomePageComponent(true);
+    this.auth.isHomePageComponent(this.isHomePage);
     if (!localStorage.getItem('foo')) {
       // console.log("Setting Foo");
 
@@ -78,13 +78,13 @@ export class MessageBoardComponent implements OnInit {
         localStorage.setItem('eventPost', '' + this.selected.id);
       }
       postComment() {
+        this.auth.isHomePageComponent(false);
         if(!this.auth.checkLogin()) {
           this.router.navigateByUrl('login')
         } else {
           this.newComment.post = this.selected;
           this.newComment.user = this.user;
           console.log(this.newComment);
-          this.auth.isHomePageComponent(false);
 
       this.eventCommentSvc.create(this.newComment).subscribe(
         (good) => {
