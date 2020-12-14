@@ -572,6 +572,67 @@ export class AdminComponent implements OnInit {
   }
   // DISABLE Event ASSIGN ALL GIFTS A RECEIVER IN DB ====================================
 
+  shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+
+  disableEventTest(e){
+    let noReceiverGiftList = [];
+    let indexUsedList = [];
+  for(let i = 0; i < this.gifts.length; i++){
+  // console.log(this.gifts.length);
+  // console.log(this.gifts[i].receiver);
+  if(this.gifts[i].event.id == e.id){
+    if(this.gifts[i].receiver.id == undefined){
+      noReceiverGiftList.push(this.gifts[i]);
+    }
+  }
+  }
+
+
+  noReceiverGiftList = this.shuffle(noReceiverGiftList);
+  // console.log(noReceiverGiftList);
+  let noSenderGiftList = noReceiverGiftList.slice();
+  noSenderGiftList.push(noSenderGiftList.shift());
+  // console.log(noSenderGiftList);
+
+for(let i = 0; i < noSenderGiftList.length;  i++){
+  noReceiverGiftList[i].receiver = noSenderGiftList[i].gifter;
+  this.giftSvc.update(noReceiverGiftList[i]).subscribe(
+    (data) => {
+       console.log("Receiver Assign Success");
+
+      },
+      (err) => {
+        console.error('Admin UpdateGift(); retrieve failed');
+      }
+      );
+}
+  this.eventSvc.destroy(e.id).subscribe(
+    (data) => {
+      console.log(data);
+      this.loadGifts();
+      this.loadEvents();
+      location.reload();
+    },
+    (err) => {
+      console.error(' Events disable failed');
+    }
+    );
+  }
+
+
 
   disableEvent(e){
     let noReceiverGiftList = [];
@@ -585,31 +646,26 @@ export class AdminComponent implements OnInit {
     }
   }
   }
-console.log(noReceiverGiftList);
 
   for(let i = 0; i < noReceiverGiftList.length; i++){
-    console.log(indexUsedList);
     if(noReceiverGiftList[i].receiver.id == undefined){
     // console.log(noReceiverGiftList[i].gifter);
+
     let randomAssignUser = noReceiverGiftList[0].gifter.id;
-        if(i = 0){
-          indexUsedList.push(noReceiverGiftList.length -1);
-          randomAssignUser = noReceiverGiftList[noReceiverGiftList.length -1];
-          indexUsedList.push(randomAssignUser);
-
-        }
     // console.log(randomAssignUser);
-
-    do{
-      if(i != 0){
-        randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
-        // console.log(randomAssignUser);
-        // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
-      }
-      }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id || indexUsedList.includes(randomAssignUser));
-
-      noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
-    indexUsedList.push(randomAssignUser);
+    // gift number 1 has no reciever, we want gift # 1 to be last gift gifter gift  index 2 3 4 still have no reciever but index 0 1 2 still available
+     if(i == 0){
+      noReceiverGiftList[0].receiver = noReceiverGiftList[noReceiverGiftList.length -1 ].gifter;
+      indexUsedList.push(noReceiverGiftList.length - 1);
+    }else{
+  do{
+    randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
+    // console.log(randomAssignUser);
+    // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
+  }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id || indexUsedList.includes(randomAssignUser));
+  noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
+  indexUsedList.push(randomAssignUser);
+}
     // noReceiverGiftList.splice(i, 1);
     // i--;
   // console.log(noReceiverGiftList[i].receiver);
@@ -640,6 +696,7 @@ console.log(noReceiverGiftList);
     }
     );
   }
+
 
   // DISABLE Users IN DB ====================================
   disableUser(e) {
@@ -839,5 +896,3 @@ console.log(noReceiverGiftList);
 }
 
 // }
-
-
