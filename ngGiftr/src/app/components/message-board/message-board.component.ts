@@ -33,7 +33,7 @@ export class MessageBoardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.auth.isHomePageComponent(false);
+    this.auth.isHomePageComponent(true);
     if (!localStorage.getItem('foo')) {
       // console.log("Setting Foo");
 
@@ -68,7 +68,8 @@ export class MessageBoardComponent implements OnInit {
             // console.log(this.selected);
           },
           (err) => {
-            this.router.navigateByUrl('notFound');
+            // this.router.navigateByUrl('notFound');
+            console.error("User not logged in");
           }
           );
         }
