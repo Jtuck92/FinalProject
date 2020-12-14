@@ -132,14 +132,14 @@ I feel like my biggest struggle was wanting things perhaps <i>too</i> clean from
 
 Per the usual, I also struggled with knowing when to let others do things on their own. It was our capstone project and I really felt some of the pressure to make sure that things worked correctly so I maybe didn't focus as much on my own tasks as I should have. I feel like I should have scheduled my time a little better and perhaps worked with teammates during a couple set portions of the day to ensure that my parts of the project got the attention they deserved as well as my teammates being able to utilize each other more. Again, I feel like we left some features on the table so I kick myself a little for not finding better ways to manage the time.
 
-<img src="ngGiftr/src/assets/jtbitmoji.png" width="75" height ="75">&nbsp;
-#### Jess' Lessons Learned
-
-#### Struggles
-
 <img src="ngGiftr/src/assets/jl2bitmoji.jpeg" width="75" height ="75">&nbsp;
 #### Justin's Lessons Learned
 
 I touched on this topic in my struggles below but I still have a lot to learn when it comes to Angular and Javascript. The lesson I did learn, is that I became a lot better with HTML and CSS. I believe our group worked really well together. We functioned as a solid unit throughout the whole project.
 #### Struggles
 Coming into this project, I still didn't feel as comfortable working in Angular as I do with Spring. So I felt like I couldn't contribute as much of the heavy coding as my teammates. I contributed as much typescript/javascript as I could and peer programmed the rest I couldn't figure out on my own.
+
+<img src="ngGiftr/src/assets/jtbitmoji.png" width="75" height ="75">&nbsp;
+#### Jess' Lessons Learned
+
+#### Struggles
