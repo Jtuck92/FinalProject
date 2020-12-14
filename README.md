@@ -1,14 +1,27 @@
 <img align="left" src="/ngGiftr/src/assets/Logo.png" width="825"> <br><br>
 ### Overview
 
-Giving doesn't have to be seasonal. We don't have to only find that spirit during the holidays or birthdays. This is the vision of Giftr. Giftr is a site that gives us that extra nudge when we need it but also only when we're ready. Join Giftr and match with others from around the world who just want to keep that feeling going year-round.
+Giving doesn't have to be seasonal. We don't have to only find that spirit during the holidays or birthdays. This is the vision of Giftr. Giftr is a site that gives us that extra nudge when we need it but also only when we're ready. Join Giftr, send and receive with others from around the world who just want to keep that feeling going year-round.
 
 ### Description
 
 Giftr has created a platform for users to browse and join "Secret Santa" style gifting events all year round. We call them Giftrs. The purpose of a Giftr is to allow for random assignment of an address that the user will send a themed gift to. A receiver may give hints or notes to help the giver along the way but ultimately the Gifr spirit allows for the giver to provide what they think is cool, useful or otherwise just a great gift. At Giftr we do ask that the party sending the gift provide some information to verify that they have fulfilled their side of the agreement. Receivers may choose to re-visit the Giftr page and upload pictures for our public forum. These will not only allow public commentary, but also allow for future Giftr inspiration.   
 
 #### *Users*
+When you visit the Giftr homepage, you may browse the available and active Giftrs. There are numerous ways to narrow down the list including an interactive search at the top of the page.
+
+Non-members may also view some of our previous Giftrs and browse through the gallery of posts gift receivers have left for members to provide insight and commentary on.
+
+Giftr does not allow for anonymous posting so you must be registered and logged in in order to provide a comment on another member's posts. If you have not created an account, there is a free and quick sign-up form that will get you started in no time. Once you have your free profile created you have unlocked numerous capabilities that make Giftr such a fun site to visit. Signing up for Giftrs is really simple and you'll be getting your receiver address and special notes in no time at all.
+
+Once the sign-up window has been closed by the administrator. Your recipients address will be visible on your profile page. Once you have sent your gift, Giftr asks that you provide some additional information on the package. Once that information has been provided you will be able to remove that event from your list to keep your profile page free of Giftrs that you no longer wish to track. You may only participate in a specific Giftr once but Giftr does not restrict how many different Giftrs you may participate in at one time. As long as a user fulfills their obligation to send a package to their recipients, there is no limit to how much joy you may give and receive throughout the year.
+
 #### *Admin*
+The site manager retains total control over site content. The admin page is able to be filtered by category for easy viewing and content can be disabled quickly and effective throughout the entire site from this page.
+
+Moderating is a crucial part of the site administration but one of the most crucial pieces is in the closure of sign up windows. Once a Giftr is disabled from the admin page, the Giftr will no longer be visible from the homepage and all members who signed up for the Giftr will be randomly assigned a recipient. This will change all user profile pages and allow members to start distributing their gifts to one another.
+
+Creation of content is also managed by the admin. New Giftrs and Giftr settings are created and managed by the admin. Each functionality is given its own piece of the admin page. Site admins will also have access to demographics and additional site statistics once more data is available.
 
 ### Implementation
 
