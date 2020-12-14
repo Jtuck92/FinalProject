@@ -575,6 +575,7 @@ export class AdminComponent implements OnInit {
 
   disableEvent(e){
     let noReceiverGiftList = [];
+    let indexUsedList = [];
   for(let i = 0; i < this.gifts.length; i++){
   // console.log(this.gifts.length);
   // console.log(this.gifts[i].receiver);
@@ -596,8 +597,9 @@ export class AdminComponent implements OnInit {
       randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
       // console.log(randomAssignUser);
       // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
-    }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id );
+    }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id && !indexUsedList.includes(randomAssignUser));
     noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
+    indexUsedList.push(randomAssignUser);
   // console.log(noReceiverGiftList[i].receiver);
   // console.log(noReceiverGiftList[i]);
 
