@@ -69,6 +69,8 @@ export class AuthService {
     localStorage.removeItem('userId');
     localStorage.removeItem('listType');
     localStorage.removeItem('pageView');
+    localStorage.removeItem('event');
+    localStorage.removeItem('eventPost');
   }
 
 isHomePageComponent(home: boolean){
