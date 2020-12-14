@@ -21,7 +21,7 @@ Once the sign-up window has been closed by the administrator. Your recipients ad
 
 #### *Admin*
 The site manager retains total control over site content. The admin page is able to be filtered by category for easy viewing and content can be disabled quickly and effective throughout the entire site from this page.
-<img src="ngGiftr/src/assets/AdminCloseSignup.png" align="left" style="float: left; display: inline-block;" width="200" height ="150"><br>
+<img src="ngGiftr/src/assets/AdminCloseSignup.png" align="left" style="float: left; display: inline-block;" width="230" height ="150"><br/><br/>
 Moderating is a crucial part of the site administration but one of the most crucial pieces is in the closure of sign up windows. Once a Giftr is disabled from the admin page, the Giftr will no longer be visible from the homepage and all members who signed up for the Giftr will be randomly assigned a recipient. This will change all user profile pages and allow members to start distributing their gifts to one another.
 
 Creation of content is also managed by the admin. New Giftrs and Giftr settings are created and managed by the admin. Each functionality is given its own piece of the admin page. Site admins will also have access to demographics and additional site statistics once more data is available.
