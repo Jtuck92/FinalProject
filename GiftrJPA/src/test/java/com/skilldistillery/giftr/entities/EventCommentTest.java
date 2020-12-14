@@ -51,15 +51,15 @@ class EventCommentTest {
 	void test1() {
 		assertNotNull(eComm);
 		assertNotNull(eComm.getPost());
-		assertEquals("New Event Description", eComm.getPost().getDescription());
-		assertEquals("5", eComm.getPost().getRating());
+		assertEquals("Thank you so much! I love the gifts including the graphic novel (not pictured)", eComm.getPost().getDescription());
+		assertEquals("4", eComm.getPost().getRating());
 	}
 	@Test
 	@DisplayName("Test EventComment to User")
 	void test2() {
 		assertNotNull(eComm);
 		assertNotNull(eComm.getUser());
-		assertEquals("22", eComm.getUser().getUsername());
+		assertEquals("1.21gigawatts!", eComm.getUser().getUsername());
 	}
 
 }

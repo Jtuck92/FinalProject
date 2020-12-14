@@ -46,7 +46,7 @@ public class EventTest {
 	@DisplayName("test Event entity")
 	void test() {
 		assertNotNull(event);
-		assertEquals("Giftr Event Name", event.getName());
+		assertEquals("Secret Santa", event.getName());
 
 	}
 	
@@ -55,7 +55,7 @@ public class EventTest {
 	void test1() {
 		assertNotNull(event);
 		assertNotNull(event.getBudget());
-		assertEquals(5, event.getBudget().getLowPrice());
+		assertEquals(25, event.getBudget().getLowPrice());
 	}
 	@Test
 	@DisplayName("test Event to Gift entity")
@@ -68,10 +68,11 @@ public class EventTest {
 	@Test
 	@DisplayName("test Event to EventPost entity")
 	void test3() {
+		event = em.find(Event.class, 5);
 		assertNotNull(event);
 		assertNotNull(event.getPosts());
 		assertTrue(event.getPosts().size() > 0);
-		assertEquals("New Event Description", event.getPosts().get(0).getDescription());
+		assertEquals("Thank you so much! I love the gifts including the graphic novel (not pictured)", event.getPosts().get(0).getDescription());
 	}
 	@Test
 	@DisplayName("test Event to UserList")
@@ -86,7 +87,7 @@ public class EventTest {
 	void test5() {
 		assertNotNull(event);
 		assertNotNull(event.getUser());
-		assertEquals("11", event.getUser().getUsername());
+		assertEquals("giftr", event.getUser().getUsername());
 	}
 	
 	@Test
@@ -95,7 +96,7 @@ public class EventTest {
 		assertNotNull(event);
 		assertNotNull(event.getEventTypes());
 		assertTrue(event.getEventTypes().size() > 0);
-		assertEquals("New Type", event.getEventTypes().get(0).getName());
+		assertEquals("Christmas", event.getEventTypes().get(0).getName());
 	}
 	
 	

@@ -46,7 +46,7 @@ public class EventTypeTest {
 	@DisplayName("test Event Type entity")
 	void test() {
 		assertNotNull(type);
-		assertEquals("New Type", type.getName());
+		assertEquals("Christmas", type.getName());
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class EventTypeTest {
 		assertNotNull(type);
 		assertNotNull(type.getEvents());
 		assertTrue(type.getEvents().size() > 0);
-		assertEquals("Giftr Event Name", type.getEvents().get(0).getName());
+		assertEquals("Secret Santa", type.getEvents().get(0).getName());
 	}
 	
 }

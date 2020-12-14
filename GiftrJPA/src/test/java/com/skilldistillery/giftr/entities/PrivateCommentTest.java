@@ -52,7 +52,7 @@ class PrivateCommentTest {
 	@DisplayName("test Entity to User")
 	void test1() {
 		assertNotNull(privateComment);
-		assertEquals("22", privateComment.getUser().getUsername());
+		assertEquals("TheDude22", privateComment.getUser().getUsername());
 	}
 	@Test
 	@DisplayName("test Entity to Private Post")

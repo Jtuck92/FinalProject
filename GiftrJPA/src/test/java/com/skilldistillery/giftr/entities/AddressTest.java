@@ -64,7 +64,7 @@ public class AddressTest {
 		assertNotNull(address);
 		assertNotNull(address.getPayments());
 		assertTrue(address.getPayments().size()>0);
-		assertEquals("1111", address.getPayments().get(0).getCardNumber());
+		assertEquals("1111111111111111", address.getPayments().get(0).getCardNumber());
 		assertEquals(11.11, address.getPayments().get(0).getAmount());
 		
 	}

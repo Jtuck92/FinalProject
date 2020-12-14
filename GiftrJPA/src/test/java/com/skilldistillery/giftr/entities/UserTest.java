@@ -89,7 +89,7 @@ public class UserTest {
 		assertNotNull(user);
 		assertNotNull(user.getPayments());
 		assertTrue(user.getPayments().size()>0);
-		assertEquals("1111", user.getPayments().get(0).getCardNumber());
+		assertEquals("1111111111111111", user.getPayments().get(0).getCardNumber());
 		assertEquals(11.11, user.getPayments().get(0).getAmount());
 	}
 	@Test
@@ -98,7 +98,7 @@ public class UserTest {
 		assertNotNull(user);
 		assertNotNull(user.getAddress());
 		assertEquals("11111", user.getAddress().getZip());
-		assertEquals("Street Name 1", user.getAddress().getStreet());	
+		assertEquals("9303 Lyon Drive", user.getAddress().getStreet());	
 		}
 	@Test
 	@DisplayName("test User to Event Comment")
@@ -107,7 +107,7 @@ public class UserTest {
 		assertNotNull(user2);
 		assertNotNull(user2.getEventComments());
 		assertTrue(user2.getEventComments().size() > 0);
-		assertEquals("THIS WAS SUPER FUN", user2.getEventComments().get(0).getComment());	
+		assertEquals("Cant Wait for next year!", user2.getEventComments().get(0).getComment());	
 	}
 	@Test
 	@DisplayName("test User to Event Post")
@@ -115,7 +115,7 @@ public class UserTest {
 		assertNotNull(user);
 		assertNotNull(user.getEventPosts());
 		assertTrue(user.getEventPosts().size() > 0);
-		assertEquals("New Event Description", user.getEventPosts().get(0).getDescription());	
+		assertEquals("Thank you so much! I love the gifts including the graphic novel (not pictured)", user.getEventPosts().get(0).getDescription());	
 	}
 	@Test
 	@DisplayName("test User to EventList")
@@ -123,16 +123,17 @@ public class UserTest {
 		assertNotNull(user);
 		assertNotNull(user.getEvents());
 		assertTrue(user.getEvents().size() > 0);
-		assertEquals("Giftr Event Name", user.getEvents().get(0).getName());	
+		assertEquals("Secret Santa", user.getEvents().get(0).getName());	
 	}
 	@Test
 	@DisplayName("test User to EventManager EventList")
 	void test10() {
+		user = em.find(User.class, 4);
 		assertNotNull(user);
 		assertNotNull(user.getManagerEvents());
-		assertTrue(user.getManagerEvents().size()>0);
+		assertTrue(user.getManagerEvents().size() > 0);
 		assertTrue(user.getManagerEvents().get(0).getEventManager() == user);
-		assertEquals("Giftr Event Name", user.getEvents().get(0).getName());	
+		assertEquals("Secret Santa", user.getManagerEvents().get(0).getName());	
 	}
 	@Test
 	@DisplayName("test User to Gifts Sent")
@@ -142,7 +143,7 @@ public class UserTest {
 		assertTrue(user.getSentGifts().size()>0);
 		assertEquals(12.5, user.getSentGifts().get(0).getPrice());	
 		assertEquals(2, user.getSentGifts().get(0).getReceiver().getId());	
-		assertEquals("New Gift", user.getSentGifts().get(0).getDescription());	
+		assertEquals("New Santa Gift", user.getSentGifts().get(0).getDescription());	
 
 
 	}
@@ -156,7 +157,7 @@ public class UserTest {
 		assertTrue(user2.getRecievedGifts().size()>0);
 		assertEquals(12.5, user2.getRecievedGifts().get(0).getPrice());	
 		assertEquals(1, user2.getRecievedGifts().get(0).getGifter().getId());	
-		assertEquals("New Gift", user2.getRecievedGifts().get(0).getDescription());	
+		assertEquals("New Santa Gift", user2.getRecievedGifts().get(0).getDescription());	
 		
 	}
 	

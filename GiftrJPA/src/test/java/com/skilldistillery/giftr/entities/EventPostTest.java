@@ -45,8 +45,8 @@ class EventPostTest {
 	@Test
 	void test() {
 		assertNotNull(ePost);
-		assertEquals("New Event Description", ePost.getDescription());
-		assertEquals("5", ePost.getRating());
+		assertEquals("Thank you so much! I love the gifts including the graphic novel (not pictured)", ePost.getDescription());
+		assertEquals("4", ePost.getRating());
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ class EventPostTest {
 	void test3() {
 		assertNotNull(ePost);
 		assertNotNull(ePost.getEvent());
-		assertEquals("Giftr Event Name", ePost.getEvent().getName());
+		assertEquals("Marvel", ePost.getEvent().getName());
 	}
 	@Test
 	@DisplayName("Test EventPost to EventComment")

@@ -46,7 +46,7 @@ public class BudgetTest {
 	@DisplayName("Test Budget Entity")
 	void test() {
 		assertNotNull(budget);
-		assertEquals(5, budget.getLowPrice());
+		assertEquals(25, budget.getLowPrice());
 
 	}
 	@Test
@@ -55,7 +55,7 @@ public class BudgetTest {
 		assertNotNull(budget);
 		assertNotNull(budget.getEvents());
 		assertTrue(budget.getEvents().size()>0);
-		assertEquals("Giftr Event Name", budget.getEvents().get(0).getName());
+		assertEquals("Secret Santa", budget.getEvents().get(0).getName());
 		
 	}
 }

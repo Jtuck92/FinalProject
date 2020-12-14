@@ -66,7 +66,7 @@ public class GiftTest {
 	void test4() {
 		assertNotNull(gift);
 		assertNotNull(gift.getReceiver());
-		assertEquals("22", gift.getReceiver().getUsername());
+		assertEquals("TheDude22", gift.getReceiver().getUsername());
 		
 	}
 }

@@ -45,7 +45,7 @@ class PaymentTest {
 	@Test
 	void test() {
 		assertNotNull(payment);
-		assertEquals("1111", payment.getCardNumber());
+		assertEquals("1111111111111111", payment.getCardNumber());
 		assertEquals(11.11, payment.getAmount());
 	}
 	@Test
@@ -54,7 +54,7 @@ class PaymentTest {
 		assertNotNull(payment);
 		assertNotNull(payment.getAddress());
 		assertEquals("11111", payment.getAddress().getZip());
-		assertEquals("Street Name 1", payment.getAddress().getStreet());
+		assertEquals("9303 Lyon Drive", payment.getAddress().getStreet());
 		
 	}
 	@Test
