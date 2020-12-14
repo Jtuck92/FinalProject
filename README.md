@@ -15,6 +15,7 @@ When you visit the Giftr homepage, you may browse the available and active Giftr
 Non-members may also view some of our previous Giftrs and browse through the gallery of posts gift receivers have left for members to provide insight and commentary on.
 
 Giftr does not allow for anonymous posting so you must be registered and logged in in order to provide a comment on another member's posts. If you have not created an account, there is a free and quick sign-up form that will get you started in no time. Once you have your free profile created you have unlocked numerous capabilities that make Giftr such a fun site to visit. Signing up for Giftrs is really simple and you'll be getting your receiver address and special notes in no time at all.
+<img src="ngGiftr/src/assets/Register.png" align="left" style="float: left; display: inline-block;" width="175" height ="150">
 
 Once the sign-up window has been closed by the administrator. Your recipients address will be visible on your profile page. Once you have sent your gift, Giftr asks that you provide some additional information on the package. Once that information has been provided you will be able to remove that event from your list to keep your profile page free of Giftrs that you no longer wish to track. You may only participate in a specific Giftr once but Giftr does not restrict how many different Giftrs you may participate in at one time. As long as a user fulfills their obligation to send a package to their recipients, there is no limit to how much joy you may give and receive throughout the year.
 
