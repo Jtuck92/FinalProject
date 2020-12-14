@@ -15,20 +15,27 @@ body{
   margin-top:20px;
   }
 
-.comment-wrapper .panel-body {
+.panel-body {
     max-height:650px;
     overflow:auto;
 }
 
-.comment-wrapper .media-list .media img {
+.media-list .media img {
     width:64px;
     height:64px;
     border:2px solid #e5e7e8;
+}
+.comment-wrapper {
+    border:2px solid #e5e7e8;
+    overflow:scroll;
+    max-height:300px;
+
 }
 
 .comment-wrapper .media-list .media {
     border-bottom:1px dashed #efefef;
     margin-bottom:25px;
+
 }
 
 #leftbox {

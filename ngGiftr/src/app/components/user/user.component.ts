@@ -207,71 +207,85 @@ export class UserComponent implements OnInit {
   }
 
   findReceiverUsername(index) {
-    if (this.receivers[index] == null) {
+    if (this.receivers[index] == null || this.receivers[index].username == undefined) {
+      this.receivers[index] = new User();
       return ' Check back Soon! ';
     }
     return this.receivers[index].username;
   }
   findReceiverAddressStreet(index) {
     // console.log(this.receivers[index]);
-    if (this.receivers[index] == null) {
+    if (this.receivers[index] == null || this.receivers[index].address == undefined) {
       return '';
     }
     return this.receivers[index].address.street;
   }
   findReceiverAddressStreet2(index) {
     // console.log([index]);
-    if (this.receivers[index] == null) {
+    if (this.receivers[index] == null || this.receivers[index].address == undefined) {
       return '';
     }
     return this.receivers[index].address.street2;
   }
   findReceiverAddressCity(index) {
     // console.log([index]);
-    if (this.receivers[index] == null) {
+    if (this.receivers[index] == null || this.receivers[index].address == undefined) {
       return '';
     }
     return this.receivers[index].address.city + ',';
   }
   findReceiverAddressState(index) {
-    if (this.receivers[index] == null) {
+    if (this.receivers[index] == null || this.receivers[index].address == undefined) {
       return '';
     }
     return this.receivers[index].address.stateProvince;
   }
   findReceiverAddressCountry(index) {
-    if (this.receivers[index] == null) {
+    if (this.receivers[index] == null || this.receivers[index].address == undefined) {
       return '';
     }
     return this.receivers[index].address.country;
   }
   findReceiverAddressZip(index) {
-    if (this.receivers[index] == null) {
+    if (this.receivers[index] == null || this.receivers[index].address == undefined) {
       return '';
     }
     return this.receivers[index].address.zip;
   }
 
   displayNote(event, index) {
+// console.log(index);
+this.receiverGifts = [];
+console.log(this.gifts);
+if (this.receivers[index] == null) {
+  this.receivers[index] = new User();
+}
+console.log(this.receivers);
+
     for (let i = 0; i < this.gifts.length; i++) {
-      if (this.receivers[index] == null) {
-        return '';
-      }
-      if (this.gifts[i].gifter.id == this.receivers[index].id) {
+      if (this.gifts[i].gifter.id == this.receivers[index].id ) {
         if (this.gifts[i].event.id == event.id) {
-          if (!this.receiverGifts.includes(this.gifts[i])) {
+          // if (!this.receiverGifts.includes(this.gifts[i])) {
             this.receiverGifts.push(this.gifts[i]);
-          }
+          // }
         }
       }
     }
-    if (this.receiverGifts[index].note == null || this.receiverGifts[index].note == undefined) {
+    // console.log(this.receivers);
+
+    // console.log(this.receiverGifts);
+
+    if (this.receiverGifts[0] == undefined || this.receiverGifts[0].note == null) {
       return 'No notes from receipient';
     }
-    return this.receiverGifts[index].note;
+
+    return this.receiverGifts[0].note;
   }
 
   submitEvent() {}
+    // if (this.receiverGifts[index] == undefined ||  this.receiverGifts[index].note == null || this.receiverGifts[index].note == undefined ) {
+    //   return 'No notes from receipient';
+    // }
   // Update Address IN DB ====================================
 
   changeAddress() {

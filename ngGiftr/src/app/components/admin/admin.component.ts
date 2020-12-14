@@ -597,9 +597,11 @@ export class AdminComponent implements OnInit {
       randomAssignUser = Math.floor(Math.random() * (noReceiverGiftList.length));
       // console.log(randomAssignUser);
       // console.log((randomAssignUser + 1) == noReceiverGiftList[i].gifter.id);
-    }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id && !indexUsedList.includes(randomAssignUser));
+    }while(noReceiverGiftList[randomAssignUser].gifter.id == noReceiverGiftList[i].gifter.id || indexUsedList.includes(randomAssignUser));
     noReceiverGiftList[i].receiver = noReceiverGiftList[randomAssignUser].gifter;
     indexUsedList.push(randomAssignUser);
+    // noReceiverGiftList.splice(i, 1);
+    // i--;
   // console.log(noReceiverGiftList[i].receiver);
   // console.log(noReceiverGiftList[i]);
 
