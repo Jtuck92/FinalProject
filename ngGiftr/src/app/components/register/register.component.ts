@@ -813,7 +813,7 @@ loadUsers() {
 }
 
 goToLogin(){
-  this.router.navigateByUrl("login")
+  this.router.navigateByUrl("/login")
 }
 
 findStateList(){

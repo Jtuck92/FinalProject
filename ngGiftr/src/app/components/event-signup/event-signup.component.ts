@@ -103,7 +103,7 @@ export class EventSignupComponent implements OnInit {
             }
           );
 
-          this.router.navigateByUrl('profile');
+          this.router.navigateByUrl('/profile');
         },
         (err) => {
           console.error('User retrieve failed');

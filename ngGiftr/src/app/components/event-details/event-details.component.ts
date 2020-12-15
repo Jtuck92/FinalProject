@@ -76,7 +76,7 @@ export class EventDetailsComponent implements OnInit {
   }
   pEventSignup() {
     if(!this.auth.checkLogin()){
-    this.router.navigateByUrl("login");
+    this.router.navigateByUrl("/login");
     }else{
 
       console.log(this.selected.users);
@@ -88,14 +88,14 @@ export class EventDetailsComponent implements OnInit {
         }
       }
       localStorage.setItem('event' , "" + this.selected.id);
-      this.router.navigateByUrl('eventSignup');
+      this.router.navigateByUrl('/eventSignup');
     }
 
   }
 
   submitEventPost() {
     if(!this.auth.checkLogin()){
-      this.router.navigateByUrl("login");
+      this.router.navigateByUrl("/login");
     } else {
       this.eventPost.user = this.user;
       this.eventPost.event = this.selected;

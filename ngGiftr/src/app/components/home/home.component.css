@@ -12,7 +12,7 @@
   /* Text styles */
   text-align: center;
  /* Background styles */
-  background: url("/assets/christmashero.jpg");
+  background: url("src/assets/christmashero.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

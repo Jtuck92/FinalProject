@@ -80,7 +80,7 @@ isHomePage = true;
       postComment() {
         this.auth.isHomePageComponent(false);
         if(!this.auth.checkLogin()) {
-          this.router.navigateByUrl('login')
+          this.router.navigateByUrl('/login')
         } else {
           this.newComment.post = this.selected;
           this.newComment.user = this.user;
